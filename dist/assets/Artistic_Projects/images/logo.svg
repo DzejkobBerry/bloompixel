@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="150" height="50" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
-    <style>
-        .logo-text { font-family: 'Poppins', sans-serif; font-weight: 700; }
-    </style>
-    <text x="10" y="35" class="logo-text" fill="#2D3047" font-size="24">Artistic</text>
-    <text x="100" y="35" class="logo-text" fill="#419D78" font-size="24">Projects</text>
-    <path d="M 0 45 L 150 45" stroke="#E0A458" stroke-width="2" opacity="0.8"/>
-</svg> 
