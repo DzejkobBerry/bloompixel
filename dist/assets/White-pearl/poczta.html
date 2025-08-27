@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przekierowanie do poczty - White Pearl Detailing</title>
+    <meta http-equiv="refresh" content="0; url=https://webmail.strato.com/appsuite">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .redirect-container {
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .manual-link {
+            color: #ffffff;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .manual-link:hover {
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="logo">White Pearl Detailing</div>
+        <div class="message">Przekierowywanie do poczty...</div>
+        <div class="spinner"></div>
+        <p>Jeśli przekierowanie nie działa automatycznie, <a href="https://webmail.strato.com/appsuite" class="manual-link">kliknij tutaj</a>.</p>
+    </div>
+    
+    <script>
+        // Dodatkowe przekierowanie JavaScript jako backup
+        setTimeout(function() {
+            window.location.href = "https://webmail.strato.com/appsuite";
+        }, 2000);
+    </script>
+</body>
+</html>

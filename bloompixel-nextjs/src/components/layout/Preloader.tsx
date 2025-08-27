@@ -1,0 +1,273 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+interface PreloaderProps {
+  onComplete?: () => void;
+}
+
+const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
+  const [progress, setProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        const increment = Math.floor(Math.random() * 5) + 1;
+        const newProgress = Math.min(prev + increment, 100);
+        
+        if (newProgress === 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            setIsVisible(false);
+            setTimeout(() => {
+              onComplete?.();
+            }, 1000);
+          }, 500);
+        }
+        
+        return newProgress;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [onComplete]);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className={`preloader ${!isVisible ? 'preloader-hide' : ''}`}>
+      <div className="preloader-content">
+        <div className="preloader-logo">
+          <div className="pixel-grid">
+            <div className="pixel p1"></div>
+            <div className="pixel p2"></div>
+            <div className="pixel p3"></div>
+            <div className="pixel p4"></div>
+            <div className="pixel p5"></div>
+            <div className="pixel p6"></div>
+            <div className="pixel p7"></div>
+            <div className="pixel p8"></div>
+            <div className="pixel p9"></div>
+          </div>
+        </div>
+        
+        <div className="preloader-text">
+          BloomPixel<span className="dot">.</span><span className="domain">pl</span>
+        </div>
+        
+        <div className="preloader-progress-container">
+          <div 
+            className="preloader-progress-bar" 
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+        
+        <div className="preloader-percentage">
+          {progress}%
+        </div>
+      </div>
+      
+      <style jsx>{`
+        .preloader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--dark);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        .preloader-hide {
+          opacity: 0;
+          visibility: hidden;
+        }
+        
+        .preloader-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .preloader-logo {
+          margin-bottom: 2rem;
+        }
+        
+        .pixel-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          gap: 0.5rem;
+          width: 12rem;
+          height: 12rem;
+        }
+        
+        .pixel {
+          border-radius: 0.2rem;
+          animation: pulse 2s infinite alternate;
+        }
+        
+        .p1 { animation-delay: 0s; background-color: var(--violet-primary); }
+        .p2 { animation-delay: 0.1s; background-color: var(--pink-primary); }
+        .p3 { animation-delay: 0.2s; background-color: var(--violet-primary); }
+        .p4 { animation-delay: 0.3s; background-color: var(--cyan-primary); }
+        .p5 { animation-delay: 0.4s; background-color: var(--violet-primary); }
+        .p6 { animation-delay: 0.5s; background-color: var(--cyan-primary); }
+        .p7 { animation-delay: 0.6s; background-color: var(--violet-primary); }
+        .p8 { animation-delay: 0.7s; background-color: var(--pink-primary); }
+        .p9 { animation-delay: 0.8s; background-color: var(--violet-primary); }
+        
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+          }
+          50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+          }
+        }
+        
+        .preloader-text {
+          font-family: var(--font-secondary);
+          font-size: 3.6rem;
+          font-weight: 700;
+          margin-bottom: 2rem;
+          background: linear-gradient(90deg, var(--violet-primary), var(--pink-primary));
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+          letter-spacing: 1px;
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 3px solid var(--cyan-primary);
+          width: 0;
+          animation: typing 2s steps(12) 0.5s forwards, blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: var(--cyan-primary) }
+        }
+        
+        .preloader-text .dot {
+          color: var(--pink-primary);
+        }
+        
+        .preloader-text .domain {
+          color: var(--cyan-primary);
+        }
+        
+        .preloader-progress-container {
+          width: 30rem;
+          height: 0.4rem;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 2rem;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .preloader-progress-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: linear-gradient(90deg, var(--violet-primary), var(--pink-primary), var(--cyan-primary));
+          background-size: 200% 100%;
+          animation: gradient 2s linear infinite;
+          border-radius: 2rem;
+          box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+          transition: width 0.1s ease;
+        }
+        
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        .preloader-percentage {
+          font-family: var(--font-secondary);
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-top: 1rem;
+          position: relative;
+          display: inline-block;
+          padding: 0.5rem 1.5rem;
+          border-radius: 2rem;
+          background: rgba(255, 255, 255, 0.05);
+          box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: transparent;
+          background-image: linear-gradient(90deg, var(--violet-primary), var(--pink-primary), var(--cyan-primary));
+          background-size: 200% auto;
+          background-position: 0% 50%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          animation: gradient-text 2s linear infinite;
+          transition: all 0.3s ease;
+        }
+        
+        @keyframes gradient-text {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        /* Responsywność */
+        @media (max-width: 768px) {
+          .pixel-grid {
+            width: 9rem;
+            height: 9rem;
+          }
+          
+          .preloader-text {
+            font-size: 2.8rem;
+          }
+          
+          .preloader-progress-container {
+            width: 25rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .pixel-grid {
+            width: 7rem;
+            height: 7rem;
+            gap: 0.3rem;
+          }
+          
+          .preloader-text {
+            font-size: 2.4rem;
+          }
+          
+          .preloader-progress-container {
+            width: 20rem;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default Preloader;

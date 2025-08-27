@@ -1,0 +1,265 @@
+/* ===== VARIABLES ===== */
+:root {
+  /* Główne kolory - dopasowane do oryginalnego designu */
+  --violet-primary: #7877c6;
+  --violet-secondary: #9896d4;
+  --pink-primary: #ff77c6;
+  --pink-secondary: #ff99d4;
+  --cyan-primary: #06B6D4;
+  --cyan-secondary: #22D3EE;
+  --blue-primary: #3B82F6;
+  --blue-secondary: #60A5FA;
+  
+  /* Neutralne kolory */
+  --dark: #16213e;
+  --dark-secondary: #1a1a2e;
+  --light: #ffffff;
+  --light-secondary: #b0b0b0;
+  
+  /* Fonty */
+  --font-primary: var(--font-poppins), sans-serif;
+  --font-secondary: var(--font-orbitron), sans-serif;
+  
+  /* Inne */
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --neon-shadow: 0 0 15px rgba(120, 119, 198, 0.5);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--light);
+  background-color: var(--dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--violet-primary), var(--pink-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--light-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 0 0 rgba(120, 119, 198, 0);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(120, 119, 198, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(120, 119, 198, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--violet-primary), var(--pink-primary));
+  color: white;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--cyan-primary), var(--blue-primary));
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--violet-primary);
+  color: var(--violet-primary);
+}
+
+.btn-outline:hover {
+  background: var(--violet-primary);
+  color: white;
+  border-color: var(--violet-primary);
+}
+
+/* ===== PARTICLES BACKGROUND ===== */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  section {
+    padding: 50px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  section {
+    padding: 40px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 30px;
+  }
+}

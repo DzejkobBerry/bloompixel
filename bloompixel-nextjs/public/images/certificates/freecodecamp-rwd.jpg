@@ -1,0 +1,11 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#0a0a23"/>
+  <rect x="20" y="20" width="360" height="260" fill="white" stroke="#0a0a23" stroke-width="2"/>
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0a0a23">freeCodeCamp</text>
+  <text x="200" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#0a0a23">Certificate of Completion</text>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0a0a23">Responsive Web Design</text>
+  <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Awarded to: Developer</text>
+  <text x="200" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Date: 2023</text>
+  <rect x="170" y="220" width="60" height="20" fill="#0a0a23" rx="10"/>
+  <text x="200" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CERTIFIED</text>
+</svg>

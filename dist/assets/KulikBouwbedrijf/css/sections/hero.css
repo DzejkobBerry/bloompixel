@@ -1,0 +1,276 @@
+/* Hero sekcja */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../images/background-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.hero h1 {
+    font-size: var(--font-size-hero);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero .company-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero .specialty {
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+.hero p {
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Zaawansowane efekty dla przycisków hero */
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+}
+
+.hero-buttons .btn {
+    position: relative;
+    overflow: hidden;
+    padding: 15px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(0);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+/* Efekt świetlny wewnętrzny */
+.hero-buttons .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+    z-index: -1;
+}
+
+/* Efekt pulsowania */
+.hero-buttons .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+/* Hover effects dla btn-primary */
+.hero-buttons .btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+    border: 2px solid var(--primary-color);
+    color: var(--white);
+    position: relative;
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(194, 90, 18, 0.4);
+    background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color));
+    border-color: var(--primary-color-dark);
+}
+
+.hero-buttons .btn-primary:hover::before {
+    left: 100%;
+}
+
+.hero-buttons .btn-primary:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Hover effects dla btn-secondary */
+.hero-buttons .btn-secondary {
+    background-color: transparent !important;
+    color: white !important;
+    border: 2px solid white !important;
+    position: relative;
+}
+
+.hero-buttons .btn-secondary:hover {
+    transform: translateY(-8px) scale(1.05);
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+}
+
+.hero-buttons .btn-secondary:hover::before {
+    left: 100%;
+    background: linear-gradient(90deg, transparent, rgba(194, 90, 18, 0.2), transparent);
+}
+
+.hero-buttons .btn-secondary:hover::after {
+    width: 300px;
+    height: 300px;
+    background: rgba(194, 90, 18, 0.1);
+}
+
+/* Efekt aktywnego przycisku */
+.hero-buttons .btn:active {
+    transform: translateY(-4px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Animacja wejścia przycisków */
+@keyframes buttonSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-buttons .btn {
+    animation: buttonSlideIn 0.8s ease forwards;
+}
+
+.hero-buttons .btn:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.hero-buttons .btn:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+/* Efekt magnetyczny - przyciąganie kursora */
+.hero-buttons .btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Dodatkowe efekty dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        padding-top: 70px;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+    
+    .hero-content {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero h1 {
+        font-size: var(--font-size-xxl);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero .company-name {
+        font-size: 1.8rem;
+    }
+    
+    .hero .specialty {
+        font-size: 1rem;
+    }
+    
+    .hero p {
+        font-size: var(--font-size-medium);
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 15px 30px;
+        font-size: var(--font-size-medium);
+    }
+    
+    .hero-buttons .btn:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .hero .company-name {
+        font-size: 1.5rem;
+    }
+    
+    .hero .specialty {
+        font-size: 0.9rem;
+    }
+    
+    .hero p {
+        font-size: var(--font-size-normal);
+    }
+}
+/* Efekt świecenia dla focus (dostępność) */
+.hero-buttons .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(194, 90, 18, 0.3);
+}
+
+.hero-buttons .btn-secondary:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 80vh;
+        padding-top: 60px;
+    }
+    
+    .hero h1 {
+        font-size: var(--font-size-xxl);
+    }
+    
+    .hero p {
+        font-size: var(--font-size-medium);
+    }
+}

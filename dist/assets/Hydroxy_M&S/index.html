@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hydroxy M&S - Premium usługi posadzek epoksydowych i systemów hydroizolacji dla klientów indywidualnych i biznesowych">
+    <title>Hydroxy M&S - Waterproofing & Epoxy Systems</title>
+    <!-- Zamień tę linię: -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Na te trzy linie: -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Preload kluczowych zasobów -->
+    <link rel="preload" href="images/black-marble.jpg" as="image">
+</head>
+<body>
+    <!-- Nawigacja -->
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" aria-label="Strona główna Hydroxy M&S">
+                    <span class="logo-text">Hydroxy M&S</span>
+                    <span class="tagline">Waterproofing & Epoxy Systems</span>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">View Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu mobilne">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1><span class="highlight">Hydroxy M&S</span></h1>
+                <p>Transform your spaces with luxury waterproofing and epoxy systems.<br>Professional installation, premium materials, guaranteed results.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span class="btn-text">Get Free Quote</span>
+                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span class="btn-text">View Projects</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="scroll-indicator">
+                <span class="mouse">
+                    <span class="mouse-wheel"></span>
+                </span>
+                <span class="scroll-text">Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Hydroxy M&S</h2>
+                    <p class="section-description">With over 15 years of expertise, we specialize in premium waterproofing and epoxy flooring solutions for residential, commercial, and industrial spaces.</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>Only the finest materials and proven techniques for lasting results.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Expert Team</h3>
+                        <p>Certified professionals with extensive industry experience.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3>Guaranteed Results</h3>
+                        <p>Full warranty coverage and satisfaction guarantee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statystyki -->
+        <section class="stats visible" id="collaboration-process"> 
+            <div class="container"> 
+                <div class="section-header">
+                    <h2 class="section-title">Our Collaboration Process</h2>
+                    <p class="section-description">How we work together to deliver exceptional results</p>
+                </div>
+                <div class="stats-grid process-grid"> 
+                    <div class="stat-item process-item animate"> 
+                        <div class="process-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-number process-step" id="step1">01</div> 
+                        <h3 class="process-title">Consultation</h3>
+                        <div class="stat-label process-description">Initial meeting to understand your needs and vision</div> 
+                    </div> 
+                    <div class="stat-item process-item animate"> 
+                        <div class="process-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="stat-number process-step" id="step2">02</div> 
+                        <h3 class="process-title">Design</h3>
+                        <div class="stat-label process-description">Creating detailed plans and material selection</div> 
+                    </div> 
+                    <div class="stat-item process-item animate"> 
+                        <div class="process-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="stat-number process-step" id="step3">03</div> 
+                        <h3 class="process-title">Installation</h3>
+                        <div class="stat-label process-description">Expert execution with premium materials</div> 
+                    </div> 
+                    <div class="stat-item process-item animate"> 
+                        <div class="process-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-number process-step" id="step4">04</div> 
+                        <h3 class="process-title">Quality Assurance</h3>
+                        <div class="stat-label process-description">Final inspection and client satisfaction</div> 
+                    </div> 
+                </div> 
+            </div> 
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects visible" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Projects & Gallery</h2>
+                    <p class="section-description">Explore our premium installations and transformations</p>
+                </div>
+                
+                <div class="project-grid">
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Residential Luxury Floor">
+                            <div class="placeholder-icon"><i class="fas fa-home"></i></div>
+                            <div class="placeholder-text">Residential Luxury Floor</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Residential Luxury Floor</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Commercial Office">
+                            <div class="placeholder-icon"><i class="fas fa-building"></i></div>
+                            <div class="placeholder-text">Commercial Office</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Commercial Office</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Nowa karta projektu 3 -->
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Industrial Warehouse">
+                            <div class="placeholder-icon"><i class="fas fa-industry"></i></div>
+                            <div class="placeholder-text">Industrial Warehouse</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Industrial Warehouse</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Nowa karta projektu 4 -->
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Luxury Bathroom">
+                            <div class="placeholder-icon"><i class="fas fa-bath"></i></div>
+                            <div class="placeholder-text">Luxury Bathroom</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Luxury Bathroom</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Nowa karta projektu 5 -->
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Restaurant Floor">
+                            <div class="placeholder-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="placeholder-text">Restaurant Floor</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Restaurant Floor</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Nowa karta projektu 6 -->
+                    <article class="project-card animate">
+                        <div class="golden-placeholder" data-title="Garage System">
+                            <div class="placeholder-icon"><i class="fas fa-car"></i></div>
+                            <div class="placeholder-text">Garage System</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Garage System</h3>
+                            <a href="projects.html" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Dodajemy przycisk "More Projects" pod kartami projektów -->
+                <div class="more-projects-container">
+                    <a href="projects.html" class="btn btn-primary more-projects-btn">
+                        <span class="btn-text">More Projects</span>
+                        <i class="fas fa-arrow-right btn-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Client Testimonials</h2>
+                    <p class="section-description">What our satisfied clients say about our work</p>
+                </div>
+                
+                <div class="testimonial-slider">
+                    <div class="testimonial-controls">
+                        <button class="prev-btn" aria-label="Poprzednia opinia"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    
+                    <div class="testimonial-container" id="testimonialContainer">
+                        <div class="testimonial-card active" aria-hidden="false">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">SM</div>
+                                </div>
+                                <div>
+                                    <h4>Sarah Mitchell</h4>
+                                    <p>Residential Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Absolutely stunning result! The epoxy flooring transformed our entire home. Professional service from start to finish."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">JD</div>
+                                </div>
+                                <div>
+                                    <h4>John Davis</h4>
+                                    <p>Commercial Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Our office floors look incredible after Hydroxy's work. The team was professional, efficient, and the quality exceeded our expectations."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">AK</div>
+                                </div>
+                                <div>
+                                    <h4>Anna Kowalski</h4>
+                                    <p>Residential Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Hydroxy M&S transformed our bathroom with their waterproofing solutions. The attention to detail and quality of work was exceptional."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 4 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">MJ</div>
+                                </div>
+                                <div>
+                                    <h4>Michael Johnson</h4>
+                                    <p>Industrial Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"The industrial epoxy flooring installed by Hydroxy M&S has completely transformed our warehouse. Durable, easy to clean, and looks fantastic even after heavy use."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 5 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">LN</div>
+                                </div>
+                                <div>
+                                    <h4>Laura Nowak</h4>
+                                    <p>Residential Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"We had our basement waterproofed by Hydroxy M&S and couldn't be happier with the results. No more moisture issues, and the team was incredibly professional and clean."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 6 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">RB</div>
+                                </div>
+                                <div>
+                                    <h4>Robert Brown</h4>
+                                    <p>Commercial Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Our retail store needed a durable yet stylish flooring solution. Hydroxy M&S delivered a stunning metallic epoxy floor that our customers constantly compliment."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 7 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">KW</div>
+                                </div>
+                                <div>
+                                    <h4>Katarzyna Wiśniewska</h4>
+                                    <p>Residential Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"The garage floor coating from Hydroxy M&S is simply perfect. It's been two years and it still looks brand new despite heavy use and winter conditions."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 8 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">TM</div>
+                                </div>
+                                <div>
+                                    <h4>Tomasz Majewski</h4>
+                                    <p>Industrial Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"We needed a specialized chemical-resistant flooring for our production facility. Hydroxy M&S provided expert advice and a perfect solution that has withstood all challenges."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 9 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">EG</div>
+                                </div>
+                                <div>
+                                    <h4>Emma Garcia</h4>
+                                    <p>Commercial Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"Our hotel lobby needed a luxurious yet durable floor. The decorative epoxy system installed by Hydroxy M&S has been perfect - beautiful, easy to maintain, and incredibly durable."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Opinia 10 -->
+                        <div class="testimonial-card" aria-hidden="true">
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <div class="avatar-placeholder">PZ</div>
+                                </div>
+                                <div>
+                                    <h4>Piotr Zieliński</h4>
+                                    <p>Residential Client</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"The waterproofing system Hydroxy M&S installed in our shower has been flawless. No leaks, no mold, and the decorative finish looks as good as the day it was installed."</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-controls">
+                        <button class="next-btn" aria-label="Następna opinia"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="testimonial-dots" id="testimonialDots">
+                    <button class="dot active" aria-label="Opinia 1"></button>
+                    <button class="dot" aria-label="Opinia 2"></button>
+                    <button class="dot" aria-label="Opinia 3"></button>
+                    <button class="dot" aria-label="Opinia 4"></button>
+                    <button class="dot" aria-label="Opinia 5"></button>
+                    <button class="dot" aria-label="Opinia 6"></button>
+                    <button class="dot" aria-label="Opinia 7"></button>
+                    <button class="dot" aria-label="Opinia 8"></button>
+                    <button class="dot" aria-label="Opinia 9"></button>
+                    <button class="dot" aria-label="Opinia 10"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact visible" id="contact"> 
+            <div class="container" bis_skin_checked="1"> 
+                <div class="section-header" bis_skin_checked="1"> 
+                    <h2 class="section-title">Get Your Premium Quote</h2> 
+                    <p class="section-description">Professional consultation and detailed pricing estimate</p> 
+                </div> 
+                
+                <div class="contact-grid" bis_skin_checked="1">
+                    <!-- Karta informacyjna (lewa strona) -->
+                    <div class="contact-info-card" bis_skin_checked="1">
+                        <div class="info-card-header" bis_skin_checked="1">
+                            <h3>Contact Information</h3>
+                            <p>We're here to assist you with your project</p>
+                        </div>
+                        
+                        <div class="info-card-content" bis_skin_checked="1">
+                            <div class="info-item" bis_skin_checked="1">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-clock"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 7:00 AM - 7:00 PM</p>
+                                    <p>Saturday: 9:00 AM - 3:00 PM</p>
+                                    <p>Sunday: Closed</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item" bis_skin_checked="1">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-phone"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>Phone</h4>
+                                    <p><a href="tel:+31639501024">+31 6 39 50 10 24</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item" bis_skin_checked="1">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-envelope"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:info@hydroxyms.nl">info@hydroxyms.nl</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item" bis_skin_checked="1">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>On-Site Service</h4>
+                                    <p>We provide on-site consultations and services throughout the metropolitan area</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item" bis_skin_checked="1">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-truck"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>Service Area</h4>
+                                    <p>Noordwijkerhout +50km: Noordwijkerhout, Noordwijk, Katwijk, Hillegom, Lisse, Zandvord, Haga, Rotterdam, Amsterdam, Badhoevendorp, Alsmere and more.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formularz kontaktowy (prawa strona) -->
+                    <div class="contact-form-container" bis_skin_checked="1"> 
+                        <div class="info-card-header" style="border-bottom: none;">
+                            <h3>Get a Quote</h3>
+                        
+                            <div class="info-item" bis_skin_checked="1" style="margin-top: var(--space-md);">
+                                <div class="info-icon" bis_skin_checked="1"><i class="fas fa-calculator"></i></div>
+                                <div class="info-details" bis_skin_checked="1">
+                                    <h4>Check How Much It Will Cost - Free</h4>
+                                    <p>Fill out the form and receive an initial quote within 1 business day.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border-bottom: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: var(--space-lg);"></div>
+                        
+                        <form id="quote-form" class="quote-form"> 
+                            <div class="form-grid" bis_skin_checked="1"> 
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="fullName">Full Name</label> 
+                                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required="" aria-required="true"> 
+                                </div> 
+                                
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="email">Email Address</label> 
+                                    <input type="email" id="email" name="email" placeholder="Enter your email address" required="" aria-required="true"> 
+                                </div> 
+                                
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="phone">Phone Number</label> 
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required="" aria-required="true"> 
+                                </div> 
+                                
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="area">Project Area (m²)</label> 
+                                    <input type="number" id="area" name="area" placeholder="Enter project area" required="" aria-required="true"> 
+                                </div> 
+                                
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="surface">Select services</label> 
+                                    <select id="surface" name="surface" required="" aria-required="true"> 
+                                        <option value="" disabled="" selected="">Select service type</option> 
+                                        <optgroup label="Waterproofing">
+                                            <option value="waterproofing_garage">garage</option> 
+                                            <option value="waterproofing_terrace">terrace</option> 
+                                            <option value="waterproofing_balcony">balcony</option> 
+                                            <option value="waterproofing_foundations">foundations</option> 
+                                        </optgroup>
+                                        <optgroup label="Epoxy resin floor">
+                                            <option value="epoxy_garage">garage</option> 
+                                            <option value="epoxy_livingroom">living room</option> 
+                                            <option value="epoxy_office">office</option> 
+                                            <option value="epoxy_premises">premises</option> 
+                                            <option value="epoxy_apartment">apartment</option> 
+                                            <option value="epoxy_wall">wall</option> 
+                                        </optgroup>
+                                    </select> 
+                                </div> 
+                                
+                                <div class="form-group" bis_skin_checked="1"> 
+                                    <label for="date">Preferred Start Date</label> 
+                                    <input type="date" id="date" name="date" required="" aria-required="true"> 
+                                </div> 
+                                
+                                <div class="form-group full-width" bis_skin_checked="1"> 
+                                    <label for="details">Project Details</label> 
+                                    <textarea id="details" name="details" rows="5" placeholder="Describe your project requirements..." aria-required="true"></textarea> 
+                                </div> 
+                                
+                                <div class="form-group full-width text-center" bis_skin_checked="1"> 
+                                    <button type="submit" class="btn btn-primary"> 
+                                        <span class="btn-text">Request Quote</span> 
+                                    </button> 
+                                </div> 
+                            </div> 
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Hydroxy M&S</h3>
+                    <p>Premium waterproofing and epoxy flooring solutions for discerning clients.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+31639501024">+31 6 39 50 10 24</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@hydroxyms.nl">info@hydroxyms.nl</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <address>Noordwijkerhout</address></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hydroxy M&S. All rights reserved.</p>
+                <p>The website was created by <a href="https://bloompixel.pl" class="studio-link" target="_blank">bloompixel.pl</a> studio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Przycisk przewijania do góry -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Przewiń do góry">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal do wyświetlania zdjęć -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="Project Image">
+            <h3 id="modalTitle"></h3>
+        </div>
+    </div>
+
+    <!-- Pozostałe modalne okna -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Thank You for Your Message!</h3>
+            <p>We appreciate your interest in our services.</p>
+            <p>Our team will get back to you within 24 hours.</p>
+            <button class="btn btn-primary close-success-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

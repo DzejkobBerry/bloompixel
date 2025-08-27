@@ -1,0 +1,756 @@
+/* ===== RESPONSIVE STYLES ===== */
+/* Mobile First Approach */
+
+/* Small phones (320px and up) */
+@media (min-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .couple-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .person {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+    
+    .event {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        min-height: auto;
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .time {
+        width: 100%;
+        padding: var(--spacing-sm);
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .event {
+        max-width: 100%;
+        padding: var(--spacing-md);
+    }
+    
+    .event p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* iPhone SE, 12 Mini (375px and up) */
+@media (min-width: 375px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.2rem;
+    }
+}
+
+/* iPhone 12 Pro (414px and up) */
+@media (min-width: 414px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        display: flex;
+    }
+    
+    .burger {
+        display: none;
+    }
+    
+    .couple-info {
+        flex-direction: row;
+    }
+    
+    .timeline::before {
+        left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse !important;
+    }
+    
+    .timeline-item:nth-child(even) {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 1.25rem;
+    }
+    
+    .event {
+        width: 45%;
+        margin-left: 0;
+    }
+    
+    .schedule-item {
+        flex-direction: row;
+    }
+    
+    .time {
+        width: auto;
+        min-width: 100px;
+        padding: var(--spacing-md);
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .map-container {
+        height: 400px;
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .hero-section h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+
+/* Responsywność dla sekcji info */
+@media (max-width: 992px) {
+    .info-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .info-card {
+        flex-basis: calc(50% - var(--spacing-lg));
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 576px) {
+    .info-card {
+        flex-basis: 100%;
+    }
+}
+
+
+/* Styl dla przycisku zamykania menu */
+.close-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-menu:hover {
+    color: var(--color-primary-gold);
+}
+
+/* Small phones (320px and up) */
+@media (min-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .couple-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .person {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+    
+    .event {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        min-height: auto;
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .time {
+        width: 100%;
+        padding: var(--spacing-sm);
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .event {
+        max-width: 100%;
+        padding: var(--spacing-md);
+    }
+    
+    .event p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* iPhone SE, 12 Mini (375px and up) */
+@media (min-width: 375px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.2rem;
+    }
+}
+
+/* iPhone 12 Pro (414px and up) */
+@media (min-width: 414px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        display: flex;
+    }
+    
+    .burger {
+        display: none;
+    }
+    
+    .couple-info {
+        flex-direction: row;
+    }
+    
+    .timeline::before {
+        left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse !important;
+    }
+    
+    .timeline-item:nth-child(even) {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 1.25rem;
+    }
+    
+    .event {
+        width: 45%;
+        margin-left: 0;
+    }
+    
+    .schedule-item {
+        flex-direction: row;
+    }
+    
+    .time {
+        width: auto;
+        min-width: 100px;
+        padding: var(--spacing-md);
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .map-container {
+        height: 400px;
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .hero-section h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+
+/* Responsywność dla sekcji info */
+@media (max-width: 992px) {
+    .info-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .info-card {
+        flex-basis: calc(50% - var(--spacing-lg));
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 576px) {
+    .info-card {
+        flex-basis: 100%;
+    }
+}
+
+
+/* Small phones (320px and up) */
+@media (min-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .couple-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .person {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+    
+    .event {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        min-height: auto;
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .time {
+        width: 100%;
+        padding: var(--spacing-sm);
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .event {
+        max-width: 100%;
+        padding: var(--spacing-md);
+    }
+    
+    .event p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+    
+    /* Pokazujemy przycisk zamykania tylko gdy menu jest aktywne */
+    .nav-active ~ .close-menu,
+    .nav-active + .close-menu {
+        display: block;
+    }
+}
+
+/* iPhone SE, 12 Mini (375px and up) */
+@media (min-width: 375px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.2rem;
+    }
+}
+
+/* iPhone 12 Pro (414px and up) */
+@media (min-width: 414px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        display: flex;
+    }
+    
+    .burger {
+        display: none;
+    }
+    
+    .couple-info {
+        flex-direction: row;
+    }
+    
+    .timeline::before {
+        left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse !important;
+    }
+    
+    .timeline-item:nth-child(even) {
+        flex-direction: row !important;
+    }
+    
+    .year {
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        font-size: 1.25rem;
+    }
+    
+    .event {
+        width: 45%;
+        margin-left: 0;
+    }
+    
+    .schedule-item {
+        flex-direction: row;
+    }
+    
+    .time {
+        width: auto;
+        min-width: 100px;
+        padding: var(--spacing-md);
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .map-container {
+        height: 400px;
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .hero-section h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+
+/* Responsywność dla sekcji info */
+@media (max-width: 992px) {
+    .info-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .info-card {
+        flex-basis: calc(50% - var(--spacing-lg));
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 576px) {
+    .info-card {
+        flex-basis: 100%;
+    }
+}

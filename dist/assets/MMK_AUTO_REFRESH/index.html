@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MMK AUTO REFRESH - professionele auto detailing, epoxy coatings, lakpolijsten en interieurreiniging. De enige specialist in epoxy coatings in Nederland.">
+    <meta name="keywords" content="auto detailing, epoxy coatings, lakpolijsten, interieurreiniging, Nederland">
+    <meta name="author" content="Maciej Nowak">
+        
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mmkautorefresh.com/">
+    <meta property="og:title" content="MMK AUTO REFRESH - Professionele Auto Detailing">
+    <meta property="og:description" content="Wijzijn gespecialiseerd in epoxy coatings, lakpolijsten en interieurreiniging. De enige specialist in epoxy coatings in Nederland.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+        
+    <title>MMK AUTO REFRESH - Professionele Auto Detailing</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MMK AUTO REFRESH",
+        "image": "https://mmkautorefresh.com/assets/images/logo.png",
+        "url": "https://mmkautorefresh.com",
+        "telephone": "+31XXXXXXXXX",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NL"
+        },
+        "geo": {
+            "@type": "GeoCoordinates"
+        },
+        "sameAs": [
+            "https://www.facebook.com/mmkautorefresh",
+            "https://www.instagram.com/mmkautorefresh"
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "priceRange": "€€"
+    }
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="brush-icon">
+                <div class="brush-handle"></div>
+                <div class="brush-head"></div>
+                <div class="brush-bristles"></div>
+                <div class="polish-effect"></div>
+            </div>
+            <div class="loading-text">Laden <span id="loading-percentage">0%</span></div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->   
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <span class="logo-text">MMK AUTO REFRESH</span>
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Over ons</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Diensten</a></li>
+                    <li class="nav-item"><a href="#realizacje" class="nav-link">Projecten</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Beoordelingen</a></li>
+                    <li class="nav-item"><a href="#partners" class="nav-link">Partners</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sekcja Hero -->
+    <section id="home" class="hero">
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="assets/videos/hero-background.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="particles-container" id="particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">MMK AUTO REFRESH</h1>
+                <h2 class="hero-subtitle">Professionele Auto Detailing</h2>
+                <div class="hero-text-animation" id="heroTextAnimation">
+                    <span>De enige specialist in epoxy coatings in Nederland</span>
+                    <span>Lakpolijsten op het hoogste niveau</span>
+                    <span>Complete interieurreiniging</span>
+                </div>
+                <a href="#contact" class="btn btn-consultation btn-hero">Maak een afspraak voor een consult</a>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Over ons</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="assets/images/owner.jpg" alt="Maciej Nowak - MMK AUTO REFRESH" class="owner-image">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3 class="about-subtitle">Passie en ervaring</h3>
+                    <p class="about-description">Hallo, ik ben Maciek. Ik houd me sinds 2015 bezig met detailing, waarbij ik vastberaden mijn doelen nastreef en mezelf train in wat ik doe. De cursussen die ik volg, stellen me in staat om steeds beter te worden in wat ik doe.</p>
+                    <p class="about-description">Mijn passie voor auto detailing begon met een fascinatie voor perfect afgewerkte auto's. Na verloop van tijd veranderde mijn hobby in een beroep, en ik blijf mijn kennis en vaardigheden uitbreiden om diensten van het hoogste niveau aan te bieden.</p>
+                    <p class="about-description">Als enige in Nederland ben ik gespecialiseerd in epoxy coatings, die ongeëvenaarde bescherming en visueel effect bieden. Ik behandel elke auto met de grootste zorg, alsof het mijn eigen auto was.</p>
+                    
+                    <div class="about-certifications">
+                        <h4>Certificaten en trainingen:</h4>
+                        <ul>
+                            <li>Gecertificeerd applicateur van epoxy coatings</li>
+                            <li>Specialist in lakpolijsten</li>
+                            <li>Expert op het gebied van interieurreiniging</li>
+                            <li>Certificaat voor het aanbrengen van keramische coatings</li>
+                            <li>Training in lakpolijsten</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-year="2015">
+                    <div class="timeline-content">
+                        <h4>Begin van de passie</h4>
+                        <p>Eerste stappen in de wereld van auto detailing</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2017">
+                    <div class="timeline-content">
+                        <h4>Eerste certificaten</h4>
+                        <p>Voltooiing van gespecialiseerde trainingen</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2019">
+                    <div class="timeline-content">
+                        <h4>Eigen bedrijf</h4>
+                        <p>Opening van MMK AUTO REFRESH</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-content">
+                        <h4>Specialisatie</h4>
+                        <p>Certificering op het gebied van epoxy coatings</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-content">
+                        <h4>Ontwikkeling</h4>
+                        <p>Uitbreiding van het aanbod en de klantenbasis</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="counters">
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="counter-number" data-count="8">0</div>
+                    <div class="counter-text">Jaren ervaring</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="counter-number" data-count="500">0</div>
+                    <div class="counter-text">Tevreden klanten</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="counter-number" data-count="12">0</div>
+                    <div class="counter-text">Certificaten</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="counter-number" data-count="750">0</div>
+                    <div class="counter-text">Voltooide projecten</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Diensten en prijzen</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <!-- Epoxy Coatings -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Epoxy Coatings</h3>
+                    <p class="service-description">De enige dienst in Nederland voor het aanbrengen van epoxy coatings, die ongeëvenaarde bescherming en visueel effect bieden.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Lakpolijsten -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="service-title">Lakpolijsten</h3>
+                    <p class="service-description">Professioneel lakpolijsten dat krassen, hologrammen en andere onvolkomenheden verwijdert.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Interieurreiniging -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="service-title">Interieurreiniging</h3>
+                    <p class="service-description">Grondige reiniging en verfrissing van het interieur van het voertuig, waardoor het er weer als nieuw uitziet.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- PDR Uitdeuken -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="service-title">PDR Uitdeuken</h3>
+                    <p class="service-description">Niet-invasieve methode voor het verwijderen van deuken zonder dat opnieuw lakken nodig is.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Grafeen Coatings -->
+                <div class="service-card featured">
+                    <div class="service-badge">NIEUW</div>
+                    <div class="service-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="service-title">Grafeen Coatings</h3>
+                    <p class="service-description">Moderne coatings met grafeen die uitzonderlijke duurzaamheid en glans bieden.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-primary">Vraag naar details</a>
+                </div>
+                
+                <!-- Keramische Coatings -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 class="service-title">Keramische Coatings</h3>
+                    <p class="service-description">Duurzame lakbescherming die zorgt voor waterafstotendheid en gemakkelijk schoon te houden is.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Stoelreiniging -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3 class="service-title">Stoelreiniging</h3>
+                    <p class="service-description">Diepgaande reiniging van de bekleding die vlekken, vuil en onaangename geuren verwijdert.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Lederbehandeling -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mitten"></i>
+                    </div>
+                    <h3 class="service-title">Lederbehandeling</h3>
+                    <p class="service-description">Professionele verzorging en bescherming van lederen bekleding.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+                
+                <!-- Motorruimte Reiniging -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Motorruimte Reiniging</h3>
+                    <p class="service-description">Veilige en effectieve reiniging van de motorruimte met behoud van alle beschermingen.</p>
+                    <div class="service-price">Prijs: op aanvraag</div>
+                    <a href="#contact" class="btn btn-secondary">Vraag naar details</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-button-section section" id="realizacje">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Onze projecten</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="gallery-description">
+                <p class="gallery-text">Ontdek de uitzonderlijke transformaties die de glans en elegantie van uw voertuig herstellen. Onze nauwkeurige auto detailing diensten zijn een combinatie van passie, ervaring en materialen van de hoogste kwaliteit. We behandelen elke auto individueel en letten op de kleinste details.</p>
+                <p class="gallery-highlight">Klik op een foto om meer details te zien of ga naar de volledige galerij om het volledige bereik van onze mogelijkheden te ontdekken.</p>
+            </div>
+            
+            <div class="gallery-preview">
+                <div class="gallery-preview-item">
+                    <div class="gallery-preview-image-container">
+                        <img src="assets/images/gallery/galery1.jpg" alt="Project 1" class="gallery-preview-image">
+                        <div class="gallery-preview-overlay">
+                            <a href="assets/images/gallery/galery1.jpg" class="gallery-preview-zoom" data-lightbox="gallery-preview" data-title="Lakpolijsten - BMW M4 Competition">
+                                <i class="fas fa-search-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-preview-info">
+                        <h3 class="gallery-preview-title">Lakpolijsten</h3>
+                        <p class="gallery-preview-subtitle">BMW M4 Competition</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-preview-item">
+                    <div class="gallery-preview-image-container">
+                        <img src="assets/images/gallery/galery2.jpg" alt="Project 2" class="gallery-preview-image">
+                        <div class="gallery-preview-overlay">
+                            <a href="assets/images/gallery/galery2.jpg" class="gallery-preview-zoom" data-lightbox="gallery-preview" data-title="Epoxy coating - Audi RS6">
+                                <i class="fas fa-search-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-preview-info">
+                        <h3 class="gallery-preview-title">Epoxy coating</h3>
+                        <p class="gallery-preview-subtitle">Audi RS6</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-preview-item">
+                    <div class="gallery-preview-image-container">
+                        <img src="assets/images/gallery/galery3.jpg" alt="Project 3" class="gallery-preview-image">
+                        <div class="gallery-preview-overlay">
+                            <a href="assets/images/gallery/galery3.jpg" class="gallery-preview-zoom" data-lightbox="gallery-preview" data-title="Interieurreiniging - Mercedes-Benz S-Class">
+                                <i class="fas fa-search-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallery-preview-info">
+                        <h3 class="gallery-preview-title">Interieurreiniging</h3>
+                        <p class="gallery-preview-subtitle">Mercedes-Benz S-Class</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-button-wrapper">
+                <a href="#" class="btn btn-gallery" id="galleryButton">
+                    <span>Bekijk meer projecten</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials"> 
+         <!-- Dodane tło wideo --> 
+         <div class="testimonials-video-container"> 
+             <video autoplay muted loop playsinline id="testimonialsVideo"> 
+                 <source src="assets/videos/background-opinions.mp4" type="video/mp4"> 
+             </video> 
+             <div class="testimonials-overlay"></div> 
+         </div> 
+         <div class="container"> 
+             <div class="section-header"> 
+                 <h2 class="section-title">Klantbeoordelingen</h2> 
+                 <div class="section-line"></div> 
+             </div> 
+             <div class="testimonials-slider" id="testimonialsSlider"> 
+                 <div class="testimonials-wrapper" style="width: 13680px; transition: transform 0.5s; transform: translateX(-3648px);"> 
+                     <!-- Testimonial 1 --> 
+                     <div class="testimonial-item" style="min-width: 912px;"> 
+                         <!-- Usunięto div testimonial-avatar --> 
+                         <div class="testimonial-content"> 
+                             <div class="testimonial-rating"> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                             </div> 
+                             <p class="testimonial-text">"De epoxy coating die door Maciek is aangebracht was een schot in de roos. Mijn auto ziet eruit als nieuw en het effect houdt al meer dan een jaar aan. Ik raad het iedereen aan die kwaliteit en duurzaamheid waardeert."</p> 
+                             <div class="testimonial-author">Willem van der Veen</div> 
+                             <div class="testimonial-service">Epoxy Coatings</div> 
+                         </div> 
+                     </div> 
+                     
+                     <!-- Testimonial 2 --> 
+                     <div class="testimonial-item" style="min-width: 912px;"> 
+                         <!-- Usunięto div testimonial-avatar --> 
+                         <div class="testimonial-content"> 
+                             <div class="testimonial-rating"> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                             </div> 
+                             <p class="testimonial-text">"Ik ben enorm onder de indruk van de lakpolijsting uitgevoerd door MMK AUTO REFRESH. De auto ziet er beter uit dan toen hij uit de showroom kwam. Professionaliteit op het hoogste niveau."</p> 
+                             <div class="testimonial-author">Emma de Boer</div> 
+                             <div class="testimonial-service">Lakpolijsten</div> 
+                         </div> 
+                     </div> 
+                     
+                     <!-- Testimonial 3 --> 
+                     <div class="testimonial-item" style="min-width: 912px;"> 
+                         <!-- Usunięto div testimonial-avatar --> 
+                         <div class="testimonial-content"> 
+                             <div class="testimonial-rating"> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                             </div> 
+                             <p class="testimonial-text">"De interieurreiniging van mijn SUV heeft mijn stoutste verwachtingen overtroffen. Maciek heeft voor elk detail gezorgd en het interieur ziet eruit en ruikt als nieuw. Ik raad het zeker aan!"</p> 
+                             <div class="testimonial-author">Thomas Bakker</div> 
+                             <div class="testimonial-service">Interieurreiniging</div> 
+                         </div> 
+                     </div> 
+                     
+                     <!-- Testimonial 4 --> 
+                     <div class="testimonial-item" style="min-width: 912px;"> 
+                         <!-- Usunięto div testimonial-avatar --> 
+                         <div class="testimonial-content"> 
+                             <div class="testimonial-rating"> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                                 <i class="fas fa-star"></i> 
+                             </div> 
+                             <p class="testimonial-text">"De keramische coating aangebracht door MMK AUTO REFRESH is de beste investering in mijn auto. Het hydrofobe effect is geweldig en de lak glanst als nooit tevoren."</p> 
+                             <div class="testimonial-author">Martijn Visser</div> 
+                             <div class="testimonial-service">Keramische Coatings</div> 
+                         </div> 
+                     </div>
+                     
+                     <!-- Testimonial 5 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De PDR-service heeft mijn auto gered na een hagelbui. Maciek heeft alle deuken verwijderd zonder dat er opnieuw gespoten moest worden. Ik ben onder de indruk van zijn vaardigheden en precisie."</p>
+                             <div class="testimonial-author">Joost Kuipers</div>
+                             <div class="testimonial-service">PDR Deukverwijdering</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 6 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"Het reinigen van de stoelen in mijn gezinsbus was een echte uitdaging, maar MMK AUTO REFRESH heeft het uitstekend gedaan. Vlekken van sap en chocolade zijn volledig verdwenen."</p>
+                             <div class="testimonial-author">Karin Smit</div>
+                             <div class="testimonial-service">Stoelreiniging</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 7 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De impregnatie van de lederen bekleding in mijn Audi heeft de oude glans teruggebracht. Het leer is nu zacht, gehydrateerd en beschermd. Een professionele service die ik met een gerust hart kan aanbevelen."</p>
+                             <div class="testimonial-author">Peter de Jong</div>
+                             <div class="testimonial-service">Leerbehandeling</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 8 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"Het reinigen van de motorruimte in mijn 10 jaar oude auto was een echte metamorfose. Maciek heeft aandacht besteed aan elk detail en het eindresultaat overtrof mijn verwachtingen."</p>
+                             <div class="testimonial-author">Bart Vermeulen</div>
+                             <div class="testimonial-service">Motorruimte Reiniging</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 9 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De grafeen coating op mijn nieuwe BMW is een schot in de roos. De auto ziet er geweldig uit en water glijdt eraf als van een eend. Ik raad MMK AUTO REFRESH aan iedereen aan die kwaliteit waardeert."</p>
+                             <div class="testimonial-author">Michel van Dijk</div>
+                             <div class="testimonial-service">Grafeen Coatings</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 10 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De complete detailing van mijn Mercedes was een waar genoegen. Maciek is een professional die aandacht besteedt aan elk detail en de auto van de klant behandelt alsof het zijn eigen is."</p>
+                             <div class="testimonial-author">Daan Jansen</div>
+                             <div class="testimonial-service">Auto Detailing</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 11 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De epoxy coating op mijn klassieke Porsche is de beste beslissing die ik heb genomen. De lak ziet eruit als glas en de diepte van de kleur is ongelooflijk. MMK AUTO REFRESH zijn echte specialisten."</p>
+                             <div class="testimonial-author">Arjen Vos</div>
+                             <div class="testimonial-service">Epoxy Coatings</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 12 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De lakpolijsting van mijn motorfiets is echt meesterlijk. Maciek heeft alle krassen verwijderd en de perfecte glans hersteld. Nu ziet mijn tweewieler eruit alsof hij rechtstreeks uit de fabriek komt."</p>
+                             <div class="testimonial-author">Mark Gerritsen</div>
+                             <div class="testimonial-service">Lakpolijsten</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 13 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"Het reinigen van het interieur van mijn auto na het vervoeren van huisdieren was een echte uitdaging. MMK AUTO REFRESH heeft het uitstekend gedaan - er is geen spoor meer van haar of geuren."</p>
+                             <div class="testimonial-author">Eva Willemsen</div>
+                             <div class="testimonial-service">Interieurreiniging</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 14 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De PDR-service op mijn nieuwe auto na een hagelbui was een echte redding. Maciek heeft alle deuken verwijderd zonder dat er opnieuw gespoten moest worden, waardoor de originele lak behouden bleef."</p>
+                             <div class="testimonial-author">Robert Hendriks</div>
+                             <div class="testimonial-service">PDR Deukverwijdering</div>
+                         </div>
+                     </div>
+                     
+                     <!-- Testimonial 15 -->
+                     <div class="testimonial-item">
+                         <!-- Usunięto div testimonial-avatar -->
+                         <div class="testimonial-content">
+                             <div class="testimonial-rating">
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                                 <i class="fas fa-star"></i>
+                             </div>
+                             <p class="testimonial-text">"De complete detailing van mijn klassieke auto was een waar genoegen. Maciek benaderde het onderwerp met grote passie en toewijding, en het eindresultaat overtrof mijn stoutste verwachtingen."</p>
+                             <div class="testimonial-author">Igor Brouwer</div>
+                             <div class="testimonial-service">Auto Detailing</div>
+                         </div>
+                     </div>
+                </div>
+                
+                <div class="testimonials-controls">
+                    <button class="testimonial-prev" id="testimonialPrev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots" id="testimonialDots"></div>
+                    <button class="testimonial-next" id="testimonialNext"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header">
+        <h2 class="section-title">Onze partners</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="partners-slider" id="partnersSlider">
+        <div class="partners-wrapper">
+            <div class="partner-item partner-logo-item">
+                <img src="assets/images/partners/partner1.jpg" alt="Partner 1" class="partner-logo">
+            </div>
+            <div class="partner-item">
+                <span class="partner-text">Partners</span>
+            </div>
+            <div class="partner-item">
+                <span class="partner-text">Partners</span>
+            </div>
+            <div class="partner-item">
+                <span class="partner-text">Partners</span>
+            </div>
+            <div class="partner-item">
+                <span class="partner-text">Partners</span>
+            </div>
+            <div class="partner-item">
+                <span class="partner-text">Partners</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telefoon</h4>
+                            <p>+31 XXX XXX XXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>contact@mmkautorefresh.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Locatie</h4>
+                            <p>Nederland</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" bis_skin_checked="1"> 
+                        <div class="contact-icon" bis_skin_checked="1"> 
+                            <i class="fas fa-clock"></i> 
+                        </div> 
+                        <div class="contact-text" bis_skin_checked="1"> 
+                            <h4>Openingstijden</h4> 
+                            <div class="working-hours" bis_skin_checked="1"> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Maandag:</span> 
+                                    <span class="hours">8:00 - 18:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Dinsdag:</span> 
+                                    <span class="hours">8:00 - 18:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Woensdag:</span> 
+                                    <span class="hours">8:00 - 18:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Donderdag:</span> 
+                                    <span class="hours">8:00 - 18:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Vrijdag:</span> 
+                                    <span class="hours">8:00 - 18:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Zaterdag:</span> 
+                                    <span class="hours">9:00 - 16:00</span> 
+                                </div> 
+                                <div class="working-day" bis_skin_checked="1"> 
+                                    <span class="day">Zondag:</span> 
+                                    <span class="hours">Gesloten</span> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="contact-social">
+                        <h4>Social Media</h4>
+                        <div class="social-icons">
+                            <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Naam*</label>
+                            <input type="text" id="name" name="name" placeholder="Voer uw naam in" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" placeholder="Voer uw e-mailadres in" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefoon*</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Voer uw telefoonnummer in" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Kies een dienst*</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Kies een dienst</option>
+                                <option value="Auto Detailing">Auto Detailing</option>
+                                <option value="Epoxy Coatings">Epoxy Coatings</option>
+                                <option value="Lakpolijsten">Lakpolijsten</option>
+                                <option value="Interieurreiniging">Interieurreiniging</option>
+                                <option value="PDR Uitdeuken">PDR Uitdeuken</option>
+                                <option value="Grafeen Coatings">Grafeen Coatings</option>
+                                <option value="Keramische Coatings">Keramische Coatings</option>
+                                <option value="Stoelreiniging">Stoelreiniging</option>
+                                <option value="Lederbehandeling">Lederbehandeling</option>
+                                <option value="Motorruimte Reiniging">Motorruimte Reiniging</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Aanvullende informatie</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Voer aanvullende informatie of opmerkingen in"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="gdpr" name="gdpr" required>
+                            <label for="gdpr">Ik ga akkoord met de verwerking van mijn persoonlijke gegevens om te reageren op mijn vraag*</label>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary btn-submit">Verstuur aanvraag</button>
+                        </div>
+                        <div class="form-messages">
+                            <div class="success-message" id="successMessage">Bedankt! Uw bericht is verzonden.</div>
+                            <div class="error-message" id="errorMessage">Er is een fout opgetreden. Probeer het later opnieuw.</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">MMK AUTO REFRESH</span>
+                    <p class="footer-tagline">Professionele Auto Detailing</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Over ons</a></li>
+                        <li><a href="#services">Diensten</a></li>
+                        <li><a href="#realizacje">Projecten</a></li>
+                        <li><a href="#testimonials">Beoordelingen</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 MMK AUTO REFRESH. Alle rechten voorbehouden.</p>
+                <p class="credits">Ontworpen door <a href="https://bloompixel.pl" target="_blank">bloompixel.pl</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/sliders.js"></script>
+    
+    <!-- Dodaj jQuery przed Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <div class="form-modal" id="formModal">
+        <div class="form-modal-content">
+            <div class="form-modal-icon success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="form-modal-title">Bedankt!</h3>
+            <p class="form-modal-message">Uw bericht is succesvol verzonden. We nemen zo snel mogelijk contact met u op.</p>
+            <div class="form-modal-details">
+                <div class="form-modal-detail">
+                    <span class="detail-label">Naam:</span>
+                    <span class="detail-value" id="modalName"></span>
+                </div>
+                <div class="form-modal-detail">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value" id="modalEmail"></span>
+                </div>
+                <div class="form-modal-detail">
+                    <span class="detail-label">Gekozen dienst:</span>
+                    <span class="detail-value" id="modalService"></span>
+                </div>
+            </div>
+            <button class="form-modal-close" id="formModalClose">Sluiten</button>
+        </div>
+    </div>
+</body>
+</html>

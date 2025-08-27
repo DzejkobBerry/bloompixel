@@ -1,0 +1,34 @@
+esponsive.css
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+    // ... existing code ...
+    
+    /* Header & Navigation */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--color-primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s ease-in-out;
+        z-index: 98;
+        box-shadow: var(--shadow-lg);
+        display: none; /* Zmiana z flex na none */
+    }
+    
+    .nav-toggle {
+        display: flex !important; /* Upewnij się, że przycisk hamburger jest widoczny */
+        z-index: 99;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+        display: flex; /* Pokaż menu tylko gdy jest aktywne */
+    }
+    
+    // ... existing code ...
+}

@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta - Artystyczne Projekty</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Style dla sekcji ofert */
+        .offers-section {
+            padding: 6rem 0;
+            background: var(--color-background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offers-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(0,0,0,0.03)"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .offer-item {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding: 6rem 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .offer-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .offer-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .offer-content {
+            flex: 1;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .offer-icon::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            opacity: 0.3;
+            animation: ripple 2s infinite;
+            z-index: -1;
+        }
+
+        .offer-icon::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            opacity: 0.2;
+            animation: ripple 2s infinite 0.5s;
+            z-index: -2;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 20px rgba(74, 144, 226, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+            }
+        }
+
+        .offer-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .offer-content h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .offer-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+        }
+
+        .offer-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .offer-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .offer-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            transform: translateX(0);
+            cursor: default;
+        }
+
+        .offer-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .offer-features li:hover {
+            transform: translateX(10px);
+            color: var(--color-primary);
+            text-shadow: 0 0 1px rgba(74, 144, 226, 0.1);
+        }
+
+        .offer-features li:hover::before {
+            transform: scale(1.2);
+            color: var(--color-secondary);
+        }
+
+        .offer-features li::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .offer-features li:hover::after {
+            width: 100%;
+        }
+
+        .offer-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-primary);
+            aspect-ratio: 4/3;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.5s ease;
+            background: none;
+            display: block;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .offer-item:hover .offer-image img {
+            transform: scale(1.05);
+        }
+
+        .offer-item:hover .offer-image {
+            transform: perspective(1000px) rotateY(5deg);
+        }
+
+        .offer-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .offer-cta:hover::before {
+            left: 100%;
+        }
+
+        .offer-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Licznik klientów */
+        .clients-counter {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .counter-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .counter-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Responsywność */
+        @media (max-width: 992px) {
+            .offer-item {
+                flex-direction: column !important;
+                gap: 2rem;
+                padding: 3rem 0;
+            }
+
+            .offer-content {
+                padding: 1rem;
+            }
+
+            .offer-content h2 {
+                font-size: 2rem;
+            }
+
+            .offer-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .offer-icon i {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .offers-section {
+                padding: 3rem 0;
+            }
+
+            .offer-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .offer-content p {
+                font-size: 1rem;
+            }
+
+            .counter-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Style dla sekcji hero */
+        .services-hero {
+            position: relative;
+            min-height: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(74,144,226,0.03) 100%);
+        }
+
+        .services-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            color: var(--color-text);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            padding: 2rem 0;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            color: var(--color-primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-hero p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            font-weight: 500;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74,144,226,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74,144,226,0.3);
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hero-shape {
+            position: absolute;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+
+        .hero-shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        .hero-shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .services-hero p {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: 3rem 1rem;
+            }
+
+            .services-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .services-hero p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.15;
+            font-size: 1.8rem;
+            animation: floatIcon 30s ease-in-out infinite;
+        }
+
+        .floating-icon.primary {
+            color: var(--color-primary);
+        }
+
+        .floating-icon.secondary {
+            color: var(--color-secondary);
+        }
+
+        .floating-icon.accent {
+            color: var(--color-accent);
+        }
+
+        .floating-icon.gradient {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes floatIcon {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(30px, -20px) rotate(90deg) scale(1.1);
+            }
+            50% {
+                transform: translate(0, -40px) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translate(-30px, -20px) rotate(270deg) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1);
+            }
+        }
+
+        /* Dodatkowe animacje dla różnych grup ikon */
+        .floating-icon:nth-child(3n) {
+            animation: floatIcon2 35s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(3n+1) {
+            animation: floatIcon3 40s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(-25px, 25px) rotate(-90deg) scale(1.1);
+            }
+            50% {
+                transform: translate(0, 50px) rotate(-180deg) scale(1);
+            }
+            75% {
+                transform: translate(25px, 25px) rotate(-270deg) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) rotate(-360deg) scale(1);
+            }
+        }
+
+        @keyframes floatIcon3 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(20px, 30px) rotate(45deg) scale(1.1);
+            }
+            50% {
+                transform: translate(40px, 0) rotate(90deg) scale(1);
+            }
+            75% {
+                transform: translate(20px, -30px) rotate(135deg) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) rotate(180deg) scale(1);
+            }
+        }
+
+        /* Pozycje i animacje dla ikon */
+        .floating-icon:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; font-size: 2.5rem; }
+        .floating-icon:nth-child(2) { top: 12%; right: 8%; animation-delay: -2s; font-size: 1.6rem; }
+        .floating-icon:nth-child(3) { top: 20%; left: 12%; animation-delay: -4s; font-size: 2.2rem; }
+        .floating-icon:nth-child(4) { top: 28%; right: 15%; animation-delay: -6s; font-size: 1.8rem; }
+        .floating-icon:nth-child(5) { top: 35%; left: 20%; animation-delay: -8s; font-size: 2.3rem; }
+        .floating-icon:nth-child(6) { top: 42%; right: 18%; animation-delay: -10s; font-size: 1.7rem; }
+        .floating-icon:nth-child(7) { top: 50%; left: 15%; animation-delay: -12s; font-size: 2.4rem; }
+        .floating-icon:nth-child(8) { top: 58%; right: 22%; animation-delay: -14s; font-size: 1.9rem; }
+        .floating-icon:nth-child(9) { top: 65%; left: 25%; animation-delay: -16s; font-size: 2.1rem; }
+        .floating-icon:nth-child(10) { top: 72%; right: 28%; animation-delay: -18s; font-size: 1.8rem; }
+        .floating-icon:nth-child(11) { top: 80%; left: 18%; animation-delay: -20s; font-size: 2.2rem; }
+        .floating-icon:nth-child(12) { top: 88%; right: 15%; animation-delay: -22s; font-size: 1.7rem; }
+        .floating-icon:nth-child(13) { top: 15%; left: 35%; animation-delay: -24s; font-size: 2.3rem; }
+        .floating-icon:nth-child(14) { top: 25%; right: 32%; animation-delay: -26s; font-size: 1.9rem; }
+        .floating-icon:nth-child(15) { top: 35%; left: 38%; animation-delay: -28s; font-size: 2.1rem; }
+        .floating-icon:nth-child(16) { top: 45%; right: 35%; animation-delay: -30s; font-size: 1.8rem; }
+        .floating-icon:nth-child(17) { top: 55%; left: 42%; animation-delay: -32s; font-size: 2.4rem; }
+        .floating-icon:nth-child(18) { top: 65%; right: 38%; animation-delay: -34s; font-size: 1.7rem; }
+        .floating-icon:nth-child(19) { top: 75%; left: 35%; animation-delay: -36s; font-size: 2.2rem; }
+        .floating-icon:nth-child(20) { top: 85%; right: 42%; animation-delay: -38s; font-size: 1.9rem; }
+        .floating-icon:nth-child(21) { top: 8%; left: 45%; animation-delay: -40s; font-size: 2.3rem; }
+        .floating-icon:nth-child(22) { top: 18%; right: 48%; animation-delay: -42s; font-size: 1.8rem; }
+        .floating-icon:nth-child(23) { top: 28%; left: 52%; animation-delay: -44s; font-size: 2.1rem; }
+        .floating-icon:nth-child(24) { top: 38%; right: 55%; animation-delay: -46s; font-size: 1.7rem; }
+        .floating-icon:nth-child(25) { top: 48%; left: 58%; animation-delay: -48s; font-size: 2.4rem; }
+        .floating-icon:nth-child(26) { top: 58%; right: 62%; animation-delay: -50s; font-size: 1.9rem; }
+        .floating-icon:nth-child(27) { top: 68%; left: 65%; animation-delay: -52s; font-size: 2.2rem; }
+        .floating-icon:nth-child(28) { top: 78%; right: 68%; animation-delay: -54s; font-size: 1.8rem; }
+        .floating-icon:nth-child(29) { top: 88%; left: 72%; animation-delay: -56s; font-size: 2.3rem; }
+        .floating-icon:nth-child(30) { top: 3%; left: 75%; animation-delay: -58s; font-size: 1.7rem; }
+        .floating-icon:nth-child(31) { top: 13%; right: 78%; animation-delay: -60s; font-size: 2.1rem; }
+        .floating-icon:nth-child(32) { top: 23%; left: 82%; animation-delay: -62s; font-size: 1.9rem; }
+        .floating-icon:nth-child(33) { top: 33%; right: 85%; animation-delay: -64s; font-size: 2.4rem; }
+        .floating-icon:nth-child(34) { top: 43%; left: 88%; animation-delay: -66s; font-size: 1.8rem; }
+        .floating-icon:nth-child(35) { top: 53%; right: 92%; animation-delay: -68s; font-size: 2.2rem; }
+        .floating-icon:nth-child(36) { top: 63%; left: 95%; animation-delay: -70s; font-size: 1.7rem; }
+        .floating-icon:nth-child(37) { top: 73%; right: 98%; animation-delay: -72s; font-size: 2.3rem; }
+        .floating-icon:nth-child(38) { top: 83%; left: 92%; animation-delay: -74s; font-size: 1.9rem; }
+        .floating-icon:nth-child(39) { top: 93%; right: 88%; animation-delay: -76s; font-size: 2.1rem; }
+        .floating-icon:nth-child(40) { top: 7%; left: 85%; animation-delay: -78s; font-size: 1.8rem; }
+
+        @media (max-width: 768px) {
+            .floating-icon {
+                font-size: 1.4rem;
+            }
+            .floating-icon:nth-child(n) {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nawigacja -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Artistic</span>
+                <span class="logo-dot"></span>
+            </a>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Strona główna</a></li>
+                <li><a href="offer.html" class="nav-link active">Usługi</a></li>
+                <li><a href="index.html#about" class="nav-link">O nas</a></li>
+                <li><a href="cooperation.html" class="nav-link">Współpraca</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+                <li>
+                    <div class="language-switch">
+                        <button class="language-btn active" data-lang="pl">PL</button>
+                        <div class="language-divider"></div>
+                        <button class="language-btn" data-lang="en">EN</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="floating-icons">
+            <i class="fas fa-palette floating-icon gradient"></i>
+            <i class="fas fa-tshirt floating-icon primary"></i>
+            <i class="fas fa-print floating-icon secondary"></i>
+            <i class="fas fa-camera floating-icon accent"></i>
+            <i class="fas fa-paint-brush floating-icon gradient"></i>
+            <i class="fas fa-gem floating-icon primary"></i>
+            <i class="fas fa-video floating-icon secondary"></i>
+            <i class="fas fa-pencil-alt floating-icon accent"></i>
+            <i class="fas fa-magic floating-icon gradient"></i>
+            <i class="fas fa-image floating-icon primary"></i>
+            <i class="fas fa-film floating-icon secondary"></i>
+            <i class="fas fa-pen-fancy floating-icon accent"></i>
+            <i class="fas fa-brush floating-icon gradient"></i>
+            <i class="fas fa-palette floating-icon primary"></i>
+            <i class="fas fa-camera-retro floating-icon secondary"></i>
+            <i class="fas fa-paint-roller floating-icon accent"></i>
+            <i class="fas fa-spray-can floating-icon gradient"></i>
+            <i class="fas fa-pencil-ruler floating-icon primary"></i>
+            <i class="fas fa-drafting-compass floating-icon secondary"></i>
+            <i class="fas fa-pen-nib floating-icon accent"></i>
+            <i class="fas fa-palette floating-icon gradient"></i>
+            <i class="fas fa-paint-brush floating-icon primary"></i>
+            <i class="fas fa-brush floating-icon secondary"></i>
+            <i class="fas fa-pencil-alt floating-icon accent"></i>
+            <i class="fas fa-palette floating-icon gradient"></i>
+            <i class="fas fa-paint-roller floating-icon primary"></i>
+            <i class="fas fa-spray-can floating-icon secondary"></i>
+            <i class="fas fa-pencil-ruler floating-icon accent"></i>
+            <i class="fas fa-drafting-compass floating-icon gradient"></i>
+            <i class="fas fa-pen-nib floating-icon primary"></i>
+            <i class="fas fa-palette floating-icon secondary"></i>
+            <i class="fas fa-paint-brush floating-icon accent"></i>
+            <i class="fas fa-brush floating-icon gradient"></i>
+            <i class="fas fa-pencil-alt floating-icon primary"></i>
+            <i class="fas fa-palette floating-icon secondary"></i>
+            <i class="fas fa-paint-roller floating-icon accent"></i>
+            <i class="fas fa-spray-can floating-icon gradient"></i>
+            <i class="fas fa-pencil-ruler floating-icon primary"></i>
+            <i class="fas fa-drafting-compass floating-icon secondary"></i>
+            <i class="fas fa-pen-nib floating-icon accent"></i>
+        </div>
+        <div class="services-hero-content">
+            <h1 data-translate="services-title">Poznaj nasze usługi</h1>
+            <p data-translate="services-subtitle">Oferujemy kompleksowe rozwiązania z zakresu projektowania, personalizacji i produkcji kreatywnej. Nasze usługi łączą najnowsze technologie z rzemieślniczą precyzją, aby spełnić oczekiwania najbardziej wymagających klientów. Każdy projekt traktujemy indywidualnie, dbając o najdrobniejsze szczegóły i jakość wykonania.</p>
+            <a href="#offers-section" class="hero-cta" data-translate="check-services">Sprawdź nasze usługi</a>
+        </div>
+    </section>
+
+    <!-- Sekcja ofert -->
+    <section id="offers-section" class="offers-section">
+        <div class="container">
+            <!-- Projektowanie graficzne -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <span data-translate="graphic-design">Projektowanie Graficzne</span>
+                    </h2>
+                    <p data-translate="graphic-design-desc">Profesjonalne logo, plakaty i grafiki reklamowe, które wyróżnią Twoją markę na rynku. Nasze projekty charakteryzują się nowoczesnym designem i skutecznym przekazem marketingowym.</p>
+                    <ul class="offer-features">
+                        <li>Kompleksowe projektowanie identyfikacji wizualnej marki</li>
+                        <li>Unikalne projekty logo z księgą znaku</li>
+                        <li>Profesjonalne materiały marketingowe</li>
+                        <li>Kreatywne ilustracje i infografiki</li>
+                        <li>Projekty graficzne na media społecznościowe</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="order-graphic">Zamów projekt graficzny</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Projektowanie Graficzne.jpg" alt="Projektowanie Graficzne">
+                </div>
+            </div>
+
+            <!-- Personalizacja odzieży -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <span data-translate="clothing-customization">Personalizacja Odzieży</span>
+                    </h2>
+                    <p data-translate="clothing-desc">Nadruki DTF, sublimacja i termotransfer na odzieży - wysokiej jakości wykonanie z dbałością o detale.</p>
+                    <ul class="offer-features">
+                        <li>Trwałe nadruki DTF o wysokiej rozdzielczości</li>
+                        <li>Personalizacja odzieży sportowej i codziennej</li>
+                        <li>Tworzenie unikatowych wzorów na zamówienie</li>
+                        <li>Druk na różnych rodzajach materiałów</li>
+                        <li>Małe i duże serie produkcyjne</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="customize-clothing">Personalizuj swoją odzież</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Personalizacja Odzieży.jpg" alt="Personalizacja Odzieży">
+                </div>
+            </div>
+
+            <!-- Produkty na zamówienie -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <span data-translate="custom-products">Produkty na Zamówienie</span>
+                    </h2>
+                    <p data-translate="custom-products-desc">Unikalne kubki, koszulki, gadżety i naklejki z Twoimi projektami lub według Twoich pomysłów.</p>
+                    <ul class="offer-features">
+                        <li>Personalizowane kubki z indywidualnymi grafikami</li>
+                        <li>Gadżety reklamowe z logo firmy</li>
+                        <li>Zestawy upominkowe dla klientów i pracowników</li>
+                        <li>Naklejki, magnesy i przypinki w dowolnym formacie</li>
+                        <li>Artykuły biurowe z personalizacją</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="create-product">Stwórz swój produkt</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Produkty na Zamówienie.jpg" alt="Produkty na Zamówienie">
+                </div>
+            </div>
+
+            <!-- Druk 3D i grawer -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <span data-translate="3d-printing">Druk 3D i Grawer</span>
+                    </h2>
+                    <p data-translate="3d-printing-desc">Profesjonalny druk 3D i grawerowanie laserowe na drewnie, szkle, akrylu i innych materiałach.</p>
+                    <ul class="offer-features">
+                        <li>Precyzyjne modele 3D według projektu klienta</li>
+                        <li>Prototypy produktów i elementy małoseryjne</li>
+                        <li>Eleganckie grawerowanie na upominkach</li>
+                        <li>Personalizowane tabliczki i oznaczenia</li>
+                        <li>Dekoracyjne elementy architektoniczne</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="order-engraving">Zamów usługę grawerowania</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Druk 3D i Grawer.jpg" alt="Druk 3D i Grawer">
+                </div>
+            </div>
+
+            <!-- Produkty z żywicy -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <span data-translate="resin-products">Produkty z Żywicy</span>
+                    </h2>
+                    <p data-translate="resin-products-desc">Unikalne breloki, figurki i dekoracje z żywicy epoksydowej - każdy element to małe dzieło sztuki.</p>
+                    <ul class="offer-features">
+                        <li>Artystyczne kompozycje zatopione w żywicy</li>
+                        <li>Spersonalizowane breloki i biżuterię</li>
+                        <li>Ozdobne elementy wystroju wnętrz</li>
+                        <li>Ekskluzywne dodatki do biur</li>
+                        <li>Unikatowe prezenty na specjalne okazje</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="discover-resin">Odkryj magię żywicy</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Produkty z Żywicy.jpg" alt="Produkty z Żywicy">
+                </div>
+            </div>
+
+            <!-- Edycja i fotomanipulacja -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <span data-translate="photo-editing">Edycja i Fotomanipulacja</span>
+                    </h2>
+                    <p data-translate="photo-editing-desc">Profesjonalna obróbka zdjęć i kreatywna fotomanipulacja dla Twoich projektów.</p>
+                    <ul class="offer-features">
+                        <li>Zaawansowana retusz fotografii</li>
+                        <li>Artystyczne fotomontaże</li>
+                        <li>Korekty kolorystyczne</li>
+                        <li>Przygotowanie materiałów do druku</li>
+                        <li>Renowacje starych fotografii</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="transform-photos">Transformuj swoje zdjęcia</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Edycja i Fotomanipulacja.jpg" alt="Edycja i Fotomanipulacja">
+                </div>
+            </div>
+
+            <!-- Produkcja filmowa -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <span data-translate="video-production">Produkcja Filmowa</span>
+                    </h2>
+                    <p data-translate="video-production-desc">Krótkie filmy, rolki i materiały promocyjne dla firm i osób prywatnych.</p>
+                    <ul class="offer-features">
+                        <li>Dynamiczne spoty reklamowe</li>
+                        <li>Animacje na potrzeby social media</li>
+                        <li>Krótkie formy filmowe dla biznesu</li>
+                        <li>Montaż i postprodukcja</li>
+                        <li>Profesjonalne udźwiękowienie</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="create-video">Stwórz swój film</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Produkcja Filmowa.jpg" alt="Produkcja Filmowa">
+                </div>
+            </div>
+
+            <!-- Doradztwo biznesowe -->
+            <div class="offer-item">
+                <div class="offer-content">
+                    <h2>
+                        <div class="offer-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span data-translate="business-consulting">Doradztwo Biznesowe</span>
+                    </h2>
+                    <p data-translate="business-consulting-desc">Pomoc w budowie marki osobistej, tworzeniu biznesplanów i rozwoju działalności online.</p>
+                    <ul class="offer-features">
+                        <li>Strategiczne doradztwo w budowaniu wizerunku</li>
+                        <li>Kompleksowe wsparcie w tworzeniu biznesplanów</li>
+                        <li>Konsultacje marketingowe</li>
+                        <li>Optymalizacja procesów biznesowych</li>
+                        <li>Indywidualne sesje mentoringowe</li>
+                    </ul>
+                    <a href="contact.html" class="offer-cta" data-translate="book-consultation">Umów konsultację</a>
+                </div>
+                <div class="offer-image">
+                    <img src="img/services/Doradztwo Biznesowe.jpg" alt="Doradztwo Biznesowe">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); padding: 5rem 2rem; text-align: center; color: white; margin: 2rem 0;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Potrzebujesz indywidualnej oferty?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Skontaktuj się z nami, aby omówić szczegóły Twojego projektu. Przygotujemy dla Ciebie spersonalizowaną ofertę.</p>
+            <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--color-primary); font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                <span>Skontaktuj się z nami</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" bis_skin_checked="1"> 
+             <div class="footer-content" bis_skin_checked="1"> 
+                 <div class="footer-info" bis_skin_checked="1"> 
+                     <a href="#" class="footer-logo"> 
+                         Artistic Projects 
+                         <span class="logo-dot"></span> 
+                     </a> 
+                     <p>Twoja kreatywna pracownia, gdzie pomysły zamieniają się w rzeczywistość.</p> 
+                     <div class="social-links" bis_skin_checked="1"> 
+                         <a href="https://www.facebook.com/share/1AvPzB8yzn/" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" style="transform: scale(1) rotate(0deg);"></i></a> 
+                         <a href="#" class="social-link"><i class="fab fa-instagram" style="transform: scale(1) rotate(0deg);"></i></a> 
+                         <a href="https://www.tiktok.com/@artisticprojects.nl?_r=1&amp;_d=secCgYIASAHKAESPgo8%2Ftud8FDVGl9xbgDSXrj%2FRROuXDbUKh7BGCKqU%2FsfgyeyzJtrOAKGFm8lAKiFJZVK0XROYmojYsifrg34GgA%3D&amp;_svg=2&amp;checksum=058c84640d4113524d95836b6e8b6f8fa491b1cef1e25e701a2a823ce20eeab7&amp;sec_uid=MS4wLjABAAAAemzckGyZHO9pKoMz6M86oWPnyC2aeotGjY2KRwUfj99mJLVJcjatAXAwJVlKq1Ly&amp;sec_user_id=MS4wLjABAAAAxSq2H3GTWG9YIP04q1utAZPo8I9JC5IisDEyb2NLTwGFKee5sKGrM3mjHaReOi7j&amp;share_app_id=1233&amp;share_author_id=7390483493321507872&amp;share_link_id=2110C0AC-44A2-4E03-8F6B-F66DE8FB96E0&amp;share_scene=1&amp;sharer_language=pl&amp;social_share_type=5&amp;source=h5_m&amp;timestamp=1749197297&amp;tt_from=copy&amp;u_code=dfgbc29a24a4mc&amp;ug_btm=b6880%2Cb5836&amp;user_id=6896914521996166150&amp;utm_campaign=client_share&amp;utm_medium=ios&amp;utm_source=copy" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok" style="transform: scale(1) rotate(0deg);"></i></a> 
+                         <a href="#" class="social-link"><i class="fab fa-youtube" style="transform: scale(1) rotate(0deg);"></i></a> 
+                     </div> 
+                 </div> 
+                 <div class="footer-links" bis_skin_checked="1"> 
+                     <div class="footer-column" bis_skin_checked="1"> 
+                         <h3>Usługi</h3> 
+                         <ul> 
+                             <li><a href="#services">Projektowanie graficzne</a></li> 
+                             <li><a href="#services">Personalizacja odzieży</a></li> 
+                             <li><a href="#services">Produkty na zamówienie</a></li> 
+                             <li><a href="#services">Druk 3D i grawer</a></li> 
+                         </ul> 
+                     </div> 
+                     <div class="footer-column" bis_skin_checked="1"> 
+                         <h3>Firma</h3> 
+                         <ul> 
+                             <li><a href="#about">O nas</a></li> 
+                             <li><a href="#portfolio">Portfolio</a></li> 
+                             <li><a href="#contact">Kontakt</a></li> 
+                             <li><a href="#process">Jak działamy</a></li> 
+                         </ul> 
+                     </div> 
+                     <div class="footer-column" bis_skin_checked="1"> 
+                         <h3>Kontakt</h3> 
+                         <ul> 
+                             <li><i class="fas fa-map-marker-alt"></i> Rotterdam</li> 
+                             <li><i class="fas fa-phone"></i> +31 6 26737846</li> 
+                             <li><i class="fas fa-envelope"></i> kontakt@artistic-projects.com</li> 
+                             <li><i class="fas fa-clock"></i> Pon-Pt: 9:00 - 18:00</li> 
+                         </ul> 
+                     </div> 
+                 </div> 
+             </div> 
+             <div class="footer-bottom" bis_skin_checked="1"> 
+                 <p>© 2025 Artistic Projects. Wszelkie prawa zastrzeżone.</p> 
+                 <p class="author-credit">Strona stworzona przez <a href="https://bloompixel.pl" target="_blank" rel="noopener noreferrer">bloompixel.pl</a></p> 
+             </div> 
+         </div> 
+     </footer>
+
+    <script src="js/main.js" defer></script>
+    <script>
+        // Obsługa zmiany języka
+        const languageBtns = document.querySelectorAll('.language-btn');
+        const html = document.documentElement;
+        
+        // Słownik tłumaczeń
+        const translations = {
+            pl: {
+                'home': 'Strona główna',
+                'services': 'Usługi',
+                'portfolio': 'Portfolio',
+                'about': 'O nas',
+                'contact': 'Kontakt',
+                'services-title': 'Nasze Usługi',
+                'services-subtitle': 'Oferujemy kompleksowe rozwiązania z zakresu projektowania, personalizacji i produkcji kreatywnej. Nasze usługi łączą najnowsze technologie z rzemieślniczą precyzją, aby spełnić oczekiwania najbardziej wymagających klientów. Każdy projekt traktujemy indywidualnie, dbając o najdrobniejsze szczegóły i jakość wykonania.',
+                'graphic-design': 'Projektowanie Graficzne',
+                'graphic-design-desc': 'Profesjonalne logo, plakaty i grafiki reklamowe, które wyróżnią Twoją markę na rynku. Nasze projekty charakteryzują się nowoczesnym designem i skutecznym przekazem marketingowym.',
+                'clothing-customization': 'Personalizacja Odzieży',
+                'clothing-desc': 'Nadruki DTF, sublimacja i termotransfer na odzieży - wysokiej jakości wykonanie z dbałością o detale.',
+                'custom-products': 'Produkty na Zamówienie',
+                'custom-products-desc': 'Unikalne kubki, koszulki, gadżety i naklejki z Twoimi projektami lub według Twoich pomysłów.',
+                '3d-printing': 'Druk 3D i Grawer',
+                '3d-printing-desc': 'Profesjonalny druk 3D i grawerowanie laserowe na drewnie, szkle, akrylu i innych materiałach.',
+                'resin-products': 'Produkty z Żywicy',
+                'resin-products-desc': 'Unikalne breloki, figurki i dekoracje z żywicy epoksydowej - każdy element to małe dzieło sztuki.',
+                'photo-editing': 'Edycja i Fotomanipulacja',
+                'photo-editing-desc': 'Profesjonalna obróbka zdjęć i kreatywna fotomanipulacja dla Twoich projektów.',
+                'video-production': 'Produkcja Filmowa',
+                'video-production-desc': 'Krótkie filmy, rolki i materiały promocyjne dla firm i osób prywatnych.',
+                'business-consulting': 'Doradztwo Biznesowe',
+                'business-consulting-desc': 'Pomoc w budowie marki osobistej, tworzeniu biznesplanów i rozwoju działalności online.',
+                'order-graphic': 'Zamów projekt graficzny',
+                'customize-clothing': 'Personalizuj swoją odzież',
+                'create-product': 'Stwórz swój produkt',
+                'order-engraving': 'Zamów usługę grawerowania',
+                'discover-resin': 'Odkryj magię żywicy',
+                'transform-photos': 'Transformuj swoje zdjęcia',
+                'create-video': 'Stwórz swój film',
+                'book-consultation': 'Umów konsultację',
+                'navigation': 'Nawigacja',
+                'footer-desc': 'Tworzymy unikalne projekty, które wyróżniają się na rynku. Dołącz do grona naszych zadowolonych klientów.'
+            },
+            en: {
+                'home': 'Home',
+                'services': 'Services',
+                'portfolio': 'Portfolio',
+                'about': 'About',
+                'contact': 'Contact',
+                'services-title': 'Our Services',
+                'services-subtitle': 'We offer comprehensive solutions in design, customization, and creative production. Our services combine cutting-edge technology with artisanal precision to meet the expectations of the most demanding clients. We treat each project individually, paying attention to the smallest details and quality of execution.',
+                'graphic-design': 'Graphic Design',
+                'graphic-design-desc': 'Professional logos, posters, and advertising graphics that will make your brand stand out in the market. Our designs are characterized by modern design and effective marketing communication.',
+                'clothing-customization': 'Clothing Customization',
+                'clothing-desc': 'DTF printing, sublimation, and heat transfer on clothing - high-quality execution with attention to detail.',
+                'custom-products': 'Custom Products',
+                'custom-products-desc': 'Unique mugs, t-shirts, gadgets, and stickers with your designs or according to your ideas.',
+                '3d-printing': '3D Printing & Engraving',
+                '3d-printing-desc': 'Professional 3D printing and laser engraving on wood, glass, acrylic, and other materials.',
+                'resin-products': 'Resin Products',
+                'resin-products-desc': 'Unique keychains, figurines, and decorations made of epoxy resin - each piece is a small work of art.',
+                'photo-editing': 'Photo Editing & Manipulation',
+                'photo-editing-desc': 'Professional photo editing and creative photo manipulation for your projects.',
+                'video-production': 'Video Production',
+                'video-production-desc': 'Short films, reels, and promotional materials for businesses and individuals.',
+                'business-consulting': 'Business Consulting',
+                'business-consulting-desc': 'Help with personal branding, business plan creation, and online business development.',
+                'order-graphic': 'Order graphic design',
+                'customize-clothing': 'Customize your clothing',
+                'create-product': 'Create your product',
+                'order-engraving': 'Order engraving service',
+                'discover-resin': 'Discover resin magic',
+                'transform-photos': 'Transform your photos',
+                'create-video': 'Create your video',
+                'book-consultation': 'Book a consultation',
+                'navigation': 'Navigation',
+                'footer-desc': 'We create unique projects that stand out in the market. Join our satisfied clients.'
+            }
+        };
+
+        // Funkcja zmiany języka
+        function changeLanguage(lang) {
+            // Aktualizacja atrybutu lang w HTML
+            html.lang = lang;
+            
+            // Aktualizacja przycisków
+            languageBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Aktualizacja tekstów
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Zapisz wybrany język
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Obsługa kliknięć przycisków
+        languageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                changeLanguage(lang);
+            });
+        });
+
+        // Sprawdź zapisany język przy ładowaniu
+        const savedLang = localStorage.getItem('preferred-language') || 'pl';
+        changeLanguage(savedLang);
+
+        // Obsługa animacji podczas scrollowania
+        const scrollObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, scrollObserverOptions);
+
+        document.querySelectorAll('.offer-item').forEach(item => {
+            scrollObserver.observe(item);
+        });
+
+        // Animacja licznika
+        const counter = document.querySelector('.counter-number');
+        if (counter) {
+            const targetCount = parseInt(counter.dataset.count);
+            let currentCount = 0;
+            const duration = 2000; // 2 sekundy
+            const frameDuration = 1000 / 60; // 60 FPS
+            const totalFrames = Math.round(duration / frameDuration);
+            let frame = 0;
+
+            function updateCounter() {
+                frame++;
+                const progress = frame / totalFrames;
+                currentCount = Math.floor(progress * targetCount);
+                counter.textContent = currentCount;
+
+                if (frame < totalFrames) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counter.classList.add('visible');
+                        updateCounter();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, scrollObserverOptions);
+
+            counterObserver.observe(counter);
+        }
+
+        // Płynne przewijanie do sekcji
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div class="portfolio-item" data-category="{{category}}" data-aos="fade-up" data-aos-delay="{{delay}}">
+    <div class="portfolio-item-inner">
+        <div class="portfolio-image">
+            <img src="{{image}}" alt="{{title}}">
+            <div class="portfolio-tags">
+                {{#each technologies}}
+                <span>{{this}}</span>
+                {{/each}}
+            </div>
+            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="portfolio-info">
+            <h3>{{title}}</h3>
+            <p>{{subtitle}}</p>
+            <div class="portfolio-links">
+                <a href="{{link}}" class="btn btn-outline portfolio-link" target="_blank">Zobacz szczegóły</a>
+                <a href="#" class="portfolio-preview"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

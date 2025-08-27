@@ -1,0 +1,406 @@
+/* Sekcja O Nas */
+.over-ons {
+    background-color: var(--bg-light);
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom right, rgba(249, 249, 249, 0.97), rgba(249, 249, 249, 0.93));
+}
+
+.over-ons::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../images/construction-worker.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.over-ons-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+/* Kontener obrazu z pozycjonowaniem względnym dla odznaki */
+.over-ons-image-container {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.over-ons-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.over-ons-image::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.over-ons-image::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background-color: var(--secondary-color);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.over-ons-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.over-ons-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Odznaka doświadczenia */
+.experience-badge {
+    position: absolute;
+    bottom: 30px;
+    right: -20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+    color: var(--white);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    z-index: 3;
+    animation: pulse 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-badge:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 10px 25px rgba(194, 90, 18, 0.4);
+}
+
+.experience-badge .years {
+    font-size: var(--font-size-xxl);
+    font-weight: bold;
+    line-height: 1;
+}
+
+.experience-badge .text {
+    font-size: var(--font-size-small);
+    margin-top: 5px;
+}
+
+/* Sekcja tekstowa */
+.over-ons-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.section-heading {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-heading .subtitle {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    padding-left: 30px;
+}
+
+.section-heading .subtitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: translateY(-50%);
+}
+
+.section-heading h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.mission-text {
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* Wartości firmy */
+.values-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.values-container h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    transition: all 0.3s ease;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-medium);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.value-item:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.value-icon {
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    min-width: 40px;
+    transform: translateZ(20px);
+}
+
+.value-content {
+    transform: translateZ(10px);
+}
+
+.value-content h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-color);
+}
+
+.value-content p {
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+}
+
+/* Obszar działania */
+.werkgebied {
+    margin-bottom: var(--spacing-xl);
+}
+
+.werkgebied h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.location-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+.location-text i {
+    color: var(--primary-color);
+}
+
+.regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.regions span {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 15px;
+    border-radius: var(--border-radius-small);
+    font-size: var(--font-size-small);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.regions span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.regions span:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 5px 15px rgba(194, 90, 18, 0.3);
+}
+
+.regions span:hover::before {
+    left: 100%;
+}
+
+/* Przycisk kontaktowy */
+.over-ons-text .btn {
+    margin-top: var(--spacing-md);
+}
+
+/* Animacja pulsowania dla odznaki */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(194, 90, 18, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(194, 90, 18, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(194, 90, 18, 0);
+    }
+}
+
+/* Responsywność */
+@media (max-width: 992px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .over-ons-content {
+        flex-direction: column;
+    }
+    
+    .experience-badge {
+        right: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .experience-badge {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .experience-badge .years {
+        font-size: var(--font-size-xl);
+    }
+}
+
+/* Animacje wejścia */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.over-ons-image-container {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    animation: fadeInLeft 1s ease-out forwards;
+}
+
+.over-ons-text {
+    flex: 1;
+    min-width: 300px;
+    animation: fadeInRight 1s ease-out forwards;
+}
+
+.section-heading, .mission-text, .values-container, .werkgebied, .over-ons-text .btn {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.section-heading {
+    animation-delay: 0.2s;
+}
+
+.mission-text {
+    animation-delay: 0.4s;
+}
+
+.values-container {
+    animation-delay: 0.6s;
+}
+
+.werkgebied {
+    animation-delay: 0.8s;
+}
+
+.over-ons-text .btn {
+    animation-delay: 1s;
+}

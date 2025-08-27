@@ -1,0 +1,13 @@
+<div class="service-card" data-service="{{type}}">
+    <div class="service-icon">
+        <i class="{{icon}}"></i>
+    </div>
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+    <ul class="service-features">
+        {{#each features}}
+        <li><i class="fas fa-check"></i> {{this}}</li>
+        {{/each}}
+    </ul>
+    <a href="#contact" class="btn btn-outline">Zamów usługę</a>
+</div>

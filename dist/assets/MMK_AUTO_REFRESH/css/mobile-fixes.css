@@ -1,0 +1,1702 @@
+/* MMK AUTO REFRESH - Poprawki mobilne */
+/* Autor: Maciej Nowak */
+/* Data: 2024 */
+
+/* ===== GLOBALNE POPRAWKI MOBILNE ===== */
+
+/* Podstawowe ustawienia dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    /* Zmienne dla urządzeń mobilnych */
+    :root {
+        --font-size-5xl: 2.5rem; /* 40px */
+        --font-size-4xl: 2rem; /* 32px */
+        --font-size-3xl: 1.75rem; /* 28px */
+        --font-size-2xl: 1.5rem; /* 24px */
+        --font-size-xl: 1.25rem; /* 20px */
+        --font-size-lg: 1.125rem; /* 18px */
+        --spacing-3xl: 2rem; /* 32px */
+        --spacing-2xl: 1.5rem; /* 24px */
+        --spacing-xl: 1rem; /* 16px */
+        --container-padding: 1rem;
+    }
+    
+    /* Kontener */
+    .container {
+        padding: 0 var(--container-padding);
+        max-width: 100%;
+    }
+    
+    /* Sekcje */
+    .section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    /* Tytuły sekcji */
+    .section-title {
+        font-size: var(--font-size-3xl);
+        line-height: 1.2;
+    }
+}
+
+/* ===== NAWIGACJA MOBILNA - POPRAWKI ===== */
+
+/* Ukryj menu na urządzeniach mobilnych */
+@media (max-width: 991.98px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--color-primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        display: none;
+        padding: 2rem 0;
+        border-left: 3px solid var(--color-accent);
+    }
+    
+    .nav-toggle {
+        display: flex !important;
+        z-index: 1001;
+        position: relative;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+        display: flex;
+    }
+    
+    .nav-item {
+        margin: 1rem 0;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.3s ease;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu.active .nav-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    /* Opóźnienia animacji dla każdego elementu */
+    .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.35s; }
+    .nav-menu.active .nav-item:nth-child(7) { transition-delay: 0.4s; }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.75rem 1.5rem;
+        display: block;
+        width: 100%;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        background-color: rgba(245, 127, 31, 0.1);
+        transform: translateX(5px);
+    }
+}
+
+/* Pokaż menu na większych ekranach */
+@media (min-width: 992px) {
+    .nav-menu {
+        display: flex !important;
+        position: relative;
+        right: auto;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        flex-direction: row;
+        padding: 0;
+        border: none;
+    }
+    
+    .nav-toggle {
+        display: none !important;
+    }
+    
+    .nav-item {
+        margin: 0 0 0 1.5rem;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ===== SEKCJA HERO - POPRAWIONE STYLE MOBILNE BEZ WIDEO */
+
+/* SEKCJA HERO - ANIMOWANE TŁO Z EFEKTEM RUCHU */
+
+/* Podstawowe poprawki dla wszystkich urządzeń mobilnych */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        min-height: calc(var(--vh, 1vh) * 100);
+        height: auto;
+        padding: 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    /* Ukryj wideo na urządzeniach mobilnych */
+    .hero-video-container {
+        display: none !important;
+    }
+    
+    /* Animowane tło gradientowe z efektem ruchu */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, 
+            var(--color-primary) 0%, 
+            rgba(245, 127, 31, 0.3) 25%,
+            var(--color-primary) 50%, 
+            rgba(245, 127, 31, 0.2) 75%,
+            var(--color-primary) 100%);
+        animation: gradientMove 15s ease-in-out infinite;
+        z-index: -3;
+    }
+    
+    /* Druga warstwa animowanego gradientu */
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(135deg, 
+            transparent 0%,
+            rgba(245, 127, 31, 0.1) 30%,
+            transparent 50%,
+            rgba(245, 127, 31, 0.15) 70%,
+            transparent 100%);
+        animation: gradientMove2 20s ease-in-out infinite reverse;
+        z-index: -2;
+    }
+    
+    /* Animowane cząsteczki świetlne */
+    .hero-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(245, 127, 31, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(245, 127, 31, 0.15) 0%, transparent 25%),
+            radial-gradient(circle at 40% 80%, rgba(245, 127, 31, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 90% 20%, rgba(245, 127, 31, 0.12) 0%, transparent 35%),
+            radial-gradient(circle at 10% 90%, rgba(245, 127, 31, 0.08) 0%, transparent 25%);
+        animation: particlesFloat 25s linear infinite;
+        z-index: -1;
+        pointer-events: none;
+    }
+    
+    /* Ukryj oryginalny overlay */
+    .hero-overlay {
+        display: none;
+    }
+    
+    /* Kontener treści Hero */
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        width: 100%;
+        padding: 120px 1rem 2rem 1rem;
+        margin: 0;
+        z-index: 10;
+        position: relative;
+        /* Subtelne tło dla lepszej czytelności */
+        background: rgba(14, 14, 14, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+    
+    /* Tytuł główny */
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--color-white);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+    
+    /* Podtytuł */
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        color: var(--color-white);
+        opacity: 0.95;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Animowany tekst - POPRAWIONA WERSJA */
+    .hero-text-animation {
+        height: 80px !important; /* Zwiększona wysokość */
+        margin-bottom: 2rem;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-text-animation span {
+        display: block !important;
+        font-size: 1rem !important; /* Zwiększony rozmiar */
+        line-height: 1.4 !important;
+        font-weight: 500;
+        color: var(--color-accent);
+        position: absolute !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+        opacity: 0 !important;
+        transition: all 0.6s ease-in-out !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        white-space: normal !important; /* Pozwól na łamanie linii */
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        max-width: 90% !important;
+        left: 50% !important;
+        transform-origin: center !important;
+        transform: translateX(-50%) translateY(30px) !important;
+    }
+    
+    .hero-text-animation span.active {
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
+        z-index: 10 !important;
+    }
+    
+    /* Ukryj wszystkie nieaktywne elementy */
+    .hero-text-animation span:not(.active) {
+        opacity: 0 !important;
+        transform: translateX(-50%) translateY(30px) !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Przycisk CTA z animacją */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(245, 127, 31, 0.4);
+        animation: buttonGlow 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: buttonShine 3s infinite;
+    }
+    
+    .btn-hero:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(245, 127, 31, 0.5);
+    }
+    
+    /* Ukryj scroll indicator na mobilnych */
+    .scroll-down {
+        display: none;
+    }
+    
+    /* Animowane cząsteczki */
+    .particles-container {
+        opacity: 0.4;
+        animation: particlesDrift 30s linear infinite;
+    }
+}
+
+/* ANIMACJE */
+@keyframes gradientMove {
+    0%, 100% {
+        transform: translate(-25%, -25%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-30%, -20%) rotate(90deg);
+    }
+    50% {
+        transform: translate(-20%, -30%) rotate(180deg);
+    }
+    75% {
+        transform: translate(-35%, -25%) rotate(270deg);
+    }
+}
+
+@keyframes gradientMove2 {
+    0%, 100% {
+        transform: translate(-20%, -30%) rotate(0deg) scale(1.1);
+    }
+    33% {
+        transform: translate(-35%, -20%) rotate(120deg) scale(1.2);
+    }
+    66% {
+        transform: translate(-25%, -35%) rotate(240deg) scale(1.1);
+    }
+}
+
+@keyframes particlesFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-10px) rotate(180deg);
+        opacity: 1;
+    }
+    75% {
+        transform: translateY(-30px) rotate(270deg);
+        opacity: 0.6;
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(245, 127, 31, 0.3);
+    }
+    100% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 127, 31, 0.5);
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes buttonGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(245, 127, 31, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(245, 127, 31, 0.6), 0 0 30px rgba(245, 127, 31, 0.3);
+    }
+}
+
+@keyframes buttonShine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes particlesDrift {
+    0% {
+        transform: translateX(0px) translateY(0px);
+    }
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(-5px) translateY(-10px);
+    }
+    75% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}
+
+/* Dodatkowe poprawki dla bardzo małych ekranów */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 100px 0.75rem 1.5rem 0.75rem;
+        border-radius: 15px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .hero-text-animation {
+        height: 70px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-text-animation span {
+        font-size: 0.85rem;
+        line-height: 1.2;
+        padding: 0 0.5rem;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    
+    .btn-hero {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.85rem;
+        max-width: 260px;
+    }
+}
+
+/* Poprawki dla ekranów w orientacji poziomej */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding: 80px 1rem 1rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text-animation {
+        height: 40px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-text-animation span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Poprawki dla wysokich ekranów mobilnych */
+@media (max-width: 768px) and (min-height: 800px) {
+    .hero-content {
+        padding-top: 140px;
+    }
+    
+    .hero-text-animation {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* USUŃ WSZYSTKIE OBRACAJĄCE SIĘ ANIMACJE */
+/* Wyłącz gradientMove, gradientMove2, particlesFloat */
+@media (max-width: 768px) {
+    /* Wyłącz wszystkie animacje tła */
+    .hero::before {
+        animation: none !important;
+    }
+    
+    .hero::after {
+        animation: none !important;
+    }
+    
+    .hero-content::before {
+        animation: none !important;
+    }
+    
+    .particles-container {
+        animation: none !important;
+    }
+    
+    /* Popraw kontrast tekstu */
+    .hero-title,
+    .hero-subtitle {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    
+    .hero-text-animation span {
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ===== SEKCJA ABOUT - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .about-image {
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .about-text {
+        text-align: left;
+    }
+    
+    .about-subtitle {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .counters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .counters {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== SEKCJA SERVICES - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+    }
+    
+    .service-price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: 1rem;
+    }
+}
+
+/* ===== SEKCJA GALLERY - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-item {
+        height: 250px;
+    }
+}
+
+/* ===== SEKCJA TESTIMONIALS - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 3rem 0;
+    }
+    
+    .testimonial-item {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .testimonials-controls {
+        margin-top: 2rem;
+    }
+    
+    .testimonial-nav {
+        padding: 0.75rem;
+    }
+}
+
+/* ===== SEKCJA PARTNERS - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .partners-slider {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .partner-item {
+        min-width: 150px;
+        scroll-snap-align: center;
+    }
+}
+
+/* ===== SEKCJA CONTACT - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-form {
+        order: -1;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* ===== FOOTER - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* ===== PRZYCISK BACK TO TOP - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== PRELOADER - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .preloader-content {
+        padding: 2rem;
+    }
+    
+    .brush-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .loading-bar-container {
+        width: 200px;
+    }
+}
+
+/* ===== DODATKOWE UTILITY CLASSES ===== */
+
+/* Ukryj elementy na mobilnych */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Pokaż elementy tylko na mobilnych */
+@media (min-width: 769px) {
+    .show-mobile {
+        display: none !important;
+    }
+    
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* ===== OPTYMALIZACJE DOTYKOWE ===== */
+
+@media (max-width: 768px) {
+    /* Większe obszary dotykowe */
+    .nav-link,
+    .btn,
+    .back-to-top,
+    .social-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Lepsze odstępy między elementami dotykowymi */
+    .nav-item + .nav-item {
+        margin-top: 0.5rem;
+    }
+    
+    /* Wyłącz hover na urządzeniach dotykowych */
+    .btn:hover,
+    .nav-link:hover,
+    .service-card:hover {
+        transform: none;
+    }
+    
+    /* Dodaj active states dla lepszego feedbacku */
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .nav-link:active {
+        background-color: rgba(245, 127, 31, 0.2);
+    }
+}
+
+/* ===== POPRAWKI DLA BARDZO MAŁYCH EKRANÓW ===== */
+
+@media (max-width: 320px) {
+    :root {
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.5rem;
+        --container-padding: 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* ===== SEKCJA HERO - POPRAWKI MOBILNE ===== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        position: relative;
+        background: var(--color-primary);
+        overflow: hidden;
+    }
+    
+    /* Ukryj wideo na mobilnych */
+    .hero-video-container {
+        display: none !important;
+    }
+    
+    /* CAŁKOWICIE USUŃ WSZYSTKIE ANIMOWANE TŁA I OBRACAJĄCE SIĘ ELEMENTY */
+    .hero::before,
+    .hero::after {
+        display: none !important;
+        content: none !important;
+        animation: none !important;
+    }
+    
+    /* Resetuj kontener cząsteczek - usuń wszystkie animowane tła */
+    .hero .particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 1;
+        background: none !important;
+        animation: none !important;
+    }
+    
+    /* Usuń wszystkie pseudo-elementy z particles-container */
+    .hero .particles-container::before,
+    .hero .particles-container::after {
+        display: none !important;
+        content: none !important;
+        animation: none !important;
+    }
+    
+    /* Usuń animowane tła z hero-content */
+    .hero-content::before,
+    .hero-content::after {
+        display: none !important;
+        content: none !important;
+        animation: none !important;
+    }
+    
+    /* Style dla małych wędrujących kuleczek - MOCNIEJSZY POMARAŃCZOWY */
+    .mobile-particle {
+        position: absolute;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 0.9) 30%, rgba(245, 127, 31, 0.7) 60%, transparent 100%);
+        border-radius: 50%;
+        pointer-events: none;
+        box-shadow: 0 0 8px rgba(255, 140, 0, 0.8), 0 0 4px rgba(255, 100, 0, 0.6);
+        z-index: 2;
+        border: 1px solid rgba(255, 140, 0, 0.3);
+    }
+    
+    /* Różne rozmiary kuleczek z mocniejszymi kolorami */
+    .mobile-particle.size-xs {
+        width: 2px;
+        height: 2px;
+        opacity: 0.8;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 0.8) 50%, transparent 100%);
+        box-shadow: 0 0 6px rgba(255, 140, 0, 0.9);
+    }
+    
+    .mobile-particle.size-sm {
+        width: 3px;
+        height: 3px;
+        opacity: 0.85;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 0.9) 50%, transparent 100%);
+        box-shadow: 0 0 7px rgba(255, 140, 0, 0.9);
+    }
+    
+    .mobile-particle.size-md {
+        width: 4px;
+        height: 4px;
+        opacity: 0.9;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 0.9) 40%, rgba(245, 127, 31, 0.7) 70%, transparent 100%);
+        box-shadow: 0 0 8px rgba(255, 140, 0, 0.9), 0 0 4px rgba(255, 100, 0, 0.7);
+    }
+    
+    .mobile-particle.size-lg {
+        width: 5px;
+        height: 5px;
+        opacity: 0.95;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 0.95) 35%, rgba(245, 127, 31, 0.8) 65%, transparent 100%);
+        box-shadow: 0 0 10px rgba(255, 140, 0, 1), 0 0 5px rgba(255, 100, 0, 0.8);
+    }
+    
+    .mobile-particle.size-xl {
+        width: 6px;
+        height: 6px;
+        opacity: 1;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 1) 30%, rgba(245, 127, 31, 0.9) 60%, transparent 100%);
+        box-shadow: 0 0 12px rgba(255, 140, 0, 1), 0 0 6px rgba(255, 100, 0, 0.9);
+    }
+    
+    .mobile-particle.size-xxl {
+        width: 7px;
+        height: 7px;
+        opacity: 1;
+        background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 100, 0, 1) 25%, rgba(245, 127, 31, 1) 50%, rgba(245, 127, 31, 0.8) 75%, transparent 100%);
+        box-shadow: 0 0 15px rgba(255, 140, 0, 1), 0 0 8px rgba(255, 100, 0, 1), 0 0 4px rgba(245, 127, 31, 0.8);
+    }
+    
+    /* Ukryj oryginalny overlay */
+    .hero-overlay {
+        display: none;
+    }
+    
+    /* Kontener treści Hero - bez animowanych tła */
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        width: 100%;
+        padding: 120px 1rem 2rem 1rem;
+        margin: 0;
+        z-index: 10;
+        position: relative;
+        /* Bardzo subtelne statyczne tło dla czytelności */
+        background: rgba(14, 14, 14, 0.2);
+        border-radius: 20px;
+        backdrop-filter: blur(0.5px);
+        -webkit-backdrop-filter: blur(0.5px);
+    }
+    
+    /* Tytuł główny */
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--color-white);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+    
+    /* Podtytuł */
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        color: var(--color-white);
+        opacity: 0.95;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Animowany tekst */
+    .hero-text-animation {
+        height: 50px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .hero-text-animation span {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        font-weight: 500;
+        color: var(--color-accent);
+        display: block;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        animation: textPulse 2s ease-in-out infinite;
+    }
+    
+    /* Przycisk CTA */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(245, 127, 31, 0.4);
+        animation: buttonGlow 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: buttonShine 3s infinite;
+    }
+    
+    .btn-hero:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(245, 127, 31, 0.5);
+    }
+    
+    /* Ukryj scroll indicator na mobilnych */
+    .scroll-down {
+        display: none;
+    }
+}
+
+/* ANIMACJE DLA WĘDRUJĄCYCH KULECZEK */
+@keyframes floatUp1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(20px, -100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-30px, -100vh) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(40px, -100vh) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp4 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-15px, -100vh) scale(0.6);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDiagonal1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(60px, -80px) scale(0.4);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDiagonal2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50px, -90px) scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* Dodaj więcej animacji dla różnorodności ruchu */
+@keyframes floatUp5 {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) translateX(30px) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp6 {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-130vh) translateX(-40px) rotate(-180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDiagonal3 {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(80px) rotate(270deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDiagonal4 {
+    0% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(-60px) rotate(-270deg);
+        opacity: 0;
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(245, 127, 31, 0.3);
+    }
+    100% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 127, 31, 0.5);
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes buttonGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(245, 127, 31, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(245, 127, 31, 0.6), 0 0 30px rgba(245, 127, 31, 0.3);
+    }
+}
+
+@keyframes buttonShine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes particlesDrift {
+    0% {
+        transform: translateX(0px) translateY(0px);
+    }
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(-5px) translateY(-10px);
+    }
+    75% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}
+
+/* Dodatkowe poprawki dla bardzo małych ekranów */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 100px 0.75rem 1.5rem 0.75rem;
+        border-radius: 15px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .hero-text-animation {
+        height: 45px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-text-animation span {
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+    }
+    
+    .btn-hero {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.85rem;
+        max-width: 260px;
+    }
+}
+
+/* Poprawki dla ekranów w orientacji poziomej */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding: 80px 1rem 1rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text-animation {
+        height: 40px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-text-animation span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Poprawki dla wysokich ekranów mobilnych */
+@media (max-width: 768px) and (min-height: 800px) {
+    .hero-content {
+        padding-top: 140px;
+    }
+    
+    .hero-text-animation {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* Dodatkowe style dla lepszej czytelności */
+@media (max-width: 768px) {
+    /* Usunięto animację dla tła */
+    
+    /* Popraw kontrast tekstu */
+    .hero-title,
+    .hero-subtitle {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    
+    .hero-text-animation span {
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ===== SEKCJA ABOUT - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .about-image {
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .about-text {
+        text-align: left;
+    }
+    
+    .about-subtitle {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .counters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .counters {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== SEKCJA SERVICES - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+    }
+    
+    .service-price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: 1rem;
+    }
+}
+
+/* ===== SEKCJA GALLERY - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-item {
+        height: 250px;
+    }
+}
+
+/* ===== SEKCJA TESTIMONIALS - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 3rem 0;
+    }
+    
+    .testimonial-item {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .testimonials-controls {
+        margin-top: 2rem;
+    }
+    
+    .testimonial-nav {
+        padding: 0.75rem;
+    }
+}
+
+/* ===== SEKCJA PARTNERS - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .partners-slider {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .partner-item {
+        min-width: 150px;
+        scroll-snap-align: center;
+    }
+}
+
+/* ===== SEKCJA CONTACT - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-form {
+        order: -1;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* ===== FOOTER - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* ===== PRZYCISK BACK TO TOP - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== PRELOADER - POPRAWKI MOBILNE ===== */
+
+@media (max-width: 768px) {
+    .preloader-content {
+        padding: 2rem;
+    }
+    
+    .brush-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .loading-bar-container {
+        width: 200px;
+    }
+}
+
+/* ===== DODATKOWE UTILITY CLASSES ===== */
+
+/* Ukryj elementy na mobilnych */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Pokaż elementy tylko na mobilnych */
+@media (min-width: 769px) {
+    .show-mobile {
+        display: none !important;
+    }
+    
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* ===== OPTYMALIZACJE DOTYKOWE ===== */
+
+@media (max-width: 768px) {
+    /* Większe obszary dotykowe */
+    .nav-link,
+    .btn,
+    .back-to-top,
+    .social-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Lepsze odstępy między elementami dotykowymi */
+    .nav-item + .nav-item {
+        margin-top: 0.5rem;
+    }
+    
+    /* Wyłącz hover na urządzeniach dotykowych */
+    .btn:hover,
+    .nav-link:hover,
+    .service-card:hover {
+        transform: none;
+    }
+    
+    /* Dodaj active states dla lepszego feedbacku */
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .nav-link:active {
+        background-color: rgba(245, 127, 31, 0.2);
+    }
+}
+
+/* ===== POPRAWKI DLA BARDZO MAŁYCH EKRANÓW ===== */
+
+@media (max-width: 320px) {
+    :root {
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.5rem;
+        --container-padding: 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna & Michał - 20.07.2026</title>
+    
+    <!-- Czcionki -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Dodaj tę linię w sekcji head -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Nawigacja -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-container">
+                    <div class="logo-content">
+                        <span class="heart-left">♥</span>
+                        <div class="text-container">
+                            <span class="logo-text">A&M</span>
+                            <span class="logo-date">20.07.2026</span>
+                        </div>
+                        <span class="heart-right">♥</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#story">Nasza Historia</a></li>
+                <li><a href="#schedule">Program Dnia</a></li>
+                <li><a href="#info">Informacje</a></li>
+                <li><a href="#location">Lokalizacja</a></li>
+                <li><a href="#rsvp" class="nav-cta">Potwierdź obecność</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <!-- Dodanie przycisku X do zamykania menu -->
+            <div class="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section z wideo w tle -->
+    <section id="hero" class="hero-section hero-gradient">
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="assets/images/hero.mp4" type="video/mp4">
+                <!-- Fallback dla przeglądarek, które nie obsługują wideo -->
+                <img src="assets/images/hero.jpg" alt="Anna i Michał">
+            </video>
+        </div>
+        <div class="hero-content">
+            <h1>Anna & Michał</h1>
+            <h2>20 lipca 2026 • Pałac Rozalin</h2>
+            <p class="subtitle">Zapraszamy na najważniejszy dzień naszego życia</p>
+            <a href="#story" class="cta-primary" id="story-button">Poznaj naszą historię ↓</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="story-section">
+        <div class="section-header">
+            <h2>Nasza Historia</h2>
+        </div>
+        <div class="story-container">
+            <div class="couple-info">
+                <div class="person">
+                    <div class="person-image anna"></div>
+                    <h3>Anna</h3>
+                    <p>Stylistka paznokci z pasją do perfekcji</p>
+                    <p class="quote">"Każdy detal ma znaczenie - w pracy i w życiu"</p>
+                </div>
+                
+                <!-- Przycisk Galeria - pomiędzy miniaturkami -->
+                <div class="gallery-button-container">
+                    <button id="galleryButton" class="gallery-button">
+                        <span class="gallery-text">Galeria Miłości</span>
+                        <div class="gallery-effect"></div>
+                    </button>
+                </div>
+                
+                <div class="person">
+                    <div class="person-image michal"></div>
+                    <h3>Michał</h3>
+                    <p>Full-stack developer z sercem romantyka</p>
+                    <p class="quote">"Zaprogramowałem swoje życie na miłość z Anną"</p>
+                </div>
+            </div>
+            
+            <!-- Reszta sekcji Story pozostaje bez zmian -->
+            <div class="timeline">
+                <div class="timeline-progress"></div>
+                
+                <div class="timeline-item" data-year="2020">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Pierwsze spotkanie</h4>
+                            <p class="timeline-description">Poznaliśmy się przez aplikację randkową. Już od pierwszej wiadomości wiedziałam, że to ktoś wyjątkowy.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Pierwsza randka</h4>
+                            <p class="timeline-description">Spotkaliśmy się w przytulnej kawiarni. Rozmowa trwała godzinami, jakbyśmy znali się od zawsze.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Pierwsze wspólne wakacje</h4>
+                            <p class="timeline-description">Dwa tygodnie w słonecznej Grecji. Tam zrozumieliśmy, że chcemy spędzić razem całe życie.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Przeprowadzka razem</h4>
+                            <p class="timeline-description">Stworzyliśmy nasz pierwszy wspólny dom. Każdy dzień był nową przygodą.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-year="2024">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Oświadczyny w Zakopanem</h4>
+                            <p class="timeline-description">Na szczycie Gubałówki, z widokiem na Tatry, padło pytanie i odpowiedź "Tak!"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-year="2026">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026</div>
+                        <div class="timeline-card">
+                            <h4 class="timeline-title">Ślub marzeń!</h4>
+                            <p class="timeline-description">Dzień, który rozpocznie nowy rozdział naszej wspólnej historii. Nie możemy się doczekać!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Moduł Galerii (dodajemy na końcu body, przed skryptami) -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="gallery-content">
+            <span class="close-gallery">&times;</span>
+            
+            <!-- Zmodyfikowany napis przed modułem zdjęć -->
+            <div class="gallery-intro">
+                <h2>Poznaj miłość mojego życia</h2>
+            </div>
+            
+            <!-- Zakładki galerii -->
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-tab="engagement">Zaręczyny</button>
+                <button class="gallery-tab" data-tab="couple">Para Młoda</button>
+                <button class="gallery-tab" data-tab="memories">Wspomnienia</button>
+            </div>
+            
+            <!-- Zawartość zakładek -->
+            <div class="gallery-tab-content">
+                <!-- Zaręczyny -->
+                <div id="engagement" class="tab-pane active">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/engagement1.jpg" alt="Zaręczyny 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/engagement2.jpg" alt="Zaręczyny 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/engagement3.jpg" alt="Zaręczyny 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/engagement4.jpg" alt="Zaręczyny 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/engagement5.jpg" alt="Zaręczyny 5">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Para Młoda -->
+                <div id="couple" class="tab-pane">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/couple1.jpg" alt="Para Młoda 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/couple2.jpg" alt="Para Młoda 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/couple3.jpg" alt="Para Młoda 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/couple4.jpg" alt="Para Młoda 4">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wspomnienia -->
+                <div id="memories" class="tab-pane">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/memory1.jpg" alt="Wspomnienie 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/memory2.jpg" alt="Wspomnienie 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/memory3.jpg" alt="Wspomnienie 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gallery/memory4.jpg" alt="Wspomnienie 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="section-header">
+            <h2>Program Dnia</h2>
+        </div>
+        <div class="schedule-container">
+            <div class="schedule-item">
+                <div class="time">
+                    15:00
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Ceremonia ślubna</h3>
+                    <p>Magiczna chwila przysięgi miłości w zabytkowym Kościele św. Anny</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    16:30
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Cocktail hour & photos</h3>
+                    <p>Kieliszek szampana, uśmiechy i pierwsze wspólne zdjęcia w nowej rzeczywistości</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    17:30
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Powitanie gości</h3>
+                    <p>Uroczyste powitanie w bajkowej scenerii Pałacu Rozalin</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    18:00
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Obiad weselny</h3>
+                    <p>Kulinarna podróż przez wyśmienite dania, dopełnione wykwintnymi winami</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    20:00
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Pierwszy taniec</h3>
+                    <p>Nasza miłosna opowieść wyrażona w tańcu - choreografia, która poruszy serca</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    21:00
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Zabawa taneczna</h3>
+                    <p>Parkiet rozświetlony emocjami, muzyka i rytmy, które porwą do tańca każdego</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    22:30
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>Tort weselny</h3>
+                    <p>Arcydzieło cukierniczej sztuki - słodki symbol naszej miłości</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">
+                    23:00
+                    <div class="time-loading"></div>
+                </div>
+                <div class="event">
+                    <h3>After party</h3>
+                    <p>Gdy zegary przestają mieć znaczenie - zabawa do pierwszych promieni słońca</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guest Information Section -->
+    <!-- Guest Information Section -->
+    <section id="info" class="info-section revealed">
+        <div class="section-header">
+            <h2>Praktyczne Informacje</h2>
+        </div>
+        <div class="info-container">
+            <div class="info-card">
+                <div class="info-icon">🎁</div>
+                <h3>Prezenty &amp; Wishes</h3>
+                <p>Wasza obecność to największy prezent! Jeśli jednak chcecie nas obdarować:</p>
+                <ul>
+                    <li>Zamiast kwiatów - butelka wina lub zdrapki</li>
+                    <li>Koperty (tradycyjnie)</li>
+                    <li>Wkład w podróż poślubną do Włoch</li>
+                    <li>Wspomnienia i życzenia w księdze gości</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🏨</div>
+                <h3>Nocleg</h3>
+                <p>Para Młoda zadbała o komfortowy nocleg dla gości:</p>
+                <ul>
+                    <li>Eleganckie pokoje na terenie sali weselnej</li>
+                    <li>Śniadanie w formie bufetu (8:00-10:00)</li>
+                    <li>Miejsca w pobliskim hotelu (2 km)</li>
+                    <li>Prosimy o potwierdzenie w formularzu RSVP</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">👔</div>
+                <h3>Dress Code</h3>
+                <p>Elegant Cocktail - świętujmy razem w eleganckim stylu!</p>
+                <ul>
+                    <li>Panie: sukienki koktajlowe, eleganckie kombinezony</li>
+                    <li>Panowie: garnitur lub marynarka z koszulą</li>
+                    <li>Preferowane kolory: pastele, nude, klasyczne</li>
+                    <li>Unikaj: białego, czarnego, neonów</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🚗</div>
+                <h3>Transport</h3>
+                <p>Zadbaliśmy o Waszą wygodę i bezpieczeństwo:</p>
+                <ul>
+                    <li>Eleganckie busy z kościoła do sali weselnej</li>
+                    <li>Monitorowany parking na terenie obiektu</li>
+                    <li>Transport powrotny o 1:00, 3:00 i 5:00</li>
+                    <li>Koordynator transportu: +48 123 456 789</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="section-header">
+            <h2>Jak Dojechać</h2>
+        </div>
+        <div class="location-container">
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="placeholder-glow"></div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Miejsce Uroczystości</h3>
+                        <p>Oczekujemy na dodanie lokalizacji ceremonii</p>
+                        <div class="placeholder-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="directions-container"> 
+                <div class="directions-header"> 
+                    <div class="directions-icon"><i class="fas fa-route"></i></div> 
+                    <h3>Jak do nas dotrzeć</h3> 
+                </div> 
+                <div class="direction-items"> 
+                    <div class="direction-item"> 
+                        <div class="direction-icon"><i class="fas fa-car"></i></div> 
+                        <div class="direction-content"> 
+                            <h4>Samochodem</h4> 
+                            <p><strong>Z Warszawy (30 min):</strong> Trasa S8 kierunek Katowice → zjazd Rozalin → przy stacji BP skręć w prawo → po 2 km zobaczysz oznaczenia Pałacu po lewej stronie.</p> 
+                        </div> 
+                    </div> 
+                    <div class="direction-item"> 
+                        <div class="direction-icon"><i class="fas fa-map-marked-alt"></i></div> 
+                        <div class="direction-content"> 
+                            <h4>Nawigacja</h4> 
+                            <p>Wpisz "Pałac Rozalin" lub adres: ul. Pałacowa 23, 05-831 Rozalin. <a href="https://goo.gl/maps/YourVenueLink" target="_blank" class="directions-link">Otwórz w Google Maps</a></p> 
+                        </div> 
+                    </div> 
+                    <div class="direction-item"> 
+                        <div class="direction-icon"><i class="fas fa-info-circle"></i></div> 
+                        <div class="direction-content"> 
+                            <h4>Przydatne informacje</h4> 
+                            <p><strong>Parking:</strong> Bezpłatny na terenie pałacu (100 miejsc)<br> 
+                            <strong>Noclegi:</strong> Dostępne w pałacu (rezerwacja do 15.04)<br> 
+                            <strong>Kontakt awaryjny:</strong> Jan (świadek): +48 123 456 789</p> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="section-header">
+            <h2>Potwierdź Obecność</h2>
+            <p>Prosimy o potwierdzenie do 20.01.2026</p>
+        </div>
+        <div class="rsvp-container"> 
+            <form id="rsvpForm" class="rsvp-form enhanced-form"> 
+                <div class="form-header">
+                    <div class="form-icon"><i class="fas fa-heart"></i></div>
+                    <p class="form-intro">Z niecierpliwością czekamy na Waszą odpowiedź</p>
+                </div>
+            
+                <div class="form-group"> 
+                    <input type="text" id="name" class="form-input" data-label="Imię i nazwisko" required=""> 
+                    <label for="name" class="form-label"><i class="fas fa-user"></i> Imię i nazwisko</label> 
+                </div> 
+                <div class="form-group"> 
+                    <input type="email" id="email" class="form-input" data-label="Email" required=""> 
+                    <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label> 
+                </div> 
+                <div class="form-group"> 
+                    <input type="tel" id="phone" class="form-input" data-label="Telefon"> 
+                    <label for="phone" class="form-label"><i class="fas fa-phone"></i> Telefon</label> 
+                </div> 
+            
+                <div class="form-row">
+                    <div class="form-group half"> 
+                        <select id="guests" class="form-input" required=""> 
+                            <option value="" disabled="" selected="">Wybierz liczbę osób</option> 
+                            <option value="1">1 osoba</option> 
+                            <option value="2">2 osoby</option> 
+                            <option value="3+">Rodzina (3+)</option> 
+                        </select> 
+                        <label for="guests" class="form-label"><i class="fas fa-users"></i> Liczba osób</label> 
+                    </div> 
+                    <div class="form-group half"> 
+                        <select id="attendance" class="form-input" required=""> 
+                            <option value="" disabled="" selected="">Wybierz odpowiedź</option> 
+                            <option value="yes">Z przyjemnością będę</option> 
+                            <option value="no">Niestety nie mogę</option> 
+                        </select> 
+                        <label for="attendance" class="form-label"><i class="fas fa-calendar-check"></i> Potwierdzenie</label> 
+                    </div>
+                </div>
+            
+                <div class="form-group"> 
+                    <textarea id="dietary" class="form-input" data-label="Preferencje dietetyczne" rows="3"></textarea> 
+                    <label for="dietary" class="form-label"><i class="fas fa-utensils"></i> Preferencje dietetyczne</label> 
+                </div> 
+                <div class="form-group"> 
+                    <textarea id="message" class="form-input" data-label="Wiadomość (opcjonalnie)" rows="4"></textarea> 
+                    <label for="message" class="form-label"><i class="fas fa-comment"></i> Wiadomość dla Pary Młodej</label> 
+                </div> 
+            
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">
+                        <span>Wyślij potwierdzenie</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div class="form-note">Dziękujemy za potwierdzenie!</div>
+                </div>
+            </form> 
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo-container">
+                <div class="footer-logo-content">
+                    <span class="footer-heart-left">♥</span>
+                    <div class="footer-text-container">
+                        <span class="footer-logo-text">A&M</span>
+                    </div>
+                    <span class="footer-heart-right">♥</span>
+                </div>
+            </div>
+            <p class="footer-date">20.07.2026</p>
+            <p class="footer-copyright">Anna & Michał © 2026</p>
+            <div class="footer-contact">
+                <p class="footer-phone">Kontakt: Anna: <a href="tel:+48123456789">+48 123 456 789</a> | Michał: <a href="tel:+48987654321">+48 987 654 321</a></p>
+                <p class="footer-phone">Świadkowa: <a href="tel:+48555666777">+48 555 666 777</a></p>
+            </div>
+            <p class="footer-creator">Strona stworzona przez <a href="https://bloompixel.pl" target="_blank" class="creator-link">bloompixel.pl</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>
