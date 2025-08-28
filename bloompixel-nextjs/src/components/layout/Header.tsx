@@ -134,6 +134,7 @@ const Header = () => {
           display: flex;
           align-items: center;
           gap: 1.2rem;
+          text-decoration: none;
         }
         
         .logo-icon {
@@ -230,6 +231,9 @@ const Header = () => {
           font-family: var(--font-secondary);
           font-size: 2.4rem;
           font-weight: 700;
+          line-height: 1;
+          display: flex;
+          align-items: center;
           background: linear-gradient(90deg, #fff, var(--violet-secondary));
           -webkit-background-clip: text;
           background-clip: text;
