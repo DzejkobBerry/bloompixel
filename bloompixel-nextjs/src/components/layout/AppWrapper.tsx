@@ -12,16 +12,21 @@ interface AppWrapperProps {
 const AppWrapper = ({ children }: AppWrapperProps) => {
   const { showPreloader, mounted, handlePreloaderComplete } = useAppState();
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
-    <>
-      {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
-      <ParticlesBackground />
-      {children}
-    </>
+    <div suppressHydrationWarning>
+      {mounted && (
+        <>
+          {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
+          <ParticlesBackground />
+          {children}
+        </>
+      )}
+      {!mounted && (
+        <div style={{ visibility: 'hidden' }}>
+          {children}
+        </div>
+      )}
+    </div>
   );
 };
 
