@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    rect { animation: pulse 2s infinite alternate; }
+    @keyframes pulse {
+      0% { fill: #8b5cf6; }
+      50% { fill: #ec4899; }
+      100% { fill: #06b6d4; }
+    }
+  </style>
+  <rect x="2" y="2" width="8" height="8" rx="1" fill="#8b5cf6" />
+  <rect x="12" y="2" width="8" height="8" rx="1" fill="#ec4899" />
+  <rect x="22" y="2" width="8" height="8" rx="1" fill="#8b5cf6" />
+  <rect x="2" y="12" width="8" height="8" rx="1" fill="#06b6d4" />
+  <rect x="12" y="12" width="8" height="8" rx="1" fill="#8b5cf6" />
+  <rect x="22" y="12" width="8" height="8" rx="1" fill="#06b6d4" />
+  <rect x="2" y="22" width="8" height="8" rx="1" fill="#8b5cf6" />
+  <rect x="12" y="22" width="8" height="8" rx="1" fill="#ec4899" />
+  <rect x="22" y="22" width="8" height="8" rx="1" fill="#8b5cf6" />
+</svg>
