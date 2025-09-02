@@ -6,26 +6,26 @@ import ParticlesLight from '../UI/ParticlesLight';
 const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const pricingPlans = [{
-    name: 'Basic',
-    description: 'Perfect for small businesses and startups',
-    monthlyPrice: 999,
-    annualPrice: 899,
-    features: ['Responsive Website Design', 'Up to 5 Pages', 'Contact Form', 'Mobile Optimization', 'Basic SEO Setup', '1 Month of Support'],
-    notIncluded: ['E-commerce Functionality', 'Custom Animations', 'Content Management System']
+    name: 'Starter',
+    description: 'Idealny dla małych firm i startupów',
+    monthlyPrice: 2499,
+    annualPrice: 2199,
+    features: ['Responsywny design strony', 'Do 5 podstron', 'Formularz kontaktowy', 'Optymalizacja mobilna', 'Podstawowe SEO', 'Hosting na 12 miesięcy', '1 miesiąc wsparcia technicznego', 'Certyfikat SSL'],
+    notIncluded: ['Funkcjonalność e-commerce', 'Niestandardowe animacje', 'System zarządzania treścią']
   }, {
-    name: 'Professional',
-    description: 'Ideal for growing businesses',
-    monthlyPrice: 1999,
-    annualPrice: 1799,
-    features: ['Responsive Website Design', 'Up to 10 Pages', 'Contact Form & Newsletter', 'Mobile Optimization', 'Advanced SEO Setup', 'Content Management System', '3 Months of Support', 'Basic Animations'],
-    notIncluded: ['E-commerce Functionality', 'Custom Web Applications'],
+    name: 'Business',
+    description: 'Najlepszy wybór dla rozwijających się firm',
+    monthlyPrice: 4999,
+    annualPrice: 4499,
+    features: ['Responsywny design strony', 'Do 15 podstron', 'Zaawansowane formularze', 'Newsletter i integracje', 'Optymalizacja mobilna', 'Zaawansowane SEO', 'System zarządzania treścią (CMS)', 'Podstawowe animacje', 'Hosting na 12 miesięcy', '3 miesiące wsparcia technicznego', 'Analityka Google'],
+    notIncluded: ['Sklep internetowy', 'Aplikacje webowe'],
     featured: true
   }, {
-    name: 'Enterprise',
-    description: 'For established businesses with complex needs',
-    monthlyPrice: 3999,
-    annualPrice: 3599,
-    features: ['Responsive Website Design', 'Unlimited Pages', 'Advanced Forms & Integrations', 'Mobile Optimization', 'Comprehensive SEO Strategy', 'Content Management System', 'E-commerce Functionality', 'Custom Animations', 'Web Application Features', '12 Months of Support'],
+    name: 'Premium',
+    description: 'Dla firm z zaawansowanymi wymaganiami',
+    monthlyPrice: 9999,
+    annualPrice: 8999,
+    features: ['Responsywny design strony', 'Nieograniczona liczba podstron', 'Zaawansowane formularze i integracje', 'Pełna optymalizacja mobilna', 'Kompleksowa strategia SEO', 'Zaawansowany CMS', 'Sklep internetowy (e-commerce)', 'Niestandardowe animacje', 'Funkcje aplikacji webowych', 'Hosting Premium na 12 miesięcy', '6 miesięcy wsparcia technicznego', 'Dedykowany opiekun projektu'],
     notIncluded: []
   }];
   const containerVariants = {
@@ -79,11 +79,11 @@ const PricingSection = () => {
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Our
+                Nasze
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                Pricing
+                Cennik
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
@@ -95,11 +95,11 @@ const PricingSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Transparent pricing plans designed to meet your needs and budget.
+            Przejrzyste plany cenowe dostosowane do Twoich potrzeb i budżetu.
           </motion.p>
           <div className="flex items-center justify-center">
             <span className={`mr-3 text-sm font-medium ${!isAnnual ? 'text-blue-600' : 'text-slate-500'}`}>
-              Monthly
+              Miesięcznie
             </span>
             <div className="relative">
               <motion.div className="w-12 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full shadow-inner cursor-pointer" onClick={() => setIsAnnual(!isAnnual)} whileHover={{
@@ -117,20 +117,20 @@ const PricingSection = () => {
               </motion.div>
             </div>
             <span className={`ml-3 text-sm font-medium ${isAnnual ? 'text-blue-600' : 'text-slate-500'}`}>
-              Annual{' '}
+              Rocznie{' '}
               <span className="text-xs text-green-500 font-bold">
-                (Save 10%)
+                (Oszczędź 10%)
               </span>
             </span>
           </div>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => <motion.div key={index} className={`rounded-lg overflow-hidden ${plan.featured ? 'transform md:-translate-y-4 scale-105 z-10' : ''}`} variants={itemVariants} whileHover={{
+          {pricingPlans.map((plan, index) => <motion.div key={index} className={`rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${plan.featured ? 'transform md:-translate-y-4 scale-105 z-10 ring-2 ring-blue-500 ring-opacity-50' : 'hover:scale-105'}`} variants={itemVariants} whileHover={{
           y: -10
         }}>
-              <div className={`p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white' : 'bg-white text-slate-900'}`}>
-                {plan.featured && <div className="bg-gradient-to-r from-amber-400 to-amber-500 text-xs font-bold uppercase tracking-wider text-amber-900 rounded-full inline-block px-3 py-1 mb-4">
-                    Most Popular
+              <div className={`p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white shadow-inner' : 'bg-gradient-to-br from-white to-gray-50 text-slate-900'}`}>
+                {plan.featured && <div className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-xs font-bold uppercase tracking-wider text-emerald-900 rounded-full inline-block px-3 py-1 mb-4 shadow-lg">
+                    Najpopularniejszy
                   </div>}
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                 <p className={`text-sm mb-6 ${plan.featured ? 'text-blue-100' : 'text-slate-500'}`}>
@@ -138,19 +138,19 @@ const PricingSection = () => {
                 </p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold">
-                    ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                    {isAnnual ? plan.annualPrice : plan.monthlyPrice} zł
                   </span>
                   <span className={`text-sm ${plan.featured ? 'text-blue-100' : 'text-slate-500'}`}>
-                    /month
+                    /miesiąc
                   </span>
                 </div>
                 <Button variant={plan.featured ? 'secondary' : 'primary'} fullWidth>
-                  Get Started
+                  Wybierz Plan
                 </Button>
               </div>
-              <div className="bg-white p-8 border border-t-0 border-slate-100 rounded-b-lg shadow-md">
+              <div className="bg-gradient-to-b from-white to-gray-50 p-8 border border-t-0 border-slate-100 rounded-b-xl shadow-lg">
                 <h4 className="font-semibold text-slate-900 mb-4">
-                  What's included:
+                  Co zawiera:
                 </h4>
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, idx) => <li key={idx} className="flex items-start">
@@ -160,7 +160,7 @@ const PricingSection = () => {
                 </ul>
                 {plan.notIncluded.length > 0 && <>
                     <h4 className="font-semibold text-slate-900 mb-4">
-                      Not included:
+                      Nie zawiera:
                     </h4>
                     <ul className="space-y-3">
                       {plan.notIncluded.map((feature, idx) => <li key={idx} className="flex items-start">
@@ -176,11 +176,11 @@ const PricingSection = () => {
         </div>
         <motion.div className="mt-16 text-center" variants={itemVariants}>
           <p className="text-slate-600 mb-6">
-            Need a custom solution? We can create a tailored package just for
-            you.
+            Potrzebujesz rozwiązania na miarę? Możemy stworzyć spersonalizowany pakiet
+            specjalnie dla Ciebie.
           </p>
           <Button variant="outline" size="lg">
-            Contact Us For Custom Pricing
+            Skontaktuj się w sprawie indywidualnej wyceny
           </Button>
         </motion.div>
       </motion.div>
