@@ -254,11 +254,11 @@ const TechStackSection = () => {
         </motion.div>
         <motion.div className="mt-16 text-center" variants={itemVariants}>
           <p className="text-slate-300 mb-2">
-            We're constantly learning and adopting new technologies to stay at
-            the cutting edge.
+            Stale się uczymy i adoptujemy nowe technologie, aby pozostać na
+            czele innowacji.
           </p>
           <p className="text-blue-400 text-sm font-mono">
-            // Always improving, always evolving
+            // Zawsze się doskonalimy, zawsze ewoluujemy
           </p>
         </motion.div>
       </motion.div>

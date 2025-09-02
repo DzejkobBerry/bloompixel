@@ -126,7 +126,7 @@ const PortfolioSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -134,6 +134,59 @@ const PortfolioSection = () => {
             Poznaj nasze najnowsze projekty i zobacz, jak pomogliśmy klientom
             osiągnąć ich cyfrowe cele.
           </motion.p>
+          
+          {/* Stats Section */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div className="text-center">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                50+
+              </motion.div>
+              <div className="text-slate-300 text-sm md:text-base">Ukończonych Projektów</div>
+            </div>
+            <div className="text-center">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+              >
+                98%
+              </motion.div>
+              <div className="text-slate-300 text-sm md:text-base">Zadowolonych Klientów</div>
+            </div>
+            <div className="text-center">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.0 }}
+              >
+                5+
+              </motion.div>
+              <div className="text-slate-300 text-sm md:text-base">lat Doświadczenia</div>
+            </div>
+            <div className="text-center">
+              <motion.div 
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent mb-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.1 }}
+              >
+                24/7
+              </motion.div>
+              <div className="text-slate-300 text-sm md:text-base">Wsparcie Techniczne</div>
+            </div>
+          </motion.div>
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
           <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">
@@ -146,11 +199,167 @@ const PortfolioSection = () => {
               </motion.button>)}
           </div>
         </motion.div>
+        
+        {/* Process Section */}
+        <motion.div 
+          className="mb-16 max-w-6xl mx-auto"
+          variants={itemVariants}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Nasz Proces Realizacji
+              </span>
+            </h3>
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+              Każdy projekt realizujemy według sprawdzonej metodologii, która gwarantuje najwyższą jakość
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div 
+              className="glass-effect p-6 rounded-lg text-center group hover:border-blue-500/50 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
+                1
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">Discovery</h4>
+              <p className="text-slate-300 text-sm">
+                Analizujemy Twoje potrzeby, cele biznesowe i grupę docelową
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-effect p-6 rounded-lg text-center group hover:border-purple-500/50 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
+                2
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">Design</h4>
+              <p className="text-slate-300 text-sm">
+                Tworzymy wireframy, prototypy i finalne projekty UI/UX
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-effect p-6 rounded-lg text-center group hover:border-pink-500/50 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
+                3
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">Development</h4>
+              <p className="text-slate-300 text-sm">
+                Kodujemy rozwiązanie używając najnowszych technologii
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-effect p-6 rounded-lg text-center group hover:border-green-500/50 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
+                4
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2">Launch</h4>
+              <p className="text-slate-300 text-sm">
+                Wdrażamy projekt i zapewniamy pełne wsparcie techniczne
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+        
         <AnimatePresence mode="wait">
           <motion.div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
             {filteredItems.map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
           </motion.div>
         </AnimatePresence>
+        
+        {/* Call to Action */}
+        <motion.div 
+          className="mt-20 text-center max-w-4xl mx-auto"
+          variants={itemVariants}
+        >
+          <div className="glass-effect p-8 md:p-12 rounded-2xl border border-white/10">
+            <motion.h3 
+              className="text-3xl md:text-4xl font-bold text-white mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Masz pomysł na projekt?
+              </span>
+            </motion.h3>
+            
+            <motion.p 
+              className="text-xl text-slate-300 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Przekształćmy Twoją wizję w rzeczywistość. Skontaktuj się z nami już dziś
+              i rozpocznijmy współpracę nad Twoim następnym wielkim projektem.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.a 
+                href="#contact"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Rozpocznij Projekt
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </motion.a>
+              
+              <motion.a 
+                href="#contact"
+                className="inline-flex items-center px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Bezpłatna Konsultacja
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </motion.a>
+            </motion.div>
+            
+            <motion.div 
+              className="mt-6 flex items-center justify-center text-slate-400 text-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Odpowiedź w ciągu 24 godzin
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>;
 };
