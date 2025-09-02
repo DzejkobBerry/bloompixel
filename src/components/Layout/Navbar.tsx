@@ -30,31 +30,31 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const navLinks = [{
-    name: 'Home',
+    name: 'Strona Główna',
     href: '#home'
   }, {
-    name: 'About',
+    name: 'O Nas',
     href: '#about'
   }, {
-    name: 'Services',
+    name: 'Usługi',
     href: '#services'
   }, {
-    name: 'Tech Stack',
+    name: 'Technologie',
     href: '#tech-stack'
   }, {
     name: 'Portfolio',
     href: '#portfolio'
   }, {
-    name: 'Testimonials',
+    name: 'Opinie',
     href: '#testimonials'
   }, {
-    name: 'Pricing',
+    name: 'Cennik',
     href: '#pricing'
   }, {
     name: 'Blog',
     href: '#blog'
   }, {
-    name: 'Contact',
+    name: 'Kontakt',
     href: '#contact'
   }];
   const navVariants = {

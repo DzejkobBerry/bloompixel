@@ -68,24 +68,24 @@ const Hero = () => {
         <motion.div className="flex flex-col md:flex-row md:items-center md:justify-between" variants={containerVariants} initial="hidden" animate="visible">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4" variants={itemVariants}>
-              We Create{' '}
+              Tworzymy{' '}
               <span className="gradient-text glow-text">
-                Digital Experiences
+                Cyfrowe Doświadczenia
               </span>{' '}
-              That Matter
+              Które Mają Znaczenie
             </motion.h1>
             <motion.p className="text-slate-300 text-lg md:text-xl mb-8 max-w-lg" variants={itemVariants}>
-              BloomPixel specializes in crafting cutting-edge websites and
-              applications that transform your digital presence with stunning
-              design and flawless functionality.
+              BloomPixel specjalizuje się w tworzeniu nowoczesnych stron internetowych i
+              aplikacji, które transformują Twoją obecność cyfrową dzięki oszałamiającemu
+              designowi i bezbłędnej funkcjonalności.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
               <Button size="lg" variant="primary">
-                View Our Work
+                Zobacz Nasze Prace
                 <ArrowRightIcon size={18} className="ml-2" />
               </Button>
               <Button variant="neon" size="lg">
-                Let's Talk
+                Porozmawiajmy
               </Button>
             </motion.div>
             <motion.div className="mt-12 flex flex-wrap gap-6" variants={containerVariants} initial="hidden" animate="visible" transition={{
@@ -99,7 +99,7 @@ const Hero = () => {
                   <CodeIcon className="text-white" size={20} />
                 </div>
                 <div>
-                  <p className="font-medium text-white">Web Development</p>
+                  <p className="font-medium text-white">Tworzenie Stron</p>
                 </div>
               </motion.div>
               <motion.div className="flex items-center" variants={serviceIconVariants} whileHover={{
@@ -109,7 +109,7 @@ const Hero = () => {
                   <LayoutIcon className="text-white" size={20} />
                 </div>
                 <div>
-                  <p className="font-medium text-white">UI/UX Design</p>
+                  <p className="font-medium text-white">Projektowanie UI/UX</p>
                 </div>
               </motion.div>
               <motion.div className="flex items-center" variants={serviceIconVariants} whileHover={{
@@ -119,7 +119,7 @@ const Hero = () => {
                   <PenToolIcon className="text-white" size={20} />
                 </div>
                 <div>
-                  <p className="font-medium text-white">Digital Strategy</p>
+                  <p className="font-medium text-white">Strategia Cyfrowa</p>
                 </div>
               </motion.div>
             </motion.div>

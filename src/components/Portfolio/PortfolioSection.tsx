@@ -5,66 +5,66 @@ const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const containerRef = useRef(null);
   const portfolioItems = [{
-    title: 'E-commerce Platform',
+    title: 'Platforma E-commerce',
     category: 'web-app',
     image: 'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80',
-    description: 'A fully responsive e-commerce platform with product management, cart functionality, and payment integration.',
+    description: 'W pełni responsywna platforma e-commerce z zarządzaniem produktami, funkcjonalnością koszyka i integracją płatności.',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     demoUrl: '#',
-    features: ['User authentication & profiles', 'Product catalog with search & filters', 'Shopping cart & checkout flow', 'Payment processing integration', 'Order tracking & history', 'Admin dashboard']
+    features: ['Uwierzytelnianie użytkowników i profile', 'Katalog produktów z wyszukiwaniem i filtrami', 'Koszyk zakupowy i proces płatności', 'Integracja przetwarzania płatności', 'Śledzenie zamówień i historia', 'Panel administracyjny']
   }, {
-    title: 'Corporate Website',
+    title: 'Strona Korporacyjna',
     category: 'website',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1015&q=80',
-    description: 'Modern corporate website with custom animations, blog functionality, and content management system.',
+    description: 'Nowoczesna strona korporacyjna z niestandardowymi animacjami, funkcjonalnością bloga i systemem zarządzania treścią.',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'WordPress'],
     demoUrl: '#',
-    features: ['Responsive design', 'Custom animations', 'Blog with categories', 'Contact form with validation', 'SEO optimization', 'Content management system']
+    features: ['Responsywny design', 'Niestandardowe animacje', 'Blog z kategoriami', 'Formularz kontaktowy z walidacją', 'Optymalizacja SEO', 'System zarządzania treścią']
   }, {
-    title: 'Mobile Banking App',
+    title: 'Aplikacja Bankowości Mobilnej',
     category: 'ui-design',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'UI/UX design for a mobile banking application focusing on user experience and accessibility.',
+    description: 'Projekt UI/UX dla aplikacji bankowości mobilnej skupiający się na doświadczeniu użytkownika i dostępności.',
     technologies: ['Figma', 'Adobe XD', 'Sketch'],
     demoUrl: '#',
-    features: ['User research & personas', 'Wireframing & prototyping', 'Interactive mockups', 'Usability testing', 'Accessibility compliance', 'Design system creation']
+    features: ['Badania użytkowników i persony', 'Wireframing i prototypowanie', 'Interaktywne makiety', 'Testy użyteczności', 'Zgodność z dostępnością', 'Tworzenie systemu projektowego']
   }, {
-    title: 'Travel Blog',
+    title: 'Blog Podróżniczy',
     category: 'website',
     image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Custom travel blog with dynamic content loading, image galleries, and interactive maps.',
+    description: 'Niestandardowy blog podróżniczy z dynamicznym ładowaniem treści, galeriami zdjęć i interaktywnymi mapami.',
     technologies: ['React', 'Next.js', 'Tailwind CSS'],
     demoUrl: '#',
-    features: ['Dynamic content loading', 'Image galleries & lightbox', 'Interactive maps integration', 'Social sharing functionality', 'Comment system', 'Newsletter subscription']
+    features: ['Dynamiczne ładowanie treści', 'Galerie zdjęć i lightbox', 'Integracja interaktywnych map', 'Funkcjonalność udostępniania społecznościowego', 'System komentarzy', 'Subskrypcja newslettera']
   }, {
-    title: 'Task Management App',
+    title: 'Aplikacja Zarządzania Zadaniami',
     category: 'web-app',
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80',
-    description: 'Collaborative task management application with real-time updates and team collaboration features.',
+    description: 'Aplikacja do współpracy w zarządzaniu zadaniami z aktualizacjami w czasie rzeczywistym i funkcjami współpracy zespołowej.',
     technologies: ['Vue.js', 'Firebase', 'Vuetify'],
     demoUrl: '#',
-    features: ['Real-time updates', 'Team collaboration', 'Task assignment & tracking', 'Project timelines', 'File attachments', 'Notifications & reminders']
+    features: ['Aktualizacje w czasie rzeczywistym', 'Współpraca zespołowa', 'Przypisywanie i śledzenie zadań', 'Harmonogramy projektów', 'Załączniki plików', 'Powiadomienia i przypomnienia']
   }, {
-    title: 'Restaurant Branding',
+    title: 'Branding Restauracji',
     category: 'ui-design',
     image: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1055&q=80',
-    description: 'Complete brand identity design for an upscale restaurant, including logo, menus, and website.',
+    description: 'Kompletny projekt identyfikacji marki dla ekskluzywnej restauracji, w tym logo, menu i strona internetowa.',
     technologies: ['Illustrator', 'Photoshop', 'InDesign'],
     demoUrl: '#',
-    features: ['Logo design', 'Color palette', 'Typography selection', 'Menu design', 'Signage & promotional materials', 'Website design']
+    features: ['Projekt logo', 'Paleta kolorów', 'Wybór typografii', 'Projekt menu', 'Oznakowanie i materiały promocyjne', 'Projekt strony internetowej']
   }];
   const filters = [{
     id: 'all',
-    label: 'All Work'
+    label: 'Wszystkie Prace'
   }, {
     id: 'website',
-    label: 'Websites'
+    label: 'Strony Internetowe'
   }, {
     id: 'web-app',
-    label: 'Web Apps'
+    label: 'Aplikacje Web'
   }, {
     id: 'ui-design',
-    label: 'UI/UX Design'
+    label: 'Projektowanie UI/UX'
   }];
   const filteredItems = activeFilter === 'all' ? portfolioItems : portfolioItems.filter(item => item.category === activeFilter);
   const containerVariants = {
@@ -103,12 +103,12 @@ const PortfolioSection = () => {
     }} variants={containerVariants} ref={containerRef}>
         <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our <span className="gradient-text glow-text">Portfolio</span>
+            Nasze <span className="gradient-text glow-text">Portfolio</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
           <p className="text-slate-300 text-lg">
-            Explore our recent projects and see how we've helped clients achieve
-            their digital goals.
+            Poznaj nasze najnowsze projekty i zobacz, jak pomogliśmy klientom
+            osiągnąć ich cyfrowe cele.
           </p>
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>

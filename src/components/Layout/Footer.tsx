@@ -49,9 +49,9 @@ const Footer = () => {
               <span className="text-purple-400">/&gt;</span>
             </motion.a>
             <p className="text-slate-400 mb-6">
-              Creating exceptional digital experiences through innovative web
-              development and design. We help businesses grow through
-              technology.
+              Tworzymy wyjątkowe doświadczenia cyfrowe poprzez innowacyjne
+              tworzenie stron internetowych i projektowanie. Pomagamy firmom
+              rozwijać się dzięki technologii.
             </p>
             <div className="flex space-x-4">
               <motion.a href="#" className="text-slate-400 hover:text-white transition-colors" whileHover={{
@@ -92,7 +92,7 @@ const Footer = () => {
           </motion.div>
           <motion.div variants={itemVariants}>
             <h4 className="text-lg font-bold mb-4 text-blue-300">
-              Quick Links
+              Szybkie Linki
             </h4>
             <ul className="space-y-2">
               <li>
@@ -100,7 +100,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Home
+                  Strona Główna
                 </motion.a>
               </li>
               <li>
@@ -108,7 +108,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  About
+                  O Nas
                 </motion.a>
               </li>
               <li>
@@ -116,7 +116,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Services
+                  Usługi
                 </motion.a>
               </li>
               <li>
@@ -138,14 +138,14 @@ const Footer = () => {
             </ul>
           </motion.div>
           <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-bold mb-4 text-blue-300">Services</h4>
+            <h4 className="text-lg font-bold mb-4 text-blue-300">Usługi</h4>
             <ul className="space-y-2">
               <li>
                 <motion.a href="#services" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Web Development
+                  Tworzenie Stron
                 </motion.a>
               </li>
               <li>
@@ -153,7 +153,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  UI/UX Design
+                  Projektowanie UI/UX
                 </motion.a>
               </li>
               <li>
@@ -161,7 +161,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Web Applications
+                  Aplikacje Internetowe
                 </motion.a>
               </li>
               <li>
@@ -169,7 +169,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Technical Consulting
+                  Konsultacje Techniczne
                 </motion.a>
               </li>
               <li>
@@ -177,15 +177,15 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Brand Identity
+                  Identyfikacja Marki
                 </motion.a>
               </li>
             </ul>
           </motion.div>
           <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-bold mb-4 text-blue-300">Contact</h4>
+            <h4 className="text-lg font-bold mb-4 text-blue-300">Kontakt</h4>
             <ul className="space-y-2">
-              <li className="text-slate-400">Warsaw, Poland</li>
+              <li className="text-slate-400">Warszawa, Polska</li>
               <li>
                 <motion.a href="mailto:contact@bloompixel.pl" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,
@@ -207,7 +207,7 @@ const Footer = () => {
         </div>
         <motion.div className="pt-8 border-t border-slate-800 text-center" variants={itemVariants}>
           <p className="text-slate-500">
-            &copy; {currentYear} BloomPixel.pl. All rights reserved.
+            &copy; {currentYear} BloomPixel.pl. Wszelkie prawa zastrzeżone.
           </p>
         </motion.div>
       </motion.div>

@@ -71,15 +71,15 @@ const ContactSection = () => {
     }} variants={containerVariants}>
         <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Get In{' '}
+            Skontaktuj się{' '}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-              Touch
+              z Nami
             </span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
           <p className="text-slate-600 text-lg">
-            Have a project in mind or want to discuss how we can help your
-            business? Let's talk!
+            Masz pomysł na projekt lub chcesz przedyskutować, jak możemy pomóc
+            Twojemu biznesowi? Porozmawiajmy!
           </p>
         </motion.div>
         <div className="max-w-5xl mx-auto">
@@ -87,7 +87,7 @@ const ContactSection = () => {
             <motion.div className="lg:w-2/5" variants={itemVariants}>
               <div className="bg-gradient-to-br from-white to-blue-50 rounded-lg shadow-lg p-8 border border-blue-100">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                  Contact Information
+                  Informacje Kontaktowe
                 </h3>
                 <div className="space-y-6">
                   <motion.div className="flex items-start" whileHover={{
@@ -110,7 +110,7 @@ const ContactSection = () => {
                       <PhoneIcon size={20} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500 mb-1">Phone</p>
+                      <p className="text-sm text-slate-500 mb-1">Telefon</p>
                       <p className="text-slate-900 font-medium">
                         +48 123 456 789
                       </p>
@@ -123,16 +123,16 @@ const ContactSection = () => {
                       <MapPinIcon size={20} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500 mb-1">Location</p>
+                      <p className="text-sm text-slate-500 mb-1">Lokalizacja</p>
                       <p className="text-slate-900 font-medium">
-                        Warsaw, Poland
+                        Warszawa, Polska
                       </p>
                     </div>
                   </motion.div>
                 </div>
                 <div className="mt-8 pt-8 border-t border-slate-200">
                   <h4 className="text-lg font-bold text-slate-900 mb-4">
-                    Follow Us
+                    Śledź Nas
                   </h4>
                   <div className="flex space-x-4">
                     <motion.a href="#" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition-colors shadow-sm" whileHover={{
@@ -180,7 +180,7 @@ const ContactSection = () => {
             <motion.div className="lg:w-3/5" variants={itemVariants}>
               <div className="bg-gradient-to-br from-white to-blue-50 rounded-lg shadow-lg p-8 border border-blue-100">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                  Send Us a Message
+                  Wyślij Nam Wiadomość
                 </h3>
                 <form onSubmit={handleSubmit}>
                   {isSubmitted ? <motion.div className="bg-green-50 text-green-800 p-4 rounded-lg flex items-center mb-6 border border-green-200" initial={{
@@ -192,16 +192,16 @@ const ContactSection = () => {
                 }}>
                       <CheckCircleIcon className="text-green-500 mr-2" size={20} />
                       <span>
-                        Thank you for your message! We'll get back to you
-                        shortly.
+                        Dziękujemy za wiadomość! Skontaktujemy się z Tobą
+                        wkrótce.
                       </span>
                     </motion.div> : null}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
-                        Name
+                        Imię
                       </label>
-                      <motion.input type="text" id="name" value={formState.name} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your name" whileFocus={{
+                      <motion.input type="text" id="name" value={formState.name} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Twoje imię" whileFocus={{
                       scale: 1.01
                     }} required />
                     </div>
@@ -209,24 +209,24 @@ const ContactSection = () => {
                       <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
                         Email
                       </label>
-                      <motion.input type="email" id="email" value={formState.email} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your email" whileFocus={{
+                      <motion.input type="email" id="email" value={formState.email} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Twój email" whileFocus={{
                       scale: 1.01
                     }} required />
                     </div>
                   </div>
                   <div className="mb-6">
                     <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1">
-                      Subject
+                      Temat
                     </label>
-                    <motion.input type="text" id="subject" value={formState.subject} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Subject" whileFocus={{
+                    <motion.input type="text" id="subject" value={formState.subject} onChange={handleChange} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Temat" whileFocus={{
                     scale: 1.01
                   }} required />
                   </div>
                   <div className="mb-6">
                     <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
-                      Message
+                      Wiadomość
                     </label>
-                    <motion.textarea id="message" value={formState.message} onChange={handleChange} rows={5} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your message" whileFocus={{
+                    <motion.textarea id="message" value={formState.message} onChange={handleChange} rows={5} className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Twoja wiadomość" whileFocus={{
                     scale: 1.01
                   }} required></motion.textarea>
                   </div>
@@ -236,9 +236,9 @@ const ContactSection = () => {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Sending...
+                        Wysyłanie...
                       </> : <>
-                        Send Message
+                        Wyślij Wiadomość
                         <SendIcon size={16} className="ml-2" />
                       </>}
                   </Button>

@@ -4,11 +4,11 @@ import ServiceCard from '../UI/ServiceCard';
 import { motion } from 'framer-motion';
 const ServicesSection = () => {
   const services = [{
-    title: 'Website Development',
-    description: 'Custom, responsive websites built with modern technologies that look great on all devices.',
+    title: 'Tworzenie Stron Internetowych',
+    description: 'Niestandardowe, responsywne strony internetowe zbudowane z nowoczesnymi technologiami, które świetnie wyglądają na wszystkich urządzeniach.',
     icon: <CodeIcon size={24} />,
     color: 'blue',
-    features: ['Responsive Design', 'SEO Optimization', 'Performance Tuning', 'Cross-Browser Support'],
+    features: ['Responsywny Design', 'Optymalizacja SEO', 'Optymalizacja Wydajności', 'Wsparcie Przeglądarek'],
     codeSnippet: `
 const App = () => {
   return (
@@ -23,11 +23,11 @@ const App = () => {
   );
 };`
   }, {
-    title: 'Web Application Development',
-    description: 'Powerful, scalable web applications with robust functionality and intuitive interfaces.',
+    title: 'Tworzenie Aplikacji Internetowych',
+    description: 'Potężne, skalowalne aplikacje internetowe z solidną funkcjonalnością i intuicyjnymi interfejsami.',
     icon: <ServerIcon size={24} />,
     color: 'purple',
-    features: ['User Authentication', 'Database Integration', 'API Development', 'Real-time Updates'],
+    features: ['Uwierzytelnianie Użytkowników', 'Integracja Baz Danych', 'Rozwój API', 'Aktualizacje w Czasie Rzeczywistym'],
     codeSnippet: `
 const [data, setData] = useState([]);
 useEffect(() => {
@@ -38,11 +38,11 @@ useEffect(() => {
   fetchData();
 }, []);`
   }, {
-    title: 'UI/UX Design',
-    description: 'User-focused design that enhances usability while creating beautiful, engaging interfaces.',
+    title: 'Projektowanie UI/UX',
+    description: 'Design skupiony na użytkowniku, który zwiększa użyteczność, tworząc jednocześnie piękne, angażujące interfejsy.',
     icon: <LayoutIcon size={24} />,
     color: 'cyan',
-    features: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing'],
+    features: ['Badania Użytkowników', 'Wireframing', 'Prototypowanie', 'Testy Użyteczności'],
     codeSnippet: `
 <motion.div
   whileHover={{ scale: 1.05 }}
@@ -52,11 +52,11 @@ useEffect(() => {
   <Button>Get Started</Button>
 </motion.div>`
   }, {
-    title: 'Mobile-First Development',
-    description: 'Websites optimized for mobile devices, ensuring great performance on smartphones and tablets.',
+    title: 'Rozwój Mobile-First',
+    description: 'Strony internetowe zoptymalizowane pod urządzenia mobilne, zapewniające świetną wydajność na smartfonach i tabletach.',
     icon: <SmartphoneIcon size={24} />,
     color: 'indigo',
-    features: ['Touch-friendly UI', 'Fast Loading Speed', 'Offline Capabilities', 'Responsive Images'],
+    features: ['Interfejs Przyjazny Dotykowi', 'Szybkie Ładowanie', 'Możliwości Offline', 'Responsywne Obrazy'],
     codeSnippet: `
 const isMobile = useMediaQuery({ maxWidth: 767 });
 return (
@@ -66,11 +66,11 @@ return (
   </div>
 );`
   }, {
-    title: 'Brand Identity',
-    description: 'Cohesive visual identity development including logos, color palettes, and style guides.',
+    title: 'Identyfikacja Wizualna',
+    description: 'Rozwój spójnej identyfikacji wizualnej, w tym logo, palety kolorów i przewodników stylu.',
     icon: <PenToolIcon size={24} />,
     color: 'pink',
-    features: ['Logo Design', 'Color Scheme', 'Typography', 'Brand Guidelines'],
+    features: ['Projektowanie Logo', 'Schemat Kolorów', 'Typografia', 'Wytyczne Marki'],
     codeSnippet: `
 :root {
   --primary: #3b82f6;
@@ -82,11 +82,11 @@ return (
   --font-body: 'Inter';
 }`
   }, {
-    title: 'Technical Consulting',
-    description: 'Expert advice on technology choices, architecture, and development best practices.',
+    title: 'Konsultacje Techniczne',
+    description: 'Eksperckie doradztwo w zakresie wyboru technologii, architektury i najlepszych praktyk rozwoju.',
     icon: <WrenchIcon size={24} />,
     color: 'amber',
-    features: ['Tech Stack Analysis', 'Performance Audits', 'Security Reviews', 'Scalability Planning'],
+    features: ['Analiza Stosu Technologicznego', 'Audyty Wydajności', 'Przeglądy Bezpieczeństwa', 'Planowanie Skalowalności'],
     codeSnippet: `
 // Performance optimization
 const memoizedValue = useMemo(() => {
@@ -135,12 +135,12 @@ const LazyComponent = lazy(() =>
     }} variants={containerVariants}>
         <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our <span className="gradient-text glow-text">Services</span>
+            Nasze <span className="gradient-text glow-text">Usługi</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
           <p className="text-slate-300 text-lg">
-            We offer a comprehensive range of web development and design
-            services to help you establish a strong online presence.
+            Oferujemy kompleksowy zakres usług tworzenia stron internetowych i projektowania,
+            aby pomóc Ci zbudować silną obecność online.
           </p>
         </motion.div>
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants}>

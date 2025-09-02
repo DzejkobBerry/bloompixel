@@ -29,28 +29,28 @@ const AboutSection = () => {
   }];
   const timelineItems = [{
     year: '2018',
-    title: 'Company Founded',
-    description: 'BloomPixel was established with a vision to create exceptional digital experiences.'
+    title: 'Założenie Firmy',
+    description: 'BloomPixel zostało założone z wizją tworzenia wyjątkowych doświadczeń cyfrowych.'
   }, {
     year: '2019',
-    title: 'First Major Project',
-    description: 'Successfully delivered our first enterprise-level web application.'
+    title: 'Pierwszy Duży Projekt',
+    description: 'Pomyślnie dostarczyliśmy naszą pierwszą aplikację internetową na poziomie korporacyjnym.'
   }, {
     year: '2020',
-    title: 'Team Expansion',
-    description: 'Grew our team of talented developers and designers to meet increasing demand.'
+    title: 'Rozszerzenie Zespołu',
+    description: 'Powiększyliśmy nasz zespół utalentowanych programistów i projektantów, aby sprostać rosnącemu zapotrzebowaniu.'
   }, {
     year: '2021',
-    title: 'International Clients',
-    description: 'Started working with clients from across Europe and North America.'
+    title: 'Klienci Międzynarodowi',
+    description: 'Rozpoczęliśmy współpracę z klientami z całej Europy i Ameryki Północnej.'
   }, {
     year: '2022',
-    title: 'New Technologies',
-    description: 'Expanded our expertise to include AI-driven development and advanced animations.'
+    title: 'Nowe Technologie',
+    description: 'Rozszerzyliśmy naszą wiedzę o rozwój oparty na AI i zaawansowane animacje.'
   }, {
     year: '2023',
-    title: 'Industry Recognition',
-    description: 'Received multiple awards for our innovative approach to web development.'
+    title: 'Uznanie Branżowe',
+    description: 'Otrzymaliśmy wiele nagród za nasze innowacyjne podejście do tworzenia stron internetowych.'
   }];
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, {
@@ -137,13 +137,13 @@ const AboutSection = () => {
     }} variants={containerVariants} ref={containerRef}>
         <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            About <span className="gradient-text glow-text">BloomPixel</span>
+            O <span className="gradient-text glow-text">BloomPixel</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
           <p className="text-slate-300 text-lg">
-            We're a passionate team of developers and designers with a focus on
-            creating elegant, efficient, and user-friendly digital solutions
-            that drive business growth.
+            Jesteśmy zespołem pełnym pasji programistów i projektantów, skupiającym się na
+            tworzeniu eleganckich, wydajnych i przyjaznych użytkownikowi rozwiązań cyfrowych,
+            które napędzają rozwój biznesu.
           </p>
         </motion.div>
         <div className="flex flex-col md:flex-row gap-12 items-center mb-20">
@@ -157,9 +157,9 @@ const AboutSection = () => {
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1055&q=80" alt="BloomPixel team at work" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent">
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="text-white text-lg font-bold">Our Team</div>
+                    <div className="text-white text-lg font-bold">Nasz Zespół</div>
                     <div className="text-slate-300 text-sm">
-                      Collaborative, innovative, passionate
+                      Współpracujący, innowacyjny, pełen pasji
                     </div>
                   </div>
                 </div>
@@ -169,22 +169,21 @@ const AboutSection = () => {
           </motion.div>
           <div className="md:w-1/2">
             <motion.h3 className="text-2xl font-bold text-white mb-4" variants={itemVariants}>
-              Who We Are
+              Kim Jesteśmy
             </motion.h3>
             <motion.p className="text-slate-300 mb-6" variants={itemVariants}>
-              With over 5 years of experience in web development, we've helped
-              businesses and individuals bring their digital visions to life. We
-              combine technical expertise with creative problem-solving to
-              deliver solutions that not only look great but perform
-              exceptionally.
+              Z ponad 5-letnim doświadczeniem w tworzeniu stron internetowych, pomogliśmy
+              firmom i osobom prywatnym wcielić w życie ich cyfrowe wizje. Łączymy
+              wiedzę techniczną z kreatywnym rozwiązywaniem problemów, aby dostarczać
+              rozwiązania, które nie tylko świetnie wyglądają, ale także działają wyjątkowo.
             </motion.p>
             <motion.p className="text-slate-300 mb-8" variants={itemVariants}>
-              Our approach is collaborative and client-focused. We believe in
-              clear communication, attention to detail, and delivering projects
-              that exceed expectations.
+              Nasze podejście jest oparte na współpracy i skupione na kliencie. Wierzymy w
+              jasną komunikację, dbałość o szczegóły i dostarczanie projektów, które
+              przekraczają oczekiwania.
             </motion.p>
             <motion.h3 className="text-2xl font-bold text-white mb-6" variants={itemVariants}>
-              Our Expertise
+              Nasza Ekspertyza
             </motion.h3>
             <motion.div className="space-y-4 mb-8" variants={containerVariants} animate={skillsAnimation} initial="hidden">
               {skills.map((skill, index) => <div key={index} className="mb-2">
@@ -227,7 +226,7 @@ const AboutSection = () => {
         </div>
         <motion.div className="mt-20" variants={itemVariants}>
           <h3 className="text-2xl font-bold text-white text-center mb-10">
-            Our <span className="gradient-text glow-text">Journey</span>
+            Nasza <span className="gradient-text glow-text">Podróż</span>
           </h3>
           <motion.div className="relative" variants={timelineVariants} initial="hidden" whileInView="visible" viewport={{
           once: true,
