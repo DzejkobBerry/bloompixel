@@ -128,11 +128,19 @@ const Footer = () => {
                 </motion.a>
               </li>
               <li>
-                <motion.a href="#blog" className="text-slate-400 hover:text-white transition-colors" whileHover={{
+                <motion.a href="#pricing" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Blog
+                  Cennik
+                </motion.a>
+              </li>
+              <li>
+                <motion.a href="#contact" className="text-slate-400 hover:text-white transition-colors" whileHover={{
+                x: 5,
+                color: '#ffffff'
+              }}>
+                  Kontakt
                 </motion.a>
               </li>
             </ul>
