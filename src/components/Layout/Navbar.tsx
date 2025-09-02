@@ -7,6 +7,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('pl');
   useEffect(() => {
     const handleScroll = () => {
       // Update scrolled state
@@ -45,6 +47,52 @@ const Navbar = () => {
     { name: 'Technologie', href: '#tech-stack' },
     { name: 'FAQ', href: '#faq' }
   ];
+
+  const languages = [
+    { 
+      code: 'pl', 
+      name: 'Polski', 
+      flag: 'PL',
+      flagIcon: (
+        <svg className="w-4 h-4" viewBox="0 0 640 480">
+          <rect width="640" height="240" fill="#fff"/>
+          <rect y="240" width="640" height="240" fill="#dc143c"/>
+        </svg>
+      )
+    },
+    { 
+      code: 'en', 
+      name: 'English', 
+      flag: 'EN',
+      flagIcon: (
+        <svg className="w-4 h-4" viewBox="0 0 640 480">
+          <rect width="640" height="480" fill="#012169"/>
+          <path d="M0 0l640 480M640 0L0 480" stroke="#fff" strokeWidth="96"/>
+          <path d="M0 0l640 480M640 0L0 480" stroke="#c8102e" strokeWidth="64"/>
+          <path d="M320 0v480M0 240h640" stroke="#fff" strokeWidth="160"/>
+          <path d="M320 0v480M0 240h640" stroke="#c8102e" strokeWidth="96"/>
+        </svg>
+      )
+    },
+    { 
+      code: 'nl', 
+      name: 'Nederlands', 
+      flag: 'NL',
+      flagIcon: (
+        <svg className="w-4 h-4" viewBox="0 0 640 480">
+          <rect width="640" height="160" fill="#ae1c28"/>
+          <rect y="160" width="640" height="160" fill="#fff"/>
+          <rect y="320" width="640" height="160" fill="#21468b"/>
+        </svg>
+      )
+    }
+  ];
+
+  const handleLanguageChange = (langCode: string) => {
+    setCurrentLanguage(langCode);
+    setIsLanguageDropdownOpen(false);
+    // TODO: Implement language switching logic
+  };
   const navVariants = {
     hidden: {
       opacity: 0,
@@ -163,6 +211,59 @@ const Navbar = () => {
               <Button className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg">Kontakt</Button>
             </motion.div>
           </motion.div>
+
+          {/* Language Switcher */}
+          <motion.div 
+            className="relative"
+            variants={itemVariants}
+            onMouseEnter={() => setIsLanguageDropdownOpen(true)}
+            onMouseLeave={() => setIsLanguageDropdownOpen(false)}
+          >
+            <button className="text-sm font-semibold text-slate-300 hover:text-white flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/5 backdrop-blur-sm group">
+               {languages.find(lang => lang.code === currentLanguage)?.flagIcon}
+               <span className="relative z-10">{languages.find(lang => lang.code === currentLanguage)?.code.toUpperCase()}</span>
+              <ChevronDownIcon size={14} className={`transition-all duration-300 ${isLanguageDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </button>
+            
+            <AnimatePresence>
+              {isLanguageDropdownOpen && (
+                <motion.div
+                  className="absolute top-full right-0 mt-3 w-44 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 overflow-hidden"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-pink-500/10" />
+                  {languages.map((language, index) => (
+                    <motion.button
+                      key={language.code}
+                      onClick={() => handleLanguageChange(language.code)}
+                      className={`relative w-full text-left px-4 py-3 text-sm font-medium transition-all duration-300 group overflow-hidden flex items-center space-x-3 ${
+                        currentLanguage === language.code 
+                          ? 'text-blue-400 bg-blue-400/10' 
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                        {language.flagIcon}
+                        <span className="relative z-10">{language.name}</span>
+                      {currentLanguage === language.code && (
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full" />
+                      )}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </nav>
         {/* Mobile Menu Button */}
         <motion.button variants={itemVariants} className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)} whileHover={{
@@ -187,8 +288,8 @@ const Navbar = () => {
       }} transition={{
         duration: 0.3
       }}>
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`text-sm font-medium py-2 ${activeSection === link.href.substring(1) ? 'text-blue-400 glow-text' : 'text-slate-300 hover:text-white'}`} onClick={() => setIsMenuOpen(false)} initial={{
+            <div className="container mx-auto px-4 py-6 flex flex-col space-y-2">
+              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 group overflow-hidden ${activeSection === link.href.substring(1) ? 'text-blue-400 glow-text bg-blue-400/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setIsMenuOpen(false)} initial={{
             opacity: 0,
             x: -20
           }} animate={{
@@ -200,44 +301,99 @@ const Navbar = () => {
           }} exit={{
             opacity: 0,
             x: -20
-          }}>
-                  {link.name}
+          }} whileHover={{ x: 5 }}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                  <span className="relative z-10">{link.name}</span>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.a>)}
               
               {/* Mobile Contact Dropdown */}
               <motion.div 
-                className="border-t border-white/10 pt-4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0, transition: { delay: navLinks.length * 0.1 } }}
-                exit={{ opacity: 0, x: -20 }}
-              >
-                <div className="text-sm font-medium text-slate-400 mb-2">Więcej opcji</div>
-                {contactDropdownItems.map((item, index) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="block text-sm font-medium py-2 pl-4 text-slate-300 hover:text-white"
-                    onClick={() => setIsMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + index + 1) * 0.1 } }}
-                    exit={{ opacity: 0, x: -20 }}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
-              </motion.div>
+                 className="border-t border-white/10 pt-4 mt-4"
+                 initial={{ opacity: 0, x: -20 }}
+                 animate={{ opacity: 1, x: 0, transition: { delay: navLinks.length * 0.1 } }}
+                 exit={{ opacity: 0, x: -20 }}
+               >
+                 <div className="text-sm font-semibold text-slate-400 mb-3 px-4 flex items-center">
+                   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Więcej opcji</span>
+                   <div className="flex-1 h-px bg-gradient-to-r from-blue-400/30 to-purple-400/30 ml-3" />
+                 </div>
+                 {contactDropdownItems.map((item, index) => (
+                   <motion.a
+                     key={item.name}
+                     href={item.href}
+                     className="relative block text-sm font-medium py-3 px-6 ml-2 rounded-xl text-slate-300 hover:text-white transition-all duration-300 group overflow-hidden"
+                     onClick={() => setIsMenuOpen(false)}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + index + 1) * 0.1 } }}
+                     exit={{ opacity: 0, x: -20 }}
+                     whileHover={{ x: 8 }}
+                   >
+                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-purple-500/15 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                     <span className="relative z-10">{item.name}</span>
+                     <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                   </motion.a>
+                 ))}
+               </motion.div>
+
+               {/* Mobile Language Switcher */}
+               <motion.div 
+                 className="border-t border-white/10 pt-4 mt-4"
+                 initial={{ opacity: 0, x: -20 }}
+                 animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + contactDropdownItems.length + 1) * 0.1 } }}
+                 exit={{ opacity: 0, x: -20 }}
+               >
+                 <div className="text-sm font-semibold text-slate-400 mb-3 px-4 flex items-center">
+                   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Język</span>
+                   <div className="flex-1 h-px bg-gradient-to-r from-blue-400/30 to-purple-400/30 ml-3" />
+                 </div>
+                 {languages.map((language, index) => (
+                   <motion.button
+                     key={language.code}
+                     onClick={() => handleLanguageChange(language.code)}
+                     className={`relative w-full text-left text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden flex items-center space-x-3 ${
+                       currentLanguage === language.code 
+                         ? 'text-blue-400 bg-blue-400/10' 
+                         : 'text-slate-300 hover:text-white'
+                     }`}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + contactDropdownItems.length + index + 2) * 0.1 } }}
+                     exit={{ opacity: 0, x: -20 }}
+                     whileHover={{ x: 8 }}
+                   >
+                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-purple-500/15 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                       {language.flagIcon}
+                       <span className="relative z-10">{language.name}</span>
+                     {currentLanguage === language.code && (
+                       <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full" />
+                     )}
+                   </motion.button>
+                 ))}
+               </motion.div>
               
-              <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: (navLinks.length + contactDropdownItems.length + 1) * 0.1
-          }}>
-                <Button fullWidth>Kontakt</Button>
-              </motion.div>
+              <motion.div 
+                 className="pt-4 px-4"
+                 initial={{
+                   opacity: 0,
+                   y: 20
+                 }} 
+                 animate={{
+                   opacity: 1,
+                   y: 0
+                 }} 
+                 transition={{
+                   delay: (navLinks.length + contactDropdownItems.length + 1) * 0.1
+                 }}
+               >
+                 <motion.div
+                   whileHover={{ scale: 1.02 }}
+                   whileTap={{ scale: 0.98 }}
+                   className="relative group"
+                 >
+                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+                   <Button fullWidth className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg py-4">Kontakt</Button>
+                 </motion.div>
+               </motion.div>
             </div>
           </motion.div>}
       </AnimatePresence>
