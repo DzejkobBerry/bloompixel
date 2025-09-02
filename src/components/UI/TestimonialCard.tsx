@@ -29,29 +29,51 @@ const TestimonialCard = ({
       }
     })
   };
-  return <motion.div className="bg-gradient-to-br from-white to-blue-50 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl border border-blue-100" variants={cardVariants} custom={index} whileHover={{
-    y: -5
-  }}>
-      <div className="flex items-center mb-4">
-        <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-blue-200">
-          <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
-        </div>
-        <div>
-          <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-          <p className="text-sm text-slate-500">{testimonial.position}</p>
-        </div>
+  return <motion.div 
+    className="relative bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 rounded-2xl border border-gray-200/60 p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200/60 backdrop-blur-sm" 
+    variants={cardVariants} 
+    custom={index} 
+    whileHover={{
+      y: -8,
+      scale: 1.02
+    }}
+  >
+    {/* Decorative corner accent */}
+    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-bl-3xl rounded-tr-2xl" />
+    
+    <div className="flex items-start mb-6">
+      <div className="relative w-16 h-16 rounded-full overflow-hidden mr-5 flex-shrink-0 ring-2 ring-blue-100 ring-offset-2">
+        <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent" />
       </div>
-      <div className="flex mb-4">
-        {Array.from({
-        length: 5
-      }).map((_, index) => <StarIcon key={index} size={16} className={index < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-slate-300'} />)}
+      <div className="flex-1">
+        <h4 className="font-bold text-gray-900 text-lg mb-1">{testimonial.name}</h4>
+        <p className="text-sm text-blue-600 font-medium">{testimonial.position}</p>
       </div>
-      <div className="relative">
-        <QuoteIcon size={40} className="absolute -top-2 -left-2 text-blue-100 opacity-50" />
-        <p className="text-slate-600 italic relative z-10 pl-3">
-          {testimonial.content}
-        </p>
-      </div>
-    </motion.div>;
+    </div>
+    
+    <div className="flex mb-6 gap-1">
+      {Array.from({ length: 5 }).map((_, index) => 
+        <StarIcon 
+          key={index}
+          size={18} 
+          className={index < testimonial.rating 
+            ? 'text-amber-400 fill-amber-400 drop-shadow-sm' 
+            : 'text-gray-300'
+          } 
+        />
+      )}
+    </div>
+    
+    <div className="relative">
+      <QuoteIcon size={32} className="absolute -top-2 -left-2 text-blue-200/60" />
+      <p className="text-gray-700 text-base leading-relaxed pl-8 font-medium">
+        {testimonial.content}
+      </p>
+    </div>
+    
+    {/* Bottom gradient line */}
+    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-b-2xl opacity-60" />
+  </motion.div>;
 };
 export default TestimonialCard;

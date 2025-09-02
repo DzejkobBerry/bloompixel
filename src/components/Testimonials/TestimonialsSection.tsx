@@ -1,39 +1,78 @@
-import React, { useState, Children } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from 'lucide-react';
+import React, { useState, useEffect, Children } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon, StarIcon, PlayIcon, PauseIcon } from 'lucide-react';
 import TestimonialCard from '../UI/TestimonialCard';
 import { motion, AnimatePresence } from 'framer-motion';
 const TestimonialsSection = () => {
   const testimonials = [{
-    name: 'Sarah Johnson',
-    position: 'CEO, TechStart',
+    name: 'Anna Kowalska',
+    position: 'CEO, TechnoVision',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'Working with BloomPixel was an absolute pleasure. They took our vague concept and transformed it into a stunning website that perfectly represents our brand. The attention to detail and technical expertise were impressive.',
+    content: 'Współpraca z BloomPixel była wyjątkowa. Zespół przekształcił nasze pomysły w profesjonalną stronę internetową, która idealnie reprezentuje naszą markę. Jakość wykonania i dbałość o szczegóły są na najwyższym poziomie.',
     rating: 5
   }, {
-    name: 'Michael Chen',
-    position: 'Marketing Director, GrowthLabs',
+    name: 'Michał Nowak',
+    position: 'Dyrektor Marketingu, GrowthLabs',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'The web application developed for our company has streamlined our internal processes and significantly improved our efficiency. BloomPixel was responsive, professional, and delivered exactly what we needed.',
+    content: 'Aplikacja webowa stworzona przez BloomPixel znacznie usprawniła nasze procesy wewnętrzne i zwiększyła efektywność pracy. Zespół był responsywny, profesjonalny i dostarczył dokładnie to, czego potrzebowaliśmy.',
     rating: 5
   }, {
-    name: 'Emily Rodriguez',
-    position: 'Founder, StyleHub',
+    name: 'Katarzyna Wiśniewska',
+    position: 'Założycielka, StyleHub',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80',
-    content: 'I needed a website that would showcase my portfolio and attract new clients. The result exceeded my expectations. Not only is the design beautiful, but the site is also user-friendly and performs exceptionally well.',
+    content: 'Potrzebowałam strony, która prezentowałaby moje portfolio i przyciągnęła nowych klientów. Rezultat przewyższył moje oczekiwania. Strona jest nie tylko piękna wizualnie, ale także bardzo funkcjonalna i szybka.',
     rating: 5
   }, {
-    name: 'David Thompson',
+    name: 'Piotr Zieliński',
     position: 'CTO, InnovateTech',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'As a technical leader, I have high standards for development work. BloomPixel not only met those standards but exceeded them. The code quality, documentation, and overall approach were top-notch.',
-    rating: 4
+    content: 'Jako lider techniczny mam wysokie standardy dotyczące pracy programistycznej. BloomPixel nie tylko spełnił te standardy, ale je przewyższył. Jakość kodu, dokumentacja i ogólne podejście były na najwyższym poziomie.',
+    rating: 5
+  }, {
+    name: 'Magdalena Lewandowska',
+    position: 'Właścicielka, Boutique Fashion',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    content: 'Sklep internetowy stworzony przez BloomPixel zwiększył nasze sprzedaże o 200% w ciągu pierwszych trzech miesięcy. Profesjonalny design i intuicyjna obsługa sprawiają, że klienci chętnie wracają.',
+    rating: 5
+  }, {
+    name: 'Tomasz Kaczmarek',
+    position: 'Prezes, EcoSolutions',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+    content: 'BloomPixel stworzył dla nas kompleksową platformę zarządzania projektami. Dzięki niej nasza firma działa znacznie sprawniej, a komunikacja z klientami jest na zupełnie nowym poziomie. Polecam z całego serca!',
+    rating: 5
   }];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [direction, setDirection] = useState(0);
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex(prevIndex => prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying, testimonials.length]);
+
   const nextSlide = () => {
+    setDirection(1);
     setCurrentIndex(prevIndex => prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1);
   };
+  
   const prevSlide = () => {
+    setDirection(-1);
     setCurrentIndex(prevIndex => prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1);
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  const toggleAutoPlay = () => {
+    setIsAutoPlaying(!isAutoPlaying);
   };
   const containerVariants = {
     hidden: {
@@ -80,21 +119,37 @@ const TestimonialsSection = () => {
       }
     })
   };
-  const [direction, setDirection] = useState(0);
   const handleNext = () => {
-    setDirection(1);
+    setIsAutoPlaying(false); // Stop auto-play when user interacts
     nextSlide();
   };
+  
   const handlePrev = () => {
-    setDirection(-1);
+    setIsAutoPlaying(false); // Stop auto-play when user interacts
     prevSlide();
   };
   return <section id="testimonials" className="py-20 bg-white relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-40 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div className="absolute bottom-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle Side Glows */}
+        <div className="absolute -left-32 top-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl" />
+        <div className="absolute -right-32 top-3/4 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl" />
+        <div className="absolute left-1/4 -top-32 w-48 h-48 bg-indigo-400/4 rounded-full blur-2xl" />
+        <div className="absolute right-1/4 -bottom-32 w-48 h-48 bg-pink-400/4 rounded-full blur-2xl" />
+        
+        {/* Subtle Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-100"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59,130,246,0.015) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59,130,246,0.015) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
       </div>
+
       <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
@@ -112,19 +167,19 @@ const TestimonialsSection = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                Client
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Opinie
               </span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Testimonials
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Klientów
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -132,44 +187,109 @@ const TestimonialsSection = () => {
             Zobacz, co mówią o nas nasi zadowoleni klienci
           </motion.p>
         </motion.div>
-        <div className="relative max-w-4xl mx-auto">
-          {/* Desktop Testimonials */}
-          <motion.div className="hidden md:grid grid-cols-2 gap-8" variants={containerVariants}>
-            {testimonials.map((testimonial, index) => <TestimonialCard key={index} testimonial={testimonial} index={index} />)}
-          </motion.div>
-          {/* Mobile Testimonial Carousel */}
-          <div className="md:hidden">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Testimonial Slider - Works on all devices */}
+          <div className="relative">
             <AnimatePresence custom={direction} mode="wait">
-              <motion.div key={currentIndex} custom={direction} variants={sliderVariants} initial="initial" animate="animate" exit="exit">
-                <TestimonialCard testimonial={testimonials[currentIndex]} index={0} />
+              <motion.div 
+                key={currentIndex} 
+                custom={direction} 
+                variants={sliderVariants} 
+                initial="initial" 
+                animate="animate" 
+                exit="exit"
+                className="w-full"
+              >
+                <TestimonialCard testimonial={testimonials[currentIndex]} index={currentIndex} />
               </motion.div>
             </AnimatePresence>
-            <div className="flex justify-center mt-8 gap-4">
-              <motion.button className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-slate-600 hover:text-blue-600 transition-colors" onClick={handlePrev} whileHover={{
-              scale: 1.1,
-              backgroundColor: '#f0f9ff'
-            }} whileTap={{
-              scale: 0.9
-            }}>
-                <ChevronLeftIcon size={20} />
-              </motion.button>
-              <motion.button className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-slate-600 hover:text-blue-600 transition-colors" onClick={handleNext} whileHover={{
-              scale: 1.1,
-              backgroundColor: '#f0f9ff'
-            }} whileTap={{
-              scale: 0.9
-            }}>
-                <ChevronRightIcon size={20} />
-              </motion.button>
+            
+            {/* Navigation Controls */}
+            <div className="flex justify-center items-center mt-8 gap-6">
+              {/* Previous Button */}
+              <motion.button 
+                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 onClick={handlePrev} 
+                 whileHover={{
+                   scale: 1.1
+                 }} 
+                 whileTap={{
+                   scale: 0.9
+                 }}
+               >
+                 <ChevronLeftIcon size={24} />
+               </motion.button>
+               
+               {/* Auto-play Toggle */}
+               <motion.button 
+                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 onClick={toggleAutoPlay}
+                 whileHover={{
+                   scale: 1.1
+                 }} 
+                 whileTap={{
+                   scale: 0.9
+                 }}
+                 title={isAutoPlaying ? 'Zatrzymaj automatyczne przewijanie' : 'Włącz automatyczne przewijanie'}
+               >
+                 {isAutoPlaying ? <PauseIcon size={20} /> : <PlayIcon size={20} />}
+               </motion.button>
+               
+               {/* Next Button */}
+               <motion.button 
+                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 onClick={handleNext} 
+                 whileHover={{
+                   scale: 1.1
+                 }} 
+                 whileTap={{
+                   scale: 0.9
+                 }}
+               >
+                 <ChevronRightIcon size={24} />
+               </motion.button>
             </div>
-            <div className="flex justify-center mt-4">
-              {testimonials.map((_, index) => <motion.div key={index} className={`w-2 h-2 rounded-full mx-1 ${index === currentIndex ? 'bg-blue-600' : 'bg-slate-300'}`} whileHover={{
-              scale: 1.5
-            }} onClick={() => {
-              setDirection(index > currentIndex ? 1 : -1);
-              setCurrentIndex(index);
-            }} />)}
+            
+            {/* Slide Indicators */}
+            <div className="flex justify-center mt-6 gap-2">
+              {testimonials.map((_, index) => (
+                <motion.button
+                  key={index}
+                  className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+                     index === currentIndex 
+                       ? 'w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-500' 
+                       : 'w-3 h-3 bg-slate-300 hover:bg-slate-400'
+                   }`}
+                  onClick={() => {
+                    setIsAutoPlaying(false);
+                    goToSlide(index);
+                  }}
+                  whileHover={{
+                    scale: 1.2
+                  }}
+                  whileTap={{
+                    scale: 0.9
+                  }}
+                >
+                  {index === currentIndex && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: 4, ease: 'linear' }}
+                      key={`progress-${currentIndex}`}
+                    />
+                  )}
+                </motion.button>
+              ))}
             </div>
+            
+            {/* Slide Counter */}
+            <div className="text-center mt-4">
+               <span className="text-slate-500 text-sm font-medium">
+                 {currentIndex + 1} / {testimonials.length}
+               </span>
+             </div>
           </div>
         </div>
       </motion.div>

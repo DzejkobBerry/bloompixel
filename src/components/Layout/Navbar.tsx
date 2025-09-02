@@ -117,7 +117,10 @@ const Navbar = () => {
       y: 0
     }
   };
-  return <motion.header initial="hidden" animate="visible" variants={navVariants} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'}`}>
+  // Check if we're in testimonials section or below
+  const isDarkSection = activeSection === 'testimonials' || activeSection === 'pricing' || activeSection === 'contact' || activeSection === 'footer';
+  
+  return <motion.header initial="hidden" animate="visible" variants={navVariants} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isDarkSection ? (isDarkSection ? 'bg-slate-900/95 backdrop-blur-xl border-b border-white/10 py-3' : 'glass-effect py-3') : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <motion.a 
           href="#home" 
@@ -237,7 +240,7 @@ const Navbar = () => {
         </motion.a>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`text-sm font-semibold relative group px-3 py-2 rounded-lg transition-all duration-300 ${activeSection === link.href.substring(1) ? 'text-blue-400 glow-text bg-blue-400/10 backdrop-blur-sm' : 'text-slate-300 hover:text-white hover:bg-white/5 backdrop-blur-sm'}`} variants={itemVariants} whileHover={{
+          {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`text-sm font-semibold relative group px-3 py-2 rounded-lg transition-all duration-300 ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-blue-300 glow-text bg-blue-400/20 backdrop-blur-sm' : 'text-blue-400 glow-text bg-blue-400/10 backdrop-blur-sm') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10 backdrop-blur-sm' : 'text-slate-300 hover:text-white hover:bg-white/5 backdrop-blur-sm')}`} variants={itemVariants} whileHover={{
           scale: 1.05,
           y: -2
         }} custom={index}>
@@ -258,7 +261,7 @@ const Navbar = () => {
             onMouseEnter={() => setIsContactDropdownOpen(true)}
             onMouseLeave={() => setIsContactDropdownOpen(false)}
           >
-            <button className="text-sm font-semibold text-slate-300 hover:text-white flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/5 backdrop-blur-sm group">
+            <button className={`text-sm font-semibold flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
                 <span className="relative z-10">Więcej</span>
                 <ChevronDownIcon size={16} className={`transition-all duration-300 ${isContactDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
                 <motion.div 
@@ -314,7 +317,7 @@ const Navbar = () => {
             onMouseEnter={() => setIsLanguageDropdownOpen(true)}
             onMouseLeave={() => setIsLanguageDropdownOpen(false)}
           >
-            <button className="text-sm font-semibold text-slate-300 hover:text-white flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-white/5 backdrop-blur-sm group">
+            <button className={`text-sm font-semibold flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
                {languages.find(lang => lang.code === currentLanguage)?.flagIcon}
                <span className="relative z-10">{languages.find(lang => lang.code === currentLanguage)?.code.toUpperCase()}</span>
               <ChevronDownIcon size={14} className={`transition-all duration-300 ${isLanguageDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
@@ -384,7 +387,7 @@ const Navbar = () => {
         duration: 0.3
       }}>
             <div className="container mx-auto px-4 py-6 flex flex-col space-y-2">
-              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 group overflow-hidden ${activeSection === link.href.substring(1) ? 'text-blue-400 glow-text bg-blue-400/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setIsMenuOpen(false)} initial={{
+              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 group overflow-hidden ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-blue-300 glow-text bg-blue-400/20' : 'text-blue-400 glow-text bg-blue-400/10') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5')}`} onClick={() => setIsMenuOpen(false)} initial={{
             opacity: 0,
             x: -20
           }} animate={{
@@ -417,7 +420,7 @@ const Navbar = () => {
                    <motion.a
                      key={item.name}
                      href={item.href}
-                     className="relative block text-sm font-medium py-3 px-6 ml-2 rounded-xl text-slate-300 hover:text-white transition-all duration-300 group overflow-hidden"
+                     className={`relative block text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden ${isDarkSection ? 'text-gray-200 hover:text-white' : 'text-slate-300 hover:text-white'}`}
                      onClick={() => setIsMenuOpen(false)}
                      initial={{ opacity: 0, x: -20 }}
                      animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + index + 1) * 0.1 } }}
@@ -448,8 +451,8 @@ const Navbar = () => {
                      onClick={() => handleLanguageChange(language.code)}
                      className={`relative w-full text-left text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden flex items-center space-x-3 ${
                        currentLanguage === language.code 
-                         ? 'text-blue-400 bg-blue-400/10' 
-                         : 'text-slate-300 hover:text-white'
+                         ? (isDarkSection ? 'text-blue-300 bg-blue-400/20' : 'text-blue-400 bg-blue-400/10')
+                         : (isDarkSection ? 'text-gray-200 hover:text-white' : 'text-slate-300 hover:text-white')
                      }`}
                      initial={{ opacity: 0, x: -20 }}
                      animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + contactDropdownItems.length + index + 2) * 0.1 } }}
