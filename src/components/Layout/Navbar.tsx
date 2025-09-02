@@ -119,26 +119,121 @@ const Navbar = () => {
   };
   return <motion.header initial="hidden" animate="visible" variants={navVariants} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <motion.a href="#home" className="text-2xl font-bold text-white flex items-center group" variants={itemVariants} whileHover={{
-        scale: 1.05
-      }} whileTap={{
-        scale: 0.95
-      }}>
+        <motion.a 
+          href="#home" 
+          className="text-2xl font-bold text-white flex items-center group relative" 
+          variants={itemVariants} 
+          whileHover={{
+            scale: 1.05
+          }} 
+          whileTap={{
+            scale: 0.95
+          }}
+        >
+          {/* Animated background glow */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-lg"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
           <motion.span 
-            className="text-blue-400 glow-text transition-all duration-300 group-hover:text-blue-300" 
-            animate={{ rotate: [0, -5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-blue-400 glow-text transition-all duration-300 group-hover:text-blue-300 relative z-10" 
+            animate={{ 
+              rotate: [0, -5, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
           >
             &lt;
           </motion.span>
-          <span className="gradient-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-extrabold tracking-tight">BloomPixel</span>
+          
           <motion.span 
-            className="text-purple-400 glow-text-purple transition-all duration-300 group-hover:text-purple-300"
-            animate={{ rotate: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="gradient-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-extrabold tracking-tight relative z-10"
+            animate={{
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            style={{
+              backgroundSize: '200% 200%'
+            }}
+          >
+            <motion.span
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(59, 130, 246, 0.5)',
+                  '0 0 20px rgba(147, 51, 234, 0.5)',
+                  '0 0 30px rgba(236, 72, 153, 0.5)',
+                  '0 0 20px rgba(147, 51, 234, 0.5)',
+                  '0 0 10px rgba(59, 130, 246, 0.5)'
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              BloomPixel
+            </motion.span>
+          </motion.span>
+          
+          <motion.span 
+            className="text-purple-400 glow-text-purple transition-all duration-300 group-hover:text-purple-300 relative z-10"
+            animate={{ 
+              rotate: [0, 5, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut", 
+              delay: 1 
+            }}
           >
             /&gt;
           </motion.span>
+          
+          {/* Sparkle effects */}
+          <motion.div
+            className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: 0.5
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-purple-400 rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: 1.5
+            }}
+          />
         </motion.a>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">

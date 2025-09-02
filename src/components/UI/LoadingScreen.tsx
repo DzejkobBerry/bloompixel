@@ -43,11 +43,112 @@ const LoadingScreen = () => {
     }} transition={{
       duration: 0.5
     }}>
-        <div className="text-5xl font-bold mb-8 text-center">
-          <span className="text-blue-400">&lt;</span>
-          <span className="gradient-text">BloomPixel</span>
-          <span className="text-purple-400">/&gt;</span>
-        </div>
+        <motion.div className="text-5xl font-bold mb-8 text-center relative group">
+          {/* Animated background glow */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-lg blur-lg"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          <motion.span 
+            className="text-blue-400 glow-text transition-all duration-300 group-hover:text-blue-300 relative z-10" 
+            animate={{ 
+              rotate: [0, -5, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          >
+            &lt;
+          </motion.span>
+          
+          <motion.span 
+            className="gradient-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-extrabold tracking-tight relative z-10"
+            animate={{
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            style={{
+              backgroundSize: '200% 200%'
+            }}
+          >
+            <motion.span
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(59, 130, 246, 0.5)',
+                  '0 0 20px rgba(147, 51, 234, 0.5)',
+                  '0 0 30px rgba(236, 72, 153, 0.5)',
+                  '0 0 20px rgba(147, 51, 234, 0.5)',
+                  '0 0 10px rgba(59, 130, 246, 0.5)'
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              BloomPixel
+            </motion.span>
+          </motion.span>
+          
+          <motion.span 
+            className="text-purple-400 glow-text-purple transition-all duration-300 group-hover:text-purple-300 relative z-10"
+            animate={{ 
+              rotate: [0, 5, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut", 
+              delay: 1 
+            }}
+          >
+            /&gt;
+          </motion.span>
+          
+          {/* Sparkle effects */}
+          <motion.div
+            className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: 0.5
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-purple-400 rounded-full"
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: 1.5
+            }}
+          />
+        </motion.div>
         <div className="terminal w-80 md:w-96 mx-auto mb-8">
           <div className="terminal-line">
             <span className="terminal-prompt">$</span>
