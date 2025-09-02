@@ -169,15 +169,39 @@ const TechStackSection = () => {
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
-        <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our <span className="gradient-text glow-text">Tech Stack</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
-          <p className="text-slate-300 text-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            className="inline-block mb-6"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+                Our
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Tech Stack
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+          </motion.div>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             We leverage cutting-edge technologies to build powerful, scalable,
             and beautiful digital solutions.
-          </p>
+          </motion.p>
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
           <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">

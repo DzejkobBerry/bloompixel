@@ -62,18 +62,39 @@ const PricingSection = () => {
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
-        <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Our{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-              Pricing
-            </span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
-          <p className="text-slate-600 text-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            className="inline-block mb-6"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
+                Our
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                Pricing
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+          </motion.div>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Transparent pricing plans designed to meet your needs and budget.
-          </p>
-          <div className="mt-8 flex items-center justify-center">
+          </motion.p>
+          <div className="flex items-center justify-center">
             <span className={`mr-3 text-sm font-medium ${!isAnnual ? 'text-blue-600' : 'text-slate-500'}`}>
               Monthly
             </span>

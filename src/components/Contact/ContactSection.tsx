@@ -69,18 +69,39 @@ const ContactSection = () => {
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
-        <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Skontaktuj się{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-              z Nami
-            </span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
-          <p className="text-slate-600 text-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            className="inline-block mb-6"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
+                Skontaktuj się
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                z Nami
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+          </motion.div>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Masz pomysł na projekt lub chcesz przedyskutować, jak możemy pomóc
             Twojemu biznesowi? Porozmawiajmy!
-          </p>
+          </motion.p>
         </motion.div>
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-12">
