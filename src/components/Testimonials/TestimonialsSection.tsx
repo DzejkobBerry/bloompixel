@@ -2,6 +2,7 @@ import React, { useState, useEffect, Children } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon, PlayIcon, PauseIcon } from 'lucide-react';
 import TestimonialCard from '../UI/TestimonialCard';
 import { motion, AnimatePresence } from 'framer-motion';
+import ParticlesLight from '../UI/ParticlesLight';
 const TestimonialsSection = () => {
   const testimonials = [{
     name: 'Anna Kowalska',
@@ -128,26 +129,13 @@ const TestimonialsSection = () => {
     setIsAutoPlaying(false); // Stop auto-play when user interacts
     prevSlide();
   };
-  return <section id="testimonials" className="py-20 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Subtle Side Glows */}
-        <div className="absolute -left-32 top-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl" />
-        <div className="absolute -right-32 top-3/4 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl" />
-        <div className="absolute left-1/4 -top-32 w-48 h-48 bg-indigo-400/4 rounded-full blur-2xl" />
-        <div className="absolute right-1/4 -bottom-32 w-48 h-48 bg-pink-400/4 rounded-full blur-2xl" />
-        
-        {/* Subtle Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-100"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(59,130,246,0.015) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59,130,246,0.015) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }}
-        />
+  return <section id="testimonials" className="py-20 bg-gray-200 relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%227%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50 z-0"></div>
+      
+      {/* Molecular Animation Background */}
+      <div className="absolute inset-0 z-10">
+        <ParticlesLight />
       </div>
 
       <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
