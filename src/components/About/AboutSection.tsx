@@ -1,259 +1,361 @@
-import React, { useEffect, useRef, Children } from 'react';
-import { CheckCircleIcon, CodeIcon, GlobeIcon, ServerIcon } from 'lucide-react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { Star, Heart, Sparkles, TrendingUp, Shield, Globe, Rocket } from 'lucide-react';
+import { motion, useInView, useMotionValue, useTransform } from 'framer-motion';
 const AboutSection = () => {
-  const skills = [{
-    name: 'HTML5 & CSS3',
-    level: 95
-  }, {
-    name: 'JavaScript (ES6+)',
-    level: 90
-  }, {
-    name: 'React.js',
-    level: 92
-  }, {
-    name: 'Node.js',
-    level: 85
-  }, {
-    name: 'TypeScript',
-    level: 88
-  }, {
-    name: 'Responsive Design',
-    level: 95
-  }, {
-    name: 'UI/UX Design',
-    level: 90
-  }, {
-    name: 'RESTful APIs',
-    level: 85
-  }];
-  const timelineItems = [{
-    year: '2018',
-    title: 'Założenie Firmy',
-    description: 'BloomPixel zostało założone z wizją tworzenia wyjątkowych doświadczeń cyfrowych.'
-  }, {
-    year: '2019',
-    title: 'Pierwszy Duży Projekt',
-    description: 'Pomyślnie dostarczyliśmy naszą pierwszą aplikację internetową na poziomie korporacyjnym.'
-  }, {
-    year: '2020',
-    title: 'Rozszerzenie Zespołu',
-    description: 'Powiększyliśmy nasz zespół utalentowanych programistów i projektantów, aby sprostać rosnącemu zapotrzebowaniu.'
-  }, {
-    year: '2021',
-    title: 'Klienci Międzynarodowi',
-    description: 'Rozpoczęliśmy współpracę z klientami z całej Europy i Ameryki Północnej.'
-  }, {
-    year: '2022',
-    title: 'Nowe Technologie',
-    description: 'Rozszerzyliśmy naszą wiedzę o rozwój oparty na AI i zaawansowane animacje.'
-  }, {
-    year: '2023',
-    title: 'Uznanie Branżowe',
-    description: 'Otrzymaliśmy wiele nagród za nasze innowacyjne podejście do tworzenia stron internetowych.'
-  }];
+  const [activeFeature, setActiveFeature] = useState(0);
+  
+  const companyStats = [
+    { icon: Star, label: 'Lat doświadczenia', value: 8, suffix: '+', color: 'from-yellow-400 via-orange-400 to-red-400', bgColor: 'bg-yellow-500/10' },
+    { icon: Heart, label: 'Zadowoleni klienci', value: 150, suffix: '+', color: 'from-pink-400 via-rose-400 to-red-400', bgColor: 'bg-pink-500/10' },
+    { icon: Sparkles, label: 'Zrealizowane projekty', value: 200, suffix: '+', color: 'from-purple-400 via-violet-400 to-indigo-400', bgColor: 'bg-purple-500/10' },
+    { icon: TrendingUp, label: 'Wzrost biznesu klientów', value: 300, suffix: '%', color: 'from-green-400 via-emerald-400 to-teal-400', bgColor: 'bg-green-500/10' }
+  ];
+
+  const companyValues = [
+    {
+      icon: Sparkles,
+      title: 'Innowacyjność',
+      subtitle: 'Zawsze na czele technologii',
+      description: 'W BloomPixel wierzymy, że innowacja to klucz do sukcesu. Stale eksplorujemy nowe technologie i rozwiązania.',
+      color: 'from-blue-400 to-cyan-400',
+      bgGradient: 'from-blue-500/20 to-cyan-500/20',
+      features: ['Najnowsze frameworki', 'AI i Machine Learning', 'Progressive Web Apps', 'Blockchain solutions']
+    },
+    {
+      icon: Shield,
+      title: 'Jakość',
+      subtitle: 'Perfekcja w każdym detalu',
+      description: 'Jakość to fundament naszej pracy. Każdy projekt przechodzi przez rygorystyczne testy i kontrolę jakości.',
+      color: 'from-purple-400 to-pink-400',
+      bgGradient: 'from-purple-500/20 to-pink-500/20',
+      features: ['Code review', 'Automatyczne testy', 'Performance monitoring', 'Security audits']
+    },
+    {
+      icon: Heart,
+      title: 'Partnerstwo',
+      subtitle: 'Budujemy długotrwałe relacje',
+      description: 'Nie jesteśmy tylko dostawcą usług - jesteśmy Twoim partnerem technologicznym wspierającym rozwój biznesu.',
+      color: 'from-green-400 to-teal-400',
+      bgGradient: 'from-green-500/20 to-teal-500/20',
+      features: ['Długoterminowe wsparcie', 'Konsultacje strategiczne', 'Szkolenia zespołu', 'Maintenance i rozwój']
+    }
+  ];
+
+
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, {
-    once: false,
-    amount: 0.2
-  });
-  const skillsAnimation = useAnimation();
+  const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const transformX1 = useTransform(mouseX, [0, 1000], [0, 50]);
+  const transformY1 = useTransform(mouseY, [0, 1000], [0, 30]);
+  const transformX2 = useTransform(mouseX, [0, 1000], [0, -30]);
+  const transformY2 = useTransform(mouseY, [0, 1000], [0, -20]);
+  
+  const [animatedStats, setAnimatedStats] = useState(companyStats.map(() => 0));
+  
   useEffect(() => {
     if (isInView) {
-      skillsAnimation.start('visible');
+      // Animate stats
+      companyStats.forEach((stat, index) => {
+        let start = 0;
+        const increment = stat.value / 60;
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= stat.value) {
+            start = stat.value;
+            clearInterval(timer);
+          }
+          setAnimatedStats(prev => {
+            const newStats = [...prev];
+            newStats[index] = Math.floor(start);
+            return newStats;
+          });
+        }, 30);
+      });
     }
-  }, [isInView, skillsAnimation]);
+  }, [isInView]);
+
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    mouseX.set(event.clientX - rect.left);
+    mouseY.set(event.clientY - rect.top);
+  };
+
   const containerVariants = {
-    hidden: {
-      opacity: 0
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
     }
   };
+
   const itemVariants = {
-    hidden: {
-      y: 20,
-      opacity: 0
-    },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5
-      }
+      transition: { duration: 0.6, ease: 'easeOut' }
     }
   };
-  const skillVariants = {
-    hidden: {
-      width: 0,
-      opacity: 0
-    },
-    visible: level => ({
-      width: `${level}%`,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: 'easeOut'
-      }
-    })
-  };
-  const timelineVariants = {
-    hidden: {
-      opacity: 0
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-  const timelineItemVariants = {
-    hidden: {
-      x: -50,
-      opacity: 0
-    },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-  return <section id="about" className="py-20 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="circuit-pattern absolute inset-0 opacity-10"></div>
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-900/20 rounded-bl-full"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-purple-900/20 rounded-tr-full"></div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
-      once: true,
-      amount: 0.2
-    }} variants={containerVariants} ref={containerRef}>
-        <motion.div className="max-w-3xl mx-auto text-center mb-16" variants={itemVariants}>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            O <span className="gradient-text glow-text">BloomPixel</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
-          <p className="text-slate-300 text-lg">
-            Jesteśmy zespołem pełnym pasji programistów i projektantów, skupiającym się na
-            tworzeniu eleganckich, wydajnych i przyjaznych użytkownikowi rozwiązań cyfrowych,
-            które napędzają rozwój biznesu.
-          </p>
-        </motion.div>
-        <div className="flex flex-col md:flex-row gap-12 items-center mb-20">
-          <motion.div className="md:w-1/2" variants={itemVariants}>
-            <div className="relative">
-              <motion.div className="relative z-10 rounded-lg overflow-hidden shadow-xl" whileHover={{
-              scale: 1.03
-            }} transition={{
-              duration: 0.3
-            }}>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1055&q=80" alt="BloomPixel team at work" className="w-full h-auto" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="text-white text-lg font-bold">Nasz Zespół</div>
-                    <div className="text-slate-300 text-sm">
-                      Współpracujący, innowacyjny, pełen pasji
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-              <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-blue-600/30 to-indigo-600/30 rounded-lg blur-sm"></div>
+
+
+  return (
+    <section id="about" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 overflow-hidden" onMouseMove={handleMouseMove}>
+      {/* Dynamic Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.15),transparent_50%)]" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40" />
+        <motion.div 
+          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
+          style={{
+            x: transformX1,
+            y: transformY1
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-cyan-500/10 to-pink-500/10 rounded-full blur-3xl"
+          style={{
+            x: transformX2,
+            y: transformY2
+          }}
+        />
+      </div>
+
+      <motion.div 
+        className="container mx-auto px-6 py-20 relative z-10" 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }} 
+        variants={containerVariants} 
+        ref={containerRef}
+      >
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            className="inline-block mb-6"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+                Poznaj
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                BloomPixel
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+          </motion.div>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            BloomPixel to agencja kreatywna specjalizująca się w tworzeniu nowoczesnych rozwiązań cyfrowych. 
+            Od 2016 roku pomagamy firmom rozwijać się w świecie cyfrowym, tworząc strony internetowe, 
+            aplikacje mobilne i systemy e-commerce, które nie tylko wyglądają świetnie, ale także przynoszą realne rezultaty biznesowe.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col md:flex-row gap-8 justify-center items-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 flex-1">
+              <h4 className="text-xl font-bold text-white mb-3">Nasza Misja</h4>
+              <p className="text-gray-300">Tworzymy cyfrowe doświadczenia, które łączą piękno designu z funkcjonalnością technologii, pomagając naszym klientom osiągnąć sukces w świecie online.</p>
+            </div>
+            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 flex-1">
+              <h4 className="text-xl font-bold text-white mb-3">Nasza Wizja</h4>
+              <p className="text-gray-300">Być liderem w dziedzinie innowacyjnych rozwiązań cyfrowych, wyznaczając standardy jakości i kreatywności w branży IT.</p>
             </div>
           </motion.div>
-          <div className="md:w-1/2">
-            <motion.h3 className="text-2xl font-bold text-white mb-4" variants={itemVariants}>
-              Kim Jesteśmy
-            </motion.h3>
-            <motion.p className="text-slate-300 mb-6" variants={itemVariants}>
-              Z ponad 5-letnim doświadczeniem w tworzeniu stron internetowych, pomogliśmy
-              firmom i osobom prywatnym wcielić w życie ich cyfrowe wizje. Łączymy
-              wiedzę techniczną z kreatywnym rozwiązywaniem problemów, aby dostarczać
-              rozwiązania, które nie tylko świetnie wyglądają, ale także działają wyjątkowo.
-            </motion.p>
-            <motion.p className="text-slate-300 mb-8" variants={itemVariants}>
-              Nasze podejście jest oparte na współpracy i skupione na kliencie. Wierzymy w
-              jasną komunikację, dbałość o szczegóły i dostarczanie projektów, które
-              przekraczają oczekiwania.
-            </motion.p>
-            <motion.h3 className="text-2xl font-bold text-white mb-6" variants={itemVariants}>
-              Nasza Ekspertyza
-            </motion.h3>
-            <motion.div className="space-y-4 mb-8" variants={containerVariants} animate={skillsAnimation} initial="hidden">
-              {skills.map((skill, index) => <div key={index} className="mb-2">
-                  <div className="flex justify-between mb-1">
-                    <span className="text-slate-300">{skill.name}</span>
-                    <span className="text-blue-400">{skill.level}%</span>
+        </motion.div>
+
+        {/* Hero Stats */}
+        <motion.div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {companyStats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative group"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <div className={`${stat.bgColor} backdrop-blur-xl rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all duration-500`}>
+                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${stat.color} p-3 mb-4 mx-auto shadow-lg`}>
+                    <Icon className="w-full h-full text-white" />
                   </div>
-                  <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div className="h-full bg-gradient-to-r from-blue-500 to-indigo-600" variants={skillVariants} custom={skill.level} />
+                  <div className="text-3xl font-bold text-white mb-1 text-center">
+                    {animatedStats[index]}{stat.suffix}
                   </div>
-                </div>)}
-            </motion.div>
-            <motion.div className="flex flex-wrap gap-6" variants={containerVariants}>
-              <motion.div className="flex flex-col items-center" variants={itemVariants} whileHover={{
-              y: -5
-            }}>
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center mb-2 shadow-md border border-blue-500/30">
-                  <CodeIcon className="text-blue-400" size={24} />
+                  <p className="text-gray-400 text-center text-sm font-medium">{stat.label}</p>
                 </div>
-                <p className="text-white font-medium">Frontend</p>
               </motion.div>
-              <motion.div className="flex flex-col items-center" variants={itemVariants} whileHover={{
-              y: -5
-            }}>
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-2 shadow-md border border-purple-500/30">
-                  <ServerIcon className="text-purple-400" size={24} />
-                </div>
-                <p className="text-white font-medium">Backend</p>
-              </motion.div>
-              <motion.div className="flex flex-col items-center" variants={itemVariants} whileHover={{
-              y: -5
-            }}>
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 flex items-center justify-center mb-2 shadow-md border border-cyan-500/30">
-                  <GlobeIcon className="text-cyan-400" size={24} />
-                </div>
-                <p className="text-white font-medium">Full Stack</p>
-              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Interactive Features Section */}
+        <motion.div 
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <div className="text-center mb-16">
+            <h3 className="text-5xl font-bold text-white mb-4">
+              Dlaczego <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">BloomPixel?</span>
+            </h3>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Poznaj nasze wartości i podejście do tworzenia oprogramowania
+            </p>
+          </div>
+          
+          {/* Feature Tabs */}
+          <div className="flex justify-center mb-12">
+            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-2 border border-white/10 flex flex-row space-x-2">
+              {companyValues.map((value, index) => {
+                const Icon = value.icon;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setActiveFeature(index)}
+                    className={`flex items-center gap-3 px-6 py-4 rounded-xl transition-all duration-300 ${
+                      activeFeature === index
+                        ? `bg-gradient-to-r ${value.color} text-white shadow-lg`
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-semibold">{value.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Active Feature Display */}
+          <motion.div
+            key={activeFeature}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className={`bg-gradient-to-r ${companyValues[activeFeature].bgGradient} backdrop-blur-xl rounded-3xl p-8 border border-white/20`}>
+              <div className="text-center mb-8">
+                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${companyValues[activeFeature].color} p-5 mx-auto mb-6 shadow-2xl`}>
+                   {(() => {
+                     const IconComponent = companyValues[activeFeature].icon;
+                     return <IconComponent className="w-full h-full text-white" />;
+                   })()}
+                 </div>
+                <h4 className="text-3xl font-bold text-white mb-2">{companyValues[activeFeature].title}</h4>
+                <p className="text-lg text-blue-200 mb-4">{companyValues[activeFeature].subtitle}</p>
+                <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
+                  {companyValues[activeFeature].description}
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {companyValues[activeFeature].features.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20"
+                  >
+                    <span className="text-white font-semibold">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+
+        {/* Call to Action */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <div className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-3xl p-12 border border-white/20">
+            <motion.h3 
+              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              Zrealizujmy Twój <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projekt</span> Razem
+            </motion.h3>
+            <motion.p 
+              className="text-gray-300 text-xl mb-10 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
+              Masz pomysł na aplikację, stronę internetową lub system e-commerce? 
+              Skontaktuj się z nami i przekonaj się, dlaczego klienci wybierają BloomPixel.
+            </motion.p>
+            
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.6 }}
+            >
+              <motion.button
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-2xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Bezpłatna Konsultacja
+                  <Rocket className="w-5 h-5" />
+                </span>
+              </motion.button>
+              
+              <motion.button
+                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Nasze Realizacje
+              </motion.button>
             </motion.div>
           </div>
-        </div>
-        <motion.div className="mt-20" variants={itemVariants}>
-          <h3 className="text-2xl font-bold text-white text-center mb-10">
-            Nasza <span className="gradient-text glow-text">Podróż</span>
-          </h3>
-          <motion.div className="relative" variants={timelineVariants} initial="hidden" whileInView="visible" viewport={{
-          once: true,
-          amount: 0.2
-        }}>
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-600"></div>
-            <div className="relative">
-              {timelineItems.map((item, index) => <motion.div key={index} className={`flex items-center mb-12 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`} variants={timelineItemVariants}>
-                  <div className={`w-1/2 px-6 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                    <div className="text-sm text-blue-400 mb-1">
-                      {item.year}
-                    </div>
-                    <h4 className="text-lg font-bold text-white mb-2">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-300">{item.description}</p>
-                  </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-600 border-4 border-slate-900 z-10"></div>
-                  </div>
-                  <div className="w-1/2"></div>
-                </motion.div>)}
-            </div>
-          </motion.div>
         </motion.div>
       </motion.div>
-    </section>;
+    </section>
+  );
 };
 export default AboutSection;

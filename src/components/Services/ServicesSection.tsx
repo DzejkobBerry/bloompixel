@@ -23,7 +23,7 @@ const App = () => {
   );
 };`
   }, {
-    title: 'Tworzenie Aplikacji Internetowych',
+    title: 'Promowanie usług',
     description: 'Potężne, skalowalne aplikacje internetowe z solidną funkcjonalnością i intuicyjnymi interfejsami.',
     icon: <ServerIcon size={24} />,
     color: 'purple',
