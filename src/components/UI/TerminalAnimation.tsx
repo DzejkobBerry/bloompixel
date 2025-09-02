@@ -254,14 +254,14 @@ const TerminalAnimation = () => {
       <AnimatePresence>
         {showModal && (
           <motion.div 
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 rounded-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowModal(false)}
           >
             <motion.div 
-              className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-600/50 shadow-2xl max-w-md w-full mx-4 relative overflow-hidden"
+              className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 rounded-lg border border-slate-600/50 shadow-2xl w-full h-full relative overflow-hidden"
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -310,13 +310,13 @@ const TerminalAnimation = () => {
               <div className="relative z-10">
               {/* Success Icon */}
               <motion.div 
-                className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
               >
                 <motion.svg 
-                  className="w-8 h-8 text-white"
+                  className="w-6 h-6 text-white"
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -331,7 +331,7 @@ const TerminalAnimation = () => {
               {/* Modal Content */}
               <div className="text-center">
                 <motion.h3 
-                  className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2"
+                  className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -339,7 +339,7 @@ const TerminalAnimation = () => {
                   🚀 Deployment Complete!
                 </motion.h3>
                 <motion.div 
-                  className="text-sm text-blue-400 font-mono mb-4 bg-blue-400/10 px-3 py-1 rounded-full inline-block"
+                  className="text-xs text-blue-400 font-mono mb-3 bg-blue-400/10 px-2 py-1 rounded-full inline-block"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.35 }}
@@ -347,7 +347,7 @@ const TerminalAnimation = () => {
                   ✓ Build: SUCCESS | Tests: PASSED | Deploy: LIVE
                 </motion.div>
                 <motion.p 
-                  className="text-slate-300 mb-2 leading-relaxed font-medium"
+                  className="text-slate-300 mb-1 leading-relaxed font-medium text-sm"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
@@ -355,7 +355,7 @@ const TerminalAnimation = () => {
                   Twój projekt został pomyślnie wdrożony i jest gotowy do użycia!
                 </motion.p>
                 <motion.p 
-                  className="text-slate-400 text-sm mb-6 leading-relaxed"
+                  className="text-slate-400 text-xs mb-4 leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.45 }}
@@ -364,9 +364,9 @@ const TerminalAnimation = () => {
                 </motion.p>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   <motion.button
-                    className="flex-1 px-6 py-3 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-lg transition-all duration-300 border border-slate-600/50 hover:border-slate-500/70 backdrop-blur-sm"
+                    className="flex-1 px-4 py-2 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-lg transition-all duration-300 border border-slate-600/50 hover:border-slate-500/70 backdrop-blur-sm text-sm"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
@@ -386,7 +386,7 @@ const TerminalAnimation = () => {
                     </span>
                   </motion.button>
                   <motion.button
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 text-white rounded-lg transition-all duration-300 font-semibold shadow-lg relative overflow-hidden"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 text-white rounded-lg transition-all duration-300 font-semibold shadow-lg relative overflow-hidden text-sm"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 }}
