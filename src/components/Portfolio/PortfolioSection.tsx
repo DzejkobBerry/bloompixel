@@ -169,17 +169,7 @@ const PortfolioSection = () => {
           
 
         </motion.div>
-        <motion.div className="flex justify-center mb-12" variants={itemVariants}>
-          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">
-            {filters.map(filter => <motion.button key={filter.id} className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeFilter === filter.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setActiveFilter(filter.id)} whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.95
-          }}>
-                {filter.label}
-              </motion.button>)}
-          </div>
-        </motion.div>
+
         
         {/* Process Section */}
         <motion.div 
@@ -208,7 +198,7 @@ const PortfolioSection = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
                 1
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Discovery</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Odkrywanie</h4>
               <p className="text-slate-300 text-sm">
                 Analizujemy Twoje potrzeby, cele biznesowe i grupę docelową
               </p>
@@ -224,7 +214,7 @@ const PortfolioSection = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
                 2
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Design</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Projektowanie</h4>
               <p className="text-slate-300 text-sm">
                 Tworzymy wireframy, prototypy i finalne projekty UI/UX
               </p>
@@ -240,7 +230,7 @@ const PortfolioSection = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
                 3
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Development</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Rozwój</h4>
               <p className="text-slate-300 text-sm">
                 Kodujemy rozwiązanie używając najnowszych technologii
               </p>
@@ -256,13 +246,31 @@ const PortfolioSection = () => {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform">
                 4
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Launch</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Wdrożenie</h4>
               <p className="text-slate-300 text-sm">
                 Wdrażamy projekt i zapewniamy pełne wsparcie techniczne
               </p>
             </motion.div>
           </div>
         </motion.div>
+        
+        {/* Filter Buttons */}
+        <div className="flex justify-center mb-12" style={{opacity: 1, transform: 'none'}}>
+          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">
+            <button className="px-4 py-2 rounded-md text-sm font-medium transition-all bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm" tabIndex={0} style={{transform: 'none'}}>
+              Wszystkie Prace
+            </button>
+            <button className="px-4 py-2 rounded-md text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" tabIndex={0} style={{transform: 'none'}}>
+              Strony Internetowe
+            </button>
+            <button className="px-4 py-2 rounded-md text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" tabIndex={0} style={{transform: 'none'}}>
+              Aplikacje Web
+            </button>
+            <button className="px-4 py-2 rounded-md text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5" tabIndex={0} style={{transform: 'none'}}>
+              Projektowanie UI/UX
+            </button>
+          </div>
+        </div>
         
         <AnimatePresence mode="wait">
           <motion.div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
@@ -309,9 +317,9 @@ const PortfolioSection = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Rozpocznij Projekt
+                Zobacz Więcej Projektów
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
               </motion.a>
               
