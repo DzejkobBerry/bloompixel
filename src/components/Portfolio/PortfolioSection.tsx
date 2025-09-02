@@ -52,6 +52,38 @@ const PortfolioSection = () => {
     technologies: ['Illustrator', 'Photoshop', 'InDesign'],
     demoUrl: '#',
     features: ['Projekt logo', 'Paleta kolorów', 'Wybór typografii', 'Projekt menu', 'Oznakowanie i materiały promocyjne', 'Projekt strony internetowej']
+  }, {
+    title: 'Aplikacja Fitness',
+    category: 'web-app',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
+    description: 'Kompleksowa aplikacja fitness z treningami, dietą i monitorowaniem postępów dla klubu sportowego.',
+    technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
+    demoUrl: '#',
+    features: ['Personalne plany treningowe', 'Kalkulator kalorii', 'Śledzenie postępów', 'Społeczność użytkowników', 'Integracja z urządzeniami fitness', 'Powiadomienia motywacyjne']
+  }, {
+    title: 'Portal Edukacyjny',
+    category: 'website',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80',
+    description: 'Nowoczesny portal edukacyjny z kursami online, systemem oceniania i komunikacją nauczyciel-uczeń.',
+    technologies: ['Vue.js', 'Laravel', 'MySQL', 'WebRTC'],
+    demoUrl: '#',
+    features: ['Kursy online z wideo', 'System oceniania', 'Kalendarz zajęć', 'Komunikator wideo', 'Biblioteka materiałów', 'Raporty postępów']
+  }, {
+    title: 'Sklep Internetowy Fashion',
+    category: 'web-app',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
+    description: 'Elegancki sklep internetowy z modą damską, zaawansowanymi filtrami i AR do przymierzania.',
+    technologies: ['Next.js', 'Shopify', 'Three.js', 'Stripe'],
+    demoUrl: '#',
+    features: ['Wirtualne przymierzanie AR', 'Zaawansowane filtry produktów', 'Wishlist i porównywarka', 'Program lojalnościowy', 'Integracja z social media', 'Responsywny design']
+  }, {
+    title: 'Dashboard Analityczny',
+    category: 'web-app',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
+    description: 'Zaawansowany dashboard do analizy danych biznesowych z interaktywnymi wykresami i raportami.',
+    technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
+    demoUrl: '#',
+    features: ['Interaktywne wykresy', 'Raporty w czasie rzeczywistym', 'Eksport danych', 'Niestandardowe metryki', 'Alerty i powiadomienia', 'Multi-tenant architecture']
   }];
   const filters = [{
     id: 'all',
@@ -135,58 +167,7 @@ const PortfolioSection = () => {
             osiągnąć ich cyfrowe cele.
           </motion.p>
           
-          {/* Stats Section */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="text-center">
-              <motion.div 
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-              >
-                50+
-              </motion.div>
-              <div className="text-slate-300 text-sm md:text-base">Ukończonych Projektów</div>
-            </div>
-            <div className="text-center">
-              <motion.div 
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
-                98%
-              </motion.div>
-              <div className="text-slate-300 text-sm md:text-base">Zadowolonych Klientów</div>
-            </div>
-            <div className="text-center">
-              <motion.div 
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent mb-2"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.0 }}
-              >
-                5+
-              </motion.div>
-              <div className="text-slate-300 text-sm md:text-base">lat Doświadczenia</div>
-            </div>
-            <div className="text-center">
-              <motion.div 
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent mb-2"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-              >
-                24/7
-              </motion.div>
-              <div className="text-slate-300 text-sm md:text-base">Wsparcie Techniczne</div>
-            </div>
-          </motion.div>
+
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
           <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">
@@ -285,7 +266,7 @@ const PortfolioSection = () => {
         
         <AnimatePresence mode="wait">
           <motion.div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-            {filteredItems.map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
+            {filteredItems.slice(0, 9).map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
           </motion.div>
         </AnimatePresence>
         

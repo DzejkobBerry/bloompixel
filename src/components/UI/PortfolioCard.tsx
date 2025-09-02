@@ -101,42 +101,45 @@ const PortfolioCard = ({
     }
   };
   return <>
-      <motion.div className="group relative overflow-hidden rounded-lg glass-effect cursor-pointer transition-all duration-300 hover:shadow-xl border border-white/10" onClick={() => setIsModalOpen(true)} variants={cardVariants} custom={index} whileHover={{
-      y: -10,
-      boxShadow: '0 0 25px rgba(59, 130, 246, 0.3)'
+      <motion.div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl cursor-pointer transition-all duration-500 border border-white/20 shadow-2xl" onClick={() => setIsModalOpen(true)} variants={cardVariants} custom={index} whileHover={{
+      y: -15,
+      scale: 1.02,
+      boxShadow: '0 25px 50px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
     }} ref={cardRef} animate={isInView ? 'visible' : 'hidden'} initial="hidden">
-        <div className="relative aspect-video overflow-hidden">
+        <div className="relative aspect-video overflow-hidden rounded-t-2xl">
           <motion.img src={item.image} alt={item.title} className="w-full h-full object-cover" whileHover={{
-          scale: 1.1
+          scale: 1.15
         }} transition={{
-          duration: 0.5
+          duration: 0.7,
+          ease: "easeOut"
         }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-            <div className="p-6">
-              <motion.h3 className="text-xl font-bold text-white mb-2" initial={{
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-slate-900/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="p-6 relative z-10">
+                <motion.h3 className="text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-3 drop-shadow-lg" initial={{
               y: 20,
               opacity: 0
             }} whileInView={{
               y: 0,
               opacity: 1
             }} transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.1
             }}>
-                {item.title}
-              </motion.h3>
-              <motion.p className="text-slate-200 text-sm mb-3" initial={{
+                  {item.title}
+                </motion.h3>
+                <motion.p className="text-slate-100 text-sm mb-4 leading-relaxed" initial={{
               y: 20,
               opacity: 0
             }} whileInView={{
               y: 0,
               opacity: 1
             }} transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.2
             }}>
-                {item.description.substring(0, 60)}...
-              </motion.p>
+                  {item.description.substring(0, 80)}...
+                </motion.p>
               <motion.div className="flex flex-wrap gap-2" initial={{
               y: 20,
               opacity: 0
@@ -144,41 +147,58 @@ const PortfolioCard = ({
               y: 0,
               opacity: 1
             }} transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.3
             }}>
-                {item.technologies.slice(0, 2).map((tech, index) => <span key={index} className="px-2 py-1 bg-white/10 rounded text-xs text-white">
-                    {tech}
-                  </span>)}
-                {item.technologies.length > 2 && <span className="px-2 py-1 bg-white/10 rounded text-xs text-white">
-                    +{item.technologies.length - 2}
-                  </span>}
-              </motion.div>
+                  {item.technologies.slice(0, 2).map((tech, index) => <span key={index} className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-xs text-blue-100 border border-blue-400/30 shadow-lg">
+                      {tech}
+                    </span>)}
+                  {item.technologies.length > 2 && <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-xs text-purple-100 border border-purple-400/30 shadow-lg">
+                      +{item.technologies.length - 2}
+                    </span>}
+                </motion.div>
             </div>
           </div>
         </div>
-        <div className="absolute top-3 right-3">
-          <motion.div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity" whileHover={{
-          scale: 1.1
+        <div className="absolute top-4 right-4">
+          <motion.div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 backdrop-blur-xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/20 shadow-xl" whileHover={{
+          scale: 1.2,
+          rotate: 15
         }} whileTap={{
           scale: 0.9
         }}>
-            <ExternalLinkIcon size={14} />
+            <ExternalLinkIcon size={16} />
           </motion.div>
         </div>
-        <div className="absolute top-3 left-3">
-          <motion.div className={`px-2 py-1 rounded-full text-xs backdrop-blur-md ${item.category === 'web-app' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' : item.category === 'website' ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-pink-500/20 text-pink-300 border border-pink-500/30'}`} initial={{
+        <div className="absolute top-4 left-4">
+          <motion.div className={`px-4 py-2 rounded-full text-xs font-medium backdrop-blur-xl shadow-lg ${item.category === 'web-app' ? 'bg-gradient-to-r from-blue-500/30 to-cyan-500/30 text-blue-100 border border-blue-400/40' : item.category === 'website' ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30 text-purple-100 border border-purple-400/40' : 'bg-gradient-to-r from-pink-500/30 to-rose-500/30 text-pink-100 border border-pink-400/40'}`} initial={{
           x: -20,
           opacity: 0
         }} animate={{
           x: 0,
           opacity: 1
         }} transition={{
-          duration: 0.3,
+          duration: 0.4,
           delay: 0.1
         }}>
             {item.category === 'web-app' ? 'Web App' : item.category === 'website' ? 'Website' : 'UI/UX Design'}
           </motion.div>
+        </div>
+        
+        {/* Bottom section with additional info */}
+        <div className="p-6 bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+              <span className="text-slate-300 text-sm font-medium">Dostępne do podglądu</span>
+            </div>
+            <motion.div 
+              className="text-slate-400 text-xs px-3 py-1 bg-slate-700/50 rounded-full border border-slate-600/50"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(51, 65, 85, 0.8)" }}
+            >
+              Kliknij aby zobaczyć więcej
+            </motion.div>
+          </div>
         </div>
       </motion.div>
       <AnimatePresence>
