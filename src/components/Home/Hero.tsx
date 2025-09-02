@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, Children } from 'react';
-import { ArrowRightIcon, CodeIcon, LayoutIcon, PenToolIcon } from 'lucide-react';
+import { ArrowRightIcon, CodeIcon, LayoutIcon, PenToolIcon, ChevronDownIcon } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import Particles from '../UI/Particles';
 import TerminalAnimation from '../UI/TerminalAnimation';
+import TypewriterText from '../UI/TypewriterText';
 const Hero = () => {
   const containerVariants = {
     hidden: {
@@ -70,7 +71,11 @@ const Hero = () => {
             <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4" variants={itemVariants}>
               Tworzymy{' '}
               <span className="gradient-text glow-text">
-                Cyfrowe Doświadczenia
+                <TypewriterText 
+                  text="Cyfrowe Doświadczenia" 
+                  delay={1000} 
+                  speed={80}
+                />
               </span>{' '}
               Które Mają Znaczenie
             </motion.h1>
@@ -122,6 +127,20 @@ const Hero = () => {
                   <p className="font-medium text-white">Strategia Cyfrowa</p>
                 </div>
               </motion.div>
+              <motion.div className="flex items-center" variants={serviceIconVariants} whileHover={{
+              scale: 1.05
+            }}>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center mr-3 shadow-md glow-pink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                    <path d="M3 9h18"></path>
+                    <path d="M9 21V9"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium text-white">Projektowanie Graficzne</p>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
           <motion.div className="md:w-1/2 relative" variants={itemVariants} animate={floatingAnimation}>
@@ -144,6 +163,34 @@ const Hero = () => {
             </div>
             <div className="absolute -z-10 top-8 -right-4 w-64 h-64 bg-blue-700 rounded-full opacity-30 blur-3xl"></div>
             <div className="absolute -z-10 bottom-8 -left-4 w-64 h-64 bg-purple-700 rounded-full opacity-30 blur-3xl"></div>
+          </motion.div>
+        </motion.div>
+        
+        {/* Scroll Down Indicator */}
+        <motion.div 
+          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+          whileHover={{ scale: 1.1 }}
+          onClick={() => {
+            const nextSection = document.getElementById('services') || document.querySelector('section:nth-child(2)');
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <span className="text-slate-400 text-sm mb-2 font-medium">Przewiń w dół</span>
+          <motion.div
+            className="w-8 h-8 rounded-full border-2 border-slate-400 flex items-center justify-center"
+            animate={{ y: [0, 8, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <ChevronDownIcon size={16} className="text-slate-400" />
           </motion.div>
         </motion.div>
       </div>
