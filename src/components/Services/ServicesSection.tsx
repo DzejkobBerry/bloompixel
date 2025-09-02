@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, Children, lazy, memo, Component } from 'react';
-import { CodeIcon, LayoutIcon, ServerIcon, SmartphoneIcon, PenToolIcon, WrenchIcon } from 'lucide-react';
+import { CodeIcon, LayoutIcon, ServerIcon, SmartphoneIcon, PenToolIcon, WrenchIcon, SearchIcon, MegaphoneIcon } from 'lucide-react';
 import ServiceCard from '../UI/ServiceCard';
 import { motion } from 'framer-motion';
 const ServicesSection = () => {
@@ -24,19 +24,21 @@ const App = () => {
 };`
   }, {
     title: 'Promowanie usług',
-    description: 'Potężne, skalowalne aplikacje internetowe z solidną funkcjonalnością i intuicyjnymi interfejsami.',
-    icon: <ServerIcon size={24} />,
+    description: 'Kompleksowe usługi marketingowe i promocyjne - prowadzenie fanpage, rekrutacja, reklama biznesu i budowanie obecności online.',
+    icon: <MegaphoneIcon size={24} />,
     color: 'purple',
-    features: ['Uwierzytelnianie Użytkowników', 'Integracja Baz Danych', 'Rozwój API', 'Aktualizacje w Czasie Rzeczywistym'],
+    features: ['Prowadzenie FanPage', 'Rekrutacja Pracowników', 'Reklama Biznesu', 'Marketing Społecznościowy'],
     codeSnippet: `
-const [data, setData] = useState([]);
-useEffect(() => {
-  const fetchData = async () => {
-    const response = await api.get('/data');
-    setData(response.data);
-  };
-  fetchData();
-}, []);`
+// Facebook Pixel tracking
+fbq('track', 'PageView');
+fbq('track', 'Purchase', {
+  value: 0.00,
+  currency: 'PLN'
+});
+// Google Analytics
+gtag('event', 'conversion', {
+  'send_to': 'AW-CONVERSION_ID'
+});`
   }, {
     title: 'Projektowanie UI/UX',
     description: 'Design skupiony na użytkowniku, który zwiększa użyteczność, tworząc jednocześnie piękne, angażujące interfejsy.',
@@ -52,34 +54,34 @@ useEffect(() => {
   <Button>Get Started</Button>
 </motion.div>`
   }, {
-    title: 'Rozwój Mobile-First',
-    description: 'Strony internetowe zoptymalizowane pod urządzenia mobilne, zapewniające świetną wydajność na smartfonach i tabletach.',
-    icon: <SmartphoneIcon size={24} />,
+    title: 'Pozycjonowanie SEO',
+    description: 'Kompleksowa optymalizacja SEO zwiększająca widoczność w wyszukiwarkach i przyciągająca organiczny ruch.',
+    icon: <SearchIcon size={24} />,
     color: 'indigo',
-    features: ['Interfejs Przyjazny Dotykowi', 'Szybkie Ładowanie', 'Możliwości Offline', 'Responsywne Obrazy'],
+    features: ['Analiza Słów Kluczowych', 'Optymalizacja On-Page', 'Link Building', 'Monitoring Pozycji'],
     codeSnippet: `
-const isMobile = useMediaQuery({ maxWidth: 767 });
-return (
-  <div className={isMobile ? 'mobile-view' : 'desktop-view'}>
-    {isMobile ? <MobileNav /> : <DesktopNav />}
-    <Content />
-  </div>
-);`
+<head>
+  <title>Tytuł SEO | Firma</title>
+  <meta name="description" content="Opis meta..." />
+  <meta name="keywords" content="słowa, kluczowe" />
+  <link rel="canonical" href="https://example.com" />
+</head>`
   }, {
     title: 'Identyfikacja Wizualna',
-    description: 'Rozwój spójnej identyfikacji wizualnej, w tym logo, palety kolorów i przewodników stylu.',
+    description: 'Kompleksowe projektowanie identyfikacji wizualnej marki - od logo po materiały promocyjne i obecność online.',
     icon: <PenToolIcon size={24} />,
     color: 'pink',
-    features: ['Projektowanie Logo', 'Schemat Kolorów', 'Typografia', 'Wytyczne Marki'],
+    features: ['Projektowanie Wizytówek', 'Projektowanie Stron WWW', 'Banery Reklamowe', 'Wizerunek Marki'],
     codeSnippet: `
-:root {
-  --primary: #3b82f6;
-  --secondary: #8b5cf6;
-  --accent: #06b6d4;
-  --background: #0f172a;
-  --text: #f8fafc;
-  --font-heading: 'Montserrat';
-  --font-body: 'Inter';
+/* Wizytówka CSS */
+.business-card {
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
 }`
   }, {
     title: 'Konsultacje Techniczne',
