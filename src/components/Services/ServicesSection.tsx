@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, Children, lazy, memo, Component } 
 import { CodeIcon, LayoutIcon, ServerIcon, SmartphoneIcon, PenToolIcon, WrenchIcon, SearchIcon, MegaphoneIcon } from 'lucide-react';
 import ServiceCard from '../UI/ServiceCard';
 import { motion } from 'framer-motion';
+import TypewriterText from '../UI/TypewriterText';
 const ServicesSection = () => {
   const services = [{
     title: 'Tworzenie Stron Internetowych',
@@ -149,11 +150,11 @@ const LazyComponent = lazy(() =>
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                Nasze
+                <TypewriterText text="Nasze" delay={500} speed={100} />
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Usługi
+                <TypewriterText text="Usługi" delay={1200} speed={120} />
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />

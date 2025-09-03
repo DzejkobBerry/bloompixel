@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon, StarIcon, PlayIcon, PauseIcon } from
 import TestimonialCard from '../UI/TestimonialCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import ParticlesLight from '../UI/ParticlesLight';
+import TypewriterText from '../UI/TypewriterText';
 const TestimonialsSection = () => {
   const testimonials = [{
     name: 'Anna Kowalska',
@@ -156,11 +157,11 @@ const TestimonialsSection = () => {
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Opinie
+                <TypewriterText text="Opinie" delay={500} speed={100} />
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Klientów
+                <TypewriterText text="Klientów" delay={1200} speed={120} />
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />

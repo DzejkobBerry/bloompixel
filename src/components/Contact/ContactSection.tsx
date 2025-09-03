@@ -2,6 +2,7 @@ import React, { useState, Children } from 'react';
 import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
+import TypewriterText from '../UI/TypewriterText';
 const ContactSection = () => {
   const [formState, setFormState] = useState({
     name: '',
@@ -83,11 +84,11 @@ const ContactSection = () => {
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Skontaktuj się
+                <TypewriterText text="Skontaktuj się" delay={500} speed={80} />
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                z Nami
+                <TypewriterText text="z Nami" delay={1500} speed={100} />
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />

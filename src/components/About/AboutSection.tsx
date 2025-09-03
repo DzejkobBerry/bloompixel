@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Star, Heart, Sparkles, TrendingUp, Shield, Globe, Rocket } from 'lucide-react';
 import { motion, useInView, useMotionValue, useTransform } from 'framer-motion';
+import TypewriterText from '../UI/TypewriterText';
 const AboutSection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   
@@ -105,7 +106,21 @@ const AboutSection = () => {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.15),transparent_50%)]" />
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,51,234,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40" />
+        {/* Premium Pattern Background */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%221%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2220%22%20r%3D%221%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2260%22%20r%3D%221%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30" />
+        
+        {/* Elegant Grid Overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.02%22%20stroke-width%3D%221%22%3E%3Cpath%20d%3D%22M0%2050h100M50%200v100%22/%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
+        
+        {/* Premium Sparkle Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0s'}} />
+          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '1s'}} />
+          <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '2s'}} />
+          <div className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse" style={{animationDelay: '3s'}} />
+          <div className="absolute top-1/2 left-1/6 w-0.5 h-0.5 bg-indigo-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}} />
+          <div className="absolute top-3/4 right-1/6 w-0.5 h-0.5 bg-violet-400 rounded-full animate-pulse" style={{animationDelay: '1.5s'}} />
+        </div>
         <motion.div 
           className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
           style={{
@@ -145,11 +160,11 @@ const AboutSection = () => {
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                Poznaj
+                <TypewriterText text="Poznaj" delay={500} speed={100} />
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                BloomPixel
+                <TypewriterText text="BloomPixel" delay={1500} speed={120} />
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />

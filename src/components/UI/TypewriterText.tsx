@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface TypewriterTextProps {
@@ -17,8 +17,39 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
+
+  // Intersection Observer to detect when element is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setIsVisible(true);
+          setHasStarted(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, [hasStarted]);
 
   useEffect(() => {
+    if (!isVisible) return;
+    
     const timer = setTimeout(() => {
       if (currentIndex < text.length) {
         setDisplayText(prev => prev + text[currentIndex]);
@@ -30,7 +61,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
     }, currentIndex === 0 ? delay : speed);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, text, delay, speed]);
+  }, [currentIndex, text, delay, speed, isVisible]);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -44,7 +75,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   }, [currentIndex, text.length, showCursor]);
 
   return (
-    <span className={className}>
+    <span ref={elementRef} className={className}>
       {displayText}
       <motion.span
         className="inline-block"

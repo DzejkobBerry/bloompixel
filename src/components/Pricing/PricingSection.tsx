@@ -3,6 +3,7 @@ import { CheckIcon, XIcon, Zap, Rocket, Crown, Star } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import ParticlesLight from '../UI/ParticlesLight';
+import TypewriterText from '../UI/TypewriterText';
 const PricingSection = () => {
   const [isGross, setIsGross] = useState(false);
   const pricingPlans = [{
@@ -85,11 +86,11 @@ const PricingSection = () => {
           >
             <h2 className="text-6xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Nasze
+                <TypewriterText text="Nasze" delay={500} speed={100} />
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                Cennik
+                <TypewriterText text="Cennik" delay={1200} speed={120} />
               </span>
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
