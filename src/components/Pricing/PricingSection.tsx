@@ -1,30 +1,36 @@
 import React, { useState, Children } from 'react';
-import { CheckIcon, XIcon } from 'lucide-react';
+import { CheckIcon, XIcon, Zap, Rocket, Crown, Star } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import ParticlesLight from '../UI/ParticlesLight';
 const PricingSection = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
+  const [isGross, setIsGross] = useState(false);
   const pricingPlans = [{
     name: 'Starter',
-    description: 'Idealny dla małych firm i startupów',
-    monthlyPrice: 2499,
-    annualPrice: 2199,
-    features: ['Responsywny design strony', 'Do 5 podstron', 'Formularz kontaktowy', 'Optymalizacja mobilna', 'Podstawowe SEO', 'Hosting na 12 miesięcy', '1 miesiąc wsparcia technicznego', 'Certyfikat SSL'],
-    notIncluded: ['Funkcjonalność e-commerce', 'Niestandardowe animacje', 'System zarządzania treścią']
+    description: 'Idealny dla małych firm i freelancerów',
+    netPrice: 300,
+    grossPrice: 369,
+    icon: Zap,
+    color: 'from-green-500 to-emerald-600',
+    features: ['Responsywna strona typu wizytówka', 'Podstawowy design', 'Formularz kontaktowy', 'Podstawowa optymalizacja SEO', 'Integracja z Google Analytics', 'Integracja z social media', '1 miesiąc wsparcia technicznego'],
+    notIncluded: ['System CMS', 'Blog', 'Domena i hosting na 12 miesięcy', 'Certyfikat SSL']
   }, {
     name: 'Business',
     description: 'Najlepszy wybór dla rozwijających się firm',
-    monthlyPrice: 4999,
-    annualPrice: 4499,
-    features: ['Responsywny design strony', 'Do 15 podstron', 'Zaawansowane formularze', 'Newsletter i integracje', 'Optymalizacja mobilna', 'Zaawansowane SEO', 'System zarządzania treścią (CMS)', 'Podstawowe animacje', 'Hosting na 12 miesięcy', '3 miesiące wsparcia technicznego', 'Analityka Google'],
-    notIncluded: ['Sklep internetowy', 'Aplikacje webowe'],
+    netPrice: 600,
+    grossPrice: 738,
+    icon: Rocket,
+    color: 'from-blue-600 via-purple-600 to-indigo-700',
+    features: ['Responsywna strona do 5 podstron', 'Zaawansowany design', 'Formularz kontaktowy', 'Zaawansowana optymalizacja SEO', 'Integracja z Google Analytics', 'Integracja z social media', 'Podstawowe animacje', 'Domena PL/NL na 12 miesięcy', 'Hosting na 12 miesięcy', '3 miesiące wsparcia technicznego'],
+    notIncluded: ['System CMS', 'Blog'],
     featured: true
   }, {
     name: 'Premium',
     description: 'Dla firm z zaawansowanymi wymaganiami',
-    monthlyPrice: 9999,
-    annualPrice: 8999,
+    netPrice: 2000,
+    grossPrice: 2460,
+    icon: Crown,
+    color: 'from-purple-600 via-pink-600 to-red-600',
     features: ['Responsywny design strony', 'Nieograniczona liczba podstron', 'Zaawansowane formularze i integracje', 'Pełna optymalizacja mobilna', 'Kompleksowa strategia SEO', 'Zaawansowany CMS', 'Sklep internetowy (e-commerce)', 'Niestandardowe animacje', 'Funkcje aplikacji webowych', 'Hosting Premium na 12 miesięcy', '6 miesięcy wsparcia technicznego', 'Dedykowany opiekun projektu'],
     notIncluded: []
   }];
@@ -98,17 +104,17 @@ const PricingSection = () => {
             Przejrzyste plany cenowe dostosowane do Twoich potrzeb i budżetu.
           </motion.p>
           <div className="flex items-center justify-center">
-            <span className={`mr-3 text-sm font-medium ${!isAnnual ? 'text-blue-600' : 'text-slate-500'}`}>
-              Miesięcznie
+            <span className={`mr-3 text-sm font-medium ${!isGross ? 'text-blue-600' : 'text-slate-500'}`}>
+              Netto
             </span>
             <div className="relative">
-              <motion.div className="w-12 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full shadow-inner cursor-pointer" onClick={() => setIsAnnual(!isAnnual)} whileHover={{
+              <motion.div className="w-12 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full shadow-inner cursor-pointer" onClick={() => setIsGross(!isGross)} whileHover={{
               scale: 1.05
             }} whileTap={{
               scale: 0.95
             }}>
                 <motion.div className="absolute top-1 left-1 bg-white w-4 h-4 rounded-full shadow-sm" animate={{
-                x: isAnnual ? 24 : 0
+                x: isGross ? 24 : 0
               }} transition={{
                 type: 'spring',
                 stiffness: 300,
@@ -116,66 +122,101 @@ const PricingSection = () => {
               }} />
               </motion.div>
             </div>
-            <span className={`ml-3 text-sm font-medium ${isAnnual ? 'text-blue-600' : 'text-slate-500'}`}>
-              Rocznie{' '}
-              <span className="text-xs text-green-500 font-bold">
-                (Oszczędź 10%)
+            <span className={`ml-3 text-sm font-medium ${isGross ? 'text-blue-600' : 'text-slate-500'}`}>
+              Brutto{' '}
+              <span className="text-xs text-gray-500 font-medium">
+                (z VAT 23%)
               </span>
             </span>
           </div>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => <motion.div key={index} className={`rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${plan.featured ? 'transform md:-translate-y-4 scale-105 z-10 ring-2 ring-blue-500 ring-opacity-50' : 'hover:scale-105'}`} variants={itemVariants} whileHover={{
-          y: -10
-        }}>
-              <div className={`p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white shadow-inner' : 'bg-gradient-to-br from-white to-gray-50 text-slate-900'}`}>
-                {plan.featured && <div className="bg-gradient-to-r from-emerald-400 to-emerald-500 text-xs font-bold uppercase tracking-wider text-emerald-900 rounded-full inline-block px-3 py-1 mb-4 shadow-lg">
-                    Najpopularniejszy
-                  </div>}
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className={`text-sm mb-6 ${plan.featured ? 'text-blue-100' : 'text-slate-500'}`}>
+          {pricingPlans.map((plan, index) => {
+            const IconComponent = plan.icon;
+            return <motion.div key={index} className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${plan.featured ? 'transform md:-translate-y-3 ring-2 ring-blue-400 ring-opacity-40 shadow-blue-100' : 'hover:-translate-y-2 hover:shadow-2xl'} relative border border-gray-200`} variants={itemVariants} whileHover={{ y: -8, scale: 1.02 }}>
+              
+              <div className={`relative p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50' : 'bg-gradient-to-br from-white to-gray-50'}`}>
+                {/* Icon and Badge */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className={`p-3 rounded-xl ${plan.featured ? 'bg-gradient-to-br from-blue-100 to-indigo-100 shadow-inner' : 'bg-gradient-to-br from-gray-100 to-gray-200 shadow-inner'} transition-all duration-300 hover:scale-110`}>
+                    <IconComponent size={24} className={`${plan.featured ? 'text-blue-600' : 'text-gray-600'}`} />
+                  </div>
+                  {plan.featured && <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold uppercase tracking-wide rounded-full px-3 py-1 shadow-lg">
+                      ⭐ Najpopularniejszy
+                    </div>}
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
+                <p className="text-sm mb-6 text-gray-600 leading-relaxed">
                   {plan.description}
                 </p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">
-                    {isAnnual ? plan.annualPrice : plan.monthlyPrice} zł
-                  </span>
-                  <span className={`text-sm ${plan.featured ? 'text-blue-100' : 'text-slate-500'}`}>
-                    /miesiąc
-                  </span>
+                
+                {/* Price */}
+                <div className="mb-8">
+                  <div className="flex items-baseline mb-1">
+                    <span className={`text-4xl font-bold ${plan.featured ? 'text-blue-600' : 'text-gray-900'}`}>
+                      {(isGross ? plan.grossPrice : plan.netPrice).toLocaleString('pl-PL')}
+                    </span>
+                    <span className="text-lg ml-1 text-gray-600">EUR</span>
+                  </div>
+                  {isGross && <div className="mt-2">
+                    <span className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
+                      📊 Cena zawiera VAT 23%
+                    </span>
+                  </div>}
                 </div>
-                <Button variant={plan.featured ? 'secondary' : 'primary'} fullWidth>
-                  Wybierz Plan
-                </Button>
+                
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button variant={plan.featured ? "primary" : "secondary"} fullWidth className={`${plan.featured ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg' : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-lg'} font-medium py-3 transition-all duration-200`}>
+                    Wybierz Plan
+                  </Button>
+                </motion.div>
               </div>
-              <div className="bg-gradient-to-b from-white to-gray-50 p-8 border border-t-0 border-slate-100 rounded-b-xl shadow-lg">
-                <h4 className="font-semibold text-slate-900 mb-4">
+              <div className="bg-gradient-to-b from-gray-50 to-white p-8 border-t border-gray-200">
+                <h4 className="font-semibold text-gray-900 mb-5 flex items-center">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
                   Co zawiera:
                 </h4>
                 <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, idx) => <li key={idx} className="flex items-start">
-                      <CheckIcon size={18} className="text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600 text-sm">{feature}</span>
-                    </li>)}
+                  {plan.features.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
+                      <div className="p-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+                        <CheckIcon size={12} className="text-white" />
+                      </div>
+                      <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
+                    </motion.li>)}
                 </ul>
                 {plan.notIncluded.length > 0 && <>
-                    <h4 className="font-semibold text-slate-900 mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
+                      <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                       Nie zawiera:
                     </h4>
                     <ul className="space-y-3">
-                      {plan.notIncluded.map((feature, idx) => <li key={idx} className="flex items-start">
-                          <XIcon size={18} className="text-slate-400 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-slate-500 text-sm">
+                      {plan.notIncluded.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
+                          <div className="p-1 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 mr-3 mt-0.5 flex-shrink-0">
+                            <XIcon size={12} className="text-white" />
+                          </div>
+                          <span className="text-gray-500 text-sm">
                             {feature}
                           </span>
-                        </li>)}
+                        </motion.li>)}
                     </ul>
+                    <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                      <p className="text-blue-800 text-xs font-medium">
+                        💡 <strong>Informacja:</strong> Wszystkie dodatkowe usługi można dokupić osobno w atrakcyjnych cenach.
+                      </p>
+                    </div>
                   </>}
               </div>
-            </motion.div>)}
+            </motion.div>
+          })}
         </div>
+
+        
         <motion.div className="mt-16 text-center" variants={itemVariants}>
-          <p className="text-slate-600 mb-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Potrzebujesz czegoś więcej?
+          </h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Potrzebujesz rozwiązania na miarę? Możemy stworzyć spersonalizowany pakiet
             specjalnie dla Ciebie.
           </p>
