@@ -218,16 +218,51 @@ const PricingSection = () => {
 
         
         <motion.div className="mt-16 text-center" variants={itemVariants}>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Potrzebujesz czegoś więcej?
-          </h3>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Potrzebujesz rozwiązania na miarę? Możemy stworzyć spersonalizowany pakiet
-            specjalnie dla Ciebie.
-          </p>
-          <Button variant="outline" size="lg">
-            Skontaktuj się w sprawie indywidualnej wyceny
-          </Button>
+          <div className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 rounded-2xl p-8 max-w-4xl mx-auto border border-blue-100 shadow-lg overflow-hidden">
+            {/* Subtle background effects */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-indigo-300/30 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-200/30 to-pink-300/30 rounded-full blur-2xl"></div>
+            
+            <div className="relative z-10">
+              {/* Icon */}
+              <motion.div 
+                className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Star className="w-8 h-8 text-white" />
+              </motion.div>
+              
+              {/* Title */}
+              <h3 className="text-3xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-slate-800 to-blue-700 bg-clip-text text-transparent">
+                  Potrzebujesz czegoś więcej?
+                </span>
+              </h3>
+              
+              {/* Description */}
+              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Potrzebujesz rozwiązania na miarę? Możemy stworzyć spersonalizowany pakiet
+                specjalnie dla Ciebie.
+              </p>
+              
+              {/* CTA Button */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button 
+                  variant="primary" 
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+                >
+                  <span className="flex items-center gap-2">
+                    💬 Skontaktuj się w sprawie indywidualnej wyceny
+                  </span>
+                </Button>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>;
