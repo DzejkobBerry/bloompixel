@@ -7,7 +7,7 @@ const PricingSection = () => {
   const [isGross, setIsGross] = useState(false);
   const pricingPlans = [{
     name: 'Starter',
-    description: 'Idealny dla małych firm i freelancerów',
+    description: '🚀 Szybki start w świecie online! Profesjonalna wizytówka, która przyciągnie pierwszych klientów',
     netPrice: 300,
     grossPrice: 369,
     icon: Zap,
@@ -16,7 +16,7 @@ const PricingSection = () => {
     notIncluded: ['System CMS', 'Blog', 'Domena i hosting na 12 miesięcy', 'Certyfikat SSL']
   }, {
     name: 'Business',
-    description: 'Najlepszy wybór dla rozwijających się firm',
+    description: '💼 Kompletne rozwiązanie dla ambitnych firm! Wszystko czego potrzebujesz w jednym pakiecie',
     netPrice: 600,
     grossPrice: 738,
     icon: Rocket,
@@ -26,7 +26,7 @@ const PricingSection = () => {
     featured: true
   }, {
     name: 'Premium',
-    description: 'Dla firm z zaawansowanymi wymaganiami',
+    description: '👑 Ekskluzywne rozwiązanie dla liderów rynku! Zaawansowane funkcje i pełne wsparcie',
     netPrice: 2000,
     grossPrice: 2460,
     icon: Crown,
@@ -135,71 +135,76 @@ const PricingSection = () => {
             const IconComponent = plan.icon;
             return <motion.div key={index} className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${plan.featured ? 'transform md:-translate-y-3 ring-2 ring-blue-400 ring-opacity-40 shadow-blue-100' : 'hover:-translate-y-2 hover:shadow-2xl'} relative border border-gray-200`} variants={itemVariants} whileHover={{ y: -8, scale: 1.02 }}>
               
-              <div className={`relative p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50' : 'bg-gradient-to-br from-white to-gray-50'}`}>
-                {/* Icon and Badge */}
+              <div className={`relative p-8 ${plan.featured ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50' : 'bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50'}`}>
+                {/* Icon, Name and Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className={`p-3 rounded-xl ${plan.featured ? 'bg-gradient-to-br from-blue-100 to-indigo-100 shadow-inner' : 'bg-gradient-to-br from-gray-100 to-gray-200 shadow-inner'} transition-all duration-300 hover:scale-110`}>
-                    <IconComponent size={24} className={`${plan.featured ? 'text-blue-600' : 'text-gray-600'}`} />
+                  <div className="flex items-center space-x-4">
+                    <div className={`p-3 rounded-xl ${plan.featured ? 'bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg' : 'bg-gradient-to-br from-slate-600 to-gray-700 shadow-lg'} transition-all duration-300 hover:scale-105`}>
+                      <IconComponent size={28} className="text-white drop-shadow-sm" />
+                    </div>
+                    <h3 className={`text-2xl font-semibold ${plan.featured ? 'text-blue-700' : 'text-gray-900'}`}>{plan.name}</h3>
                   </div>
-                  {plan.featured && <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold uppercase tracking-wide rounded-full px-3 py-1 shadow-lg">
-                      ⭐ Najpopularniejszy
+                  {plan.featured && <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold uppercase tracking-wide rounded-full px-3 py-1 shadow-lg">
+                      ⭐ Popularne
                     </div>}
                 </div>
-                
-                <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
-                <p className="text-sm mb-6 text-gray-600 leading-relaxed">
+                <p className={`text-base mb-8 leading-relaxed font-medium ${plan.featured ? 'text-blue-600' : 'text-gray-700'}`}>
                   {plan.description}
                 </p>
                 
                 {/* Price */}
-                <div className="mb-8">
-                  <div className="flex items-baseline mb-1">
-                    <span className={`text-4xl font-bold ${plan.featured ? 'text-blue-600' : 'text-gray-900'}`}>
+                <div className={`mb-8 p-6 rounded-2xl ${plan.featured ? 'bg-gradient-to-r from-blue-100 to-indigo-100 border-2 border-blue-200' : 'bg-gradient-to-r from-gray-100 to-slate-100 border-2 border-gray-200'} shadow-inner`}>
+                  <div className="flex items-baseline mb-2">
+                    <span className={`text-5xl font-black ${plan.featured ? 'text-blue-700' : 'text-gray-900'} drop-shadow-sm`}>
                       {(isGross ? plan.grossPrice : plan.netPrice).toLocaleString('pl-PL')}
                     </span>
-                    <span className="text-lg ml-1 text-gray-600">EUR</span>
+                    <span className={`text-2xl ml-2 font-bold ${plan.featured ? 'text-blue-600' : 'text-gray-700'}`}>EUR</span>
                   </div>
-                  {isGross && <div className="mt-2">
-                    <span className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-                      📊 Cena zawiera VAT 23%
+                  {isGross && <div className="mt-3">
+                    <span className={`${plan.featured ? 'bg-gradient-to-r from-amber-400 to-orange-500' : 'bg-gradient-to-r from-gray-600 to-slate-700'} text-white text-sm px-4 py-2 rounded-full font-bold shadow-lg`}>
+                      💰 Cena zawiera VAT 23%
                     </span>
                   </div>}
                 </div>
                 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button variant={plan.featured ? "primary" : "secondary"} fullWidth className={`${plan.featured ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg' : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-lg'} font-medium py-3 transition-all duration-200`}>
-                    Wybierz Plan
+                  <Button variant={plan.featured ? "primary" : "secondary"} fullWidth className={`${plan.featured ? 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white border-2 border-blue-200 shadow-md' : 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-200 hover:border-gray-300 shadow-md'} font-semibold py-4 rounded-xl transition-all duration-300`}>
+                    Wyświetl szczegóły
                   </Button>
                 </motion.div>
               </div>
               <div className="bg-gradient-to-b from-gray-50 to-white p-8 border-t border-gray-200">
-                <h4 className="font-semibold text-gray-900 mb-5 flex items-center">
-                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                  Co zawiera:
-                </h4>
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
-                      <div className="p-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
-                        <CheckIcon size={12} className="text-white" />
-                      </div>
-                      <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
-                    </motion.li>)}
-                </ul>
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center text-base">
+                    <span className="text-green-500 mr-3 text-xl font-bold drop-shadow-sm bg-green-50 rounded-full w-6 h-6 flex items-center justify-center">✓</span>
+                    W pakiecie:
+                  </h4>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
+                        <div className="p-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+                          <CheckIcon size={12} className="text-white" />
+                        </div>
+                        <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
+                      </motion.li>)}
+                  </ul>
+                </div>
                 {plan.notIncluded.length > 0 && <>
-                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
-                      <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
-                      Nie zawiera:
-                    </h4>
-                    <ul className="space-y-3">
-                      {plan.notIncluded.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
-                          <div className="p-1 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 mr-3 mt-0.5 flex-shrink-0">
-                            <XIcon size={12} className="text-white" />
-                          </div>
-                          <span className="text-gray-500 text-sm">
-                            {feature}
-                          </span>
-                        </motion.li>)}
-                    </ul>
+                    <div className="mb-4">
+                      <h4 className="font-semibold text-gray-900 mb-4 flex items-center text-base">
+                        <span className="text-red-500 mr-3 text-xl font-bold drop-shadow-sm bg-red-50 rounded-full w-6 h-6 flex items-center justify-center">✗</span>
+                        Poza Pakietem:
+                      </h4>
+                      <ul className="space-y-3">
+                        {plan.notIncluded.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
+                            <div className="p-1 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 mr-3 mt-0.5 flex-shrink-0">
+                              <XIcon size={12} className="text-white" />
+                            </div>
+                            <span className="text-gray-500 text-sm">
+                              {feature}
+                            </span>
+                          </motion.li>)}
+                      </ul>
+                    </div>
                     <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                       <p className="text-blue-800 text-xs font-medium">
                         💡 <strong>Informacja:</strong> Wszystkie dodatkowe usługi można dokupić osobno w atrakcyjnych cenach.
