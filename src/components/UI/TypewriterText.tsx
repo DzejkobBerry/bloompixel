@@ -12,9 +12,9 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   text, 
   delay = 0, 
   speed = 100, 
-  className = '' 
+  className = "" 
 }) => {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +32,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
       },
       {
         threshold: 0.1,
-        rootMargin: '50px'
+        rootMargin: "50px"
       }
     );
 

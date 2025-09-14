@@ -29,7 +29,7 @@ const ParticlesBackground = () => {
         this.vy = (Math.random() - 0.5) * 0.5;
         this.size = Math.random() * 2 + 1;
         this.opacity = Math.random() * 0.5 + 0.2;
-        const colors = ['#3b82f6', '#8b5cf6', '#06b6d4'];
+        const colors = ["#3b82f6", "#8b5cf6", "#06b6d4"];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
       update() {
@@ -75,7 +75,7 @@ const ParticlesBackground = () => {
           if (distance < 120) {
             ctx.save();
             ctx.globalAlpha = (120 - distance) / 120 * 0.2;
-            ctx.strokeStyle = '#ffffff';
+            ctx.strokeStyle = "#ffffff";
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);

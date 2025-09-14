@@ -20,28 +20,28 @@ const ServiceCard = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const colorClasses = {
-    blue: 'from-blue-500/10 to-blue-600/10 border-blue-500/30 text-blue-400',
-    purple: 'from-purple-500/10 to-purple-600/10 border-purple-500/30 text-purple-400',
-    cyan: 'from-cyan-500/10 to-cyan-600/10 border-cyan-500/30 text-cyan-400',
-    indigo: 'from-indigo-500/10 to-indigo-600/10 border-indigo-500/30 text-indigo-400',
-    pink: 'from-pink-500/10 to-pink-600/10 border-pink-500/30 text-pink-400',
-    amber: 'from-amber-500/10 to-amber-600/10 border-amber-500/30 text-amber-400'
+    blue: "from-blue-500/10 to-blue-600/10 border-blue-500/30 text-blue-400",
+  purple: "from-purple-500/10 to-purple-600/10 border-purple-500/30 text-purple-400",
+  cyan: "from-cyan-500/10 to-cyan-600/10 border-cyan-500/30 text-cyan-400",
+  indigo: "from-indigo-500/10 to-indigo-600/10 border-indigo-500/30 text-indigo-400",
+  pink: "from-pink-500/10 to-pink-600/10 border-pink-500/30 text-pink-400",
+  amber: "from-amber-500/10 to-amber-600/10 border-amber-500/30 text-amber-400"
   };
   const iconColors = {
-    blue: 'from-blue-400 to-blue-600',
-    purple: 'from-purple-400 to-purple-600',
-    cyan: 'from-cyan-400 to-cyan-600',
-    indigo: 'from-indigo-400 to-indigo-600',
-    pink: 'from-pink-400 to-pink-600',
-    amber: 'from-amber-400 to-amber-600'
+    blue: "from-blue-400 to-blue-600",
+  purple: "from-purple-400 to-purple-600",
+  cyan: "from-cyan-400 to-cyan-600",
+  indigo: "from-indigo-400 to-indigo-600",
+  pink: "from-pink-400 to-pink-600",
+  amber: "from-amber-400 to-amber-600"
   };
   const glowColors = {
-    blue: 'glow',
-    purple: 'glow-purple',
-    cyan: 'glow',
-    indigo: 'glow',
-    pink: 'glow-pink',
-    amber: 'glow'
+    blue: "glow",
+  purple: "glow-purple",
+  cyan: "glow",
+  indigo: "glow",
+  pink: "glow-pink",
+  amber: "glow"
   };
   const cardVariants = {
     hidden: {
@@ -67,7 +67,7 @@ const ServiceCard = ({
         <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} transition-all duration-300 backface-hidden`} whileHover={{
         y: -10
       }} style={{
-        backfaceVisibility: 'hidden'
+        backfaceVisibility: "hidden"
       }}>
           <div className="mb-4">
             <motion.div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconColors[service.color]} flex items-center justify-center text-white shadow-md ${glowColors[service.color]}`} initial={{
@@ -124,8 +124,8 @@ const ServiceCard = ({
         </motion.div>
         {/* Back of card */}
         <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} transition-all duration-300 backface-hidden`} style={{
-        backfaceVisibility: 'hidden',
-        transform: 'rotateY(180deg)'
+        backfaceVisibility: "hidden",
+    transform: "rotateY(180deg)"
       }}>
           <h3 className="text-xl font-bold text-white mb-4">
             {service.title} Code

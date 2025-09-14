@@ -16,26 +16,26 @@ const TerminalAnimation = () => {
   };
   
   const lines = [
-    { text: 'Creating new project...', duration: 800, color: 'text-blue-400' },
-    { text: 'Installing dependencies...', duration: 1200, color: 'text-yellow-400' },
-    { text: 'Setting up React components...', duration: 900, color: 'text-cyan-400' },
-    { text: 'Configuring Tailwind CSS...', duration: 700, color: 'text-purple-400' },
-    { text: 'Optimizing for performance...', duration: 1000, color: 'text-orange-400' },
-    { text: 'Running tests...', duration: 600, color: 'text-pink-400' },
-    { text: 'Building production bundle...', duration: 1100, color: 'text-indigo-400' },
-    { text: 'Project successfully launched!', duration: 800, color: 'text-green-400' }
+    { text: "Creating new project...", duration: 800, color: "text-blue-400" },
+    { text: "Installing dependencies...", duration: 1200, color: "text-yellow-400" },
+    { text: "Setting up React components...", duration: 900, color: "text-cyan-400" },
+    { text: "Configuring Tailwind CSS...", duration: 700, color: "text-purple-400" },
+    { text: "Optimizing for performance...", duration: 1000, color: "text-orange-400" },
+    { text: "Running tests...", duration: 600, color: "text-pink-400" },
+    { text: "Building production bundle...", duration: 1100, color: "text-indigo-400" },
+    { text: "Project successfully launched!", duration: 800, color: "text-green-400" }
   ];
 
   const stats = [
-    { label: 'Build time', value: '2.3s', color: 'text-green-400' },
-    { label: 'Bundle size', value: '245KB', color: 'text-blue-400' },
-    { label: 'Components', value: '24', color: 'text-purple-400' }
+    { label: "Build time", value: "2.3s", color: "text-green-400" },
+    { label: "Bundle size", value: "245KB", color: "text-blue-400" },
+    { label: "Components", value: "24", color: "text-purple-400" }
   ];
 
   useEffect(() => {
     if (currentLine < lines.length) {
       const timer = setTimeout(() => {
-        setText('');
+        setText("");
         let i = 0;
         const typingInterval = setInterval(() => {
           if (i < lines[currentLine].text.length) {
@@ -176,7 +176,7 @@ const TerminalAnimation = () => {
               >
                 ▶
               </motion.span>
-              <span className={lines[currentLine]?.color || 'text-gray-400'}>{text}</span>
+              <span className={lines[currentLine]?.color || "text-gray-400"}>{text}</span>
               <motion.span 
                 className="inline-block w-2 h-5 bg-green-400 ml-1 rounded-sm"
                 animate={{ opacity: [1, 0] }}
@@ -200,9 +200,9 @@ const TerminalAnimation = () => {
                   className="w-3 h-3 rounded-full bg-green-400 mr-2"
                   animate={{ 
                     boxShadow: [
-                      '0 0 5px rgba(34, 197, 94, 0.5)',
-                      '0 0 15px rgba(34, 197, 94, 0.8)',
-                      '0 0 5px rgba(34, 197, 94, 0.5)'
+                      "0 0 5px rgba(34, 197, 94, 0.5)",
+        "0 0 15px rgba(34, 197, 94, 0.8)",
+        "0 0 5px rgba(34, 197, 94, 0.5)"
                     ]
                   }}
                   transition={{ duration: 2, repeat: Infinity }}

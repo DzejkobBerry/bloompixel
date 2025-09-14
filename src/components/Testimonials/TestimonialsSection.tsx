@@ -6,40 +6,40 @@ import ParticlesLight from '../UI/ParticlesLight';
 import TypewriterText from '../UI/TypewriterText';
 const TestimonialsSection = () => {
   const testimonials = [{
-    name: 'Anna Kowalska',
-    position: 'CEO, TechnoVision',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'Współpraca z BloomPixel była wyjątkowa. Zespół przekształcił nasze pomysły w profesjonalną stronę internetową, która idealnie reprezentuje naszą markę. Jakość wykonania i dbałość o szczegóły są na najwyższym poziomie.',
+    name: "Anna Kowalska",
+    position: "CEO, TechnoVision",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    content: "Współpraca z BloomPixel była wyjątkowa. Zespół przekształcił nasze pomysły w profesjonalną stronę internetową, która idealnie reprezentuje naszą markę. Jakość wykonania i dbałość o szczegóły są na najwyższym poziomie.",
     rating: 5
   }, {
-    name: 'Michał Nowak',
-    position: 'Dyrektor Marketingu, GrowthLabs',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'Aplikacja webowa stworzona przez BloomPixel znacznie usprawniła nasze procesy wewnętrzne i zwiększyła efektywność pracy. Zespół był responsywny, profesjonalny i dostarczył dokładnie to, czego potrzebowaliśmy.',
+    name: "Michał Nowak",
+    position: "Dyrektor Marketingu, GrowthLabs",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    content: "Aplikacja webowa stworzona przez BloomPixel znacznie usprawniła nasze procesy wewnętrzne i zwiększyła efektywność pracy. Zespół był responsywny, profesjonalny i dostarczył dokładnie to, czego potrzebowaliśmy.",
     rating: 5
   }, {
-    name: 'Katarzyna Wiśniewska',
-    position: 'Założycielka, StyleHub',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80',
-    content: 'Potrzebowałam strony, która prezentowałaby moje portfolio i przyciągnęła nowych klientów. Rezultat przewyższył moje oczekiwania. Strona jest nie tylko piękna wizualnie, ale także bardzo funkcjonalna i szybka.',
+    name: "Katarzyna Wiśniewska",
+    position: "Założycielka, StyleHub",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
+    content: "Potrzebowałam strony, która prezentowałaby moje portfolio i przyciągnęła nowych klientów. Rezultat przewyższył moje oczekiwania. Strona jest nie tylko piękna wizualnie, ale także bardzo funkcjonalna i szybka.",
     rating: 5
   }, {
-    name: 'Piotr Zieliński',
-    position: 'CTO, InnovateTech',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'Jako lider techniczny mam wysokie standardy dotyczące pracy programistycznej. BloomPixel nie tylko spełnił te standardy, ale je przewyższył. Jakość kodu, dokumentacja i ogólne podejście były na najwyższym poziomie.',
+    name: "Piotr Zieliński",
+    position: "CTO, InnovateTech",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    content: "Jako lider techniczny mam wysokie standardy dotyczące pracy programistycznej. BloomPixel nie tylko spełnił te standardy, ale je przewyższył. Jakość kodu, dokumentacja i ogólne podejście były na najwyższym poziomie.",
     rating: 5
   }, {
-    name: 'Magdalena Lewandowska',
-    position: 'Właścicielka, Boutique Fashion',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'Sklep internetowy stworzony przez BloomPixel zwiększył nasze sprzedaże o 200% w ciągu pierwszych trzech miesięcy. Profesjonalny design i intuicyjna obsługa sprawiają, że klienci chętnie wracają.',
+    name: "Magdalena Lewandowska",
+    position: "Właścicielka, Boutique Fashion",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    content: "Sklep internetowy stworzony przez BloomPixel zwiększył nasze sprzedaże o 200% w ciągu pierwszych trzech miesięcy. Profesjonalny design i intuicyjna obsługa sprawiają, że klienci chętnie wracają.",
     rating: 5
   }, {
-    name: 'Tomasz Kaczmarek',
-    position: 'Prezes, EcoSolutions',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    content: 'BloomPixel stworzył dla nas kompleksową platformę zarządzania projektami. Dzięki niej nasza firma działa znacznie sprawniej, a komunikacja z klientami jest na zupełnie nowym poziomie. Polecam z całego serca!',
+    name: "Tomasz Kaczmarek",
+    position: "Prezes, EcoSolutions",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    content: "BloomPixel stworzył dla nas kompleksową platformę zarządzania projektami. Dzięki niej nasza firma działa znacznie sprawniej, a komunikacja z klientami jest na zupełnie nowym poziomie. Polecam z całego serca!",
     rating: 5
   }];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -219,7 +219,7 @@ const TestimonialsSection = () => {
                  whileTap={{
                    scale: 0.9
                  }}
-                 title={isAutoPlaying ? 'Zatrzymaj automatyczne przewijanie' : 'Włącz automatyczne przewijanie'}
+                 title={isAutoPlaying ? "Zatrzymaj automatyczne przewijanie" : "Włącz automatyczne przewijanie"}
                >
                  {isAutoPlaying ? <PauseIcon size={20} /> : <PlayIcon size={20} />}
                </motion.button>
@@ -246,8 +246,8 @@ const TestimonialsSection = () => {
                   key={index}
                   className={`relative overflow-hidden rounded-full transition-all duration-300 ${
                      index === currentIndex 
-                       ? 'w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-500' 
-                       : 'w-3 h-3 bg-slate-300 hover:bg-slate-400'
+                       ? "w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-500"
+        : "w-3 h-3 bg-slate-300 hover:bg-slate-400"
                    }`}
                   onClick={() => {
                     setIsAutoPlaying(false);
@@ -264,8 +264,8 @@ const TestimonialsSection = () => {
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
                       initial={{ width: 0 }}
-                      animate={{ width: '100%' }}
-                      transition={{ duration: 4, ease: 'linear' }}
+                      animate={{ width: "100%" }}
+          transition={{ duration: 4, ease: "linear" }}
                       key={`progress-${currentIndex}`}
                     />
                   )}

@@ -1,15 +1,15 @@
 import React, { useState, Children } from 'react';
 import { motion } from 'framer-motion';
 const TechStackSection = () => {
-  const [activeCategory, setActiveCategory] = useState('frontend');
+  const [activeCategory, setActiveCategory] = useState("frontend");
   const categories = [{
-    id: 'frontend',
-    label: 'Frontend'
+    id: "frontend",
+    label: "Frontend"
   }, {
-    id: 'backend',
-    label: 'Backend'
+    id: "backend",
+    label: "Backend"
   }, {
-    id: 'tools',
+    id: "tools",
     label: 'Tools & DevOps'
   }, {
     id: 'design',

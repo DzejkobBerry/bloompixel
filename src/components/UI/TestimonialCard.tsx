@@ -58,8 +58,8 @@ const TestimonialCard = ({
           key={index}
           size={18} 
           className={index < testimonial.rating 
-            ? 'text-amber-400 fill-amber-400 drop-shadow-sm' 
-            : 'text-gray-300'
+            ? "text-amber-400 fill-amber-400 drop-shadow-sm"
+      : "text-gray-300"
           } 
         />
       )}

@@ -10,11 +10,11 @@ const CodeBlock = ({
   language
 }: CodeBlockProps) => {
   return <SyntaxHighlighter language={language} style={atomDark} customStyle={{
-    backgroundColor: 'transparent',
-    padding: '0',
-    margin: '0',
-    borderRadius: '6px',
-    fontSize: '12px',
+    backgroundColor: "transparent",
+    padding: "0",
+    margin: "0",
+    borderRadius: "6px",
+    fontSize: "12px",
     fontFamily: '"Space Mono", monospace'
   }}>
       {code.trim()}

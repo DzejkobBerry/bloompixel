@@ -240,11 +240,20 @@ const Navbar = () => {
         </motion.a>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`text-sm font-semibold relative group px-3 py-2 rounded-lg transition-all duration-300 ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-blue-300 glow-text bg-blue-400/20 backdrop-blur-sm' : 'text-blue-400 glow-text bg-blue-400/10 backdrop-blur-sm') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10 backdrop-blur-sm' : 'text-slate-300 hover:text-white hover:bg-white/5 backdrop-blur-sm')}`} variants={itemVariants} whileHover={{
+          {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`text-sm font-semibold relative group px-3 py-2 rounded-lg transition-all duration-300 ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-white bg-gradient-to-r from-blue-500/30 to-purple-500/30 shadow-lg shadow-blue-500/25 border border-blue-400/30' : 'text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 shadow-lg shadow-blue-500/20 border border-blue-400/20') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10 backdrop-blur-sm' : 'text-slate-300 hover:text-white hover:bg-white/5 backdrop-blur-sm')}`} variants={itemVariants} whileHover={{
           scale: 1.05,
           y: -2
         }} custom={index}>
               <span className="relative z-10">{link.name}</span>
+              {/* Active indicator */}
+              {activeSection === link.href.substring(1) && (
+                <motion.div 
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"
+                  layoutId="activeTab"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 layoutId={`nav-bg-${index}`}
@@ -387,7 +396,7 @@ const Navbar = () => {
         duration: 0.3
       }}>
             <div className="container mx-auto px-4 py-6 flex flex-col space-y-2">
-              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 group overflow-hidden ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-blue-300 glow-text bg-blue-400/20' : 'text-blue-400 glow-text bg-blue-400/10') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5')}`} onClick={() => setIsMenuOpen(false)} initial={{
+              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 group overflow-hidden ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-white bg-gradient-to-r from-blue-500/30 to-purple-500/30 shadow-lg shadow-blue-500/25 border border-blue-400/30' : 'text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 shadow-lg shadow-blue-500/20 border border-blue-400/20') : (isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5')}`} onClick={() => setIsMenuOpen(false)} initial={{
             opacity: 0,
             x: -20
           }} animate={{
@@ -402,7 +411,12 @@ const Navbar = () => {
           }} whileHover={{ x: 5 }}>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
                   <span className="relative z-10">{link.name}</span>
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Active indicator for mobile */}
+                  {activeSection === link.href.substring(1) ? (
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50" />
+                  ) : (
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  )}
                 </motion.a>)}
               
               {/* Mobile Contact Dropdown */}
