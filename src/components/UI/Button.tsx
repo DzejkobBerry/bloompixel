@@ -18,7 +18,7 @@ const Button = ({
   type = "button",
   disabled = false
 }: ButtonProps) => {
-  const baseClasses = "rounded-md font-medium transition-all duration-200 inline-flex items-center justify-center relative overflow-hidden group";
+  const baseClasses = "rounded-md font-medium inline-flex items-center justify-center relative overflow-hidden group";
   const variantClasses = {
     primary: "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg hover:shadow-blue-500/30",
   secondary: "bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg hover:shadow-purple-500/30",

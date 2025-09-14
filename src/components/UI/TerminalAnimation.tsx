@@ -63,7 +63,7 @@ const TerminalAnimation = () => {
 
   return (
     <motion.div 
-      className="relative w-full h-80 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-lg overflow-hidden shadow-2xl border border-slate-700/50"
+      className="relative w-full h-96 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-lg overflow-hidden shadow-2xl border border-slate-700/50"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -106,20 +106,20 @@ const TerminalAnimation = () => {
       </motion.div>
 
       {/* Terminal content */}
-      <div className="p-6 font-mono text-sm leading-relaxed h-full overflow-hidden">
+      <div className="p-6 font-mono text-sm leading-relaxed h-full overflow-hidden flex flex-col">
         {/* Command prompt */}
         <motion.div 
-          className="mb-4 flex items-center"
+          className="mb-4 flex items-center flex-shrink-0"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <span className="text-green-400 font-semibold">user@bloompixel</span>
+          <span className="text-green-400 font-semibold whitespace-nowrap">user@bloompixel</span>
           <span className="text-slate-400 mx-1">:</span>
-          <span className="text-blue-400 font-semibold">~/projects</span>
+          <span className="text-blue-400 font-semibold whitespace-nowrap">~/projects</span>
           <span className="text-slate-400 mx-1">$</span>
           <motion.span 
-            className="text-white ml-2"
+            className="text-white ml-2 whitespace-nowrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -129,23 +129,23 @@ const TerminalAnimation = () => {
         </motion.div>
 
         {/* Output lines */}
-        <div className="space-y-1">
+        <div className="space-y-2 flex-1 min-h-0">
           {lines.slice(0, currentLine).map((line, index) => (
             <motion.div 
               key={index} 
-              className="flex items-center"
+              className="flex items-start py-1 min-h-[1.5rem]"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
             >
               <motion.span 
-                className="text-slate-500 mr-2"
+                className="text-slate-500 mr-2 flex-shrink-0 mt-0.5"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
               >
                 ▶
               </motion.span>
-              <span className={line.color}>{line.text}</span>
+              <span className={`${line.color} break-words flex-1`}>{line.text}</span>
               {index === lines.length - 1 && isComplete && (
                 <motion.span 
                   className="text-green-400 ml-2 font-bold"
@@ -162,12 +162,12 @@ const TerminalAnimation = () => {
           {/* Current typing line */}
           {currentLine < lines.length && (
             <motion.div 
-              className="flex items-center"
+              className="flex items-start py-1 min-h-[1.5rem]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               <motion.span 
-                className="text-slate-500 mr-2"
+                className="text-slate-500 mr-2 flex-shrink-0 mt-0.5"
                 animate={{ 
                   opacity: [0.3, 1, 0.3],
                   scale: [0.8, 1, 0.8]
@@ -176,7 +176,7 @@ const TerminalAnimation = () => {
               >
                 ▶
               </motion.span>
-              <span className={lines[currentLine]?.color || "text-gray-400"}>{text}</span>
+              <span className={`${lines[currentLine]?.color || "text-gray-400"} break-words flex-1`}>{text}</span>
               <motion.span 
                 className="inline-block w-2 h-5 bg-green-400 ml-1 rounded-sm"
                 animate={{ opacity: [1, 0] }}

@@ -516,8 +516,7 @@ const ContactSection: React.FC = () => {
                           className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 relative overflow-hidden group border-2 border-white/20"
                           whileHover={{
                             scale: 1.05,
-                            y: -2,
-                            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                            y: -2
                           }}
                           whileTap={{ scale: 0.98 }}
                           transition={{ type: "spring", stiffness: 400, damping: 25 }}

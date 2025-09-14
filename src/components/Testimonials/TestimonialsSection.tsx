@@ -199,10 +199,6 @@ const TestimonialsSection = () => {
               <motion.button 
                  className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={handlePrev} 
-                 initial={{
-                   backgroundColor: "rgb(241 245 249)",
-                   color: "rgb(71 85 105)"
-                 }}
                  whileHover={{
                    scale: 1.1,
                    backgroundColor: "rgb(226 232 240)",
@@ -211,7 +207,7 @@ const TestimonialsSection = () => {
                  whileTap={{
                    scale: 0.9
                  }}
-                 transition={{ duration: 0.2 }}
+                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                >
                  <ChevronLeftIcon size={24} />
                </motion.button>
@@ -220,10 +216,6 @@ const TestimonialsSection = () => {
                <motion.button 
                  className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={toggleAutoPlay}
-                 initial={{
-                   backgroundColor: "rgb(241 245 249)",
-                   color: "rgb(71 85 105)"
-                 }}
                  whileHover={{
                    scale: 1.1,
                    backgroundColor: "rgb(226 232 240)",
@@ -232,7 +224,7 @@ const TestimonialsSection = () => {
                  whileTap={{
                    scale: 0.9
                  }}
-                 transition={{ duration: 0.2 }}
+                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                  title={isAutoPlaying ? "Zatrzymaj automatyczne przewijanie" : "Włącz automatyczne przewijanie"}
                >
                  {isAutoPlaying ? <PauseIcon size={20} /> : <PlayIcon size={20} />}
@@ -242,10 +234,6 @@ const TestimonialsSection = () => {
                <motion.button 
                  className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={handleNext} 
-                 initial={{
-                   backgroundColor: "rgb(241 245 249)",
-                   color: "rgb(71 85 105)"
-                 }}
                  whileHover={{
                    scale: 1.1,
                    backgroundColor: "rgb(226 232 240)",
@@ -254,7 +242,7 @@ const TestimonialsSection = () => {
                  whileTap={{
                    scale: 0.9
                  }}
-                 transition={{ duration: 0.2 }}
+                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                >
                  <ChevronRightIcon size={24} />
                </motion.button>
@@ -273,9 +261,6 @@ const TestimonialsSection = () => {
                   onClick={() => {
                     setIsAutoPlaying(false);
                     goToSlide(index);
-                  }}
-                  initial={{
-                    backgroundColor: index === currentIndex ? undefined : "rgb(203 213 225)"
                   }}
                   whileHover={{
                     scale: 1.2,

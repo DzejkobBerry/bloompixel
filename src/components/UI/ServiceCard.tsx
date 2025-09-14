@@ -64,8 +64,12 @@ const ServiceCard = ({
       duration: 0.6
     }}>
         {/* Front of card */}
-        <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} transition-all duration-300 backface-hidden`} whileHover={{
+        <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} backface-hidden`} whileHover={{
         y: -10
+      }} transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 25
       }} style={{
         backfaceVisibility: "hidden"
       }}>
@@ -123,7 +127,7 @@ const ServiceCard = ({
           </div>
         </motion.div>
         {/* Back of card */}
-        <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} transition-all duration-300 backface-hidden`} style={{
+        <motion.div className={`absolute inset-0 p-6 rounded-lg border glass-effect bg-gradient-to-br ${colorClasses[service.color]} backface-hidden`} style={{
         backfaceVisibility: "hidden",
     transform: "rotateY(180deg)"
       }}>

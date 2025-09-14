@@ -215,7 +215,7 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className={`${stat.bgColor} backdrop-blur-xl rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all duration-500`}>
+                <div className={`${stat.bgColor} backdrop-blur-xl rounded-3xl p-6 border border-white/10`}>
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${stat.color} p-3 mb-4 mx-auto shadow-lg`}>
                     <Icon className="w-full h-full text-white" />
                   </div>
