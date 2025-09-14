@@ -3,6 +3,7 @@ import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, 
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
+import ParticlesLight from '../UI/ParticlesLight';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -81,20 +82,16 @@ const ContactSection: React.FC = () => {
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/50 to-purple-50/50 relative overflow-hidden">
-      {/* Background Decorations */}
+      {/* Animated Particles Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-pink-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: "1s"}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-400/8 to-purple-400/8 rounded-full blur-3xl"></div>
+        <ParticlesLight className="opacity-60" />
         
-        {/* Floating Elements */}
-        <div className="absolute top-32 right-1/4 w-4 h-4 bg-blue-400/30 rounded-full animate-bounce" style={{animationDelay: "0.5s"}}></div>
-        <div className="absolute bottom-32 left-1/4 w-6 h-6 bg-purple-400/30 rounded-full animate-bounce" style={{animationDelay: "1.5s"}}></div>
-        <div className="absolute top-1/3 left-20 w-3 h-3 bg-cyan-400/40 rounded-full animate-ping" style={{animationDelay: "2s"}}></div>
-        <div className="absolute bottom-1/3 right-20 w-5 h-5 bg-pink-400/40 rounded-full animate-ping" style={{animationDelay: "0.8s"}}></div>
+        {/* Additional Background Effects */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-400/10 to-cyan-400/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-pink-400/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: "1s"}}></div>
         
         {/* Subtle Pattern */}
-        <div className="absolute inset-0 opacity-30 bg-gradient-to-br from-slate-100/20 to-transparent"></div>
+        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-slate-100/20 to-transparent"></div>
       </div>
 
       <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
