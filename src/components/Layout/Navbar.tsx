@@ -93,6 +93,13 @@ const Navbar = () => {
     setIsLanguageDropdownOpen(false);
     // TODO: Implement language switching logic
   };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const navVariants = {
     hidden: {
       opacity: 0,
@@ -322,7 +329,12 @@ const Navbar = () => {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-              <Button className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg">Kontakt</Button>
+              <Button 
+                onClick={scrollToContact}
+                className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg"
+              >
+                Kontakt
+              </Button>
             </motion.div>
           </motion.div>
 
@@ -526,7 +538,16 @@ const Navbar = () => {
                    className="relative group"
                  >
                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-                   <Button fullWidth className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg py-4">Kontakt</Button>
+                   <Button 
+                     onClick={() => {
+                       scrollToContact();
+                       setIsMenuOpen(false);
+                     }}
+                     fullWidth 
+                     className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 font-semibold tracking-wide shadow-lg py-4"
+                   >
+                     Kontakt
+                   </Button>
                  </motion.div>
                </motion.div>
             </div>
