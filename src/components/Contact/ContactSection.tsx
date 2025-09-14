@@ -133,7 +133,7 @@ const ContactSection: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             <motion.div className="lg:col-span-2" variants={itemVariants}>
-              <div className="bg-gradient-to-br from-white/90 via-blue-50/30 to-purple-50/20 rounded-2xl shadow-2xl p-8 border border-white/60 backdrop-blur-md h-fit relative overflow-hidden">
+              <div className="bg-gradient-to-br from-white/95 via-blue-50/50 to-purple-50/40 rounded-2xl shadow-2xl p-8 border border-slate-200/80 backdrop-blur-md h-fit relative overflow-hidden">
                 {/* Card Background Effects */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-2xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-400/10 to-transparent rounded-full blur-2xl"></div>
@@ -150,7 +150,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div className="space-y-6">
                   <motion.div
-                    className="flex items-start p-4 rounded-xl bg-white/50 border border-white/80 shadow-sm"
+                    className="flex items-start p-4 rounded-xl bg-white/80 border border-slate-200/60 shadow-sm"
                     whileHover={{ scale: 1.02, y: -2 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -167,7 +167,7 @@ const ContactSection: React.FC = () => {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start p-4 rounded-xl bg-white/50 border border-white/80 shadow-sm"
+                    className="flex items-start p-4 rounded-xl bg-white/80 border border-slate-200/60 shadow-sm"
                     whileHover={{ scale: 1.02, y: -2 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -184,7 +184,7 @@ const ContactSection: React.FC = () => {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start p-4 rounded-xl bg-white/50 border border-white/80 shadow-sm"
+                    className="flex items-start p-4 rounded-xl bg-white/80 border border-slate-200/60 shadow-sm"
                     whileHover={{ scale: 1.02, y: -2 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -201,7 +201,7 @@ const ContactSection: React.FC = () => {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start p-4 rounded-xl bg-white/50 border border-white/80 shadow-sm"
+                    className="flex items-start p-4 rounded-xl bg-white/80 border border-slate-200/60 shadow-sm"
                     whileHover={{ scale: 1.02, y: -2 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -289,7 +289,7 @@ const ContactSection: React.FC = () => {
 
             {/* Contact Form */}
             <motion.div className="lg:col-span-3" variants={itemVariants}>
-              <div className="bg-gradient-to-br from-white/95 via-blue-50/40 to-purple-50/30 rounded-2xl shadow-2xl p-8 border border-white/60 backdrop-blur-md relative overflow-hidden">
+              <div className="bg-gradient-to-br from-white/98 via-blue-50/60 to-purple-50/50 rounded-2xl shadow-2xl p-8 border border-slate-200/70 backdrop-blur-md relative overflow-hidden">
                 {/* Form Background Effects */}
                 <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-400/8 to-transparent rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-400/8 to-transparent rounded-full blur-3xl"></div>
