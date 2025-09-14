@@ -11,6 +11,7 @@ import ContactSection from './components/Contact/ContactSection';
 import Footer from './components/Layout/Footer';
 import TechStackSection from './components/TechStack/TechStackSection';
 import LoadingScreen from './components/UI/LoadingScreen';
+import ScrollToTop from './components/UI/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 export function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +50,7 @@ export function App() {
             <ContactSection />
           </main>
           <Footer />
+          <ScrollToTop />
         </div>}
     </AnimatePresence>;
 }
