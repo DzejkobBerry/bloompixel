@@ -337,21 +337,25 @@ const Navbar = () => {
               className={`text-sm font-semibold flex items-center space-x-2 px-3 py-2 rounded-lg backdrop-blur-sm group relative ${isDarkSection ? 'text-gray-200' : 'text-slate-300'}`}
               whileHover={{ 
                 scale: 1.05,
-                backgroundColor: isDarkSection ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
-                color: '#ffffff'
+                y: -2,
+                color: '#ffffff',
+                backgroundColor: isDarkSection ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)'
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
                {languages.find(lang => lang.code === currentLanguage)?.flagIcon}
                <span className="relative z-10">{languages.find(lang => lang.code === currentLanguage)?.code.toUpperCase()}</span>
-              <ChevronDownIcon size={14} className={`transition-all duration-300 ${isLanguageDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
+              <motion.div
+                className="transition-all duration-300"
+                animate={{
+                  rotate: isLanguageDropdownOpen ? 180 : 0,
+                  color: isLanguageDropdownOpen ? '#60a5fa' : '#9ca3af'
+                }}
+                whileHover={{ color: '#60a5fa' }}
+              >
+                <ChevronDownIcon size={14} />
+              </motion.div>
             </motion.button>
             
             <AnimatePresence>
