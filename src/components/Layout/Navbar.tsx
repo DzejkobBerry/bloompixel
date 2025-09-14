@@ -270,13 +270,20 @@ const Navbar = () => {
             onMouseEnter={() => setIsContactDropdownOpen(true)}
             onMouseLeave={() => setIsContactDropdownOpen(false)}
           >
-            <button className={`text-sm font-semibold flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
+            <motion.button 
+              className={`text-sm font-semibold flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group relative ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
                 <span className="relative z-10">Więcej</span>
                 <ChevronDownIcon size={16} className={`transition-all duration-300 ${isContactDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
-              </button>
+              </motion.button>
             
             <AnimatePresence>
               {isContactDropdownOpen && (
@@ -326,14 +333,21 @@ const Navbar = () => {
             onMouseEnter={() => setIsLanguageDropdownOpen(true)}
             onMouseLeave={() => setIsLanguageDropdownOpen(false)}
           >
-            <button className={`text-sm font-semibold flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
+            <motion.button 
+              className={`text-sm font-semibold flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm group relative ${isDarkSection ? 'text-gray-200 hover:text-white hover:bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
                {languages.find(lang => lang.code === currentLanguage)?.flagIcon}
                <span className="relative z-10">{languages.find(lang => lang.code === currentLanguage)?.code.toUpperCase()}</span>
               <ChevronDownIcon size={14} className={`transition-all duration-300 ${isLanguageDropdownOpen ? 'rotate-180 text-blue-400' : 'group-hover:text-blue-400'}`} />
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
               />
-            </button>
+            </motion.button>
             
             <AnimatePresence>
               {isLanguageDropdownOpen && (

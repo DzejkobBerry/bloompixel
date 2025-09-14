@@ -197,28 +197,42 @@ const TestimonialsSection = () => {
             <div className="flex justify-center items-center mt-8 gap-6">
               {/* Previous Button */}
               <motion.button 
-                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={handlePrev} 
+                 initial={{
+                   backgroundColor: "rgb(241 245 249)",
+                   color: "rgb(71 85 105)"
+                 }}
                  whileHover={{
-                   scale: 1.1
+                   scale: 1.1,
+                   backgroundColor: "rgb(226 232 240)",
+                   color: "rgb(37 99 235)"
                  }} 
                  whileTap={{
                    scale: 0.9
                  }}
+                 transition={{ duration: 0.2 }}
                >
                  <ChevronLeftIcon size={24} />
                </motion.button>
                
                {/* Auto-play Toggle */}
                <motion.button 
-                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={toggleAutoPlay}
+                 initial={{
+                   backgroundColor: "rgb(241 245 249)",
+                   color: "rgb(71 85 105)"
+                 }}
                  whileHover={{
-                   scale: 1.1
+                   scale: 1.1,
+                   backgroundColor: "rgb(226 232 240)",
+                   color: "rgb(37 99 235)"
                  }} 
                  whileTap={{
                    scale: 0.9
                  }}
+                 transition={{ duration: 0.2 }}
                  title={isAutoPlaying ? "Zatrzymaj automatyczne przewijanie" : "Włącz automatyczne przewijanie"}
                >
                  {isAutoPlaying ? <PauseIcon size={20} /> : <PlayIcon size={20} />}
@@ -226,14 +240,21 @@ const TestimonialsSection = () => {
                
                {/* Next Button */}
                <motion.button 
-                 className="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600 hover:text-blue-600 transition-all duration-300" 
+                 className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 shadow-lg flex items-center justify-center text-slate-600" 
                  onClick={handleNext} 
+                 initial={{
+                   backgroundColor: "rgb(241 245 249)",
+                   color: "rgb(71 85 105)"
+                 }}
                  whileHover={{
-                   scale: 1.1
+                   scale: 1.1,
+                   backgroundColor: "rgb(226 232 240)",
+                   color: "rgb(37 99 235)"
                  }} 
                  whileTap={{
                    scale: 0.9
                  }}
+                 transition={{ duration: 0.2 }}
                >
                  <ChevronRightIcon size={24} />
                </motion.button>
@@ -244,21 +265,26 @@ const TestimonialsSection = () => {
               {testimonials.map((_, index) => (
                 <motion.button
                   key={index}
-                  className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+                  className={`relative overflow-hidden rounded-full ${
                      index === currentIndex 
                        ? "w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-500"
-        : "w-3 h-3 bg-slate-300 hover:bg-slate-400"
+        : "w-3 h-3 bg-slate-300"
                    }`}
                   onClick={() => {
                     setIsAutoPlaying(false);
                     goToSlide(index);
                   }}
+                  initial={{
+                    backgroundColor: index === currentIndex ? undefined : "rgb(203 213 225)"
+                  }}
                   whileHover={{
-                    scale: 1.2
+                    scale: 1.2,
+                    backgroundColor: index === currentIndex ? undefined : "rgb(148 163 184)"
                   }}
                   whileTap={{
                     scale: 0.9
                   }}
+                  transition={{ duration: 0.2 }}
                 >
                   {index === currentIndex && (
                     <motion.div
