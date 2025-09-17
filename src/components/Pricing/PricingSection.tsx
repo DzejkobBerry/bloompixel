@@ -293,6 +293,9 @@ const PricingSection = () => {
                   variant="primary" 
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+                  onClick={() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   <span className="flex items-center gap-2">
                     💬 Skontaktuj się w sprawie indywidualnej wyceny
