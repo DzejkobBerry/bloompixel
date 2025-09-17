@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, GlobeIcon, StarIcon, ArrowRightIcon, UserIcon, MessageSquareIcon, BriefcaseIcon, HelpCircle } from 'lucide-react';
+import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, GlobeIcon, StarIcon, ArrowRightIcon, UserIcon, MessageSquareIcon, BriefcaseIcon, HelpCircle, MessageCircle, X, Copy } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
@@ -29,6 +29,8 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isFAQOpen, setIsFAQOpen] = useState(false);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
+  const [phoneModalOpen, setPhoneModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -518,21 +520,31 @@ const ContactSection: React.FC = () => {
                   <div className="flex items-center justify-center space-x-4 pt-4 border-t border-slate-200">
                     <span className="text-sm text-slate-500">lub skontaktuj się przez:</span>
                     <div className="flex space-x-3">
-                      <motion.a
-                        href="mailto:kontakt@bloompixel.pl"
+                      <motion.button
+                        onClick={() => setEmailModalOpen(true)}
                         className="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <MailIcon size={16} className="text-blue-600" />
-                      </motion.a>
-                      <motion.a
-                        href="tel:+31634225355"
+                      </motion.button>
+                      <motion.button
+                        onClick={() => setPhoneModalOpen(true)}
                         className="w-8 h-8 rounded-lg bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <PhoneIcon size={16} className="text-green-600" />
+                      </motion.button>
+                      <motion.a
+                        href="https://wa.me/31634225355"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-lg bg-emerald-100 hover:bg-emerald-200 flex items-center justify-center transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <MessageCircle size={16} className="text-emerald-600" />
                       </motion.a>
                     </div>
                   </div>
@@ -611,6 +623,145 @@ const ContactSection: React.FC = () => {
 
       {/* FAQ Modal */}
       <FAQModal isOpen={isFAQOpen} onClose={() => setIsFAQOpen(false)} />
+
+      {/* Email Modal */}
+      {emailModalOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setEmailModalOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+          >
+            <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-blue-100 rounded-lg">
+                    <MailIcon size={20} className="text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">Email kontaktowy</h3>
+                </div>
+                <button
+                  onClick={() => setEmailModalOpen(false)}
+                  className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-sm text-gray-600 mb-4">Skontaktuj się z nami przez email:</p>
+                <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                  <p className="text-lg font-mono font-semibold text-gray-900 select-all">
+                    kontakt@bloompixel.pl
+                  </p>
+                </div>
+                
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('kontakt@bloompixel.pl');
+                    }}
+                    className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <Copy size={16} />
+                    Kopiuj
+                  </button>
+                  <a
+                    href="mailto:kontakt@bloompixel.pl"
+                    className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <MailIcon size={16} />
+                    Otwórz
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+
+      {/* Phone Modal */}
+      {phoneModalOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setPhoneModalOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+          >
+            <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-green-100 rounded-lg">
+                    <PhoneIcon size={20} className="text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">Numer telefonu</h3>
+                </div>
+                <button
+                  onClick={() => setPhoneModalOpen(false)}
+                  className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-sm text-gray-600 mb-4">Zadzwoń do nas bezpośrednio lub napisz na WhatsApp:</p>
+                <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                  <p className="text-lg font-mono font-semibold text-gray-900 select-all">
+                    +31 634 225 355
+                  </p>
+                </div>
+                
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('+31 634 225 355');
+                    }}
+                    className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <Copy size={16} />
+                    Kopiuj
+                  </button>
+                  <a
+                    href="tel:+31634225355"
+                    className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <PhoneIcon size={16} />
+                    Zadzwoń
+                  </a>
+                  <a
+                    href="https://wa.me/31634225355"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle size={16} />
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
     </section>
   );
 };
