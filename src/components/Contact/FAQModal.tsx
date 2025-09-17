@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import { X, ChevronDown, ChevronUp, HelpCircle, Mail, Phone, Copy } from 'lucide-react';
 
 interface FAQModalProps {
   isOpen: boolean;
@@ -17,17 +17,17 @@ const faqData: FAQItem[] = [
   {
     id: 1,
     question: "Ile kosztuje stworzenie strony internetowej?",
-    answer: "Koszt zależy od złożoności projektu. Nasze pakiety zaczynają się od 2,499 zł za stronę wizytówkową, przez 4,999 zł za stronę biznesową, aż do 9,999 zł za sklep internetowy. Oferujemy również indywidualne wyceny dla bardziej złożonych projektów."
+    answer: "Koszt zależy od złożoności projektu. Nasze pakiety: Starter od 300€ (369€ brutto) - responsywna wizytówka, Business od 600€ (738€ brutto) - zaawansowana strona biznesowa z hostingiem i domeną, Premium od 2000€ (2460€ brutto) - kompleksowe rozwiązanie z CMS i e-commerce. Oferujemy również indywidualne wyceny."
   },
   {
     id: 2,
     question: "Jak długo trwa realizacja projektu?",
-    answer: "Czas realizacji zależy od wybranego pakietu: strona wizytówkowa - 7-14 dni, strona biznesowa - 14-21 dni, sklep internetowy - 21-35 dni. Dokładny harmonogram ustalamy na początku współpracy, uwzględniając Twoje potrzeby i dostępność materiałów."
+    answer: "Czas realizacji zależy od wybranego pakietu i złożoności projektu. Orientacyjne terminy: Starter - 7-14 dni, Business - 14-21 dni, Premium - 21-35 dni. Dokładny harmonogram ustalamy na początku współpracy, uwzględniając Twoje potrzeby i dostępność materiałów."
   },
   {
     id: 3,
     question: "Czy mogę samodzielnie edytować treści na stronie?",
-    answer: "Tak! Wszystkie nasze strony są wyposażone w intuicyjny panel administracyjny (CMS), który pozwala na łatwe edytowanie treści, dodawanie zdjęć i zarządzanie produktami. Dodatkowo zapewniamy szkolenie z obsługi systemu."
+    answer: "To zależy od wybranego pakietu. Pakiety Starter i Business nie zawierają systemu CMS - treści można edytować tylko poprzez nas. Pakiet Premium zawiera zaawansowany CMS, który pozwala na samodzielne edytowanie treści, dodawanie zdjęć i zarządzanie produktami. System CMS można również dokupić do pakietów Starter i Business od 250€."
   },
   {
     id: 4,
@@ -37,17 +37,19 @@ const faqData: FAQItem[] = [
   {
     id: 5,
     question: "Jakie są koszty utrzymania strony?",
-    answer: "Koszty utrzymania obejmują hosting (od 20 zł/miesiąc), domenę (około 50 zł/rok) oraz opcjonalne wsparcie techniczne (od 199 zł/miesiąc). Wszystkie szczegóły omawiamy podczas konsultacji, dostosowując rozwiązanie do Twojego budżetu."
+    answer: "Koszty utrzymania obejmują domenę i hosting z certyfikatem SSL od 220€ na cały rok oraz opcjonalne wsparcie techniczne. Pakiet Business już zawiera domenę i hosting na 12 miesięcy. Wszystkie szczegóły omawiamy podczas konsultacji, dostosowując rozwiązanie do Twojego budżetu."
   },
   {
     id: 6,
     question: "Czy oferujecie wsparcie po zakończeniu projektu?",
-    answer: "Tak! Oferujemy 30-dniową gwarancję na wszystkie nasze projekty oraz opcjonalne pakiety wsparcia technicznego. Zapewniamy również aktualizacje bezpieczeństwa, kopie zapasowe i pomoc w rozwoju strony zgodnie z potrzebami Twojego biznesu."
+    answer: "Tak! Pakiet Starter zawiera 1 miesiąc wsparcia, Business - 3 miesiące, a Premium - 6 miesięcy wsparcia technicznego. Dodatkowo oferujemy opcjonalne pakiety wsparcia długoterminowego, aktualizacje bezpieczeństwa, kopie zapasowe i pomoc w rozwoju strony zgodnie z potrzebami Twojego biznesu."
   }
 ];
 
 const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
+  const [phoneModalOpen, setPhoneModalOpen] = useState(false);
 
   const toggleItem = (id: number) => {
     setExpandedItems(prev => 
@@ -215,18 +217,18 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                     Skontaktuj się z nami bezpośrednio - odpowiemy w ciągu 24 godzin!
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a
-                      href="mailto:contact@bloompixel.pl"
+                    <button
+                      onClick={() => setEmailModalOpen(true)}
                       className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
                     >
                       📧 Wyślij Email
-                    </a>
-                    <a
-                      href="tel:+48123456789"
+                    </button>
+                    <button
+                      onClick={() => setPhoneModalOpen(true)}
                       className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium"
                     >
                       📞 Zadzwoń
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -234,6 +236,142 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
           </motion.div>
         </motion.div>
       )}
+
+      {/* Email Modal */}
+      <AnimatePresence>
+        {emailModalOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setEmailModalOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+            >
+              <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 bg-blue-100 rounded-lg">
+                      <Mail size={20} className="text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Email kontaktowy</h3>
+                  </div>
+                  <button
+                    onClick={() => setEmailModalOpen(false)}
+                    className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+                
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 mb-4">Skontaktuj się z nami przez email:</p>
+                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                    <p className="text-lg font-mono font-semibold text-gray-900 select-all">
+                      contact@bloompixel.pl
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText('contact@bloompixel.pl');
+                        // Można dodać toast notification tutaj
+                      }}
+                      className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    >
+                      <Copy size={16} />
+                      Kopiuj
+                    </button>
+                    <a
+                      href="mailto:contact@bloompixel.pl"
+                      className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    >
+                      <Mail size={16} />
+                      Otwórz
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Phone Modal */}
+      <AnimatePresence>
+        {phoneModalOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setPhoneModalOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+            >
+              <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 bg-green-100 rounded-lg">
+                      <Phone size={20} className="text-green-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Numer telefonu</h3>
+                  </div>
+                  <button
+                    onClick={() => setPhoneModalOpen(false)}
+                    className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+                
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 mb-4">Zadzwoń do nas bezpośrednio:</p>
+                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                    <p className="text-lg font-mono font-semibold text-gray-900 select-all">
+                      +31 634 225 355
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText('+31 634 225 355');
+                        // Można dodać toast notification tutaj
+                      }}
+                      className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    >
+                      <Copy size={16} />
+                      Kopiuj
+                    </button>
+                    <a
+                      href="tel:+31634225355"
+                      className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                    >
+                      <Phone size={16} />
+                      Zadzwoń
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </AnimatePresence>
   );
 };
