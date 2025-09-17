@@ -85,11 +85,35 @@ const Hero = () => {
               designowi i bezbłędnej funkcjonalności.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
-              <Button size="lg" variant="primary">
+              <Button 
+                size="lg" 
+                variant="primary"
+                onClick={() => {
+                  const portfolioSection = document.getElementById('portfolio');
+                  if (portfolioSection) {
+                    portfolioSection.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
                 Zobacz Nasze Prace
                 <ArrowRightIcon size={18} className="ml-2" />
               </Button>
-              <Button variant="neon" size="lg">
+              <Button 
+                variant="neon" 
+                size="lg"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
                 Porozmawiajmy
               </Button>
             </motion.div>
