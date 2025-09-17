@@ -407,21 +407,57 @@ const ContactSection: React.FC = () => {
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          className="w-full pl-12 pr-12 py-4 border-2 border-slate-200 rounded-xl bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:border-blue-300 appearance-none cursor-pointer text-slate-900"
-                          whileFocus={{ scale: 1.02, y: -3, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                          className="w-full pl-12 pr-12 py-4 border-2 border-slate-200 rounded-xl bg-gradient-to-br from-white/95 via-blue-50/30 to-purple-50/20 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:border-blue-300 hover:bg-gradient-to-br hover:from-blue-50/50 hover:via-purple-50/30 hover:to-white/95 appearance-none cursor-pointer text-slate-900 font-medium"
+                          style={{
+                            backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(239,246,255,0.3) 50%, rgba(250,245,255,0.2) 100%)`,
+                          }}
+                          whileFocus={{ 
+                            scale: 1.02, 
+                            y: -3, 
+                            boxShadow: "0 25px 35px -5px rgba(59, 130, 246, 0.15), 0 15px 15px -5px rgba(147, 51, 234, 0.1)" 
+                          }}
+                          whileHover={{
+                            scale: 1.01,
+                            boxShadow: "0 20px 30px -5px rgba(59, 130, 246, 0.1), 0 10px 15px -5px rgba(147, 51, 234, 0.05)"
+                          }}
                           required
                           transition={{ type: "spring", stiffness: 400, damping: 25 }}
                         >
-                          {services.map((service) => (
-                            <option key={service.value} value={service.value} disabled={service.value === ""}>
+                          {services.map((service, index) => (
+                            <option 
+                              key={service.value} 
+                              value={service.value} 
+                              disabled={service.value === ""}
+                              style={{
+                                background: service.value === "" 
+                                  ? 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)' 
+                                  : index % 2 === 0 
+                                    ? 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e0f2fe 100%)'
+                                    : 'linear-gradient(135deg, #fefefe 0%, #f8fafc 50%, #f0f4ff 100%)',
+                                color: service.value === "" ? '#94a3b8' : '#1e293b',
+                                padding: '12px 16px',
+                                fontWeight: service.value === "" ? 'normal' : '500',
+                                borderBottom: index < services.length - 1 ? '1px solid rgba(226, 232, 240, 0.5)' : 'none'
+                              }}
+                            >
                               {service.label}
                             </option>
                           ))}
                         </motion.select>
                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                          <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <motion.svg 
+                            className="w-5 h-5 text-slate-400 transition-colors duration-300" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                            animate={{ 
+                              rotate: formData.service ? 180 : 0,
+                              color: formData.service ? '#3b82f6' : '#94a3b8'
+                            }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
+                          </motion.svg>
                         </div>
                       </div>
                     </motion.div>
