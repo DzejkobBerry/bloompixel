@@ -162,7 +162,7 @@ const ContactSection: React.FC = () => {
                     <div className="flex-1">
                       <p className="text-sm text-slate-500 mb-1 font-medium">Email</p>
                       <p className="text-slate-900 font-semibold text-lg">
-                        contact@bloompixel.pl
+                        kontakt@bloompixel.pl
                       </p>
                       <p className="text-xs text-slate-400 mt-1">Odpowiadamy w ciągu 24h</p>
                     </div>
@@ -179,7 +179,7 @@ const ContactSection: React.FC = () => {
                     <div className="flex-1">
                       <p className="text-sm text-slate-500 mb-1 font-medium">Telefon</p>
                       <p className="text-slate-900 font-semibold text-lg">
-                        +48 123 456 789
+                        +31 634 225 355
                       </p>
                       <p className="text-xs text-slate-400 mt-1">Pon-Pt 9:00-18:00</p>
                     </div>
@@ -377,7 +377,7 @@ const ContactSection: React.FC = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-xl bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:border-blue-300 text-slate-900"
-                          placeholder="+48 123 456 789"
+                          placeholder="+31 634 225 355"
                           whileFocus={{ scale: 1.02, y: -3, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                           required
                           transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -519,7 +519,7 @@ const ContactSection: React.FC = () => {
                     <span className="text-sm text-slate-500">lub skontaktuj się przez:</span>
                     <div className="flex space-x-3">
                       <motion.a
-                        href="mailto:contact@bloompixel.pl"
+                        href="mailto:kontakt@bloompixel.pl"
                         className="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
@@ -527,7 +527,7 @@ const ContactSection: React.FC = () => {
                         <MailIcon size={16} className="text-blue-600" />
                       </motion.a>
                       <motion.a
-                        href="tel:+48123456789"
+                        href="tel:+31634225355"
                         className="w-8 h-8 rounded-lg bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}

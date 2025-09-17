@@ -275,14 +275,14 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                   <p className="text-sm text-gray-600 mb-4">Skontaktuj się z nami przez email:</p>
                   <div className="bg-gray-50 rounded-lg p-4 mb-4">
                     <p className="text-lg font-mono font-semibold text-gray-900 select-all">
-                      contact@bloompixel.pl
+                      kontakt@bloompixel.pl
                     </p>
                   </div>
                   
                   <div className="flex gap-2">
                     <button
                       onClick={() => {
-                        navigator.clipboard.writeText('contact@bloompixel.pl');
+                        navigator.clipboard.writeText('kontakt@bloompixel.pl');
                         // Można dodać toast notification tutaj
                       }}
                       className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
@@ -291,7 +291,7 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                       Kopiuj
                     </button>
                     <a
-                      href="mailto:contact@bloompixel.pl"
+                      href="mailto:kontakt@bloompixel.pl"
                       className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
                     >
                       <Mail size={16} />

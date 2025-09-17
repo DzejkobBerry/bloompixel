@@ -298,19 +298,19 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="text-slate-400">Warszawa, Polska</li>
               <li>
-                <motion.a href="mailto:contact@bloompixel.pl" className="text-slate-400 hover:text-white transition-colors" whileHover={{
+                <motion.a href="mailto:kontakt@bloompixel.pl" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,
                 color: '#ffffff'
               }}>
-                  contact@bloompixel.pl
+                  kontakt@bloompixel.pl
                 </motion.a>
               </li>
               <li>
-                <motion.a href="tel:+48123456789" className="text-slate-400 hover:text-white transition-colors" whileHover={{
+                <motion.a href="tel:+31634225355" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,
                 color: '#ffffff'
               }}>
-                  +48 123 456 789
+                  +31 634 225 355
                 </motion.a>
               </li>
             </ul>
