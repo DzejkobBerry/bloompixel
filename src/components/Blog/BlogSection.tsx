@@ -75,6 +75,9 @@ const BlogSection = () => {
           >
             <span className="text-2xl">📚</span>
             <span className="text-blue-600 font-medium text-sm">Wiedza & Inspiracje</span>
+            <span className="text-gray-400 mx-2">•</span>
+            <span className="text-lg">🚧</span>
+            <span className="text-amber-700 font-medium text-sm">Sekcja w fazie budowy</span>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
