@@ -4,8 +4,22 @@ import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import ParticlesLight from '../UI/ParticlesLight';
 import TypewriterText from '../UI/TypewriterText';
+import PricingModal from './PricingModal';
+
 const PricingSection = () => {
   const [isGross, setIsGross] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (plan) => {
+    setSelectedPlan(plan);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPlan(null);
+  };
   const pricingPlans = [{
     name: 'Starter',
     description: '🚀 Szybki start w świecie online! Profesjonalna wizytówka, która przyciągnie pierwszych klientów',
@@ -169,7 +183,12 @@ const PricingSection = () => {
                 </div>
                 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button variant={plan.featured ? "primary" : "secondary"} fullWidth className={`${plan.featured ? 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white border-2 border-blue-200 shadow-md' : 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-200 hover:border-gray-300 shadow-md'} font-semibold py-4 rounded-xl transition-all duration-300`}>
+                  <Button 
+                    variant={plan.featured ? "primary" : "secondary"} 
+                    fullWidth 
+                    className={`${plan.featured ? 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white border-2 border-blue-200 shadow-md' : 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-200 hover:border-gray-300 shadow-md'} font-semibold py-4 rounded-xl transition-all duration-300`}
+                    onClick={() => openModal(plan)}
+                  >
                     Wyświetl szczegóły
                   </Button>
                 </motion.div>
@@ -271,6 +290,14 @@ const PricingSection = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Pricing Modal */}
+      <PricingModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        plan={selectedPlan}
+        isGross={isGross}
+      />
     </section>;
 };
 export default PricingSection;
