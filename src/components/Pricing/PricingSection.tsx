@@ -28,7 +28,12 @@ const PricingSection = () => {
     icon: Zap,
     color: 'from-green-500 to-emerald-600',
     features: ['Responsywna strona typu wizytówka', 'Podstawowy design', 'Formularz kontaktowy', 'Podstawowa optymalizacja SEO', 'Integracja z Google Analytics', 'Integracja z social media', '1 miesiąc wsparcia technicznego'],
-    notIncluded: ['System CMS', 'Blog', 'Domena i hosting na 12 miesięcy', 'Certyfikat SSL']
+    notIncluded: [
+      'System CMS (od 250€)', 
+      'Blog (250€)', 
+      'Domena i hosting na 12 miesięcy (220€)', 
+      'Certyfikat SSL (gratis przy domenie i hostingu, osobno 70€)'
+    ]
   }, {
     name: 'Business',
     description: '💼 Kompletne rozwiązanie dla ambitnych firm! Wszystko czego potrzebujesz w jednym pakiecie',
