@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, ChevronUp, HelpCircle, Mail, Phone, Copy } from 'lucide-react';
+import { X, ChevronDown, ChevronUp, HelpCircle, Mail, Phone, Copy, MessageCircle } from 'lucide-react';
 
 interface FAQModalProps {
   isOpen: boolean;
@@ -340,30 +340,39 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                 </div>
                 
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 mb-4">Zadzwoń do nas bezpośrednio:</p>
+                  <p className="text-sm text-gray-600 mb-4">Zadzwoń do nas bezpośrednio lub napisz na WhatsApp:</p>
                   <div className="bg-gray-50 rounded-lg p-4 mb-4">
                     <p className="text-lg font-mono font-semibold text-gray-900 select-all">
                       +31 634 225 355
                     </p>
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="grid grid-cols-3 gap-2">
                     <button
                       onClick={() => {
                         navigator.clipboard.writeText('+31 634 225 355');
                         // Można dodać toast notification tutaj
                       }}
-                      className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                      className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-1"
                     >
                       <Copy size={16} />
                       Kopiuj
                     </button>
                     <a
                       href="tel:+31634225355"
-                      className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-2"
+                      className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-1"
                     >
                       <Phone size={16} />
                       Zadzwoń
+                    </a>
+                    <a
+                      href="https://wa.me/31634225355"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors text-sm font-medium flex items-center justify-center gap-1"
+                    >
+                      <MessageCircle size={16} />
+                      WhatsApp
                     </a>
                   </div>
                 </div>
