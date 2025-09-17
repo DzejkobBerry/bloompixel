@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
 import ParticlesLight from '../UI/ParticlesLight';
 import FAQModal from './FAQModal';
+import SuccessModal from './SuccessModal';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ const ContactSection: React.FC = () => {
   const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [phoneModalOpen, setPhoneModalOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,7 +49,7 @@ const ContactSection: React.FC = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
+    setSuccessModalOpen(true);
     setFormData({
       name: '',
       email: '',
@@ -55,10 +57,6 @@ const ContactSection: React.FC = () => {
       service: '',
       message: ''
     });
-
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
   };
 
   const containerVariants = {
@@ -279,21 +277,6 @@ const ContactSection: React.FC = () => {
 
                 {/* Contact Form */}
                 <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                  {isSubmitted ? (
-                    <motion.div className="bg-green-50 text-green-800 p-4 rounded-lg flex items-center mb-6 border border-green-200" initial={{
-                      opacity: 0,
-                      scale: 0.8
-                    }} animate={{
-                      opacity: 1,
-                      scale: 1
-                    }} transition={{
-                      duration: 0.5
-                    }}>
-                      <CheckCircleIcon className="text-green-500 mr-2" size={20} />
-                      Dziękujemy za wiadomość! Odpowiemy w ciągu 24 godzin.
-                    </motion.div>
-                  ) : null}
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <motion.div
                       className="space-y-2 group"
@@ -798,6 +781,12 @@ const ContactSection: React.FC = () => {
           </motion.div>
         </>
       )}
+
+      {/* Success Modal */}
+      <SuccessModal
+        isOpen={successModalOpen}
+        onClose={() => setSuccessModalOpen(false)}
+      />
     </section>
   );
 };
