@@ -33,6 +33,12 @@ const PricingSection = () => {
       'Blog (250€)', 
       'Domena i hosting na 12 miesięcy (220€)', 
       'Certyfikat SSL (gratis przy domenie i hostingu, osobno 70€)'
+    ],
+    notIncludedDisplay: [
+      'System CMS', 
+      'Blog', 
+      'Domena i hosting na 12 miesięcy', 
+      'Certyfikat SSL'
     ]
   }, {
     name: 'Business',
@@ -42,7 +48,8 @@ const PricingSection = () => {
     icon: Rocket,
     color: 'from-blue-600 via-purple-600 to-indigo-700',
     features: ['Responsywna strona do 5 podstron', 'Zaawansowany design', 'Formularz kontaktowy', 'Zaawansowana optymalizacja SEO', 'Integracja z Google Analytics', 'Integracja z social media', 'Podstawowe animacje', 'Domena PL/NL na 12 miesięcy', 'Hosting na 12 miesięcy', '3 miesiące wsparcia technicznego'],
-    notIncluded: ['System CMS', 'Blog'],
+    notIncluded: ['System CMS (od 250€)', 'Blog (250€)'],
+    notIncludedDisplay: ['System CMS', 'Blog'],
     featured: true
   }, {
     name: 'Premium',
@@ -51,8 +58,9 @@ const PricingSection = () => {
     grossPrice: 2460,
     icon: Crown,
     color: 'from-purple-600 via-pink-600 to-red-600',
-    features: ['Responsywny design strony', 'Nieograniczona liczba podstron', 'Zaawansowane formularze i integracje', 'Pełna optymalizacja mobilna', 'Kompleksowa strategia SEO', 'Zaawansowany CMS', 'Sklep internetowy (e-commerce)', 'Niestandardowe animacje', 'Funkcje aplikacji webowych', 'Hosting Premium na 12 miesięcy', '6 miesięcy wsparcia technicznego', 'Dedykowany opiekun projektu'],
-    notIncluded: []
+    features: ['Responsywny design strony', 'Nieograniczona liczba podstron', 'Zaawansowane formularze i integracje', 'Pełna optymalizacja mobilna', 'Kompleksowa strategia SEO', 'Zaawansowany CMS', 'Sklep internetowy (e-commerce)', 'Niestandardowe animacje', 'Funkcje aplikacji webowych', 'Hosting Premium na 12 miesięcy', 'Domena Premium na 12 miesięcy', '6 miesięcy wsparcia technicznego', 'Dedykowany opiekun projektu'],
+    notIncluded: [],
+    notIncludedDisplay: []
   }];
   const containerVariants = {
     hidden: {
@@ -213,14 +221,14 @@ const PricingSection = () => {
                       </motion.li>)}
                   </ul>
                 </div>
-                {plan.notIncluded.length > 0 && <>
+                {plan.notIncludedDisplay.length > 0 && <>
                     <div className="mb-4">
                       <h4 className="font-semibold text-gray-900 mb-4 flex items-center text-base">
                         <span className="text-red-500 mr-3 text-xl font-bold drop-shadow-sm bg-red-50 rounded-full w-6 h-6 flex items-center justify-center">✗</span>
                         Poza Pakietem:
                       </h4>
                       <ul className="space-y-3">
-                        {plan.notIncluded.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
+                        {plan.notIncludedDisplay.map((feature, idx) => <motion.li key={idx} className="flex items-start group" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
                             <div className="p-1 rounded-full bg-gradient-to-r from-gray-400 to-gray-500 mr-3 mt-0.5 flex-shrink-0">
                               <XIcon size={12} className="text-white" />
                             </div>
