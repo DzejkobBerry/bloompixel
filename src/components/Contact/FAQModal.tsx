@@ -217,18 +217,60 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                     Skontaktuj się z nami bezpośrednio - odpowiemy w ciągu 24 godzin!
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <button
+                    <motion.button
                       onClick={() => setEmailModalOpen(true)}
-                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+                      className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-700 focus:from-blue-800 focus:via-blue-900 focus:to-indigo-800 text-white rounded-xl shadow-lg hover:shadow-xl focus:shadow-2xl transition-all duration-300 text-sm font-semibold overflow-hidden focus:outline-none focus:ring-4 focus:ring-blue-300/50"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      whileFocus={{ scale: 1.02 }}
                     >
-                      📧 Wyślij Email
-                    </button>
-                    <button
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-focus:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-center justify-center gap-2">
+                        <motion.span 
+                          className="text-lg"
+                          animate={{ rotate: [0, 10, -10, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                          whileHover={{ rotate: [0, 20, -20, 0], transition: { duration: 0.5 } }}
+                        >
+                          📧
+                        </motion.span>
+                        <span>Wyślij Email</span>
+                        <motion.div
+                          className="w-1 h-1 bg-white/60 rounded-full"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                          whileHover={{ scale: 2, opacity: 1 }}
+                        />
+                      </div>
+                    </motion.button>
+                    <motion.button
                       onClick={() => setPhoneModalOpen(true)}
-                      className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium"
+                      className="group relative px-6 py-3 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 hover:from-green-700 hover:via-emerald-700 hover:to-teal-700 focus:from-green-800 focus:via-emerald-800 focus:to-teal-800 text-white rounded-xl shadow-lg hover:shadow-xl focus:shadow-2xl transition-all duration-300 text-sm font-semibold overflow-hidden focus:outline-none focus:ring-4 focus:ring-green-300/50"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      whileFocus={{ scale: 1.02 }}
                     >
-                      📞 Zadzwoń
-                    </button>
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-teal-400/30 opacity-0 group-focus:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-center justify-center gap-2">
+                        <motion.span 
+                          className="text-lg"
+                          animate={{ rotate: [0, 15, -15, 0] }}
+                          transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4 }}
+                          whileHover={{ rotate: [0, 25, -25, 0], transition: { duration: 0.5 } }}
+                        >
+                          📞
+                        </motion.span>
+                        <span>Zadzwoń</span>
+                        <motion.div
+                          className="w-1 h-1 bg-white/60 rounded-full"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }}
+                          transition={{ duration: 1.8, repeat: Infinity, delay: 0.5 }}
+                          whileHover={{ scale: 2, opacity: 1 }}
+                        />
+                      </div>
+                    </motion.button>
                   </div>
                 </div>
               </div>
