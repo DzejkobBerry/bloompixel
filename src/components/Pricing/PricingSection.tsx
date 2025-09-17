@@ -212,6 +212,11 @@ const PricingSection = () => {
                       </p>
                     </div>
                   </>}
+                {plan.name === 'Premium' && <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-blue-800 text-xs font-medium">
+                      💡 <strong>Pakiet Premium:</strong> Zawiera wszystkie dostępne usługi i funkcjonalności bez dodatkowych opłat.
+                    </p>
+                  </div>}
               </div>
             </motion.div>
           })}
