@@ -157,7 +157,7 @@ const Footer = () => {
               rozwijać się dzięki technologii.
             </p>
             <div className="flex space-x-4">
-              <motion.a href="#" className="text-slate-400 hover:text-white transition-colors" whileHover={{
+              <motion.a href="https://www.facebook.com/bloompixelPL" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors" whileHover={{
               y: -5,
               color: '#ffffff'
             }}>
@@ -296,7 +296,7 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <h4 className="text-lg font-bold mb-4 text-blue-300">Kontakt</h4>
             <ul className="space-y-2">
-              <li className="text-slate-400">Warszawa, Polska</li>
+              <li className="text-slate-400">Spijkenisse, Holandia</li>
               <li>
                 <motion.a href="mailto:kontakt@bloompixel.pl" className="text-slate-400 hover:text-white transition-colors" whileHover={{
                 x: 5,

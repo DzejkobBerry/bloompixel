@@ -196,7 +196,7 @@ const ContactSection: React.FC = () => {
                     <div className="flex-1">
                       <p className="text-sm text-slate-500 mb-1 font-medium">Lokalizacja</p>
                       <p className="text-slate-900 font-semibold text-lg">
-                        Kraków, Polska
+                        Spijkenisse, Holandia
                       </p>
                       <p className="text-xs text-slate-400 mt-1">Spotkania online i stacjonarne</p>
                     </div>
