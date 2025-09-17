@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 interface ButtonProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
 }
-const Button = ({
+const Button = memo(({
   children,
   variant = "primary",
   size = "md",
@@ -40,5 +40,5 @@ const Button = ({
       {(variant === "primary" || variant === "secondary") && !disabled && <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>}
       {children}
     </motion.button>;
-};
+});
 export default Button;

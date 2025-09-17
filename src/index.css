@@ -50,39 +50,18 @@ body {
                0 0 20px rgba(0, 242, 255, 0.5), 
                0 0 30px rgba(0, 242, 255, 0.3);
 }
-.glow-text-purple {
-  text-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 
-               0 0 20px rgba(138, 43, 226, 0.5), 
-               0 0 30px rgba(138, 43, 226, 0.3);
-}
-.glow-text-pink {
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
-               0 0 20px rgba(255, 0, 255, 0.5), 
-               0 0 30px rgba(255, 0, 255, 0.3);
-}
+
 /* Glow effects */
 .glow {
   box-shadow: 0 0 10px rgba(0, 242, 255, 0.7), 
               0 0 20px rgba(0, 242, 255, 0.5);
 }
-.glow-purple {
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 
-              0 0 20px rgba(138, 43, 226, 0.5);
-}
-.glow-pink {
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
-              0 0 20px rgba(255, 0, 255, 0.5);
-}
+
 /* Gradient text */
 .gradient-text {
   @apply bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text;
 }
-.gradient-text-blue {
-  @apply bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text;
-}
-.gradient-text-purple {
-  @apply bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text;
-}
+
 /* Gradient borders */
 .gradient-border {
   position: relative;
@@ -102,49 +81,7 @@ body {
   pointer-events: none;
 }
 /* Custom animations */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-.animate-blob {
-  animation: blob 7s infinite;
-}
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-.animation-delay-1000 {
-  animation-delay: 1s;
-}
-.animation-delay-3000 {
-  animation-delay: 3s;
-}
+
 @keyframes pulse-glow {
   0%, 100% {
     opacity: 1;
@@ -158,36 +95,8 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-.typing-animation {
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3.5s steps(40, end);
-}
-/* Code block styling */
-.code-block {
-  font-family: 'Space Mono', monospace;
-  @apply bg-slate-800 rounded-md p-4 text-sm overflow-x-auto;
-}
-.code-line {
-  display: block;
-  @apply text-gray-400;
-}
-.code-keyword {
-  @apply text-purple-400;
-}
-.code-function {
-  @apply text-blue-400;
-}
-.code-string {
-  @apply text-green-400;
-}
-.code-comment {
-  @apply text-gray-500;
-}
+
+
 /* Terminal effect */
 .terminal {
   @apply bg-slate-900 border border-slate-700 rounded-md p-4 font-mono text-sm;
@@ -275,61 +184,8 @@ body {
 .neon-button:hover::before {
   transform: translateX(0);
 }
-/* 3D Card effect */
-.card-3d {
-  transition: transform 0.5s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-.card-3d:hover {
-  transform: rotateY(10deg) rotateX(10deg);
-}
-/* Shine effect */
-.shine {
-  position: relative;
-  overflow: hidden;
-}
-.shine::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right, 
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.1) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  transform: rotate(30deg);
-  animation: shine 6s infinite;
-}
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) rotate(30deg);
-  }
-  20%, 100% {
-    transform: translateX(100%) rotate(30deg);
-  }
-}
-/* Animated gradient background */
-.animated-gradient-bg {
-  background: linear-gradient(-45deg, #1e3a8a, #1e40af, #3b82f6, #7c3aed);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
+
 /* Circuit board pattern */
 .circuit-pattern {
   background-color: #0f172a;

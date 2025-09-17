@@ -1,4 +1,4 @@
-import React, { useState, useRef, Children } from 'react';
+import { useState, useRef } from 'react';
 import PortfolioCard from '../UI/PortfolioCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';

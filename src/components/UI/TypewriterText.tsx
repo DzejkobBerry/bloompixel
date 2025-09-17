@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion } from 'framer-motion';
 
 interface TypewriterTextProps {
@@ -8,7 +8,7 @@ interface TypewriterTextProps {
   className?: string;
 }
 
-const TypewriterText: React.FC<TypewriterTextProps> = ({ 
+const TypewriterText: React.FC<TypewriterTextProps> = memo(({ 
   text, 
   delay = 0, 
   speed = 100, 
@@ -86,6 +86,6 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
       </motion.span>
     </span>
   );
-};
+});
 
 export default TypewriterText;

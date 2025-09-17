@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Children } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowRightIcon, CodeIcon, LayoutIcon, PenToolIcon, ChevronDownIcon } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';

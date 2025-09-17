@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState, Children, lazy, memo, Component } from 'react';
+import { useEffect, useMemo, useState, memo, useCallback } from 'react';
 import { CodeIcon, LayoutIcon, ServerIcon, SmartphoneIcon, PenToolIcon, WrenchIcon, SearchIcon, MegaphoneIcon } from 'lucide-react';
 import ServiceCard from '../UI/ServiceCard';
 import { motion } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
-const ServicesSection = () => {
+const ServicesSection = memo(() => {
   const services = [{
     title: 'Tworzenie Stron Internetowych',
     description: 'Niestandardowe, responsywne strony internetowe zbudowane z nowoczesnymi technologiami, które świetnie wyglądają na wszystkich urządzeniach.',
@@ -175,5 +175,6 @@ const LazyComponent = lazy(() =>
         </motion.div>
       </motion.div>
     </section>;
-};
+});
+
 export default ServicesSection;

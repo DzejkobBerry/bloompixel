@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Children } from 'react';
+import { useEffect, useState } from 'react';
 import { MenuIcon, XIcon, CodeIcon, ChevronDownIcon } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,32 +12,45 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Update scrolled state
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
+      
       // Update active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
       const scrollPosition = window.scrollY + 100;
-      sections.forEach(section => {
+      
+      for (const section of sections) {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
         const sectionId = section.getAttribute('id') || '';
+        
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveSection(sectionId);
+          break;
         }
-      });
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, []);
   const navLinks = [
     { name: 'Strona Główna', href: '#home' },
     { name: 'O Nas', href: '#about' },
     { name: 'Usługi', href: '#services' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Cennik', href: '#pricing' }
+    { name: 'Oferta', href: '#pricing' }
   ];
 
   const contactDropdownItems = [

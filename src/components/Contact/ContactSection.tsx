@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, GlobeIcon, StarIcon, ArrowRightIcon, UserIcon, MessageSquareIcon, BriefcaseIcon, HelpCircle, MessageCircle, X, Copy } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';

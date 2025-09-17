@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Minus } from 'lucide-react';
 import Button from '../UI/Button';
@@ -22,7 +22,7 @@ interface PricingModalProps {
   isGross: boolean;
 }
 
-const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan, isGross }) => {
+const PricingModal: React.FC<PricingModalProps> = memo(({ isOpen, onClose, plan, isGross }) => {
   if (!plan) return null;
 
   const IconComponent = plan.icon;
@@ -205,6 +205,6 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan, isGr
       )}
     </AnimatePresence>
   );
-};
+});
 
 export default PricingModal;

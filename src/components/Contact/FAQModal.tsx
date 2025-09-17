@@ -124,15 +124,17 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        >
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="faq-modal"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          >
           <motion.div
             className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
             variants={modalVariants}
@@ -193,6 +195,7 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                     <AnimatePresence>
                       {expandedItems.includes(item.id) && (
                         <motion.div
+                          key={`answer-${item.id}`}
                           variants={answerVariants}
                           initial="hidden"
                           animate="visible"
@@ -277,13 +280,15 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
             </div>
           </motion.div>
         </motion.div>
-      )}
+        )}
+      </AnimatePresence>
 
       {/* Email Modal */}
       <AnimatePresence>
         {emailModalOpen && (
-          <>
+          <div key="email-modal-container">
             <motion.div
+              key="email-backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -291,6 +296,7 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
             />
             <motion.div
+              key="email-modal"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -343,15 +349,16 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
 
       {/* Phone Modal */}
       <AnimatePresence>
         {phoneModalOpen && (
-          <>
+          <div key="phone-modal-container">
             <motion.div
+              key="phone-backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -359,6 +366,7 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
             />
             <motion.div
+              key="phone-modal"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -420,10 +428,10 @@ const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-    </AnimatePresence>
+    </>
   );
 };
 

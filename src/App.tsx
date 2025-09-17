@@ -20,19 +20,27 @@ export function App() {
     setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-    // Smooth scroll behavior
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    
+    // Optimized smooth scroll behavior with event delegation
+    const handleSmoothScroll = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
+        const targetElement = document.querySelector(target.getAttribute('href')!);
+        if (targetElement) {
           window.scrollTo({
-            top: target.offsetTop - 80,
+            top: (targetElement as HTMLElement).offsetTop - 80,
             behavior: 'smooth'
           });
         }
-      });
-    });
+      }
+    };
+
+    document.addEventListener('click', handleSmoothScroll);
+    
+    return () => {
+      document.removeEventListener('click', handleSmoothScroll);
+    };
   }, []);
   return <AnimatePresence mode="wait">
       {isLoading ? <LoadingScreen key="loading" /> : <div key="content" className="w-full min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white font-sans overflow-x-hidden">

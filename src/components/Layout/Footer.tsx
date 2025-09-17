@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -235,7 +235,7 @@ const Footer = () => {
                 x: 5,
                 color: '#ffffff'
               }}>
-                  Cennik
+                  Oferta
                 </motion.a>
               </li>
               <li>
