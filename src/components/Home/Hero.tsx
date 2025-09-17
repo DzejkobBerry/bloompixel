@@ -190,34 +190,35 @@ const Hero = () => {
           </motion.div>
         </motion.div>
         
-        {/* Scroll Down Indicator */}
-        <motion.div 
-          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2, duration: 0.8 }}
-          whileHover={{ scale: 1.1 }}
-          onClick={() => {
-            const nextSection = document.getElementById('services') || document.querySelector('section:nth-child(2)');
-            if (nextSection) {
-              nextSection.scrollIntoView({ behavior: 'smooth' });
-            }
+      </div>
+      
+      {/* Scroll Down Indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2, duration: 0.8 }}
+        whileHover={{ scale: 1.1 }}
+        onClick={() => {
+          const aboutSection = document.getElementById('about');
+          if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      >
+        <motion.div
+          className="w-8 h-8 rounded-full border-2 border-slate-400 flex items-center justify-center mb-2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
         >
-          <span className="text-slate-400 text-sm mb-2 font-medium">Przewiń w dół</span>
-          <motion.div
-            className="w-8 h-8 rounded-full border-2 border-slate-400 flex items-center justify-center"
-            animate={{ y: [0, 8, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <ChevronDownIcon size={16} className="text-slate-400" />
-          </motion.div>
+          <ChevronDownIcon size={16} className="text-slate-400" />
         </motion.div>
-      </div>
+        <span className="text-slate-400 text-sm font-medium">przewiń w dół</span>
+      </motion.div>
     </section>;
 };
 export default Hero;

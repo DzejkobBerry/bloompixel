@@ -5,7 +5,6 @@ const TerminalAnimation = () => {
   const [text, setText] = useState('');
   const [currentLine, setCurrentLine] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-  const [showStats, setShowStats] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const scrollToContact = () => {
@@ -26,12 +25,6 @@ const TerminalAnimation = () => {
     { text: "Project successfully launched!", duration: 800, color: "text-green-400" }
   ];
 
-  const stats = [
-    { label: "Build time", value: "2.3s", color: "text-green-400" },
-    { label: "Bundle size", value: "245KB", color: "text-blue-400" },
-    { label: "Components", value: "24", color: "text-purple-400" }
-  ];
-
   useEffect(() => {
     if (currentLine < lines.length) {
       const timer = setTimeout(() => {
@@ -46,10 +39,7 @@ const TerminalAnimation = () => {
             setTimeout(() => {
               if (currentLine === lines.length - 1) {
                 setIsComplete(true);
-                setTimeout(() => {
-                  setShowStats(true);
-                  setTimeout(() => setShowModal(true), 1500);
-                }, 500);
+                setTimeout(() => setShowModal(true), 1500);
               }
               setCurrentLine(prev => prev + 1);
             }, 300);
@@ -186,46 +176,6 @@ const TerminalAnimation = () => {
           )}
         </div>
 
-        {/* Completion stats */}
-        <AnimatePresence>
-          {showStats && (
-            <motion.div 
-              className="mt-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600/30"
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ type: 'spring', stiffness: 200 }}
-            >
-              <div className="flex items-center mb-3">
-                <motion.div 
-                  className="w-3 h-3 rounded-full bg-green-400 mr-2"
-                  animate={{ 
-                    boxShadow: [
-                      "0 0 5px rgba(34, 197, 94, 0.5)",
-        "0 0 15px rgba(34, 197, 94, 0.8)",
-        "0 0 5px rgba(34, 197, 94, 0.5)"
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-green-400 font-semibold">Build Complete</span>
-              </div>
-              <div className="grid grid-cols-3 gap-4 text-xs">
-                {stats.map((stat, index) => (
-                  <motion.div 
-                    key={stat.label}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + index * 0.1 }}
-                  >
-                    <div className="text-slate-400">{stat.label}</div>
-                    <div className={`font-bold ${stat.color}`}>{stat.value}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* Ambient glow effects */}
