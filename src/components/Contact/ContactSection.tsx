@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, GlobeIcon, StarIcon, ArrowRightIcon, UserIcon, MessageSquareIcon, BriefcaseIcon } from 'lucide-react';
+import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, CheckCircleIcon, ClockIcon, GlobeIcon, StarIcon, ArrowRightIcon, UserIcon, MessageSquareIcon, BriefcaseIcon, HelpCircle } from 'lucide-react';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
 import ParticlesLight from '../UI/ParticlesLight';
+import FAQModal from './FAQModal';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const ContactSection: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFAQOpen, setIsFAQOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -680,7 +682,60 @@ const ContactSection: React.FC = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* FAQ Button Section */}
+        <motion.div 
+          id="faq"
+          className="max-w-6xl mx-auto mt-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <div className="bg-gradient-to-br from-white/95 via-blue-50/50 to-purple-50/40 rounded-2xl shadow-xl p-8 border border-slate-200/80 backdrop-blur-md relative overflow-hidden">
+            {/* Card Background Effects */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-400/10 to-transparent rounded-full blur-2xl"></div>
+            
+            <div className="text-center relative z-10">
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/30 rounded-full mb-4"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <HelpCircle size={16} className="text-blue-600" />
+                <span className="text-blue-700 font-medium text-sm">Centrum Pomocy</span>
+              </motion.div>
+              
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                Masz pytania?
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Znajdź odpowiedzi na najczęściej zadawane pytania
+              </p>
+              
+              <motion.button
+                onClick={() => setIsFAQOpen(true)}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <HelpCircle size={24} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Wyświetl FAQ</span>
+                <motion.div
+                  className="w-2 h-2 bg-white/30 rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
+
+      {/* FAQ Modal */}
+      <FAQModal isOpen={isFAQOpen} onClose={() => setIsFAQOpen(false)} />
     </section>
   );
 };
