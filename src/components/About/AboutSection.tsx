@@ -247,20 +247,20 @@ const AboutSection = () => {
           
           {/* Feature Tabs */}
           <div className="flex justify-center mb-12">
-            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-2 border border-white/10 flex flex-row space-x-2">
+            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-2 border border-white/10 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full max-w-md sm:max-w-none">
               {companyValues.map((value, index) => {
                 const Icon = value.icon;
                 return (
                   <button
                     key={index}
                     onClick={() => setActiveFeature(index)}
-                    className={`flex items-center gap-3 px-6 py-4 rounded-xl transition-all duration-300 ${
+                    className={`flex items-center justify-center sm:justify-start gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl transition-all duration-300 text-sm sm:text-base ${
                       activeFeature === index
                         ? `bg-gradient-to-r ${value.color} text-white shadow-lg`
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span className="font-semibold">{value.title}</span>
                   </button>
                 );
