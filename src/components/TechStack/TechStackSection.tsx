@@ -204,18 +204,24 @@ const TechStackSection = () => {
           </motion.p>
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
-          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg">
-            {categories.map(category => <motion.button key={category.id} className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeCategory === category.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setActiveCategory(category.id)} whileHover={{
+          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg w-full max-w-md sm:max-w-none">
+            {categories.map(category => <motion.button key={category.id} className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none min-w-0 ${activeCategory === category.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setActiveCategory(category.id)} whileHover={{
             scale: 1.05
           }} whileTap={{
             scale: 0.95
           }}>
-                {category.label}
+                <span className="truncate pointer-events-none">{category.label}</span>
               </motion.button>)}
           </div>
         </motion.div>
-        <motion.div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8" variants={containerVariants}>
-          {technologies[activeCategory].map((tech, index) => <motion.div key={tech.name} className="glass-effect rounded-lg p-6 flex flex-col items-center justify-center text-center group" variants={techItemVariants} custom={index} whileHover={{
+        <motion.div 
+          key={activeCategory} 
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8" 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {technologies[activeCategory].map((tech, index) => <motion.div key={`${activeCategory}-${tech.name}`} className="glass-effect rounded-lg p-6 flex flex-col items-center justify-center text-center group" variants={techItemVariants} custom={index} whileHover={{
           y: -10,
           boxShadow: `0 0 20px rgba(${activeCategory === 'frontend' ? '59, 130, 246' : activeCategory === 'backend' ? '139, 92, 246' : activeCategory === 'tools' ? '6, 182, 212' : '236, 72, 153'}, 0.3)`
         }}>

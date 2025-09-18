@@ -260,8 +260,8 @@ const AboutSection = () => {
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="font-semibold">{value.title}</span>
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 pointer-events-none" />
+                    <span className="font-semibold pointer-events-none">{value.title}</span>
                   </button>
                 );
               })}
