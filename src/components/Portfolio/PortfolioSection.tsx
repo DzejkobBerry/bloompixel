@@ -174,17 +174,17 @@ const PortfolioSection = () => {
         
         {/* Filter Buttons */}
         <div className="flex justify-center mb-12" style={{opacity: 1, transform: 'none'}}>
-          <div className="flex flex-col sm:inline-flex sm:flex-row flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg w-full max-w-md sm:max-w-none">
-            <button className="px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
+          <div className="flex flex-col sm:inline-flex sm:flex-row flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg w-full max-w-md sm:max-w-2xl lg:max-w-3xl">
+            <button className="px-3 sm:px-4 lg:px-6 py-2 lg:py-3 rounded-md text-xs sm:text-sm lg:text-base font-medium transition-all bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
               <span className="truncate pointer-events-none">Wszystkie Prace</span>
             </button>
-            <button className="px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
+            <button className="px-3 sm:px-4 lg:px-6 py-2 lg:py-3 rounded-md text-xs sm:text-sm lg:text-base font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
               <span className="truncate pointer-events-none">Strony Internetowe</span>
             </button>
-            <button className="px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
+            <button className="px-3 sm:px-4 lg:px-6 py-2 lg:py-3 rounded-md text-xs sm:text-sm lg:text-base font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
               <span className="truncate pointer-events-none">Aplikacje Web</span>
             </button>
-            <button className="px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
+            <button className="px-3 sm:px-4 lg:px-6 py-2 lg:py-3 rounded-md text-xs sm:text-sm lg:text-base font-medium transition-all text-slate-300 hover:text-white hover:bg-white/5 w-full sm:flex-1 sm:flex-none sm:min-w-0" tabIndex={0} style={{transform: 'none'}}>
               <span className="truncate pointer-events-none">Projektowanie UI/UX</span>
             </button>
           </div>

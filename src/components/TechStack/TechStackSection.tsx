@@ -204,8 +204,8 @@ const TechStackSection = () => {
           </motion.p>
         </motion.div>
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
-          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg w-full max-w-md sm:max-w-none">
-            {categories.map(category => <motion.button key={category.id} className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none min-w-0 ${activeCategory === category.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setActiveCategory(category.id)} whileHover={{
+          <div className="inline-flex flex-wrap justify-center gap-2 p-1 glass-effect rounded-lg w-full max-w-md sm:max-w-2xl lg:max-w-3xl">
+            {categories.map(category => <motion.button key={category.id} className={`px-3 sm:px-4 lg:px-6 py-2 lg:py-3 rounded-md text-xs sm:text-sm lg:text-base font-medium transition-all flex-1 sm:flex-none min-w-0 ${activeCategory === category.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/5'}`} onClick={() => setActiveCategory(category.id)} whileHover={{
             scale: 1.05
           }} whileTap={{
             scale: 0.95
