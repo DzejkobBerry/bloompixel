@@ -94,7 +94,7 @@ const BlogSection = () => {
         <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={containerVariants}>
           {blogPosts.map((post, index) => <BlogCard key={index} post={post} index={index} />)}
         </motion.div>
-        <motion.div className="text-center" variants={itemVariants}>
+        <motion.div className="text-center mt-8 sm:mt-12 md:mt-16" variants={itemVariants}>
           <Button 
             variant="primary" 
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
