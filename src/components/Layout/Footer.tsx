@@ -33,11 +33,11 @@ const Footer = () => {
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
         <div className="absolute bottom-40 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
       </div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
-        <div className="flex flex-col md:flex-row justify-between mb-8 gap-8">
+        <div className="flex flex-col md:flex-row justify-between mb-8 gap-6 sm:gap-8">
           <motion.div className="md:w-1/3" variants={itemVariants}>
             <motion.a 
               href="#home" 

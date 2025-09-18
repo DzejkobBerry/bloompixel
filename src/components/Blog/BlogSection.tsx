@@ -61,7 +61,7 @@ const BlogSection = () => {
       <div className="absolute inset-0 z-10">
         <ParticlesLight />
       </div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
@@ -80,18 +80,18 @@ const BlogSection = () => {
             <span className="text-amber-700 font-medium text-sm">Sekcja w fazie budowy</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
              <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-indigo-700 text-transparent bg-clip-text">
                <TypewriterText text="Blog & Artykuły" delay={800} speed={90} />
              </span>
            </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mb-8 rounded-full"></div>
-          <p className="text-slate-700 text-xl leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-700 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
             Odkryj nasze najnowsze artykuły i spostrzeżenia na temat rozwoju stron internetowych, 
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text font-semibold"> designu i nowoczesnych technologii</span>.
           </p>
         </motion.div>
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" variants={containerVariants}>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={containerVariants}>
           {blogPosts.map((post, index) => <BlogCard key={index} post={post} index={index} />)}
         </motion.div>
         <motion.div className="text-center" variants={itemVariants}>

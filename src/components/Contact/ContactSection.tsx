@@ -96,7 +96,7 @@ const ContactSection: React.FC = () => {
         <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-slate-100/20 to-transparent"></div>
       </div>
 
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
         once: true,
         amount: 0.3
       }} variants={containerVariants}>
@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
                 <TypewriterText text="Skontaktuj się" delay={500} speed={80} />
               </span>
@@ -125,7 +125,7 @@ const ContactSection: React.FC = () => {
           </motion.div>
           
           <motion.p
-            className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
             Gotowi na realizację Twojego projektu? Skontaktuj się z nami już dziś!
@@ -133,7 +133,7 @@ const ContactSection: React.FC = () => {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
             <motion.div className="lg:col-span-2" variants={itemVariants}>
               <div className="bg-gradient-to-br from-white/95 via-blue-50/50 to-purple-50/40 rounded-2xl shadow-2xl p-8 border border-slate-200/80 backdrop-blur-md h-fit relative">
                 {/* Card Background Effects */}

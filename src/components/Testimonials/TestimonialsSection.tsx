@@ -139,7 +139,7 @@ const TestimonialsSection = () => {
         <ParticlesLight />
       </div>
 
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
@@ -155,7 +155,7 @@ const TestimonialsSection = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 <TypewriterText text="Opinie" delay={500} speed={100} />
               </span>
@@ -168,7 +168,7 @@ const TestimonialsSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}

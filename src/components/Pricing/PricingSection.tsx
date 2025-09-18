@@ -95,7 +95,7 @@ const PricingSection = () => {
       <div className="absolute inset-0 z-10">
         <ParticlesLight />
       </div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
@@ -111,7 +111,7 @@ const PricingSection = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400 bg-clip-text text-transparent">
                 <TypewriterText text="Nasza" delay={500} speed={100} />
               </span>
@@ -124,7 +124,7 @@ const PricingSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8"
+            className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -158,7 +158,7 @@ const PricingSection = () => {
             </span>
           </div>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {pricingPlans.map((plan, index) => {
             const IconComponent = plan.icon;
             return <motion.div key={index} className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${plan.featured ? 'transform md:-translate-y-3 ring-2 ring-blue-400 ring-opacity-40 shadow-blue-100' : 'hover:-translate-y-2 hover:shadow-2xl'} relative border border-gray-200`} variants={itemVariants} whileHover={{ y: -8, scale: 1.02 }}>

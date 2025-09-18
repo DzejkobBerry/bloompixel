@@ -130,7 +130,7 @@ const PortfolioSection = () => {
       <div className="circuit-pattern absolute inset-0 opacity-10"></div>
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 rounded-bl-full opacity-70 -z-10"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-tr-full opacity-70 -z-10"></div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants} ref={containerRef}>
@@ -146,7 +146,7 @@ const PortfolioSection = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                 <TypewriterText text="Nasze" delay={500} speed={100} />
               </span>
@@ -159,7 +159,7 @@ const PortfolioSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -191,7 +191,7 @@ const PortfolioSection = () => {
         </div>
         
         <AnimatePresence mode="wait">
-          <motion.div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+          <motion.div key={activeFilter} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
             {filteredItems.slice(0, 9).map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
           </motion.div>
         </AnimatePresence>
@@ -203,7 +203,7 @@ const PortfolioSection = () => {
         >
           <div className="glass-effect p-8 md:p-12 rounded-2xl border border-white/10">
             <motion.h3 
-              className="text-3xl md:text-4xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}

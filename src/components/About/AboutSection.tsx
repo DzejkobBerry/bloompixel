@@ -158,7 +158,7 @@ const AboutSection = () => {
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                 <TypewriterText text="Poznaj" delay={500} speed={100} />
               </span>
@@ -171,7 +171,7 @@ const AboutSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -182,7 +182,7 @@ const AboutSection = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-col md:flex-row gap-8 justify-center items-center max-w-4xl mx-auto"
+            className="flex flex-col sm:flex-row md:flex-row gap-6 sm:gap-8 justify-center items-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -200,7 +200,7 @@ const AboutSection = () => {
 
         {/* Hero Stats */}
         <motion.div 
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-24"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -291,7 +291,7 @@ const AboutSection = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 {companyValues[activeFeature].features.map((item, index) => (
                   <motion.div
                     key={index}
@@ -318,7 +318,7 @@ const AboutSection = () => {
         >
           <div className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-3xl p-12 border border-white/20">
             <motion.h3 
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 1.2 }}
@@ -326,7 +326,7 @@ const AboutSection = () => {
               Zrealizujmy Twój <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projekt</span> Razem
             </motion.h3>
             <motion.p 
-              className="text-gray-300 text-xl mb-10 max-w-3xl mx-auto leading-relaxed"
+              className="text-gray-300 text-lg sm:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.4 }}
@@ -336,7 +336,7 @@ const AboutSection = () => {
             </motion.p>
             
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row md:flex-row gap-6 sm:gap-8 justify-center items-center max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 1.6 }}

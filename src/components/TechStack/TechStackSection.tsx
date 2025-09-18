@@ -165,7 +165,7 @@ const TechStackSection = () => {
         <div className="absolute top-40 right-20 w-72 h-72 bg-blue-900/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-30"></div>
         <div className="absolute bottom-40 left-20 w-72 h-72 bg-purple-900/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-30"></div>
       </div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
@@ -181,7 +181,7 @@ const TechStackSection = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                 Nasz
               </span>
@@ -194,7 +194,7 @@ const TechStackSection = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -214,7 +214,7 @@ const TechStackSection = () => {
               </motion.button>)}
           </div>
         </motion.div>
-        <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" key={activeCategory} initial="hidden" animate="visible" variants={containerVariants}>
+        <motion.div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8" variants={containerVariants}>
           {technologies[activeCategory].map((tech, index) => <motion.div key={tech.name} className="glass-effect rounded-lg p-6 flex flex-col items-center justify-center text-center group" variants={techItemVariants} custom={index} whileHover={{
           y: -10,
           boxShadow: `0 0 20px rgba(${activeCategory === 'frontend' ? '59, 130, 246' : activeCategory === 'backend' ? '139, 92, 246' : activeCategory === 'tools' ? '6, 182, 212' : '236, 72, 153'}, 0.3)`

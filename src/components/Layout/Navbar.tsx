@@ -8,6 +8,8 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isMobileContactDropdownOpen, setIsMobileContactDropdownOpen] = useState(false);
+  const [isMobileLanguageDropdownOpen, setIsMobileLanguageDropdownOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('pl');
   useEffect(() => {
     const handleScroll = () => {
@@ -141,7 +143,7 @@ const Navbar = () => {
   const isDarkSection = activeSection === 'testimonials' || activeSection === 'pricing' || activeSection === 'contact' || activeSection === 'footer' || activeSection === 'blog';
   
   return <motion.header initial="hidden" animate="visible" variants={navVariants} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isDarkSection ? (isDarkSection ? 'bg-slate-900/95 backdrop-blur-xl border-b border-white/10 py-3' : 'glass-effect py-3') : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 flex justify-between items-center">
         <motion.a 
           href="#home" 
           className="text-2xl font-bold text-white flex items-center group relative" 
@@ -431,7 +433,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Navigation */}
       <AnimatePresence>
-        {isMenuOpen && <motion.div className="md:hidden absolute top-full left-0 right-0 glass-effect" initial={{
+        {isMenuOpen && <motion.div className="md:hidden absolute top-full left-0 right-0 bg-slate-900 backdrop-blur-xl border-t border-white/20 shadow-2xl" initial={{
         opacity: 0,
         height: 0
       }} animate={{
@@ -444,7 +446,7 @@ const Navbar = () => {
         duration: 0.3
       }}>
             <div className="container mx-auto px-4 py-6 flex flex-col space-y-2">
-              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl group overflow-hidden ${activeSection === link.href.substring(1) ? (isDarkSection ? 'text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20' : 'text-blue-400 bg-blue-400/10') : (isDarkSection ? 'text-gray-200' : 'text-slate-300')}`} onClick={() => setIsMenuOpen(false)} initial={{
+              {navLinks.map((link, index) => <motion.a key={link.name} href={link.href} className={`relative text-sm font-semibold py-3 px-4 rounded-xl group overflow-hidden ${activeSection === link.href.substring(1) ? 'text-white bg-gradient-to-r from-blue-500/30 to-purple-500/30' : 'text-gray-100 hover:text-white'}`} onClick={() => setIsMenuOpen(false)} initial={{
             opacity: 0,
             x: -20
           }} animate={{
@@ -469,66 +471,125 @@ const Navbar = () => {
               
               {/* Mobile Contact Dropdown */}
               <motion.div 
-                 className="border-t border-white/10 pt-4 mt-4"
+                 className="border-t border-white/20 pt-4 mt-4"
                  initial={{ opacity: 0, x: -20 }}
                  animate={{ opacity: 1, x: 0, transition: { delay: navLinks.length * 0.1 } }}
                  exit={{ opacity: 0, x: -20 }}
                >
-                 <div className="text-sm font-semibold text-slate-400 mb-3 px-4 flex items-center">
-                   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Więcej opcji</span>
-                   <div className="flex-1 h-px bg-gradient-to-r from-blue-400/30 to-purple-400/30 ml-3" />
-                 </div>
-                 {contactDropdownItems.map((item, index) => (
-                   <motion.a
-                     key={item.name}
-                     href={item.href}
-                     className={`relative block text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden ${isDarkSection ? 'text-gray-200 hover:text-white' : 'text-slate-300 hover:text-white'}`}
-                     onClick={() => setIsMenuOpen(false)}
-                     initial={{ opacity: 0, x: -20 }}
-                     animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + index + 1) * 0.1 } }}
-                     exit={{ opacity: 0, x: -20 }}
-                     whileHover={{ x: 8 }}
+                 <motion.button
+                   onClick={() => setIsMobileContactDropdownOpen(!isMobileContactDropdownOpen)}
+                   className="w-full text-sm font-semibold text-gray-300 mb-3 px-4 flex items-center justify-between group"
+                   whileHover={{ x: 2 }}
+                   whileTap={{ scale: 0.98 }}
+                 >
+                   <div className="flex items-center">
+                     <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Więcej opcji</span>
+                     <div className="flex-1 h-px bg-gradient-to-r from-blue-400/40 to-purple-400/40 ml-3" />
+                   </div>
+                   <motion.div
+                     className="text-blue-400"
+                     animate={{ rotate: isMobileContactDropdownOpen ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
                    >
-                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-purple-500/15 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
-                     <span className="relative z-10">{item.name}</span>
-                     <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                   </motion.a>
-                 ))}
+                     <ChevronDownIcon size={16} />
+                   </motion.div>
+                 </motion.button>
+                 
+                 <AnimatePresence>
+                   {isMobileContactDropdownOpen && (
+                     <motion.div
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: 'auto' }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="overflow-hidden"
+                     >
+                       {contactDropdownItems.map((item, index) => (
+                         <motion.a
+                           key={item.name}
+                           href={item.href}
+                           className="relative block text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden text-gray-100 hover:text-white"
+                           onClick={() => setIsMenuOpen(false)}
+                           initial={{ opacity: 0, x: -20 }}
+                           animate={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
+                           exit={{ opacity: 0, x: -20 }}
+                           whileHover={{ x: 8 }}
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                           <span className="relative z-10">{item.name}</span>
+                           <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                         </motion.a>
+                       ))}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
                </motion.div>
 
                {/* Mobile Language Switcher */}
                <motion.div 
-                 className="border-t border-white/10 pt-4 mt-4"
+                 className="border-t border-white/20 pt-4 mt-4"
                  initial={{ opacity: 0, x: -20 }}
                  animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + contactDropdownItems.length + 1) * 0.1 } }}
                  exit={{ opacity: 0, x: -20 }}
                >
-                 <div className="text-sm font-semibold text-slate-400 mb-3 px-4 flex items-center">
-                   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Język</span>
-                   <div className="flex-1 h-px bg-gradient-to-r from-blue-400/30 to-purple-400/30 ml-3" />
-                 </div>
-                 {languages.map((language, index) => (
-                   <motion.button
-                     key={language.code}
-                     onClick={() => handleLanguageChange(language.code)}
-                     className={`relative w-full text-left text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden flex items-center space-x-3 ${
-                       currentLanguage === language.code 
-                         ? (isDarkSection ? 'text-blue-300 bg-blue-400/20' : 'text-blue-400 bg-blue-400/10')
-                         : (isDarkSection ? 'text-gray-200 hover:text-white' : 'text-slate-300 hover:text-white')
-                     }`}
-                     initial={{ opacity: 0, x: -20 }}
-                     animate={{ opacity: 1, x: 0, transition: { delay: (navLinks.length + contactDropdownItems.length + index + 2) * 0.1 } }}
-                     exit={{ opacity: 0, x: -20 }}
-                     whileHover={{ x: 8 }}
+                 <motion.button
+                   onClick={() => setIsMobileLanguageDropdownOpen(!isMobileLanguageDropdownOpen)}
+                   className="w-full text-sm font-semibold text-gray-300 mb-3 px-4 flex items-center justify-between group"
+                   whileHover={{ x: 2 }}
+                   whileTap={{ scale: 0.98 }}
+                 >
+                   <div className="flex items-center space-x-3">
+                     <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Wybierz Język</span>
+                     <div className="flex items-center space-x-2 text-gray-100">
+                       {languages.find(lang => lang.code === currentLanguage)?.flagIcon}
+                       <span className="text-xs">
+                         {languages.find(lang => lang.code === currentLanguage)?.name}
+                       </span>
+                     </div>
+                   </div>
+                   <motion.div
+                     className="text-blue-400"
+                     animate={{ rotate: isMobileLanguageDropdownOpen ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
                    >
-                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-purple-500/15 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
-                       {language.flagIcon}
-                       <span className="relative z-10">{language.name}</span>
-                     {currentLanguage === language.code && (
-                       <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full" />
-                     )}
-                   </motion.button>
-                 ))}
+                     <ChevronDownIcon size={16} />
+                   </motion.div>
+                 </motion.button>
+                 
+                 <AnimatePresence>
+                   {isMobileLanguageDropdownOpen && (
+                     <motion.div
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: 'auto' }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="overflow-hidden"
+                     >
+                       {languages.map((language, index) => (
+                         <motion.button
+                           key={language.code}
+                           onClick={() => handleLanguageChange(language.code)}
+                           className={`relative w-full text-left text-sm font-medium py-3 px-6 ml-2 rounded-xl transition-all duration-300 group overflow-hidden flex items-center space-x-3 ${
+                             currentLanguage === language.code 
+                               ? 'text-white bg-blue-500/30'
+                               : 'text-gray-100 hover:text-white'
+                           }`}
+                           initial={{ opacity: 0, x: -20 }}
+                           animate={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
+                           exit={{ opacity: 0, x: -20 }}
+                           whileHover={{ x: 8 }}
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 to-purple-500/15 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                             {language.flagIcon}
+                             <span className="relative z-10">{language.name}</span>
+                           {currentLanguage === language.code && (
+                             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full" />
+                           )}
+                         </motion.button>
+                       ))}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
                </motion.div>
               
               <motion.div 

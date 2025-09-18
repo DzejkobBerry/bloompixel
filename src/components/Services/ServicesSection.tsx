@@ -132,7 +132,7 @@ const LazyComponent = lazy(() =>
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-900/30 rounded-full mix-blend-multiply filter blur-[100px] opacity-30"></div>
       </div>
       <div className="grid-pattern absolute inset-0 opacity-10"></div>
-      <motion.div className="container mx-auto px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
+      <motion.div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10" initial="hidden" whileInView="visible" viewport={{
       once: true,
       amount: 0.1
     }} variants={containerVariants}>
@@ -148,7 +148,7 @@ const LazyComponent = lazy(() =>
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                 <TypewriterText text="Nasze" delay={500} speed={100} />
               </span>
@@ -161,7 +161,7 @@ const LazyComponent = lazy(() =>
           </motion.div>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -170,7 +170,7 @@ const LazyComponent = lazy(() =>
             aby pomóc Ci zbudować silną obecność online.
           </motion.p>
         </motion.div>
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants}>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={containerVariants}>
           {services.map((service, index) => <ServiceCard key={index} service={service} index={index} />)}
         </motion.div>
       </motion.div>
