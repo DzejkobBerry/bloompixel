@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ExternalLinkIcon, XIcon, CodeIcon, LayersIcon, CheckIcon } from 'lucide-react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+
 interface PortfolioItemProps {
   item: {
     title: string;
@@ -13,6 +14,7 @@ interface PortfolioItemProps {
   };
   index: number;
 }
+
 const PortfolioCard = ({
   item,
   index
@@ -24,6 +26,7 @@ const PortfolioCard = ({
     once: true,
     amount: 0.2
   });
+
   const cardVariants = {
     hidden: {
       y: 50,
@@ -38,6 +41,7 @@ const PortfolioCard = ({
       }
     })
   };
+
   const modalVariants = {
     hidden: {
       opacity: 0,
@@ -58,6 +62,7 @@ const PortfolioCard = ({
       }
     }
   };
+
   const backdropVariants = {
     hidden: {
       opacity: 0
@@ -69,6 +74,7 @@ const PortfolioCard = ({
       opacity: 0
     }
   };
+
   const tabVariants = {
     inactive: {
       opacity: 0.7
@@ -80,6 +86,7 @@ const PortfolioCard = ({
       }
     }
   };
+
   const contentVariants = {
     hidden: {
       opacity: 0,
@@ -100,121 +107,241 @@ const PortfolioCard = ({
       }
     }
   };
+
   return <>
-      <motion.div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl cursor-pointer transition-all duration-500 border border-white/20 shadow-2xl" onClick={() => setIsModalOpen(true)} variants={cardVariants} custom={index} whileHover={{
-      y: -15,
-      scale: 1.02,
-      boxShadow: '0 25px 50px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
-    }} ref={cardRef} animate={isInView ? 'visible' : 'hidden'} initial="hidden">
-        <div className="relative aspect-video overflow-hidden rounded-t-2xl">
-          <motion.img src={item.image} alt={item.title} className="w-full h-full object-cover" whileHover={{
-          scale: 1.15
-        }} transition={{
-          duration: 0.7,
-          ease: "easeOut"
-        }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-slate-900/20 transition-all duration-500 flex items-end">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="p-6 relative z-10">
-                <motion.h3 className="text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-3 drop-shadow-lg" initial={{
-              y: 0,
-              opacity: 1
-            }} whileHover={{
-              y: -5,
-              scale: 1.05
-            }} transition={{
-              duration: 0.3,
-              ease: "easeOut"
-            }}>
-                  {item.title}
-                </motion.h3>
-                <motion.p className="text-slate-100 text-sm mb-4 leading-relaxed" initial={{
-              y: 0,
-              opacity: 1
-            }} whileHover={{
-              y: -3
-            }} transition={{
-              duration: 0.3,
-              ease: "easeOut"
-            }}>
-                  {item.description.substring(0, 80)}...
-                </motion.p>
-              <motion.div className="flex flex-wrap gap-2" initial={{
-              y: 0,
-              opacity: 1
-            }} whileHover={{
-              y: -2
-            }} transition={{
-              duration: 0.3,
-              ease: "easeOut"
-            }}>
-                  {item.technologies.slice(0, 2).map((tech, index) => <motion.span key={index} className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-xs text-blue-100 border border-blue-400/30 shadow-lg"
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(59, 130, 246, 0.3)"
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                      {tech}
-                    </motion.span>)}
-                  {item.technologies.length > 2 && <motion.span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-xs text-purple-100 border border-purple-400/30 shadow-lg"
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(147, 51, 234, 0.3)"
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                      +{item.technologies.length - 2}
-                    </motion.span>}
-                </motion.div>
-            </div>
-          </div>
+      <motion.div 
+        className="group relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl shadow-slate-900/50 border border-slate-700/50 cursor-pointer transform-gpu"
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+        whileHover="hover"
+        onClick={() => setIsModalOpen(true)}
+      >
+        {/* Enhanced animated background particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div 
+            className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500/20 via-purple-500/15 to-pink-500/20 rounded-full blur-xl"
+            animate={{
+              x: [0, 20, -10, 0],
+              y: [0, -15, 10, 0],
+              scale: [1, 1.1, 0.9, 1],
+              rotate: [0, 90, 180, 360]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-tl from-emerald-500/20 via-cyan-500/15 to-blue-500/20 rounded-full blur-xl"
+            animate={{
+              x: [0, -15, 25, 0],
+              y: [0, 20, -5, 0],
+              scale: [1, 0.8, 1.2, 1],
+              rotate: [360, 270, 180, 0]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/2 w-16 h-16 bg-gradient-to-r from-violet-500/15 via-fuchsia-500/10 to-rose-500/15 rounded-full blur-lg"
+            animate={{
+              x: [-8, 8, -8],
+              y: [-8, 8, -8],
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
-        <div className="absolute top-4 right-4">
-          <motion.div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 backdrop-blur-xl flex items-center justify-center text-white transition-all duration-300 border border-white/20 shadow-xl" whileHover={{
-          scale: 1.2,
-          rotate: 15,
-          opacity: 1,
-          backgroundColor: "rgba(59, 130, 246, 0.5)"
-        }} whileTap={{
-          scale: 0.9
-        }} initial={{
-          opacity: 0.8
-        }}>
-            <ExternalLinkIcon size={16} />
+
+        {/* Enhanced glowing border effect */}
+        <motion.div 
+          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+          style={{
+            background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3), rgba(16, 185, 129, 0.3))',
+            backgroundSize: '400% 400%',
+          }}
+          animate={{
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Enhanced image section with improved gradient overlay */}
+        <div className="relative h-48 overflow-hidden">
+          <motion.img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          
+          {/* Multi-layered gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20 opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          {/* Enhanced animated gradient elements */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+            animate={{
+              x: ['-100%', '100%']
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              repeatDelay: 2
+            }}
+          />
+          
+          {/* Enhanced top-right icon with improved styling */}
+          <motion.div
+            className="absolute top-4 right-4 w-10 h-10 bg-gradient-to-br from-slate-800/90 via-slate-700/90 to-slate-800/90 backdrop-blur-md rounded-xl flex items-center justify-center border border-slate-600/50 shadow-lg shadow-slate-900/50"
+            whileHover={{ 
+              scale: 1.15, 
+              rotate: 15,
+              backgroundColor: "rgba(59, 130, 246, 0.2)",
+              borderColor: "rgba(59, 130, 246, 0.5)",
+              boxShadow: "0 0 25px rgba(59, 130, 246, 0.4)"
+            }}
+            initial={{ opacity: 1 }}
+          >
+            <ExternalLinkIcon size={18} className="text-slate-300 group-hover:text-blue-300 transition-colors duration-300" />
+          </motion.div>
+
+          {/* Enhanced category badge */}
+          <motion.div 
+            className="absolute top-4 left-4 px-3 py-1.5 bg-gradient-to-r from-slate-800/90 via-slate-700/90 to-slate-800/90 backdrop-blur-md rounded-full text-xs font-semibold text-slate-200 border border-slate-600/50 shadow-lg shadow-slate-900/50"
+            whileHover={{ 
+              scale: 1.05,
+              backgroundColor: "rgba(16, 185, 129, 0.2)",
+              borderColor: "rgba(16, 185, 129, 0.5)",
+              color: "rgba(167, 243, 208, 1)"
+            }}
+          >
+            {item.category}
           </motion.div>
         </div>
-        <div className="absolute top-4 left-4">
-          <motion.div className={`px-4 py-2 rounded-full text-xs font-medium backdrop-blur-xl shadow-lg ${item.category === 'web-app' ? 'bg-gradient-to-r from-blue-500/30 to-cyan-500/30 text-blue-100 border border-blue-400/40' : item.category === 'website' ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30 text-purple-100 border border-purple-400/40' : 'bg-gradient-to-r from-pink-500/30 to-rose-500/30 text-pink-100 border border-pink-400/40'}`} initial={{
-          x: -20,
-          opacity: 0
-        }} animate={{
-          x: 0,
-          opacity: 1
-        }} transition={{
-          duration: 0.4,
-          delay: 0.1
-        }}>
-            {item.category === 'web-app' ? 'Web App' : item.category === 'website' ? 'Website' : 'UI/UX Design'}
+
+        {/* Enhanced content section with improved gradients */}
+        <div className="p-6 relative">
+          <motion.h3
+            className="text-xl font-bold text-white mb-3 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
+            variants={{
+              hover: { y: -5, scale: 1.02 }
+            }}
+          >
+            {item.title}
+          </motion.h3>
+          
+          <motion.p
+            className="text-slate-300 text-sm mb-4 leading-relaxed"
+            variants={{
+              hover: { y: -3 }
+            }}
+          >
+            {item.description}
+          </motion.p>
+          
+          <motion.div
+            className="flex flex-wrap gap-2"
+            variants={{
+              hover: { y: -2 }
+            }}
+          >
+            {item.technologies.map((tech, index) => (
+              <motion.span
+                key={index}
+                className="px-3 py-1.5 bg-gradient-to-r from-slate-700/80 via-slate-600/80 to-slate-700/80 backdrop-blur-sm text-slate-200 text-xs rounded-full border border-slate-500/50 font-medium shadow-sm"
+                whileHover={{ 
+                  scale: 1.1,
+                  backgroundColor: "rgba(59, 130, 246, 0.2)",
+                  borderColor: "rgba(59, 130, 246, 0.5)",
+                  color: "rgba(191, 219, 254, 1)",
+                  boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)"
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
           </motion.div>
         </div>
         
-        {/* Bottom section with additional info */}
-        <div className="p-6 bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm">
+        {/* Enhanced bottom section with improved gradients */}
+        <div className="p-6 bg-gradient-to-r from-slate-800/80 via-slate-700/80 to-slate-800/80 backdrop-blur-md border-t border-slate-600/30">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-              <span className="text-slate-300 text-sm font-medium">Dostępne do podglądu</span>
+              <motion.div 
+                className="w-3 h-3 rounded-full bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 shadow-lg shadow-emerald-400/60"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.7, 1, 0.7],
+                  boxShadow: [
+                    "0 0 10px rgba(52, 211, 153, 0.6)",
+                    "0 0 20px rgba(52, 211, 153, 0.8)",
+                    "0 0 10px rgba(52, 211, 153, 0.6)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <span className="text-slate-200 text-sm font-medium">Dostępne do podglądu</span>
             </div>
             <motion.div 
-              className="text-slate-400 text-xs px-3 py-1 bg-slate-700/50 rounded-full border border-slate-600/50"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(51, 65, 85, 0.8)" }}
+              className="text-slate-300 text-xs px-4 py-2 bg-gradient-to-r from-slate-700/80 via-slate-600/80 to-slate-700/80 rounded-full border border-slate-500/50 backdrop-blur-sm font-medium shadow-sm"
+              whileHover={{ 
+                scale: 1.05, 
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                borderColor: "rgba(59, 130, 246, 0.5)",
+                color: "rgba(191, 219, 254, 1)",
+                boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)"
+              }}
             >
               Kliknij aby zobaczyć więcej
             </motion.div>
           </div>
         </div>
+
+        {/* Enhanced animated border with improved gradient */}
+        <motion.div 
+          className="absolute inset-0 rounded-3xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+          style={{
+            background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4), rgba(16, 185, 129, 0.4)) border-box',
+            WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+            WebkitMaskComposite: 'exclude'
+          }}
+          animate={{
+            background: [
+              'linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4), rgba(16, 185, 129, 0.4)) border-box',
+              'linear-gradient(90deg, rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4), rgba(16, 185, 129, 0.4), rgba(59, 130, 246, 0.4)) border-box',
+              'linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(16, 185, 129, 0.4), rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4)) border-box',
+              'linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4), rgba(16, 185, 129, 0.4)) border-box'
+            ]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </motion.div>
+
       <AnimatePresence>
         {isModalOpen && <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" initial="hidden" animate="visible" exit="exit" variants={backdropVariants} onClick={() => setIsModalOpen(false)}>
             <motion.div className="relative bg-slate-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden border border-white/10" variants={modalVariants} onClick={e => e.stopPropagation()}>
