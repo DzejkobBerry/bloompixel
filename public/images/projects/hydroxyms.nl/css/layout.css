@@ -1,0 +1,372 @@
+/* ========== TESTIMONIALS SECTION ========== */
+.testimonials {
+    background-color: var(--dark-surface);
+    position: relative;
+}
+
+.testimonial-slider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ========== CONTACT SECTION - UPDATED LAYOUT ========== */
+.contact {
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.85);
+}
+
+.contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--light-text);
+    font-size: var(--font-size-sm);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background-color: rgba(45, 45, 45, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-md);
+    color: white;
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    transition: var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background-color: var(--dark-bg);
+    padding: var(--space-2xl) 0 var(--space-md);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.footer-info h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-md);
+}
+
+.footer-info p {
+    color: var(--text-gray);
+    font-size: var(--font-size-sm);
+    max-width: 300px;
+}
+
+.footer-contact h4,
+.footer-social h4 {
+    color: var(--light-text);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+    position: relative;
+    display: inline-block;
+    padding-bottom: var(--space-xs);
+}
+
+.footer-contact h4::after,
+.footer-social h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.footer-contact ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+    color: var(--text-gray);
+    font-size: var(--font-size-sm);
+}
+
+.footer-contact ul li i {
+    color: var(--primary-color);
+    margin-right: var(--space-sm);
+    width: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(26, 26, 26, 0.7);
+    color: var(--text-gray);
+    transition: var(--transition-fast);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid #333;
+    font-size: var(--font-size-xs);
+    color: var(--text-gray);
+}
+
+.footer-bottom .studio-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.footer-bottom .studio-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+/* ========== RESPONSYWNOŚĆ ========== */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-md);
+    }
+    
+    /* Usunąć tę linię lub zmienić na .navbar .container */
+    /* .navbar-container {
+        padding: 0 var(--space-md);
+    } */
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--dark-surface);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-lg);
+        transition: var(--transition-medium);
+        z-index: 9;
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .hero h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .hero p {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ========== CONTACT SECTION - UPDATED LAYOUT ========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+/* Responsywność dla układu kontaktowego */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info-card {
+        margin-bottom: var(--space-xl);
+    }
+}
+
+/* ========== SECTION SEPARATORS ========== */
+.about,
+.stats,
+.projects,
+.testimonials,
+.contact {
+    position: relative;
+}
+
+.about::before,
+.stats::before,
+.projects::before,
+.testimonials::before,
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    z-index: 5;
+}
+
+/* Zachowujemy istniejący efekt tła dla sekcji kontaktowej */
+.contact::before {
+    height: 100%;
+    background: rgba(17, 17, 17, 0.85);
+    z-index: 1;
+}
+
+/* Dodajemy nowy element dla oddzielenia w sekcji kontaktowej */
+.contact::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    z-index: 2;
+}
+
+/* Aktualizacja z-index dla kontenera w sekcji kontaktowej */
+.contact .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Aktualizacja dla sekcji stats, która już ma ::before */
+.stats::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    z-index: 5;
+}

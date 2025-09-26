@@ -1,0 +1,177 @@
+<!-- Sekcja Kontaktowa -->
+<section id="contact" class="contact">
+    <div class="contact-background-pattern"></div>
+    <div class="container">
+        <div class="contact-header">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Neem contact met ons op voor uw project</p>
+        </div>
+        
+        <div class="contact-container">
+            <!-- Lewa strona - informacje kontaktowe -->
+            <div class="contact-info">
+                <div class="contact-info-header">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Heeft u een project of vraag?</h3>
+                        <p>Neem gerust contact met ons op voor een vrijblijvende offerte of om uw vragen te beantwoorden.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-items-container">
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="content">
+                            <h4>Adres</h4>
+                            <p>Groningen, Nederland</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div class="content">
+                            <h4>Telefoon</h4>
+                            <p><a href="tel:+31645122131" class="contact-link">+31 645122131</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="content">
+                            <h4>E-mail</h4>
+                            <p><a href="mailto:dkulikowski00@gmail.com" class="contact-link">dkulikowski00@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <div class="content">
+                            <h4>Openingstijden</h4>
+                            <p>Ma-Vr: 7:00 - 16:00<br>Za: gesloten</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-media">
+                    <h4>Volg ons</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prawa strona - formularz kontaktowy -->
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <div class="form-header-content">
+                        <h3>Stuur ons een bericht</h3>
+                        <p>Vul het onderstaande formulier in en we nemen zo snel mogelijk contact met u op.</p>
+                        <div class="form-benefits">
+                            <div class="benefit">
+                                <i class="fas fa-clock"></i>
+                                <span>Reactie binnen 24 uur</span>
+                            </div>
+                            <div class="benefit">
+                                <i class="fas fa-calculator"></i>
+                                <span>Gratis offerte</span>
+                            </div>
+                            <div class="benefit">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Geen verplichtingen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Naam *</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Uw volledige naam" required>
+                                <div class="input-validation"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="uw.email@voorbeeld.nl" required>
+                                <div class="input-validation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefoon</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone" placeholder="+31 6 12345678">
+                                <div class="input-validation"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Type dienst *</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-tools"></i>
+                                <select id="service" name="service" required>
+                                    <option value="">Selecteer een dienst</option>
+                                    <option value="bekisting">Bekistingstimmerwerk</option>
+                                    <option value="betonconstructies">Betonconstructies</option>
+                                    <option value="renovatie">Renovatie & Verbouwing</option>
+                                    <option value="nieuwbouw">Nieuwbouw</option>
+                                    <option value="reparatie">Reparatie & Onderhoud</option>
+                                    <option value="anders">Anders</option>
+                                </select>
+                                <div class="input-validation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Bericht *</label>
+                        <div class="input-with-icon textarea-icon">
+                            <i class="fas fa-comment"></i>
+                            <textarea id="message" name="message" rows="6" placeholder="Beschrijf uw project of stel uw vraag..." required></textarea>
+                            <div class="input-validation"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <span>Verstuur Bericht</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <div class="privacy-notice">
+                            <i class="fas fa-lock"></i>
+                            <small>Uw gegevens worden veilig behandeld conform onze <a href="#">privacyverklaring</a></small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+                
+                <!-- Success Message -->
+                <div class="success-message" style="display: none;">
+                    <div class="success-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Bericht verzonden!</h3>
+                        <p>Bedankt voor uw bericht. We nemen binnen 24 uur contact met u op.</p>
+                        <button type="button" class="btn btn-primary" onclick="resetForm()">
+                            Nieuw bericht versturen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

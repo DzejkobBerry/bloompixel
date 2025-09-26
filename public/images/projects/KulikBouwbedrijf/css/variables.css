@@ -1,0 +1,37 @@
+/* Zmienne CSS dla spójności kolorów i stylów */
+:root {
+    --primary-color: #c25a12;
+    --primary-color-dark: #a04a0f;
+    --secondary-color: #00c3a5;
+    --text-color: #333;
+    --text-light: #666;
+    --text-lighter: #aaa;
+    --bg-light: #f9f9f9;
+    --bg-dark: #333;
+    --bg-darker: #222;
+    --white: #fff;
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 15px 30px rgba(0, 0, 0, 0.1);
+    --transition-standard: all 0.3s ease;
+    --border-radius-small: 5px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 10px;
+    --border-radius-round: 50%;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 40px;
+    --spacing-section: 80px;
+    --font-size-small: 0.85rem;
+    --font-size-normal: 1rem;
+    --font-size-medium: 1.1rem;
+    --font-size-large: 1.2rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    --font-size-huge: 2.5rem;
+    --font-size-hero: 3rem;
+    --container-width: 1200px;
+}

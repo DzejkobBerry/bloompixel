@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="pearlGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <circle cx="16" cy="16" r="14" fill="url(#pearlGradient)" stroke="#dee2e6" stroke-width="2"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#6c757d" stroke-width="1" opacity="0.3"/>
+  <circle cx="13" cy="13" r="2" fill="#ffffff" opacity="0.8"/>
+  <text x="16" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#495057">WP</text>
+</svg>

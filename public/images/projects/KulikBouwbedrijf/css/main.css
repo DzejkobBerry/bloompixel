@@ -1,0 +1,11 @@
+/* Importowanie plików CSS */
+@import 'variables.css';
+@import 'base.css';
+@import 'header.css';
+@import 'sections/hero.css';
+@import 'sections/about.css';
+@import 'sections/services.css';
+@import 'sections/projects.css';
+@import 'sections/testimonials.css';
+@import 'sections/contact.css';
+@import 'footer.css';

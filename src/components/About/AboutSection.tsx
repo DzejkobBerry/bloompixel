@@ -254,7 +254,7 @@ const AboutSection = () => {
                   <button
                     key={index}
                     onClick={() => setActiveFeature(index)}
-                    className={`flex items-center justify-center sm:justify-start gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 text-sm sm:text-base lg:text-lg flex-1 ${
+                    className={`flex items-center justify-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 text-sm sm:text-base lg:text-lg flex-1 ${
                       activeFeature === index
                         ? `bg-gradient-to-r ${value.color} text-white shadow-lg`
                         : 'text-gray-400 hover:text-white hover:bg-white/5'

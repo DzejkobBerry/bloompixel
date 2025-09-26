@@ -113,59 +113,73 @@ const PortfolioCard = ({
           duration: 0.7,
           ease: "easeOut"
         }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-slate-900/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-slate-900/20 transition-all duration-500 flex items-end">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-6 relative z-10">
                 <motion.h3 className="text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-3 drop-shadow-lg" initial={{
-              y: 20,
-              opacity: 0
-            }} whileInView={{
               y: 0,
               opacity: 1
+            }} whileHover={{
+              y: -5,
+              scale: 1.05
             }} transition={{
-              duration: 0.4,
-              delay: 0.1
+              duration: 0.3,
+              ease: "easeOut"
             }}>
                   {item.title}
                 </motion.h3>
                 <motion.p className="text-slate-100 text-sm mb-4 leading-relaxed" initial={{
-              y: 20,
-              opacity: 0
-            }} whileInView={{
               y: 0,
               opacity: 1
+            }} whileHover={{
+              y: -3
             }} transition={{
-              duration: 0.4,
-              delay: 0.2
+              duration: 0.3,
+              ease: "easeOut"
             }}>
                   {item.description.substring(0, 80)}...
                 </motion.p>
               <motion.div className="flex flex-wrap gap-2" initial={{
-              y: 20,
-              opacity: 0
-            }} whileInView={{
               y: 0,
               opacity: 1
+            }} whileHover={{
+              y: -2
             }} transition={{
-              duration: 0.4,
-              delay: 0.3
+              duration: 0.3,
+              ease: "easeOut"
             }}>
-                  {item.technologies.slice(0, 2).map((tech, index) => <span key={index} className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-xs text-blue-100 border border-blue-400/30 shadow-lg">
+                  {item.technologies.slice(0, 2).map((tech, index) => <motion.span key={index} className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-xs text-blue-100 border border-blue-400/30 shadow-lg"
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: "rgba(59, 130, 246, 0.3)"
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
                       {tech}
-                    </span>)}
-                  {item.technologies.length > 2 && <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-xs text-purple-100 border border-purple-400/30 shadow-lg">
+                    </motion.span>)}
+                  {item.technologies.length > 2 && <motion.span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-xs text-purple-100 border border-purple-400/30 shadow-lg"
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: "rgba(147, 51, 234, 0.3)"
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
                       +{item.technologies.length - 2}
-                    </span>}
+                    </motion.span>}
                 </motion.div>
             </div>
           </div>
         </div>
         <div className="absolute top-4 right-4">
-          <motion.div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 backdrop-blur-xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/20 shadow-xl" whileHover={{
+          <motion.div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 backdrop-blur-xl flex items-center justify-center text-white transition-all duration-300 border border-white/20 shadow-xl" whileHover={{
           scale: 1.2,
-          rotate: 15
+          rotate: 15,
+          opacity: 1,
+          backgroundColor: "rgba(59, 130, 246, 0.5)"
         }} whileTap={{
           scale: 0.9
+        }} initial={{
+          opacity: 0.8
         }}>
             <ExternalLinkIcon size={16} />
           </motion.div>
@@ -247,12 +261,19 @@ const PortfolioCard = ({
                   {activeTab === 'overview' && <motion.div key="overview" variants={contentVariants} initial="hidden" animate="visible" exit="exit">
                       <p className="text-slate-300 mb-6">{item.description}</p>
                       <div className="flex justify-center">
-                        <motion.a href={item.demoUrl} className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-md shadow-lg shadow-blue-500/20" whileHover={{
-                    scale: 1.05
-                  }} whileTap={{
-                    scale: 0.95
-                  }} onClick={e => e.preventDefault()}>
-                          View Live Project
+                        <motion.a 
+                          href={item.liveUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-md shadow-lg shadow-blue-500/20" 
+                          whileHover={{
+                            scale: 1.05
+                          }} 
+                          whileTap={{
+                            scale: 0.95
+                          }}
+                        >
+                          Zobacz Projekt Live
                           <ExternalLinkIcon size={16} className="ml-2" />
                         </motion.a>
                       </div>

@@ -1,91 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PortfolioCard from '../UI/PortfolioCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import TypewriterText from '../UI/TypewriterText';
+import { projectsData } from '../../data/projects';
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [portfolioItems, setPortfolioItems] = useState([]);
   const containerRef = useRef(null);
-  const portfolioItems = [{
-    title: 'Platforma E-commerce',
-    category: 'web-app',
-    image: 'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80',
-    description: 'W pełni responsywna platforma e-commerce z zarządzaniem produktami, funkcjonalnością koszyka i integracją płatności.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    demoUrl: '#',
-    features: ['Uwierzytelnianie użytkowników i profile', 'Katalog produktów z wyszukiwaniem i filtrami', 'Koszyk zakupowy i proces płatności', 'Integracja przetwarzania płatności', 'Śledzenie zamówień i historia', 'Panel administracyjny']
-  }, {
-    title: 'Strona Korporacyjna',
-    category: 'website',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1015&q=80',
-    description: 'Nowoczesna strona korporacyjna z niestandardowymi animacjami, funkcjonalnością bloga i systemem zarządzania treścią.',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'WordPress'],
-    demoUrl: '#',
-    features: ['Responsywny design', 'Niestandardowe animacje', 'Blog z kategoriami', 'Formularz kontaktowy z walidacją', 'Optymalizacja SEO', 'System zarządzania treścią']
-  }, {
-    title: 'Aplikacja Bankowości Mobilnej',
-    category: 'ui-design',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Projekt UI/UX dla aplikacji bankowości mobilnej skupiający się na doświadczeniu użytkownika i dostępności.',
-    technologies: ['Figma', 'Adobe XD', 'Sketch'],
-    demoUrl: '#',
-    features: ['Badania użytkowników i persony', 'Wireframing i prototypowanie', 'Interaktywne makiety', 'Testy użyteczności', 'Zgodność z dostępnością', 'Tworzenie systemu projektowego']
-  }, {
-    title: 'Blog Podróżniczy',
-    category: 'website',
-    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Niestandardowy blog podróżniczy z dynamicznym ładowaniem treści, galeriami zdjęć i interaktywnymi mapami.',
-    technologies: ['React', 'Next.js', 'Tailwind CSS'],
-    demoUrl: '#',
-    features: ['Dynamiczne ładowanie treści', 'Galerie zdjęć i lightbox', 'Integracja interaktywnych map', 'Funkcjonalność udostępniania społecznościowego', 'System komentarzy', 'Subskrypcja newslettera']
-  }, {
-    title: 'Aplikacja Zarządzania Zadaniami',
-    category: 'web-app',
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80',
-    description: 'Aplikacja do współpracy w zarządzaniu zadaniami z aktualizacjami w czasie rzeczywistym i funkcjami współpracy zespołowej.',
-    technologies: ['Vue.js', 'Firebase', 'Vuetify'],
-    demoUrl: '#',
-    features: ['Aktualizacje w czasie rzeczywistym', 'Współpraca zespołowa', 'Przypisywanie i śledzenie zadań', 'Harmonogramy projektów', 'Załączniki plików', 'Powiadomienia i przypomnienia']
-  }, {
-    title: 'Branding Restauracji',
-    category: 'ui-design',
-    image: 'https://images.unsplash.com/photo-1564419320461-6870880221ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1055&q=80',
-    description: 'Kompletny projekt identyfikacji marki dla ekskluzywnej restauracji, w tym logo, menu i strona internetowa.',
-    technologies: ['Illustrator', 'Photoshop', 'InDesign'],
-    demoUrl: '#',
-    features: ['Projekt logo', 'Paleta kolorów', 'Wybór typografii', 'Projekt menu', 'Oznakowanie i materiały promocyjne', 'Projekt strony internetowej']
-  }, {
-    title: 'Aplikacja Fitness',
-    category: 'web-app',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Kompleksowa aplikacja fitness z treningami, dietą i monitorowaniem postępów dla klubu sportowego.',
-    technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
-    demoUrl: '#',
-    features: ['Personalne plany treningowe', 'Kalkulator kalorii', 'Śledzenie postępów', 'Społeczność użytkowników', 'Integracja z urządzeniami fitness', 'Powiadomienia motywacyjne']
-  }, {
-    title: 'Portal Edukacyjny',
-    category: 'website',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80',
-    description: 'Nowoczesny portal edukacyjny z kursami online, systemem oceniania i komunikacją nauczyciel-uczeń.',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'WebRTC'],
-    demoUrl: '#',
-    features: ['Kursy online z wideo', 'System oceniania', 'Kalendarz zajęć', 'Komunikator wideo', 'Biblioteka materiałów', 'Raporty postępów']
-  }, {
-    title: 'Sklep Internetowy Fashion',
-    category: 'web-app',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Elegancki sklep internetowy z modą damską, zaawansowanymi filtrami i AR do przymierzania.',
-    technologies: ['Next.js', 'Shopify', 'Three.js', 'Stripe'],
-    demoUrl: '#',
-    features: ['Wirtualne przymierzanie AR', 'Zaawansowane filtry produktów', 'Wishlist i porównywarka', 'Program lojalnościowy', 'Integracja z social media', 'Responsywny design']
-  }, {
-    title: 'Dashboard Analityczny',
-    category: 'web-app',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-    description: 'Zaawansowany dashboard do analizy danych biznesowych z interaktywnymi wykresami i raportami.',
-    technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
-    demoUrl: '#',
-    features: ['Interaktywne wykresy', 'Raporty w czasie rzeczywistym', 'Eksport danych', 'Niestandardowe metryki', 'Alerty i powiadomienia', 'Multi-tenant architecture']
-  }];
+
+  useEffect(() => {
+    // Ładowanie projektów z pliku JSON
+    setPortfolioItems(projectsData.projects);
+  }, []);
+
   const filters = [{
     id: 'all',
     label: 'Wszystkie Prace'
@@ -192,7 +119,7 @@ const PortfolioSection = () => {
         
         <AnimatePresence mode="wait">
           <motion.div key={activeFilter} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
-            {filteredItems.slice(0, 9).map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
+            {filteredItems.slice(0, 6).map((item, index) => <PortfolioCard key={index} item={item} index={index} />)}
           </motion.div>
         </AnimatePresence>
         

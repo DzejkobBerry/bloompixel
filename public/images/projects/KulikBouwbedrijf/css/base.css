@@ -1,0 +1,309 @@
+/* Reset i podstawowe style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-standard);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ogólne style dla sekcji */
+section {
+    padding: var(--spacing-section) 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: var(--font-size-huge);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: var(--font-size-medium);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xxl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style dla przycisków */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: var(--border-radius-small);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: var(--transition-standard);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.btn-secondary {
+    background-color: transparent !important;
+    color: var(--white) !important;
+    border: 2px solid var(--white);
+    transition: var(--transition-standard);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Zapewnienie widoczności komponentów podczas ładowania */
+[id$="-container"] {
+    min-height: 1px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Zapobieganie miganiu stylów (FOUC) */
+.btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Stabilizacja stylów podczas ładowania */
+body.loading .btn {
+    transition: none;
+}
+
+/* Zapewnienie stabilności przycisków */
+.btn-primary,
+.btn-secondary {
+    will-change: auto;
+    backface-visibility: hidden;
+}
+
+/* Wymuszenie spójności renderowania */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.force-repaint {
+    transform: translateZ(0);
+}
+
+/* Wymuszenie widoczności sekcji kontaktowej */
+#contact-container {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.contact {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.contact * {
+    visibility: visible !important;
+}
+
+/* Zapobieganie FOUC dla sekcji kontaktowej */
+.contact-info,
+.contact-form-container {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Wymuszenie przeładowania stylów */
+.contact {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+
+/* Dodatkowe responsywne style */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section-subtitle {
+        font-size: var(--font-size-normal);
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 0 var(--spacing-xs);
+    }
+    
+    section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-large);
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: var(--font-size-small);
+    }
+}
+
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 20px rgba(194, 90, 18, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color));
+    box-shadow: 0 6px 25px rgba(194, 90, 18, 0.4);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-2px) scale(0.95);
+    box-shadow: 0 3px 15px rgba(194, 90, 18, 0.3);
+}
+
+.scroll-to-top i {
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover i {
+    transform: translateY(-2px);
+}
+
+/* Animacja pulsowania dla przycisku */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(194, 90, 18, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(194, 90, 18, 0.5), 0 0 0 10px rgba(194, 90, 18, 0.1);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(194, 90, 18, 0.3);
+    }
+}
+
+.scroll-to-top.visible {
+    animation: pulse 3s infinite;
+}
+
+/* Responsywność dla przycisku scroll to top */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Ukryj przycisk podczas drukowania */
+@media print {
+    .scroll-to-top {
+        display: none;
+    }
+}
