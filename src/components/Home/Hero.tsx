@@ -279,19 +279,35 @@ const Hero = () => {
           >
             {/* Service Navigation */}
             <motion.div variants={itemVariants} className="flex justify-center mb-8">
-              <div className="flex bg-white/5 backdrop-blur-sm rounded-2xl p-2 border border-white/10">
+              <div className="flex bg-white/5 backdrop-blur-sm rounded-2xl p-2 border border-white/10 shadow-lg">
                 {services.map((service, index) => (
-                  <button
+                  <motion.button
                     key={service.id}
                     onClick={() => setActiveService(index)}
-                    className={`p-3 rounded-xl transition-all duration-300 ${
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`relative p-3 rounded-xl transition-all duration-300 ${
                       activeService === index 
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white' 
-                        : 'text-gray-400 hover:text-white'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' 
+                        : 'text-gray-400 hover:text-white hover:bg-white/10'
                     }`}
                   >
-                    <service.icon className="w-5 h-5" />
-                  </button>
+                    <motion.div
+                      animate={activeService === index ? { rotate: [0, 5, -5, 0] } : {}}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
+                      <service.icon className="w-5 h-5" />
+                    </motion.div>
+                    
+                    {/* Active indicator glow */}
+                    {activeService === index && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="absolute inset-0 bg-blue-600/20 rounded-xl blur-md -z-10"
+                      />
+                    )}
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
@@ -299,82 +315,228 @@ const Hero = () => {
             {/* Active Service Card */}
             <motion.div
               key={activeService}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative p-8 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all duration-500 overflow-hidden"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/40 hover:bg-white/8 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl"
             >
-              {/* Background Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${services[activeService].bgGradient} opacity-50`}></div>
+              {/* Enhanced Background */}
+              <motion.div 
+                className={`absolute inset-0 bg-gradient-to-br ${services[activeService].bgGradient} opacity-20`}
+                animate={{ opacity: [0.15, 0.25, 0.15] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Subtle animated border */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background: `linear-gradient(135deg, transparent, ${services[activeService].color.split(' ')[1]}/10, transparent)`,
+                }}
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
               
               {/* Content */}
               <div className="relative z-10">
-                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${services[activeService].color} mb-6`}>
-                  {React.createElement(services[activeService].icon, { className: "w-8 h-8 text-white" })}
-                </div>
+                {/* Enhanced Icon */}
+                <motion.div 
+                  className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${services[activeService].color} mb-6 shadow-lg`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    {React.createElement(services[activeService].icon, { className: "w-7 h-7 text-white" })}
+                  </motion.div>
+                </motion.div>
                 
-                <h3 className="text-2xl font-bold text-white mb-2">{services[activeService].title}</h3>
-                <p className="text-blue-300 mb-4">{services[activeService].subtitle}</p>
-                <p className="text-gray-300 mb-6 leading-relaxed">{services[activeService].description}</p>
+                <motion.h3 
+                  className="text-2xl font-bold text-white mb-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {services[activeService].title}
+                </motion.h3>
                 
-                {/* Features */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
+                <motion.p 
+                  className="text-blue-300 mb-4 font-medium"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {services[activeService].subtitle}
+                </motion.p>
+                
+                <motion.p 
+                  className="text-gray-300 mb-6 leading-relaxed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {services[activeService].description}
+                </motion.p>
+                
+                {/* Enhanced Features */}
+                <motion.div 
+                  className="grid grid-cols-2 gap-3 mb-6"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.1,
+                        delayChildren: 0.4
+                      }
+                    }
+                  }}
+                >
                   {services[activeService].features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <motion.div 
+                      key={index} 
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors duration-200"
+                      variants={{
+                        hidden: { opacity: 0, x: -10 },
+                        visible: { opacity: 1, x: 0 }
+                      }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                      >
+                        <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      </motion.div>
                       <span className="text-sm text-gray-300">{feature}</span>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
                 
-                {/* Stats */}
-                <div className="flex items-center justify-between">
+                {/* Enhanced Stats */}
+                <motion.div 
+                  className="flex items-center justify-between"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
                   <div className="flex gap-6">
-                    <div>
-                      <div className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}>
+                    <motion.div 
+                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                    >
+                      <motion.div 
+                        className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
                         {services[activeService].stats.projects}
-                      </div>
+                      </motion.div>
                       <div className="text-xs text-gray-400">Projektów</div>
-                    </div>
-                    <div>
-                      <div className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}>
+                    </motion.div>
+                    <motion.div 
+                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                    >
+                      <motion.div 
+                        className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                      >
                         {services[activeService].stats.rating}
-                      </div>
+                      </motion.div>
                       <div className="text-xs text-gray-400">Ocena</div>
-                    </div>
+                    </motion.div>
                   </div>
                   
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -2,
+                      boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)"
+                    }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleServiceClick('services')}
-                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Dowiedz się więcej
-                    <ArrowRight className="w-4 h-4" />
+                    <motion.div
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.div>
                   </motion.button>
-                </div>
+                </motion.div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/10 to-transparent rounded-full"></div>
-              <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full"></div>
+              {/* Enhanced Decorative Elements */}
+              <motion.div 
+                className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-white/10 to-transparent rounded-full"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <motion.div 
+                className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-sm"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.4, 0.7, 0.4]
+                }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
+              
+              {/* Subtle corner accents */}
+              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-500/5 to-transparent rounded-tl-2xl"></div>
+              <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-blue-500/5 to-transparent rounded-br-2xl"></div>
             </motion.div>
 
-            {/* Service Indicators */}
-            <div className="flex justify-center mt-6 gap-2">
+            {/* Enhanced Service Indicators */}
+            <motion.div 
+              className="flex justify-center mt-6 gap-2"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+            >
               {services.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => setActiveService(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  className={`relative w-2 h-2 rounded-full transition-all duration-300 ${
                     activeService === index 
-                      ? 'bg-blue-400 scale-125' 
+                      ? 'bg-blue-500 w-6 shadow-lg shadow-blue-500/50' 
                       : 'bg-white/30 hover:bg-white/50'
                   }`}
-                />
+                >
+                  {activeService === index && (
+                    <motion.div
+                      className="absolute inset-0 bg-blue-500 rounded-full"
+                      animate={{ scale: [1, 1.3, 1], opacity: [1, 0.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  )}
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
