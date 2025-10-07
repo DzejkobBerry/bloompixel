@@ -10,6 +10,7 @@ import PricingSection from './components/Pricing/PricingSection';
 import ContactSection from './components/Contact/ContactSection';
 import Footer from './components/Layout/Footer';
 import TechStackSection from './components/TechStack/TechStackSection';
+import SEOSection from './components/SEO/SEOSection';
 import LoadingScreen from './components/UI/LoadingScreen';
 import ScrollToTop from './components/UI/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
@@ -50,6 +51,7 @@ export function App() {
             <Hero />
             <AboutSection />
             <ServicesSection />
+            <SEOSection />
             <TechStackSection />
             <PortfolioSection />
             <TestimonialsSection />

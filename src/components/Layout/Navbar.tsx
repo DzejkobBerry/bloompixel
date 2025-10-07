@@ -51,6 +51,7 @@ const Navbar = () => {
     { name: 'Strona Główna', href: '#home' },
     { name: 'O Nas', href: '#about' },
     { name: 'Usługi', href: '#services' },
+    { name: 'SEO', href: '#seo' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Oferta', href: '#pricing' }
   ];
