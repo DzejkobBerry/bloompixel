@@ -546,19 +546,19 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-16 sm:bottom-12 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-gray-400"
+          className="hidden sm:flex flex-col items-center gap-1 sm:gap-2 text-gray-400"
         >
-          <span className="text-sm">Przewiń w dół</span>
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+          <span className="text-xs sm:text-sm">Przewiń w dół</span>
+          <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 rounded-full flex justify-center">
             <motion.div
-              animate={{ y: [0, 12, 0] }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+              className="w-1 h-2 sm:h-3 bg-gray-400 rounded-full mt-1 sm:mt-2"
             />
           </div>
         </motion.div>
