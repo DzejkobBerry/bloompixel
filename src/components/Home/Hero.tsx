@@ -319,7 +319,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/40 hover:bg-white/8 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl"
+              className="relative p-4 sm:p-6 lg:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/40 hover:bg-white/8 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl"
             >
               {/* Enhanced Background */}
               <motion.div 
@@ -355,7 +355,7 @@ const Hero = () => {
                 </motion.div>
                 
                 <motion.h3 
-                  className="text-2xl font-bold text-white mb-2"
+                  className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
@@ -364,7 +364,7 @@ const Hero = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-blue-300 mb-4 font-medium"
+                  className="text-sm sm:text-base text-blue-300 mb-3 sm:mb-4 font-medium"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
@@ -373,7 +373,7 @@ const Hero = () => {
                 </motion.p>
                 
                 <motion.p 
-                  className="text-gray-300 mb-6 leading-relaxed"
+                  className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -383,7 +383,7 @@ const Hero = () => {
                 
                 {/* Enhanced Features */}
                 <motion.div 
-                  className="grid grid-cols-2 gap-3 mb-6"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6"
                   initial="hidden"
                   animate="visible"
                   variants={{
@@ -399,7 +399,7 @@ const Hero = () => {
                   {services[activeService].features.map((feature, index) => (
                     <motion.div 
                       key={index} 
-                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors duration-200"
+                      className="flex items-center gap-2 p-1.5 sm:p-2 rounded-lg hover:bg-white/5 transition-colors duration-200"
                       variants={{
                         hidden: { opacity: 0, x: -10 },
                         visible: { opacity: 1, x: 0 }
@@ -410,27 +410,27 @@ const Hero = () => {
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
                       >
-                        <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
                       </motion.div>
-                      <span className="text-sm text-gray-300">{feature}</span>
+                      <span className="text-xs sm:text-sm text-gray-300">{feature}</span>
                     </motion.div>
                   ))}
                 </motion.div>
                 
                 {/* Enhanced Stats */}
                 <motion.div 
-                  className="flex items-center justify-between"
+                  className="flex flex-col sm:flex-row items-center justify-between gap-4"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <div className="flex gap-6">
+                  <div className="flex gap-3 sm:gap-6 w-full sm:w-auto">
                     <motion.div 
-                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
+                      className="text-center p-2 sm:p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex-1 sm:flex-none"
                       whileHover={{ scale: 1.05, y: -2 }}
                     >
                       <motion.div 
-                        className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
+                        className={`text-lg sm:text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
@@ -439,11 +439,11 @@ const Hero = () => {
                       <div className="text-xs text-gray-400">Projektów</div>
                     </motion.div>
                     <motion.div 
-                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
+                      className="text-center p-2 sm:p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex-1 sm:flex-none"
                       whileHover={{ scale: 1.05, y: -2 }}
                     >
                       <motion.div 
-                        className={`text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
+                        className={`text-lg sm:text-xl font-bold bg-gradient-to-r ${services[activeService].color} bg-clip-text text-transparent`}
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                       >
@@ -461,14 +461,14 @@ const Hero = () => {
                     }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleServiceClick('services')}
-                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-medium text-sm sm:text-base transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
                   >
                     Dowiedz się więcej
                     <motion.div
                       animate={{ x: [0, 3, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                     </motion.div>
                   </motion.button>
                 </motion.div>

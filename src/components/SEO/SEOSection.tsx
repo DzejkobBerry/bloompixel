@@ -30,7 +30,7 @@ const SEOSection = () => {
       features: ['Badanie konkurencji', 'Long-tail keywords', 'Analiza intencji wyszukiwania', 'Monitoring pozycji'],
       color: 'from-blue-400 to-cyan-400',
       bgGradient: 'from-blue-500/10 to-cyan-500/10',
-      price: 'od 899 zł'
+      price: 'od 148€'
     },
     {
       icon: TrendingUp,
@@ -39,7 +39,7 @@ const SEOSection = () => {
       features: ['Meta tags', 'Struktura URL', 'Optymalizacja treści', 'Schema markup'],
       color: 'from-purple-400 to-pink-400',
       bgGradient: 'from-purple-500/10 to-pink-500/10',
-      price: 'od 1299 zł'
+      price: 'od 214€'
     },
     {
       icon: Globe,
@@ -48,7 +48,7 @@ const SEOSection = () => {
       features: ['Guest posting', 'Katalogi branżowe', 'Partnerstwa', 'Content marketing'],
       color: 'from-green-400 to-teal-400',
       bgGradient: 'from-green-500/10 to-teal-500/10',
-      price: 'od 1599 zł'
+      price: 'od 263€'
     },
     {
       icon: BarChart3,
@@ -57,7 +57,7 @@ const SEOSection = () => {
       features: ['Google Analytics', 'Search Console', 'Raporty miesięczne', 'Analiza ROI'],
       color: 'from-orange-400 to-red-400',
       bgGradient: 'from-orange-500/10 to-red-500/10',
-      price: 'od 699 zł'
+      price: 'od 115€'
     }
   ];
 
@@ -123,7 +123,7 @@ const SEOSection = () => {
     <section 
       ref={containerRef}
       id="seo" 
-      className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950"
+      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
@@ -132,7 +132,7 @@ const SEOSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
           variants={containerVariants}
@@ -145,7 +145,7 @@ const SEOSection = () => {
             <span className="text-sm font-medium text-blue-300">Pozycjonowanie SEO</span>
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-bold mb-6">
+          <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
               Zwiększ Widoczność
             </span>
@@ -157,7 +157,7 @@ const SEOSection = () => {
             />
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <motion.p variants={itemVariants} className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Profesjonalne pozycjonowanie SEO, które przynosi <span className="text-blue-400 font-semibold">mierzalne rezultaty</span>. 
             Zwiększamy ruch organiczny o średnio <span className="text-green-400 font-semibold">300%</span> w ciągu 6 miesięcy.
           </motion.p>
@@ -174,11 +174,11 @@ const SEOSection = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="text-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300"
+              className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300"
             >
-              <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-              <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
+              <stat.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color} mx-auto mb-2 sm:mb-3`} />
+              <div className={`text-2xl sm:text-3xl font-bold ${stat.color} mb-1 sm:mb-2`}>{stat.value}</div>
+              <div className="text-gray-400 text-xs sm:text-sm">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -190,7 +190,7 @@ const SEOSection = () => {
           animate={isInView ? "visible" : "hidden"}
           className="mb-16"
         >
-          <motion.h3 variants={itemVariants} className="text-3xl font-bold text-center mb-12">
+          <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Nasze Usługi SEO
             </span>
@@ -203,7 +203,7 @@ const SEOSection = () => {
                 variants={itemVariants}
                 onHoverStart={() => setHoveredCard(index)}
                 onHoverEnd={() => setHoveredCard(null)}
-                className="group relative p-8 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all duration-500 overflow-hidden"
+                className="group relative p-4 sm:p-6 lg:p-8 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all duration-500 overflow-hidden"
               >
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -214,29 +214,29 @@ const SEOSection = () => {
                     <service.icon className="w-6 h-6 text-white" />
                   </div>
                   
-                  <h4 className="text-2xl font-bold text-white mb-4">{service.title}</h4>
-                  <p className="text-gray-300 mb-6 leading-relaxed">{service.description}</p>
+                  <h4 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">{service.title}</h4>
+                  <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">{service.description}</p>
                   
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
+                      <li key={featureIndex} className="flex items-center gap-2 sm:gap-3">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="flex items-center justify-between">
-                    <span className={`text-2xl font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                    <span className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
                       {service.price}
                     </span>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                      className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium text-sm sm:text-base hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 w-full sm:w-auto justify-center"
                     >
                       Dowiedz się więcej
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                     </motion.button>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ const SEOSection = () => {
           animate={isInView ? "visible" : "hidden"}
           className="mb-16"
         >
-          <motion.h3 variants={itemVariants} className="text-3xl font-bold text-center mb-12">
+          <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Jak Pracujemy
             </span>
@@ -272,17 +272,17 @@ const SEOSection = () => {
                 className="relative text-center group"
               >
                 {/* Step Number */}
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${step.color} text-white font-bold text-xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${step.color} text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   {step.step}
                 </div>
                 
                 {/* Icon */}
-                <div className="mb-4">
-                  <step.icon className={`w-8 h-8 mx-auto bg-gradient-to-r ${step.color} bg-clip-text text-transparent`} />
+                <div className="mb-3 sm:mb-4">
+                  <step.icon className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto bg-gradient-to-r ${step.color} bg-clip-text text-transparent`} />
                 </div>
                 
-                <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
-                <p className="text-gray-400 leading-relaxed">{step.description}</p>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{step.title}</h4>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed">{step.description}</p>
                 
                 {/* Connection Line */}
                 {index < seoProcess.length - 1 && (
@@ -298,27 +298,27 @@ const SEOSection = () => {
           variants={itemVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="text-center bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl p-12 border border-blue-500/20"
+          className="text-center bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl p-6 sm:p-8 lg:p-12 border border-blue-500/20"
         >
-          <Star className="w-12 h-12 text-yellow-400 mx-auto mb-6" />
-          <h3 className="text-3xl font-bold text-white mb-4">
+          <Star className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-yellow-400 mx-auto mb-4 sm:mb-6" />
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
             Gotowy na Zwiększenie Ruchu o 300%?
           </h3>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Skontaktuj się z nami już dziś i otrzymaj <span className="text-blue-400 font-semibold">bezpłatny audyt SEO</span> swojej strony internetowej.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-bold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-bold text-base sm:text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 w-full sm:w-auto"
             >
               Bezpłatny Audyt SEO
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm rounded-xl text-white font-bold text-lg border border-white/20 hover:bg-white/20 transition-all duration-300"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-white/10 backdrop-blur-sm rounded-xl text-white font-bold text-base sm:text-lg border border-white/20 hover:bg-white/20 transition-all duration-300 w-full sm:w-auto"
             >
               Zobacz Portfolio
             </motion.button>
